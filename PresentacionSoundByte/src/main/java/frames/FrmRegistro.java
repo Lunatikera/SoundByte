@@ -39,7 +39,6 @@ public class FrmRegistro extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
-        imagenPerfil1 = new util.ImagenPerfil();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -178,9 +177,6 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jPanel5.add(jPanel4);
 
-        imagenPerfil1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
-        imagenPerfil1.setMinimumSize(new java.awt.Dimension(0, 0));
-
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seleccion Imagen.png"))); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
@@ -191,14 +187,9 @@ public class FrmRegistro extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(imagenPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jButton3)))
-                .addGap(0, 400, Short.MAX_VALUE))
+                .addGap(85, 85, 85)
+                .addComponent(jButton3)
+                .addGap(0, 445, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,9 +198,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
                 .addGap(127, 127, 127))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(imagenPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(725, 725, 725)
                 .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -277,7 +266,6 @@ public class FrmRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private util.ImagenPerfil imagenPerfil1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
