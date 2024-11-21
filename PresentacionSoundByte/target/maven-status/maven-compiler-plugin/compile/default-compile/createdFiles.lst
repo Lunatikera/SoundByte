@@ -11,10 +11,13 @@ frames\FrmPrincipal$1.class
 frames\FrmRegistro$2.class
 com\mycompany\presentacionsoundbyte\PresentacionSoundByte.class
 frames\FrmLogIn$3.class
+frames\FrmRegistro$5.class
 frames\FrmRegistro$3.class
+util\ImageRenderer.class
 frames\FrmPrincipal$4.class
 frames\PanelFavoritos.class
 frames\FrmRegistro$1.class
 frames\FrmPrincipal$2.class
+excepcion\ExcepcionPresentacion.class
 frames\FrmPrincipal.class
 frames\FrmLogIn$1.class
