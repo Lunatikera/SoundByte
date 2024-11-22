@@ -4,14 +4,6 @@
  */
 package frames;
 
-import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
-import Negocio.UsuarioNegocio;
-import excepciones.NegocioException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author carli
@@ -21,11 +13,6 @@ public class FrmLogIn extends javax.swing.JFrame {
     /**
      * Creates new form FrmLogIn
      */
-    
-    UsuarioDAO uDAO = new UsuarioDAO();
-    UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
-    UsuarioDTO loggedUser = null;
-    
     public FrmLogIn() {
         initComponents();
     }
@@ -45,11 +32,11 @@ public class FrmLogIn extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        fldEmail = new javax.swing.JTextField();
-        btnIngresar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        fldContraseña = new javax.swing.JPasswordField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -67,23 +54,23 @@ public class FrmLogIn extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(48, 48, 48));
 
-        fldEmail.setBackground(new java.awt.Color(77, 76, 76));
-        fldEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        fldEmail.setForeground(new java.awt.Color(255, 255, 255));
-        fldEmail.setText("Email");
-        fldEmail.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
-        fldEmail.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setBackground(new java.awt.Color(77, 76, 76));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("Email");
+        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fldEmailActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
-        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
-        btnIngresar.setBorderPainted(false);
-        btnIngresar.setContentAreaFilled(false);
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -93,10 +80,10 @@ public class FrmLogIn extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginInfo.png"))); // NOI18N
 
-        fldContraseña.setBackground(new java.awt.Color(77, 76, 76));
-        fldContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        fldContraseña.setText("Password");
-        fldContraseña.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
+        jPasswordField1.setBackground(new java.awt.Color(77, 76, 76));
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
         jButton2.setBorderPainted(false);
@@ -113,7 +100,7 @@ public class FrmLogIn extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(492, 492, 492))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +110,9 @@ public class FrmLogIn extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fldEmail)
-                            .addComponent(fldContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField1)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -139,13 +126,13 @@ public class FrmLogIn extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel3)
                 .addGap(50, 50, 50)
-                .addComponent(fldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(fldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(btnIngresar))
+                        .addComponent(jButton1))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
@@ -218,31 +205,13 @@ public class FrmLogIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        try {
-            // TODO add your handling code here:
-            
-            
-            UsuarioDTO uDto = new UsuarioDTO();
-            uDto.setContraseña(fldContraseña.getText());
-            uDto.setCorreoElectronico(fldEmail.getText());
-            
-            this.loggedUser = uNeg.obtenerUsuarioPorCredenciales(uDto);
-            
-            if(loggedUser == null)
-                JOptionPane.showMessageDialog(this, "Email o contraseña incorrecta, por favor vuelve a intentarlo");
-            else
-                this.dispose();
-                
-            } catch (NegocioException ex) {
-            Logger.getLogger(FrmLogIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
-    private void fldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldEmailActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fldEmailActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -284,9 +253,7 @@ public class FrmLogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresar;
-    private javax.swing.JPasswordField fldContraseña;
-    private javax.swing.JTextField fldEmail;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -297,5 +264,7 @@ public class FrmLogIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

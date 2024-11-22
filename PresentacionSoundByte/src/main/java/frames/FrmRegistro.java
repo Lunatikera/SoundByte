@@ -4,26 +4,6 @@
  */
 package frames;
 
-import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
-import Negocio.UsuarioNegocio;
-import excepciones.NegocioException;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ScrollPaneConstants;
-import util.ImageRenderer;
-
 /**
  *
  * @author carli
@@ -33,49 +13,10 @@ public class FrmRegistro extends javax.swing.JFrame {
     /**
      * Creates new form FrmLogIn
      */
-    
-    UsuarioDAO uDAO = new UsuarioDAO();
-    UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
-    byte[] imagenPerfil = null;
-    
     public FrmRegistro() {
         initComponents();
-        tblImagen.setVisible(false);
-
-
-    }
-    
-    public byte[] convertirImagenABytes(File file) throws IOException {
-        // Leer el archivo de imagen en un InputStream
-        InputStream inputStream = new FileInputStream(file);
-        byte[] bytes = inputStream.readAllBytes();
-        inputStream.close();
-        return bytes;
     }
 
-    public BufferedImage ByteAImagen (byte[] a){
-        
-        // Supongamos que tienes un array de bytes llamado imageBytes
-        byte[] imageBytes =  a;
-
-        // Convierte los bytes en una imagen BufferedImage
-        BufferedImage img = null;
-        try {
-            ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-            img = ImageIO.read(bis);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Ahora puedes usar la imagen (BufferedImage)
-        if (img != null) {
-            return img;
-        } else {
-                    JOptionPane.showMessageDialog(this, "Error al leer la imagen de perfil");
-            return null;
-        }
-    
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,16 +32,19 @@ public class FrmRegistro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        fldUsername = new javax.swing.JTextField();
-        btnRegistrar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        fldContraseña = new javax.swing.JPasswordField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
-        fldCorreo = new javax.swing.JTextField();
-        btnSeleccionarImagen = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblImagen = new javax.swing.JTable();
+        jTextField2 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jPasswordField2 = new javax.swing.JPasswordField();
+        jButton5 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        imagenPerfil1 = new util.ImagenPerfil();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,23 +60,23 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(48, 48, 48));
 
-        fldUsername.setBackground(new java.awt.Color(77, 76, 76));
-        fldUsername.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        fldUsername.setForeground(new java.awt.Color(255, 255, 255));
-        fldUsername.setText("Username");
-        fldUsername.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
-        fldUsername.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setBackground(new java.awt.Color(77, 76, 76));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("Username");
+        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fldUsernameActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/registrarse.png"))); // NOI18N
-        btnRegistrar.setBorderPainted(false);
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/registrarse.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -142,23 +86,41 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginInfo.png"))); // NOI18N
 
-        fldContraseña.setBackground(new java.awt.Color(77, 76, 76));
-        fldContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        fldContraseña.setText("Password");
-        fldContraseña.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
+        jPasswordField1.setBackground(new java.awt.Color(77, 76, 76));
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
 
-        fldCorreo.setBackground(new java.awt.Color(77, 76, 76));
-        fldCorreo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        fldCorreo.setForeground(new java.awt.Color(255, 255, 255));
-        fldCorreo.setText("Email");
-        fldCorreo.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
-        fldCorreo.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.setBackground(new java.awt.Color(77, 76, 76));
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setText("Email");
+        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fldCorreoActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+
+        jPasswordField2.setBackground(new java.awt.Color(77, 76, 76));
+        jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField2.setText("jPasswordField1");
+        jPasswordField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -184,10 +146,17 @@ public class FrmRegistro extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4))))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -200,15 +169,23 @@ public class FrmRegistro extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel3)
                 .addGap(50, 50, 50)
-                .addComponent(fldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(fldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(btnRegistrar)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
+                .addComponent(jButton1)
                 .addGap(24, 24, 24))
         );
 
@@ -232,64 +209,64 @@ public class FrmRegistro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel4);
 
-        btnSeleccionarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seleccion Imagen.png"))); // NOI18N
-        btnSeleccionarImagen.setBorderPainted(false);
-        btnSeleccionarImagen.setContentAreaFilled(false);
-        btnSeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeleccionarImagenActionPerformed(evt);
-            }
-        });
+        jPanel7.setBackground(new java.awt.Color(27, 26, 26));
 
-        tblImagen.setTableHeader(null); tblImagen.setRowHeight(334
-        ); 
-        tblImagen.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Imagen"
-            }
-        ));
-        jScrollPane1.setViewportView(tblImagen);
+        imagenPerfil1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seleccion Imagen.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(imagenPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(54, 54, 54))))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(285, 285, 285)
+                .addComponent(imagenPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addGap(79, 79, 79))
+        );
+
+        jPanel5.add(jPanel7);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSeleccionarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 445, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1920, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
-                .addGap(115, 115, 115))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(366, 366, 366)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnSeleccionarImagen)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,68 +276,21 @@ public class FrmRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
-        if ("Username".equals(fldUsername.getText()) || fldUsername.getText().isBlank() || "Email".equals(fldCorreo.getText()) || fldCorreo.getText().isBlank()|| "Password".equals(fldContraseña.getText()) || fldContraseña.getText().isBlank())
-        {
-            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos obligatorios.");
-            return;
-        }
-        
-        try {
-            // TODO add your handling code here:
-            UsuarioDTO uD = new UsuarioDTO();
-            uD.setUsername(fldUsername.getText());
-            uD.setCorreoElectronico(fldCorreo.getText());
-            uD.setContraseña(fldContraseña.getText());
-            uD.setImagenPerfil(imagenPerfil);
-            
-            uNeg.crearUsuario(uD);
-            
-        } catch (NegocioException ex) {
-            Logger.getLogger(FrmRegistro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void fldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldUsernameActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fldUsernameActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void fldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldCorreoActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fldCorreoActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void btnSeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarImagenActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-                // TODO add your handling code here:
-        // Mostrar el selector de archivos
-        JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(this);
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
-        // Verificar si se seleccionó un archivo
-        if (result == JFileChooser.APPROVE_OPTION)
-        {
-            File selectedFile = fileChooser.getSelectedFile();
-            String imagePath = selectedFile.getAbsolutePath();
-            
-
-            // Convertir la imagen a byte[]
-            try
-            {
-                byte[] imageData = convertirImagenABytes(selectedFile);
-                this.imagenPerfil = imageData;
-                // Usar el byte[] para guardar o enviar según sea necesario
-                tblImagen.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(ByteAImagen(imageData)));
-                tblImagen.setVisible(true);
-            } catch (IOException ex)
-            {
-                ex.printStackTrace();
-                // Manejar el error según sea necesario
-            }
-        }
-
-    }//GEN-LAST:event_btnSeleccionarImagenActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,12 +329,12 @@ public class FrmRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnSeleccionarImagen;
-    private javax.swing.JPasswordField fldContraseña;
-    private javax.swing.JTextField fldCorreo;
-    private javax.swing.JTextField fldUsername;
+    private util.ImagenPerfil imagenPerfil1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -413,7 +343,10 @@ public class FrmRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblImagen;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
