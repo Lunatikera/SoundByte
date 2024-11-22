@@ -4,6 +4,15 @@
  */
 package frames;
 
+import DTO.UsuarioDTO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author carli
@@ -13,9 +22,51 @@ public class FrmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form FrmPrincipal
      */
-    public FrmPrincipal() {
+    public FrmPrincipal(UsuarioDTO loggedUser) {
         initComponents();
+            setImagen(loggedUser);
+            System.out.println(loggedUser.toString());
+
     }
+    
+    public void setImagen(UsuarioDTO loggedUser){
+        
+            if(loggedUser.getImagenPerfil() != null){
+            imagenPerfil1.setImagen(new ImageIcon(loggedUser.getImagenPerfil()));
+            this.revalidate();
+            this.repaint();
+            }
+            else{
+            Icon defaultImagen = new ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"));
+            imagenPerfil1.setImagen(defaultImagen);
+            this.revalidate();
+            this.repaint();
+            }
+    
+    }
+    
+        public BufferedImage ByteAImagen (byte[] a){
+        
+        // Supongamos que tienes un array de bytes llamado imageBytes
+        byte[] imageBytes =  a;
+
+        // Convierte los bytes en una imagen BufferedImage
+        BufferedImage img = null;
+        try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+            img = ImageIO.read(bis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Ahora puedes usar la imagen (BufferedImage)
+        if (img != null) {
+            return img;
+        } else {
+                    JOptionPane.showMessageDialog(this, "Error al leer la imagen de perfil");
+            return null;
+        }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +97,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         panelPrincipall = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        imagenPerfil1 = new util.ImagenPerfil();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,11 +228,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1650, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(393, 393, 393)
+                .addComponent(imagenPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1569, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(501, Short.MAX_VALUE)
+                .addComponent(imagenPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
         );
 
         panelPrincipall.add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -235,39 +293,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmPrincipal().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private util.ImagenPerfil imagenPerfil1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

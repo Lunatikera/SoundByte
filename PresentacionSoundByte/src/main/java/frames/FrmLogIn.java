@@ -232,8 +232,11 @@ public class FrmLogIn extends javax.swing.JFrame {
             if(loggedUser == null)
                 JOptionPane.showMessageDialog(this, "Email o contraseña incorrecta, por favor vuelve a intentarlo");
             else
+            {
+                FrmPrincipal f = new FrmPrincipal(loggedUser);
+                f.setVisible(true);
                 this.dispose();
-                
+            }
             } catch (NegocioException ex) {
             Logger.getLogger(FrmLogIn.class.getName()).log(Level.SEVERE, null, ex);
         }

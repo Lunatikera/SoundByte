@@ -33,6 +33,19 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+    
+    @Override
+    public void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws NegocioException {
+        try
+        {
+            UsuarioColeccion usuarioColeccionViejo = this.convertirUsuarioDTO(usuarioViejo);
+            UsuarioColeccion usuarioColeccionNuevo = this.convertirUsuarioDTO(usuarioNuevo);
+            usuarioDAO.actualizarUsuario(usuarioColeccionViejo, usuarioColeccionNuevo);
+        } catch (Exception e)
+        {
+            throw new NegocioException(e.getMessage());
+        }
+    }
 
     @Override
     public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException {
@@ -58,6 +71,8 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         usuario.setContraseña(dto.getContraseña());
         usuario.setCorreoElectronico(dto.getCorreoElectronico());
         usuario.setImagenPerfil(dto.getImagenPerfil());
+        usuario.setFavoritos(dto.getFavoritos());
+        usuario.setRestringidos(dto.getRestringidos());
 
         return usuario;
 
@@ -74,6 +89,8 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         u.setContraseña(usuario.getContraseña());
         u.setCorreoElectronico(usuario.getCorreoElectronico());
         u.setImagenPerfil(usuario.getImagenPerfil());
+        u.setFavoritos(usuario.getFavoritos());
+        u.setRestringidos(usuario.getRestringidos());
 
         return u;
         

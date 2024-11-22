@@ -12,6 +12,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import excepciones.PersistenciaException;
+import java.util.Collections;
+import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.Binary;
@@ -60,6 +62,39 @@ public class UsuarioDAO implements IUsuarioDAO {
             throw new PersistenciaException("Error al crear el usuario en la base de datos", e);
         }
     }
+    
+
+    @Override
+    public void actualizarUsuario(UsuarioColeccion usuarioViejo, UsuarioColeccion usuarioNuevo) throws PersistenciaException {
+        try
+        {
+            
+            Document docViejo = new Document()
+                    .append("_id", usuarioViejo.getId())
+                    .append("username", usuarioViejo.getUsername())                    
+                    .append("correoElectronico", usuarioViejo.getCorreoElectronico())
+                    .append("contraseña", usuarioViejo.getContraseña())
+                    .append("imagenPerfil", usuarioViejo.getImagenPerfil())
+                    .append("favoritos", usuarioViejo.getFavoritos())
+                    .append("restricciones", usuarioViejo.getRestringidos());
+            
+            Document docNuevo = new Document()
+                    .append("_id", usuarioViejo.getId())
+                    .append("username", usuarioNuevo.getUsername())                    
+                    .append("correoElectronico", usuarioNuevo.getCorreoElectronico())
+                    .append("contraseña", usuarioNuevo.getContraseña())
+                    .append("imagenPerfil", usuarioNuevo.getImagenPerfil())
+                    .append("favoritos", usuarioNuevo.getFavoritos())
+                    .append("restricciones", usuarioNuevo.getRestringidos());
+
+            coleccion.updateOne(docViejo,docNuevo);
+
+
+        } catch (Exception e)
+        {
+            throw new PersistenciaException("Error al crear el usuario en la base de datos", e);
+        }
+    }
 
     @Override
     public UsuarioColeccion obtenerUsuarioPorCredenciales(String correoElectronico, String contraseña) throws PersistenciaException {
@@ -78,8 +113,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                 usuario.setCorreoElectronico(documentoUsuario.getString("correoElectronico"));
                 usuario.setContraseña(documentoUsuario.getString("contraseña"));
 
-                if (documentoUsuario.containsKey("imagenPerfil"))
-                {
+
                     Binary imagenPerfil = documentoUsuario.get("imagenPerfil", Binary.class);
                     if (imagenPerfil != null)
                     {
@@ -88,13 +122,11 @@ public class UsuarioDAO implements IUsuarioDAO {
                     {
                         usuario.setImagenPerfil(null);
                     }
-                } else
-                {
-                    usuario.setImagenPerfil(null);
-                }
+                    usuario.setFavoritos((List<ObjectId>) documentoUsuario.get("favoritos"));
+                    usuario.setRestringidos((List<ObjectId>) documentoUsuario.get("restricciones"));
 
 
-
+                System.out.println(usuario.toString());
                 return usuario;
             } else
             {

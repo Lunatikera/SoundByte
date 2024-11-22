@@ -4,6 +4,7 @@
  */
 package DTO;
 
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -17,37 +18,11 @@ public class UsuarioDTO {
     private String correoElectronico;
     private String contraseña;
     private byte[] imagenPerfil;
+    private List<ObjectId> favoritos;
+    private List<ObjectId> restringidos;
 
 
     public UsuarioDTO() {
-    }
-
-    public UsuarioDTO(ObjectId id, String username, String correoElectronico, String contraseña, byte[] imagenPerfil) {
-        this.id = id;
-        this.username = username;
-        this.correoElectronico = correoElectronico;
-        this.contraseña = contraseña;
-        this.imagenPerfil = imagenPerfil;
-    }
-
-    public UsuarioDTO(String username, String correoElectronico, String contraseña, byte[] imagenPerfil) {
-        this.username = username;
-        this.correoElectronico = correoElectronico;
-        this.contraseña = contraseña;
-        this.imagenPerfil = imagenPerfil;
-    }
-
-    public UsuarioDTO(String username, String correoElectronico, String contraseña) {
-        this.username = username;
-        this.correoElectronico = correoElectronico;
-        this.contraseña = contraseña;
-    }
-
-    public UsuarioDTO(ObjectId id, String username, String correoElectronico, String contraseña) {
-        this.id = id;
-        this.username = username;
-        this.correoElectronico = correoElectronico;
-        this.contraseña = contraseña;
     }
 
     public ObjectId getId() {
@@ -90,9 +65,29 @@ public class UsuarioDTO {
         this.imagenPerfil = imagenPerfil;
     }
 
+    public List<ObjectId> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(List<ObjectId> favoritos) {
+        this.favoritos = favoritos;
+    }
+
+    public List<ObjectId> getRestringidos() {
+        return restringidos;
+    }
+
+    public void setRestringidos(List<ObjectId> restringidos) {
+        this.restringidos = restringidos;
+    }
+
     @Override
     public String toString() {
-        return "UsuarioColeccion{" + "id=" + id + ", nombreCompleto=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + '}';
-    }    
+        return "UsuarioDTO{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos + ", restringidos=" + restringidos + '}';
+    }
+
+    
+    
+
 
 }

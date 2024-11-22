@@ -17,6 +17,10 @@ public interface IUsuarioDAO {
 
     public void crearUsuario(UsuarioColeccion usuario) throws PersistenciaException;
     
-    public UsuarioColeccion obtenerUsuarioPorCredenciales(String telefono, String contraseña)throws PersistenciaException ;    
+    public void actualizarUsuario(UsuarioColeccion usuarioViejo, UsuarioColeccion usuarioNuevo) throws PersistenciaException;
+    
+    public UsuarioColeccion obtenerUsuarioPorCredenciales(String telefono, String contraseña)throws PersistenciaException;
+
+
 
 }

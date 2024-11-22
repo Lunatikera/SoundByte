@@ -18,6 +18,8 @@ public interface IUsuarioNegocio {
 
     void crearUsuario(UsuarioDTO usuario) throws NegocioException;
     
+    void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws NegocioException;
+    
     public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException;
 
 }

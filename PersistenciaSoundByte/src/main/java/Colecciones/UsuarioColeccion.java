@@ -4,6 +4,7 @@
  */
 package Colecciones;
 
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -17,6 +18,9 @@ public class UsuarioColeccion {
     private String correoElectronico;
     private String contraseña;
     private byte[] imagenPerfil;
+    private List<ObjectId> favoritos;
+    private List<ObjectId> restringidos;
+
 
 
     public UsuarioColeccion() {
@@ -48,6 +52,16 @@ public class UsuarioColeccion {
         this.username = username;
         this.correoElectronico = correoElectronico;
         this.contraseña = contraseña;
+    }
+
+    public UsuarioColeccion(ObjectId id, String username, String correoElectronico, String contraseña, byte[] imagenPerfil, List<ObjectId> favoritos, List<ObjectId> restringidos) {
+        this.id = id;
+        this.username = username;
+        this.correoElectronico = correoElectronico;
+        this.contraseña = contraseña;
+        this.imagenPerfil = imagenPerfil;
+        this.favoritos = favoritos;
+        this.restringidos = restringidos;
     }
 
     public ObjectId getId() {
@@ -90,9 +104,26 @@ public class UsuarioColeccion {
         this.imagenPerfil = imagenPerfil;
     }
 
+    public List<ObjectId> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(List<ObjectId> favoritos) {
+        this.favoritos = favoritos;
+    }
+
+    public List<ObjectId> getRestringidos() {
+        return restringidos;
+    }
+
+    public void setRestringidos(List<ObjectId> restringidos) {
+        this.restringidos = restringidos;
+    }
+
     @Override
     public String toString() {
-        return "UsuarioColeccion{" + "id=" + id + ", nombreCompleto=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + '}';
-    }    
+        return "UsuarioColeccion{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos + ", restringidos=" + restringidos + '}';
+    }
 
+    
 }
