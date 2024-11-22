@@ -32,7 +32,7 @@ public class UsuarioDAO implements IUsuarioDAO {
     public UsuarioDAO() {
 
     
-    this.coleccion = database.getCollection("Usuario");
+    this.coleccion = database.getCollection("Usuarios");
         
     }
     
@@ -48,7 +48,9 @@ public class UsuarioDAO implements IUsuarioDAO {
                     .append("username", usuario.getUsername())                    
                     .append("correoElectronico", usuario.getCorreoElectronico())
                     .append("contraseña", usuario.getContraseña())
-                    .append("imagenPerfil", usuario.getImagenPerfil());
+                    .append("imagenPerfil", usuario.getImagenPerfil())
+                    .append("favoritos", null)
+                    .append("restricciones", null);
 
             coleccion.insertOne(doc);
 

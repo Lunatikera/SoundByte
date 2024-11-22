@@ -8,6 +8,7 @@ import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import Negocio.UsuarioNegocio;
 import excepciones.NegocioException;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -17,6 +18,8 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -34,13 +37,17 @@ public class FrmRegistro extends javax.swing.JFrame {
      * Creates new form FrmLogIn
      */
     
+    Icon defaultImagen = new ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"));
     UsuarioDAO uDAO = new UsuarioDAO();
     UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
     byte[] imagenPerfil = null;
     
     public FrmRegistro() {
         initComponents();
-        tblImagen.setVisible(false);
+        imagenPerfil1.setImagen(defaultImagen);
+            this.revalidate();
+            this.repaint();
+
 
 
     }
@@ -99,8 +106,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         fldCorreo = new javax.swing.JTextField();
         btnSeleccionarImagen = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblImagen = new javax.swing.JTable();
+        imagenPerfil1 = new util.ImagenPerfil();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -247,18 +253,6 @@ public class FrmRegistro extends javax.swing.JFrame {
             }
         });
 
-        tblImagen.setTableHeader(null); tblImagen.setRowHeight(334
-        ); 
-        tblImagen.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Imagen"
-            }
-        ));
-        jScrollPane1.setViewportView(tblImagen);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -268,7 +262,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                 .addGap(85, 85, 85)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSeleccionarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(imagenPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 445, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -278,9 +272,9 @@ public class FrmRegistro extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
                 .addGap(115, 115, 115))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(366, 366, 366)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(355, 355, 355)
+                .addComponent(imagenPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
                 .addComponent(btnSeleccionarImagen)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -343,16 +337,16 @@ public class FrmRegistro extends javax.swing.JFrame {
         {
             File selectedFile = fileChooser.getSelectedFile();
             String imagePath = selectedFile.getAbsolutePath();
-            
+            imagenPerfil1.setImagen(new ImageIcon(imagePath));
+            this.revalidate();
+            this.repaint();
 
             // Convertir la imagen a byte[]
             try
             {
                 byte[] imageData = convertirImagenABytes(selectedFile);
                 this.imagenPerfil = imageData;
-                // Usar el byte[] para guardar o enviar según sea necesario
-                tblImagen.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(ByteAImagen(imageData)));
-                tblImagen.setVisible(true);
+                // Usar el byte[] para guardar o enviar según sea necesario;
             } catch (IOException ex)
             {
                 ex.printStackTrace();
@@ -404,6 +398,7 @@ public class FrmRegistro extends javax.swing.JFrame {
     private javax.swing.JPasswordField fldContraseña;
     private javax.swing.JTextField fldCorreo;
     private javax.swing.JTextField fldUsername;
+    private util.ImagenPerfil imagenPerfil1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -413,7 +408,5 @@ public class FrmRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblImagen;
     // End of variables declaration//GEN-END:variables
 }
