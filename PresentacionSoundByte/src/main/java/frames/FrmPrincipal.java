@@ -4,14 +4,15 @@
  */
 package frames;
 
-import DTO.UsuarioDTO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
+import util.ModernScrollBarUI;
+import util.ScrollBar;
 
 /**
  *
@@ -22,51 +23,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form FrmPrincipal
      */
-    public FrmPrincipal(UsuarioDTO loggedUser) {
+    public FrmPrincipal() {
         initComponents();
-            setImagen(loggedUser);
-            System.out.println(loggedUser.toString());
-
+        this.setSize(2066, 1321);
+        PanelHome panelHome = new PanelHome(this);
+        this.pintarPanelPrincipal(panelHome);
+        this.jScrollPane1.setVerticalScrollBar(new ScrollBar());
+   
     }
-    
-    public void setImagen(UsuarioDTO loggedUser){
-        
-            if(loggedUser.getImagenPerfil() != null){
-            imagenPerfil1.setImagen(new ImageIcon(loggedUser.getImagenPerfil()));
-            this.revalidate();
-            this.repaint();
-            }
-            else{
-            Icon defaultImagen = new ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"));
-            imagenPerfil1.setImagen(defaultImagen);
-            this.revalidate();
-            this.repaint();
-            }
-    
-    }
-    
-        public BufferedImage ByteAImagen (byte[] a){
-        
-        // Supongamos que tienes un array de bytes llamado imageBytes
-        byte[] imageBytes =  a;
-
-        // Convierte los bytes en una imagen BufferedImage
-        BufferedImage img = null;
-        try {
-            ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-            img = ImageIO.read(bis);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Ahora puedes usar la imagen (BufferedImage)
-        if (img != null) {
-            return img;
-        } else {
-                    JOptionPane.showMessageDialog(this, "Error al leer la imagen de perfil");
-            return null;
-        }
-        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,7 +41,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -95,18 +58,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        panelPrincipall = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        imagenPerfil1 = new util.ImagenPerfil();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jPanel2.setBackground(new java.awt.Color(27, 26, 26));
+        jPanel2.setBackground(new java.awt.Color(16, 15, 15));
         jPanel2.setPreferredSize(new java.awt.Dimension(270, 1080));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logochiquito.png"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(220, 146));
         jPanel2.add(jLabel1);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whiteLine.png"))); // NOI18N
@@ -167,12 +128,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
         jButton6.setPreferredSize(new java.awt.Dimension(140, 45));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton6);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
         jButton7.setPreferredSize(new java.awt.Dimension(140, 45));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton7);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/library.png"))); // NOI18N
@@ -197,9 +168,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel2.add(jButton9);
         jPanel2.add(jLabel4);
 
-        jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_START);
 
-        jPanel3.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel3.setBackground(new java.awt.Color(19, 19, 19));
         jPanel3.setPreferredSize(new java.awt.Dimension(1920, 80));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -209,7 +180,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(917, 917, 917)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1003, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,84 +190,174 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
-        panelPrincipall.setBackground(new java.awt.Color(255, 255, 204));
-        panelPrincipall.setLayout(new java.awt.BorderLayout());
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(393, 393, 393)
-                .addComponent(imagenPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1569, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(501, Short.MAX_VALUE)
-                .addComponent(imagenPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
-        );
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jPanel1.add(jScrollPane1);
 
-        panelPrincipall.add(jPanel4, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(panelPrincipall, java.awt.BorderLayout.CENTER);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.out.println("prueba1");
-        panelPrincipall.removeAll();
+        jScrollPane1.removeAll();
 
         // Add the new content (e.g., Prueba1) to panelPrincipall
-        panelPrincipall.add(new PanelHome());
+        jScrollPane1.add(new PanelHome(this));
 
         // Revalidate and repaint the panel to reflect changes
-        panelPrincipall.revalidate();
-        panelPrincipall.repaint();
+        jScrollPane1.revalidate();
+        jScrollPane1.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.out.println("prueba2");
-        panelPrincipall.removeAll();
 
-        panelPrincipall.add(new PanelFavoritos());
-
-        // Revalidate and repaint the panel to reflect changes
-        panelPrincipall.revalidate();
-        panelPrincipall.repaint();
+        //        this.pintarPanelPrincipal(new PanelFavoritos(this));
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.pintarPanelPrincipal(new PanelCanciones(this));
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        System.out.println(this.getWidth());
+        System.out.println(this.getHeight());        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        this.pintarPanelPrincipal(new PanelHome(this));
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        this.pintarPanelPrincipal(new PanelFavoritos(this));
+
+        // Revalidate and repaint the panel to reflect changes
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    public void pintarPanelPrincipal(JPanel panel) {
+        // Remove all previous content from the scroll pane
+
+        // Set the new panel as the viewport view of the scroll pane
+        jScrollPane1.setViewportView(panel);
+
+        // Set preferred si    panel.setPreferredSize(new Dimension(2000, 1500)); // Ensure this is larger than the scroll pane
+        panel.setPreferredSize(new Dimension(0, panel.getPreferredSize().height));  // Set appropriate size for your content
+
+        // Enable vertical scrolling if needed
+        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        // Revalidate and repaint the JScrollPane and panel to apply changes
+        jScrollPane1.revalidate();
+        jScrollPane1.repaint();
+//    jScrollPane1.setBorder(null);
+//
+//    // Set the viewport view to the new panel
+//    jScrollPane1.setViewportView(panel);
+//    panel.setSize(1650,1000);
+//
+//    // Set preferred size for the panel
+//    // Ensure the height is greater than the JScrollPane's height
+//    panel.setPreferredSize(new Dimension(1650, 1000)); // Adjust as necessary for your layout
+//    panel.setMinimumSize(new Dimension(1650, 1000)); // This ensures the panel has a minimum size
+//
+//    // Configure JScrollPane to show scrollbars as needed
+//    jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//    jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scrollbar
+//
+//    // Revalidate and repaint to update the UI
+//    jScrollPane1.revalidate();
+//    jScrollPane1.repaint();
+        // Obtén el componente de vista del JScrollPane
+//        JPanel viewPanel = new JPanel();
+//        viewPanel.setLayout(new BorderLayout());
+//        viewPanel.setBackground(new Color(16, 15, 15));
+//        viewPanel.setSize(1650,1000);
+//
+//        // Eliminar el contenido anterior
+//        jScrollPane1.setViewportView(viewPanel);
+//        viewPanel.removeAll();
+//
+//        // Establecer tamaño preferido del nuevo panel
+//        viewPanel.add(panel, BorderLayout.CENTER);
+//
+//        // Revalidar y repintar
+//        viewPanel.revalidate();
+//        viewPanel.repaint();
+//        // Remove the previous content (panel)
+//        jScrollPane1.removeAll();
+//        // Debugging: Check if the panel is being created correctly
+//        System.out.println("Adding new panel: " + panel.getClass().getSimpleName());
+//
+//        // Optionally, set a preferred size if the panel might be too small
+//        panel.setPreferredSize(new java.awt.Dimension(1920, 1080));  // Set to appropriate size
+//
+//        // Add the new panel to the JScrollPane
+//        jScrollPane1.add(panel);
+//        panel.setSize(2000, 2000);
+//
+//        // Ensure the JScrollPane is set to show scrollbars when necessary
+//        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//
+//        // Revalidate and repaint the JScrollPane and its parent components to update the UI
+//        jScrollPane1.revalidate();
+//        jScrollPane1.repaint();
+//
+//        // Debugging: Check if the JScrollPane is updated
+//        System.out.println("JScrollPane updated: " + jScrollPane1.isVisible());
+    }
+
+    public JScrollPane getPanelPrincipal() {
+        return jScrollPane1;
+    }
+
     /**
+     *
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmPrincipal().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private util.ImagenPerfil imagenPerfil1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -315,7 +376,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel panelPrincipall;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

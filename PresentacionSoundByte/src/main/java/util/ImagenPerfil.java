@@ -5,6 +5,7 @@
 package util;
 
 import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -23,88 +24,91 @@ import javax.swing.JComponent;
  * @author carli
  */
 public class ImagenPerfil extends JComponent{
-    
+    private Icon imagen;
+    private int tamanoBorde = 0;
+    private Color colorBorde = new Color(60, 60, 60);
+
+    // Getters and Setters
     public Icon getImagen() {
         return imagen;
     }
 
     public void setImagen(Icon imagen) {
         this.imagen = imagen;
+        repaint(); // Repaint the component when the image is updated
     }
 
     public int getTamanoBorde() {
         return tamanoBorde;
     }
 
-    public void setTamanoBorde(int tamano) {
-        this.tamanoBorde = tamano;
+    public void setTamanoBorde(int tamanoBorde) {
+        this.tamanoBorde = tamanoBorde;
+        repaint(); // Repaint when the border size changes
     }
 
     public Color getColorBorde() {
         return colorBorde;
     }
 
-    public void setColorBorde(Color borderColor) {
+    public void setColorBorde(Color colorBorde) {
         this.colorBorde = colorBorde;
+        repaint(); // Repaint when the border color changes
     }
 
-    private Icon imagen;
-    private int tamanoBorde = 0;
-    private Color colorBorde = new Color(60, 60, 60);
-
     @Override
-    public void paint(Graphics g) {
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Ensure proper background rendering
+
         if (imagen != null) {
-            int ancho = imagen.getIconWidth();
-            int altura = imagen.getIconHeight();
+            int ancho = getWidth();
+            int altura = getHeight();
             int diametro = Math.min(ancho, altura);
-            BufferedImage mascara = new BufferedImage(ancho, altura, BufferedImage.TYPE_INT_ARGB);
+
+            // Create circular mask
+            BufferedImage mascara = new BufferedImage(diametro, diametro, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = mascara.createGraphics();
-            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);    //  for image smooth
-            g2d.fillOval(0, 0, diametro - 1, diametro - 1);
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2d.fillOval(0, 0, diametro, diametro);
             g2d.dispose();
-            BufferedImage mascarado = new BufferedImage(diametro, diametro, BufferedImage.TYPE_INT_ARGB);
-            g2d = mascarado.createGraphics();
-            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);    //  for image smooth
-            int x = (diametro - ancho) / 2;
-            int y = (diametro - altura) / 2;
-            g2d.drawImage(toImage(imagen), x, y, null);
+
+            // Apply mask to image
+            BufferedImage imagenCircular = new BufferedImage(diametro, diametro, BufferedImage.TYPE_INT_ARGB);
+            g2d = imagenCircular.createGraphics();
+            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g2d.drawImage(toImage(imagen), 0, 0, diametro, diametro, null);
             g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_IN));
             g2d.drawImage(mascara, 0, 0, null);
             g2d.dispose();
-            Icon icon = new ImageIcon(mascarado);
-            Rectangle size = getAutoSize(icon);
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g2.drawImage(toImage(icon), size.getLocation().x, size.getLocation().y, size.getSize().width, size.getSize().height, null);
-//            if (tamanoBorde > 0) {
-//                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//                g2.setColor(colorBorde);
-//                g2.setStroke(new BasicStroke(tamanoBorde));
-//                g2.drawOval(size.x = (tamanoBorde / 2), size.y + (tamanoBorde / 2), size.width - tamanoBorde, size.height - tamanoBorde);
-//            }
-        }
-        super.paint(g);
-    }
 
-    private Rectangle getAutoSize(Icon image) {
-        int anchura = getWidth();
-        int altura = getHeight();
-        int imagenAnchura = image.getIconWidth();
-        int imagenAltura = image.getIconHeight();
-        double xEscala = (double) anchura / imagenAnchura;
-        double yEscala = (double) altura / imagenAltura;
-        double escala = Math.max(xEscala, yEscala);
-        int iconoAnchura = (int) (escala * imagenAnchura);
-        int iconoAltura = (int) (escala * imagenAltura);
-        int x = (anchura - iconoAnchura) / 2;
-        int y = (altura - iconoAltura) / 2;
-        return new Rectangle(new Point(x, y), new Dimension(iconoAnchura, iconoAltura));
+            // Draw the circular image
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            int x = (ancho - diametro) / 2;
+            int y = (altura - diametro) / 2;
+            g2.drawImage(imagenCircular, x, y, null);
+
+            // Draw the border
+            if (tamanoBorde > 0) {
+                g2.setColor(colorBorde);
+                g2.setStroke(new BasicStroke(tamanoBorde));
+                g2.drawOval(x + tamanoBorde / 2, y + tamanoBorde / 2, diametro - tamanoBorde, diametro - tamanoBorde);
+            }
+        }
     }
 
     private Image toImage(Icon icon) {
-        return ((ImageIcon) icon).getImage();
+        if (icon instanceof ImageIcon) {
+            return ((ImageIcon) icon).getImage();
+        }
+        // Create a buffered image for non-ImageIcon icons
+        BufferedImage bufferedImage = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = bufferedImage.createGraphics();
+        icon.paintIcon(null, g2d, 0, 0);
+        g2d.dispose();
+        return bufferedImage;
     }
-
 }
+
+
 

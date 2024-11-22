@@ -37,8 +37,12 @@ public class pruebas {
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio(usuarioDAO);
 
 
-
+        UsuarioDTO uD = new UsuarioDTO("Chavirezz", "santissaaagosanchezch@gmail.com", "1234225");
         
+        usuarioNegocio.crearUsuario(uD);
+        
+        
+    
 
 //        List<UsuarioDTO> b = usuarioNegocio.obtenerTodosLosUsuarios();
 //        UsuarioDTO x = b.get(0);
