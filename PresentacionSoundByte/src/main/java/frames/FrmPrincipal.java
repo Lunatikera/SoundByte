@@ -36,7 +36,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jSlider1.revalidate();
         jSlider1.repaint();
         jSlider1.setOpaque(false);
-        
+
     }
 
     /**
@@ -48,20 +48,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        menuBar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnMenuBuscar = new javax.swing.JButton();
+        btnMenuGeneros = new javax.swing.JButton();
+        btnMenuArtistas = new javax.swing.JButton();
+        btnMenuCanciones = new javax.swing.JButton();
+        btnMenuAlbumes = new javax.swing.JButton();
+        btnMenuCuenta = new javax.swing.JButton();
+        btnMenuHome = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnMenuFavoritos = new javax.swing.JButton();
+        btnMenuRestringidos = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -77,122 +77,127 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(16, 15, 15));
-        jPanel2.setPreferredSize(new java.awt.Dimension(270, 1080));
+        menuBar.setBackground(new java.awt.Color(16, 15, 15));
+        menuBar.setPreferredSize(new java.awt.Dimension(270, 1080));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logochiquito.png"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(220, 146));
-        jPanel2.add(jLabel1);
+        menuBar.add(jLabel1);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whiteLine.png"))); // NOI18N
         jLabel6.setMinimumSize(new java.awt.Dimension(300, 1));
         jLabel6.setPreferredSize(new java.awt.Dimension(300, 1));
-        jPanel2.add(jLabel6);
+        menuBar.add(jLabel6);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(140, 45));
-        jPanel2.add(jLabel2);
+        menuBar.add(jLabel2);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/browse.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setPreferredSize(new java.awt.Dimension(140, 45));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/browse.png"))); // NOI18N
+        btnMenuBuscar.setBorderPainted(false);
+        btnMenuBuscar.setContentAreaFilled(false);
+        btnMenuBuscar.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMenuBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnMenuBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
+        menuBar.add(btnMenuBuscar);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/genre.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setPreferredSize(new java.awt.Dimension(140, 45));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuGeneros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/genre.png"))); // NOI18N
+        btnMenuGeneros.setBorderPainted(false);
+        btnMenuGeneros.setContentAreaFilled(false);
+        btnMenuGeneros.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMenuGeneros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnMenuGenerosActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2);
+        menuBar.add(btnMenuGeneros);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/artist.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 45));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuArtistas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/artist.png"))); // NOI18N
+        btnMenuArtistas.setBorderPainted(false);
+        btnMenuArtistas.setContentAreaFilled(false);
+        btnMenuArtistas.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMenuArtistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnMenuArtistasActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3);
+        menuBar.add(btnMenuArtistas);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/songs.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setPreferredSize(new java.awt.Dimension(140, 45));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuCanciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/songs.png"))); // NOI18N
+        btnMenuCanciones.setBorderPainted(false);
+        btnMenuCanciones.setContentAreaFilled(false);
+        btnMenuCanciones.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMenuCanciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnMenuCancionesActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4);
+        menuBar.add(btnMenuCanciones);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/albums.png"))); // NOI18N
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setPreferredSize(new java.awt.Dimension(140, 45));
-        jPanel2.add(jButton5);
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/account.png"))); // NOI18N
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setPreferredSize(new java.awt.Dimension(140, 45));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuAlbumes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/albums.png"))); // NOI18N
+        btnMenuAlbumes.setBorderPainted(false);
+        btnMenuAlbumes.setContentAreaFilled(false);
+        btnMenuAlbumes.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMenuAlbumes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnMenuAlbumesActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6);
+        menuBar.add(btnMenuAlbumes);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
-        jButton7.setBorderPainted(false);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setPreferredSize(new java.awt.Dimension(140, 45));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/account.png"))); // NOI18N
+        btnMenuCuenta.setBorderPainted(false);
+        btnMenuCuenta.setContentAreaFilled(false);
+        btnMenuCuenta.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMenuCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnMenuCuentaActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton7);
+        menuBar.add(btnMenuCuenta);
+
+        btnMenuHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
+        btnMenuHome.setBorderPainted(false);
+        btnMenuHome.setContentAreaFilled(false);
+        btnMenuHome.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMenuHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuHomeActionPerformed(evt);
+            }
+        });
+        menuBar.add(btnMenuHome);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/library.png"))); // NOI18N
         jLabel3.setPreferredSize(new java.awt.Dimension(140, 45));
-        jPanel2.add(jLabel3);
+        menuBar.add(jLabel3);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/favorites.png"))); // NOI18N
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setPreferredSize(new java.awt.Dimension(180, 45));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuFavoritos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/favorites.png"))); // NOI18N
+        btnMenuFavoritos.setBorderPainted(false);
+        btnMenuFavoritos.setContentAreaFilled(false);
+        btnMenuFavoritos.setPreferredSize(new java.awt.Dimension(180, 45));
+        btnMenuFavoritos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnMenuFavoritosActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton8);
+        menuBar.add(btnMenuFavoritos);
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restricted.png"))); // NOI18N
-        jButton9.setBorderPainted(false);
-        jButton9.setContentAreaFilled(false);
-        jButton9.setPreferredSize(new java.awt.Dimension(180, 45));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuRestringidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restricted.png"))); // NOI18N
+        btnMenuRestringidos.setBorderPainted(false);
+        btnMenuRestringidos.setContentAreaFilled(false);
+        btnMenuRestringidos.setPreferredSize(new java.awt.Dimension(180, 45));
+        btnMenuRestringidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnMenuRestringidosActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton9);
-        jPanel2.add(jLabel4);
+        menuBar.add(btnMenuRestringidos);
+        menuBar.add(jLabel4);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(menuBar, java.awt.BorderLayout.LINE_START);
 
         jPanel3.setBackground(new java.awt.Color(19, 19, 19));
         jPanel3.setPreferredSize(new java.awt.Dimension(1920, 80));
@@ -236,13 +241,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(imagenCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion3)
-                    .addComponent(lblNombreArtistaCancion3))
-                .addGap(705, 705, 705)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
+                    .addComponent(lblNombreArtistaCancion3)
+                    .addComponent(lblNombreCancion3))
+                .addGap(31, 31, 31)
                 .addComponent(play7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(487, 487, 487))
+                .addGap(646, 646, 646)
+                .addComponent(jLabel5)
+                .addContainerGap(1003, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -262,7 +267,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(lblNombreCancion3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                                 .addComponent(lblNombreArtistaCancion3))
                             .addComponent(imagenCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -270,7 +275,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(play7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -297,125 +302,59 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.out.println("prueba1");
-        jScrollPane1.removeAll();
+    private void btnMenuGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuGenerosActionPerformed
+       this.pintarPanelPrincipal(new PanelArtista(this));
+    }//GEN-LAST:event_btnMenuGenerosActionPerformed
 
-        // Add the new content (e.g., Prueba1) to panelPrincipall
-        jScrollPane1.add(new PanelHome(this));
+    private void btnMenuArtistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuArtistasActionPerformed
 
-        // Revalidate and repaint the panel to reflect changes
-        jScrollPane1.revalidate();
-        jScrollPane1.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.pintarPanelPrincipal(new PanelArtistas(this));
+    }//GEN-LAST:event_btnMenuArtistasActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        //        this.pintarPanelPrincipal(new PanelFavoritos(this));
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnMenuCancionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuCancionesActionPerformed
         this.pintarPanelPrincipal(new PanelCanciones(this));
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnMenuCancionesActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        System.out.println(this.getWidth());
-        System.out.println(this.getHeight());        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnMenuCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuCuentaActionPerformed
+        this.pintarPanelPrincipal(new PanelCuenta(this));      // TODO add your handling code here:
+    }//GEN-LAST:event_btnMenuCuentaActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnMenuHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuHomeActionPerformed
         this.pintarPanelPrincipal(new PanelHome(this));
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnMenuHomeActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        
+    private void btnMenuFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuFavoritosActionPerformed
+
         this.pintarPanelPrincipal(new PanelFavoritos(this));
 
         // Revalidate and repaint the panel to reflect changes
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnMenuFavoritosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnMenuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuBuscarActionPerformed
         this.pintarPanelPrincipal(new PanelBusqueda(this));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnMenuBuscarActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        System.out.println(this.getLocationOnScreen());
-    }//GEN-LAST:event_jButton9ActionPerformed
-    
+    private void btnMenuRestringidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuRestringidosActionPerformed
+        this.pintarPanelPrincipal(new PanelRestricciones(this));
+    }//GEN-LAST:event_btnMenuRestringidosActionPerformed
+
+    private void btnMenuAlbumesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuAlbumesActionPerformed
+        this.pintarPanelPrincipal(new PanelAlbumes(this));
+    }//GEN-LAST:event_btnMenuAlbumesActionPerformed
+
     public void pintarPanelPrincipal(JPanel panel) {
-        // Remove all previous content from the scroll pane
 
-        // Set the new panel as the viewport view of the scroll pane
         jScrollPane1.setViewportView(panel);
 
-        // Set preferred si    panel.setPreferredSize(new Dimension(2000, 1500)); // Ensure this is larger than the scroll pane
+//        this.setSize(this.menuBar.getWidth()+panel.getPreferredSize().width, this.getHeight());
         panel.setPreferredSize(new Dimension(0, panel.getPreferredSize().height));  // Set appropriate size for your content
-
-        // Enable vertical scrolling if needed
         jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        // Revalidate and repaint the JScrollPane and panel to apply changes
         jScrollPane1.revalidate();
         jScrollPane1.repaint();
-//    jScrollPane1.setBorder(null);
-//
-//    // Set the viewport view to the new panel
-//    jScrollPane1.setViewportView(panel);
-//    panel.setSize(1650,1000);
-//
-//    // Set preferred size for the panel
-//    // Ensure the height is greater than the JScrollPane's height
-//    panel.setPreferredSize(new Dimension(1650, 1000)); // Adjust as necessary for your layout
-//    panel.setMinimumSize(new Dimension(1650, 1000)); // This ensures the panel has a minimum size
-//
-//    // Configure JScrollPane to show scrollbars as needed
-//    jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-//    jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scrollbar
-//
-//    // Revalidate and repaint to update the UI
-//    jScrollPane1.revalidate();
-//    jScrollPane1.repaint();
-        // Obtén el componente de vista del JScrollPane
-//        JPanel viewPanel = new JPanel();
-//        viewPanel.setLayout(new BorderLayout());
-//        viewPanel.setBackground(new Color(16, 15, 15));
-//        viewPanel.setSize(1650,1000);
-//
-//        // Eliminar el contenido anterior
-//        jScrollPane1.setViewportView(viewPanel);
-//        viewPanel.removeAll();
-//
-//        // Establecer tamaño preferido del nuevo panel
-//        viewPanel.add(panel, BorderLayout.CENTER);
-//
-//        // Revalidar y repintar
-//        viewPanel.revalidate();
-//        viewPanel.repaint();
-//        // Remove the previous content (panel)
-//        jScrollPane1.removeAll();
-//        // Debugging: Check if the panel is being created correctly
-//        System.out.println("Adding new panel: " + panel.getClass().getSimpleName());
-//
-//        // Optionally, set a preferred size if the panel might be too small
-//        panel.setPreferredSize(new java.awt.Dimension(1920, 1080));  // Set to appropriate size
-//
-//        // Add the new panel to the JScrollPane
-//        jScrollPane1.add(panel);
-//        panel.setSize(2000, 2000);
-//
-//        // Ensure the JScrollPane is set to show scrollbars when necessary
-//        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-//        jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-//
-//        // Revalidate and repaint the JScrollPane and its parent components to update the UI
-//        jScrollPane1.revalidate();
-//        jScrollPane1.repaint();
-//
-//        // Debugging: Check if the JScrollPane is updated
-//        System.out.println("JScrollPane updated: " + jScrollPane1.isVisible());
     }
-    
+
     public JScrollPane getPanelPrincipal() {
         return jScrollPane1;
     }
@@ -460,16 +399,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMenuAlbumes;
+    private javax.swing.JButton btnMenuArtistas;
+    private javax.swing.JButton btnMenuBuscar;
+    private javax.swing.JButton btnMenuCanciones;
+    private javax.swing.JButton btnMenuCuenta;
+    private javax.swing.JButton btnMenuFavoritos;
+    private javax.swing.JButton btnMenuGeneros;
+    private javax.swing.JButton btnMenuHome;
+    private javax.swing.JButton btnMenuRestringidos;
     private util.ImagenPerfil imagenCancion16;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -479,12 +418,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel lblNombreArtistaCancion3;
     private javax.swing.JLabel lblNombreCancion3;
+    private javax.swing.JPanel menuBar;
     private util.BotonToggle play7;
     // End of variables declaration//GEN-END:variables
 }

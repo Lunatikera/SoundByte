@@ -30,6 +30,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         setDefaultTextAndAddFocusListener(txtEmail, "Email");
         setDefaultTextAndAddFocusListener(txtUsuario, "Nombre de Usuario");
 
+       
         setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena, "Contraseña");
         setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena2, "Confirmar Contraseña");
 

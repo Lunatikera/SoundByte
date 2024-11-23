@@ -10,11 +10,10 @@ package frames;
  */
 public class PanelRestricciones extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Prueba1
-     */
-    public PanelRestricciones() {
+  FrmPrincipal frmPrincipal;
+    public PanelRestricciones(FrmPrincipal frmPrincipal) {
         initComponents();
+        this.frmPrincipal=frmPrincipal;
     }
 
     /**
@@ -150,7 +149,7 @@ public class PanelRestricciones extends javax.swing.JPanel {
                 .addGap(171, 171, 171)
                 .addComponent(jLabel2)
                 .addGap(852, 852, 852)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(296, 296, 296))
         );
         jPanel2Layout.setVerticalGroup(
@@ -172,16 +171,16 @@ public class PanelRestricciones extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 374, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(42, 42, 42)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
