@@ -27,7 +27,7 @@ public class PanelCanciones extends javax.swing.JPanel {
         buscador.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                    buscador.setBorder(BorderFactory.createLineBorder(new Color(35,116,249), 2));
+                    buscador.setBorder(BorderFactory.createLineBorder(new Color(135,116,249), 4));
                     buscador.setForeground(Color.BLACK);
 
                 

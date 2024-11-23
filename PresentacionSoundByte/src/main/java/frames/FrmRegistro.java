@@ -11,6 +11,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -23,7 +24,9 @@ public class FrmRegistro extends javax.swing.JFrame {
      */
     public FrmRegistro() {
         initComponents();
+        this.setTitle("Registrate");
         this.jLabel1.setFocusable(true);
+        this.setLocationRelativeTo(null);
         setDefaultTextAndAddFocusListener(txtEmail, "Email");
         setDefaultTextAndAddFocusListener(txtUsuario, "Nombre de Usuario");
 
@@ -34,8 +37,8 @@ public class FrmRegistro extends javax.swing.JFrame {
         noEspaciosKeyListener(txtUsuario);
         noEspaciosKeyListener(jPassContrasena);
         noEspaciosKeyListener(jPassContrasena2);
-        
-         // Añadir un ActionListener al botón
+
+        // Añadir un ActionListener al botón
         btnMostrarContrasena1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,7 +47,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                     jPassContrasena.setEchoChar((char) 0); // 0 es el carácter que indica que no hay eco
                 } else {
                     if (!jPassContrasena.getText().equals("Contraseña")) {
-                    jPassContrasena.setEchoChar('*');
+                        jPassContrasena.setEchoChar('*');
                     }
                 }
             }
@@ -59,7 +62,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                     if (!jPassContrasena2.getText().equals("Confirmar Contraseña")) {
                         jPassContrasena2.setEchoChar('*');
                     }
-                    
+
                 }
             }
         });
@@ -74,6 +77,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                 if (campoTexto.getText().equals(textoDefault)) {
                     campoTexto.setText("");
                     campoTexto.setForeground(Color.WHITE);
+                    campoTexto.setBorder(BorderFactory.createLineBorder(new Color(135, 116, 249), 4));
                 }
             }
 
@@ -82,6 +86,8 @@ public class FrmRegistro extends javax.swing.JFrame {
                 if (campoTexto.getText().isEmpty()) {
                     campoTexto.setText(textoDefault);
                     campoTexto.setForeground(Color.GRAY);
+                    campoTexto.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+
                 }
             }
         });
@@ -93,7 +99,7 @@ public class FrmRegistro extends javax.swing.JFrame {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
                 if (!Character.isLetterOrDigit(c)) {
-                    e.consume(); 
+                    e.consume();
                 }
             }
         });
@@ -110,6 +116,8 @@ public class FrmRegistro extends javax.swing.JFrame {
                     campoContrasena.setText("");
                     campoContrasena.setForeground(Color.WHITE);
                     campoContrasena.setEchoChar('*');
+                    campoContrasena.setBorder(BorderFactory.createLineBorder(new Color(135, 116, 249), 4));
+
                 }
             }
 
@@ -119,6 +127,8 @@ public class FrmRegistro extends javax.swing.JFrame {
                     campoContrasena.setText(textoDefault);
                     campoContrasena.setForeground(Color.GRAY);
                     campoContrasena.setEchoChar((char) 0);
+                    campoContrasena.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+
                 }
             }
         });
@@ -385,7 +395,9 @@ public class FrmRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        FrmLogIn login = new FrmLogIn();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
