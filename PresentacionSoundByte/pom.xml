@@ -17,6 +17,11 @@
         <maven.compiler.release>19</maven.compiler.release>
         <exec.mainClass>com.mycompany.presentacionsoundbyte.PresentacionSoundByte</exec.mainClass>
     </properties>
-    
-  
+    <dependencies>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.0</version>
+        </dependency>
+    </dependencies>
 </project>

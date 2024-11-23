@@ -7,7 +7,9 @@ package frames;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 
 /**
  *
@@ -24,22 +26,37 @@ public class PanelCanciones extends javax.swing.JPanel {
         initComponents();
         this.revalidate();
         this.repaint();
-        buscador.addFocusListener(new FocusAdapter() {
+        setDefaultTextAndAddFocusListener(buscador, "Buscar...");
+
+    }
+
+    public JPanel getPanelBusqueda() {
+        return this.PanelBusquda;
+    }
+
+    private void setDefaultTextAndAddFocusListener(javax.swing.JTextField campoTexto, String textoDefault) {
+        campoTexto.setText(textoDefault);
+        campoTexto.setForeground(Color.GRAY);
+        campoTexto.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                    buscador.setBorder(BorderFactory.createLineBorder(new Color(35,116,249), 2));
-                    buscador.setForeground(Color.BLACK);
-
-                
+                if (campoTexto.getText().equals(textoDefault)) {
+                    campoTexto.setText("");
+                    campoTexto.setForeground(Color.BLACK);
+                    campoTexto.setBorder(BorderFactory.createLineBorder(new Color(135, 116, 249), 4));
+                }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                // Restaurar el borde original cuando el JTextField pierde el foco
-                buscador.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+                if (campoTexto.getText().isEmpty()) {
+                    campoTexto.setText(textoDefault);
+                    campoTexto.setForeground(Color.GRAY);
+                    campoTexto.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+
+                }
             }
         });
-
     }
 
     /**
@@ -63,10 +80,6 @@ public class PanelCanciones extends javax.swing.JPanel {
         jPanel17 = new javax.swing.JPanel();
         jButton27 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        buscador = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         panelCancion3 = new javax.swing.JPanel();
@@ -232,6 +245,11 @@ public class PanelCanciones extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        PanelBusquda = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        buscador = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/left.png"))); // NOI18N
@@ -319,53 +337,6 @@ public class PanelCanciones extends javax.swing.JPanel {
         setBackground(new java.awt.Color(27, 26, 26));
 
         jPanel2.setBackground(new java.awt.Color(27, 26, 26));
-
-        jPanel6.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel6.setPreferredSize(new java.awt.Dimension(1500, 261));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Canciones");
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-
-        buscador.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buscador.setForeground(new java.awt.Color(204, 204, 204));
-        buscador.setText("Search...");
-        buscador.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
-        buscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscadorActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jLabel8)
-                        .addGap(26, 26, 26)
-                        .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(446, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel3)
-                .addGap(43, 43, 43)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buscador))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
 
         jPanel3.setBackground(new java.awt.Color(27, 26, 26));
 
@@ -1963,24 +1934,92 @@ public class PanelCanciones extends javax.swing.JPanel {
         jButton1.setContentAreaFilled(false);
         jPanel1.add(jButton1);
 
+        PanelBusquda.setBackground(new java.awt.Color(27, 26, 26));
+        PanelBusquda.setPreferredSize(new java.awt.Dimension(1500, 261));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Canciones");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filtros.png"))); // NOI18N
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        buscador.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buscador.setForeground(new java.awt.Color(204, 204, 204));
+        buscador.setText("Search...");
+        buscador.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
+        buscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscadorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelBusqudaLayout = new javax.swing.GroupLayout(PanelBusquda);
+        PanelBusquda.setLayout(PanelBusqudaLayout);
+        PanelBusqudaLayout.setHorizontalGroup(
+            PanelBusqudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBusqudaLayout.createSequentialGroup()
+                .addGroup(PanelBusqudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelBusqudaLayout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel3))
+                    .addGroup(PanelBusqudaLayout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(jLabel8)
+                        .addGap(26, 26, 26)
+                        .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
+                .addContainerGap(225, Short.MAX_VALUE))
+        );
+        PanelBusqudaLayout.setVerticalGroup(
+            PanelBusqudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBusqudaLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jLabel3)
+                .addGroup(PanelBusqudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBusqudaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(39, 39, 39))
+                    .addGroup(PanelBusqudaLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(PanelBusqudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buscador)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(27, Short.MAX_VALUE))))
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1708, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelBusquda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(15, 15, 15)
+                .addComponent(PanelBusquda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2012,12 +2051,20 @@ public class PanelCanciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DialogFiltros popup = new DialogFiltros(frmPrincipal, true); // 'frmPrincipal' is the parent frame
+        popup.setLocationRelativeTo(frmPrincipal);
+
+        popup.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void buscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscadorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelBusquda;
     private util.BotonToggle btnfavoritoCancion10;
     private util.BotonToggle btnfavoritoCancion11;
     private util.BotonToggle btnfavoritoCancion12;
@@ -2073,6 +2120,7 @@ public class PanelCanciones extends javax.swing.JPanel {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -2089,7 +2137,6 @@ public class PanelCanciones extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblNombreArtistaCancion10;
     private javax.swing.JLabel lblNombreArtistaCancion11;
     private javax.swing.JLabel lblNombreArtistaCancion12;

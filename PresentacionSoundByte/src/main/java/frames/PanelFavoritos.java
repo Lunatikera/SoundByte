@@ -11,8 +11,6 @@ package frames;
 public class PanelFavoritos extends javax.swing.JPanel {
 
     FrmPrincipal frmPrincipal;
-    final int altura = 1000;
-    final int anchura = 1780;
 
     /**
      * Creates new form Prueba1
@@ -22,9 +20,7 @@ public class PanelFavoritos extends javax.swing.JPanel {
         this.frmPrincipal = frmPrincipal;
     }
 
-    public int getAltura() {
-        return altura;
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,6 +71,11 @@ public class PanelFavoritos extends javax.swing.JPanel {
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setPreferredSize(new java.awt.Dimension(483, 309));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4);
 
         jPanel2.setBackground(new java.awt.Color(27, 26, 26));
@@ -129,15 +130,12 @@ public class PanelFavoritos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("restringidos");
-        frmPrincipal.getPanelPrincipal().removeAll();
-
-        frmPrincipal.getPanelPrincipal().add(new PanelRestricciones());
-
-        // Revalidate and repaint the panel to reflect changes
-        frmPrincipal.getPanelPrincipal().revalidate();
-        frmPrincipal.getPanelPrincipal().repaint();
+        frmPrincipal.getPanelPrincipal().add(new PanelRestricciones(frmPrincipal));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal));
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
