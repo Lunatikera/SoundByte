@@ -4,9 +4,10 @@
 
 package com.mycompany.presentacionsoundbyte;
 
+import Colecciones.UsuarioColeccion;
 import Conexion.ConexionDB;
 import DTO.UsuarioDTO;
-import Docs.Favoritos;
+import DocsDTO.FavoritoDocDTO;
 import InterfacesDAO.IConexionDB;
 import com.mongodb.client.*;
 import java.time.LocalDate;
@@ -142,9 +143,9 @@ public class PresentacionSoundByte {
 
 
         UsuarioDTO uDTO = new UsuarioDTO();
-        Favoritos f = new Favoritos();
-        
-        
+        FavoritoDocDTO f = new FavoritoDocDTO();
+            
+   
         
         uDTO.setUsername("Chavirez");
         uDTO.setCorreoElectronico("santiagosanchezch@gmail.com");
@@ -160,7 +161,7 @@ public class PresentacionSoundByte {
                     .append("favoritos", favoritos)
                     .append("restricciones", restricciones);
 
-            coleccion.insertOne(user);
+       
             
     }
 }

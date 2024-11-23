@@ -38,9 +38,10 @@ public class pruebas {
 
         UsuarioDTO dto = new UsuarioDTO();
         
+        dto.setUsername("chavirez");
         dto.setCorreoElectronico("santiagosanchezch@gmail.com");
         dto.setContraseña("12345");
-        usuarioNegocio.obtenerUsuarioPorCredenciales(dto);
+
         System.out.println(usuarioNegocio.obtenerUsuarioPorCredenciales(dto));
     
 

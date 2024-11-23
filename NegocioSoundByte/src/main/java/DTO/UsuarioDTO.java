@@ -4,7 +4,9 @@
  */
 package DTO;
 
-import Docs.Favoritos;
+import Docs.FavoritoDoc;
+import Docs.RestriccionDoc;
+
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -19,8 +21,8 @@ public class UsuarioDTO {
     private String correoElectronico;
     private String contraseña;
     private byte[] imagenPerfil;
-    private Favoritos favoritos;
-    private List<ObjectId> restringidos;
+    private FavoritoDoc favoritos;
+    private List<RestriccionDoc> restringidos;
 
 
     public UsuarioDTO() {
@@ -66,29 +68,24 @@ public class UsuarioDTO {
         this.imagenPerfil = imagenPerfil;
     }
 
-    public Favoritos getFavoritos() {
+    public FavoritoDoc getFavoritos() {
         return favoritos;
     }
 
-    public void setFavoritos(Favoritos favoritos) {
+    public void setFavoritos(FavoritoDoc favoritos) {
         this.favoritos = favoritos;
     }
 
-    public List<ObjectId> getRestringidos() {
+    public List<RestriccionDoc> getRestringidos() {
         return restringidos;
     }
 
-    public void setRestringidos(List<ObjectId> restringidos) {
+    public void setRestringidos(List<RestriccionDoc> restringidos) {
         this.restringidos = restringidos;
     }
 
     @Override
     public String toString() {
-        return "UsuarioDTO{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos.toString() + ", restringidos=" + restringidos + '}';
+        return "UsuarioDTO{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos + ", restringidos=" + restringidos + '}';
     }
-
-    
-    
-
-
 }

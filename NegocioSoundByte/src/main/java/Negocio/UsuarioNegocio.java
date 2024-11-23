@@ -59,7 +59,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             throw new NegocioException(e.getMessage());
         }
     }
-
+    
 
     // Método para convertir UsuarioDTO a UsuarioColeccion
     private UsuarioColeccion convertirUsuarioDTO(UsuarioDTO dto) {
@@ -71,7 +71,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         usuario.setContraseña(dto.getContraseña());
         usuario.setCorreoElectronico(dto.getCorreoElectronico());
         usuario.setImagenPerfil(dto.getImagenPerfil());
-//        usuario.setFavoritos(dto.getFavoritos());
+        usuario.setFavoritos(dto.getFavoritos());
         usuario.setRestringidos(dto.getRestringidos());
 
         return usuario;
@@ -89,7 +89,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         u.setContraseña(usuario.getContraseña());
         u.setCorreoElectronico(usuario.getCorreoElectronico());
         u.setImagenPerfil(usuario.getImagenPerfil());
-//        u.setFavoritos(usuario.getFavoritos());
+        u.setFavoritos(usuario.getFavoritos());
         u.setRestringidos(usuario.getRestringidos());
 
         return u;

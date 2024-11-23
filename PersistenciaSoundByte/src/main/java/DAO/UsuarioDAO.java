@@ -6,7 +6,7 @@ package DAO;
 
 import Colecciones.UsuarioColeccion;
 import Conexion.ConexionDB;
-import Docs.Favoritos;
+import Docs.FavoritoDoc;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IUsuarioDAO;
 import com.mongodb.MongoClientSettings;
@@ -51,17 +51,7 @@ public class UsuarioDAO implements IUsuarioDAO {
     public void crearUsuario(UsuarioColeccion usuario) throws PersistenciaException {
         try
         {
-            
-            Document doc = new Document()
-                    .append("username", usuario.getUsername())                    
-                    .append("correoElectronico", usuario.getCorreoElectronico())
-                    .append("contraseña", usuario.getContraseña())
-                    .append("imagenPerfil", usuario.getImagenPerfil())
-                    .append("favoritos", null)
-                    .append("restricciones", null);
-
             coleccion.insertOne(usuario);
-
 
         } catch (Exception e)
         {
@@ -75,83 +65,35 @@ public class UsuarioDAO implements IUsuarioDAO {
         try
         {
             
-            Document docViejo = new Document()
-                    .append("_id", usuarioViejo.getId())
-                    .append("username", usuarioViejo.getUsername())                    
-                    .append("correoElectronico", usuarioViejo.getCorreoElectronico())
-                    .append("contraseña", usuarioViejo.getContraseña())
-                    .append("imagenPerfil", usuarioViejo.getImagenPerfil())
-                    .append("favoritos", usuarioViejo.getFavoritos())
-                    .append("restricciones", usuarioViejo.getRestringidos());
-            
-            Document docNuevo = new Document()
-                    .append("_id", usuarioViejo.getId())
-                    .append("username", usuarioNuevo.getUsername())                    
-                    .append("correoElectronico", usuarioNuevo.getCorreoElectronico())
-                    .append("contraseña", usuarioNuevo.getContraseña())
-                    .append("imagenPerfil", usuarioNuevo.getImagenPerfil())
-                    .append("favoritos", usuarioNuevo.getFavoritos())
-                    .append("restricciones", usuarioNuevo.getRestringidos());
+            Bson filtro = Filters.eq("_id", usuarioViejo.getId());
 
-            coleccion.updateOne(docViejo,docNuevo);
+            coleccion.replaceOne(filtro, usuarioNuevo);
 
 
         } catch (Exception e)
         {
-            throw new PersistenciaException("Error al crear el usuario en la base de datos", e);
+            throw new PersistenciaException("Error al editar el usuario en la base de datos", e);
         }
     }
 
     @Override
     public UsuarioColeccion obtenerUsuarioPorCredenciales(String correoElectronico, String contraseña) throws PersistenciaException {
 
-            Bson filtro = Filters.eq("correoElectronico", correoElectronico);
+        try
+        {
+            
+            Bson filtro = Filters.regex("correoElectronico", correoElectronico, "i");
             Bson filtro2 = Filters.eq("contraseña", contraseña);
             Bson combinedFilter = Filters.and(filtro, filtro2);
             UsuarioColeccion documentoUsuario = coleccion.find(combinedFilter).first();
 
-//            if (documentoUsuario != null)
-//            {
-//                UsuarioColeccion usuario = new UsuarioColeccion();
-//                usuario.setId(documentoUsuario.getObjectId("_id"));
-//                usuario.setUsername(documentoUsuario.getString("username"));
-//                usuario.setCorreoElectronico(documentoUsuario.getString("correoElectronico"));
-//                usuario.setContraseña(documentoUsuario.getString("contraseña"));
-//
-//
-//                    Binary imagenPerfil = documentoUsuario.get("imagenPerfil", Binary.class);
-//                    if (imagenPerfil != null)
-//                    {
-//                        usuario.setImagenPerfil(imagenPerfil.getData());
-//                    } else
-//                    {
-//                        usuario.setImagenPerfil(null);
-//                    }
-//                    
-//                    if(documentoUsuario.get("favoritos") != null)
-//                    {
-//                        
-//                        Favoritos f = new Favoritos();
-//                        
-//                        f.setArtistas(Artistas);
-//                        usuario.setFavoritos();
-//                    
-//                    }
-//                    
-//                    
-//                    usuario.setRestringidos((List<ObjectId>) documentoUsuario.get("restricciones"));
-//
-//
-//                System.out.println(usuario.toString());
-                return documentoUsuario;
-//            } else
-//            {
-//                return null;
-//            }
-//        } catch (Exception e)
-//        {
-//            e.printStackTrace();
-//            return null;
+            return documentoUsuario;
+        
+        } catch (Exception e)
+        {
+            throw new PersistenciaException("Error al crear el usuario en la base de datos", e);
+        }
+
         }
     }
 
