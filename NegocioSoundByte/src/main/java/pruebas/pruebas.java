@@ -36,8 +36,12 @@ public class pruebas {
 
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio(usuarioDAO);
 
-
+        UsuarioDTO dto = new UsuarioDTO();
         
+        dto.setCorreoElectronico("santiagosanchezch@gmail.com");
+        dto.setContraseña("12345");
+        usuarioNegocio.obtenerUsuarioPorCredenciales(dto);
+        System.out.println(usuarioNegocio.obtenerUsuarioPorCredenciales(dto));
     
 
 //        List<UsuarioDTO> b = usuarioNegocio.obtenerTodosLosUsuarios();

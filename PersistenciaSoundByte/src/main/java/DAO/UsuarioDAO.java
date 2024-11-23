@@ -6,8 +6,10 @@ package DAO;
 
 import Colecciones.UsuarioColeccion;
 import Conexion.ConexionDB;
+import Docs.Favoritos;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IUsuarioDAO;
+import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -15,6 +17,10 @@ import excepciones.PersistenciaException;
 import java.util.Collections;
 import java.util.List;
 import org.bson.Document;
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
 import org.bson.types.Binary;
 import org.bson.types.ObjectId;
@@ -25,16 +31,16 @@ import org.bson.types.ObjectId;
  */
 public class UsuarioDAO implements IUsuarioDAO {
 
-
+    CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),fromProviders(PojoCodecProvider.builder().automatic(true).build()));
     IConexionDB conexionDB = new ConexionDB();
-    MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
+    MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte").withCodecRegistry(pojoCodecRegistry);    
 
-    private final MongoCollection<Document> coleccion;
+    private final MongoCollection<UsuarioColeccion> coleccion;
 
     public UsuarioDAO() {
 
     
-    this.coleccion = database.getCollection("Usuarios");
+    this.coleccion = database.getCollection("Usuarios", UsuarioColeccion.class);
         
     }
     
@@ -54,7 +60,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                     .append("favoritos", null)
                     .append("restricciones", null);
 
-            coleccion.insertOne(doc);
+            coleccion.insertOne(usuario);
 
 
         } catch (Exception e)
@@ -98,46 +104,56 @@ public class UsuarioDAO implements IUsuarioDAO {
 
     @Override
     public UsuarioColeccion obtenerUsuarioPorCredenciales(String correoElectronico, String contraseña) throws PersistenciaException {
-        try
-        {
+
             Bson filtro = Filters.eq("correoElectronico", correoElectronico);
             Bson filtro2 = Filters.eq("contraseña", contraseña);
             Bson combinedFilter = Filters.and(filtro, filtro2);
-            Document documentoUsuario = coleccion.find(combinedFilter).first();
+            UsuarioColeccion documentoUsuario = coleccion.find(combinedFilter).first();
 
-            if (documentoUsuario != null)
-            {
-                UsuarioColeccion usuario = new UsuarioColeccion();
-                usuario.setId(documentoUsuario.getObjectId("_id"));
-                usuario.setUsername(documentoUsuario.getString("username"));
-                usuario.setCorreoElectronico(documentoUsuario.getString("correoElectronico"));
-                usuario.setContraseña(documentoUsuario.getString("contraseña"));
-
-
-                    Binary imagenPerfil = documentoUsuario.get("imagenPerfil", Binary.class);
-                    if (imagenPerfil != null)
-                    {
-                        usuario.setImagenPerfil(imagenPerfil.getData());
-                    } else
-                    {
-                        usuario.setImagenPerfil(null);
-                    }
-                    usuario.setFavoritos((List<ObjectId>) documentoUsuario.get("favoritos"));
-                    usuario.setRestringidos((List<ObjectId>) documentoUsuario.get("restricciones"));
-
-
-                System.out.println(usuario.toString());
-                return usuario;
-            } else
-            {
-                return null;
-            }
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-            return null;
+//            if (documentoUsuario != null)
+//            {
+//                UsuarioColeccion usuario = new UsuarioColeccion();
+//                usuario.setId(documentoUsuario.getObjectId("_id"));
+//                usuario.setUsername(documentoUsuario.getString("username"));
+//                usuario.setCorreoElectronico(documentoUsuario.getString("correoElectronico"));
+//                usuario.setContraseña(documentoUsuario.getString("contraseña"));
+//
+//
+//                    Binary imagenPerfil = documentoUsuario.get("imagenPerfil", Binary.class);
+//                    if (imagenPerfil != null)
+//                    {
+//                        usuario.setImagenPerfil(imagenPerfil.getData());
+//                    } else
+//                    {
+//                        usuario.setImagenPerfil(null);
+//                    }
+//                    
+//                    if(documentoUsuario.get("favoritos") != null)
+//                    {
+//                        
+//                        Favoritos f = new Favoritos();
+//                        
+//                        f.setArtistas(Artistas);
+//                        usuario.setFavoritos();
+//                    
+//                    }
+//                    
+//                    
+//                    usuario.setRestringidos((List<ObjectId>) documentoUsuario.get("restricciones"));
+//
+//
+//                System.out.println(usuario.toString());
+                return documentoUsuario;
+//            } else
+//            {
+//                return null;
+//            }
+//        } catch (Exception e)
+//        {
+//            e.printStackTrace();
+//            return null;
         }
     }
 
 
-}
+

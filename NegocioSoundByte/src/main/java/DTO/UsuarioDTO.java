@@ -4,6 +4,7 @@
  */
 package DTO;
 
+import Docs.Favoritos;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -18,7 +19,7 @@ public class UsuarioDTO {
     private String correoElectronico;
     private String contraseña;
     private byte[] imagenPerfil;
-    private List<ObjectId> favoritos;
+    private Favoritos favoritos;
     private List<ObjectId> restringidos;
 
 
@@ -65,11 +66,11 @@ public class UsuarioDTO {
         this.imagenPerfil = imagenPerfil;
     }
 
-    public List<ObjectId> getFavoritos() {
+    public Favoritos getFavoritos() {
         return favoritos;
     }
 
-    public void setFavoritos(List<ObjectId> favoritos) {
+    public void setFavoritos(Favoritos favoritos) {
         this.favoritos = favoritos;
     }
 
@@ -83,7 +84,7 @@ public class UsuarioDTO {
 
     @Override
     public String toString() {
-        return "UsuarioDTO{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos + ", restringidos=" + restringidos + '}';
+        return "UsuarioDTO{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos.toString() + ", restringidos=" + restringidos + '}';
     }
 
     

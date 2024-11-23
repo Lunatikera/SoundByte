@@ -5,6 +5,8 @@
 package com.mycompany.presentacionsoundbyte;
 
 import Conexion.ConexionDB;
+import DTO.UsuarioDTO;
+import Docs.Favoritos;
 import InterfacesDAO.IConexionDB;
 import com.mongodb.client.*;
 import java.time.LocalDate;
@@ -29,7 +31,7 @@ public class PresentacionSoundByte {
     MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
     MongoCollection<Document> coleccion;
     
-        MongoCollection<Document> generoCollection = database.getCollection("generos");
+        MongoCollection<Document> generoCollection = database.getCollection("Generos");
 
         // Lista de géneros musicales
         List<Document> genres = Arrays.asList(
@@ -68,33 +70,6 @@ public class PresentacionSoundByte {
         Document genero4 = generoCollection.find(new Document("genero", "Reggae")).first();
 
             ObjectId generoId4 = genero4.getObjectId("_id");
-        
-        
-        
-    coleccion = database.getCollection("Usuarios");
-    
-        Document favorito1 = new Document("genero", generoId1);
-        Document favorito2 = new Document("genero", generoId2);
-        Document restriccion1 = new Document ("restriccion", generoId3);
-        Document restriccion2 = new Document ("restriccion", generoId4);
-        
-        List<Document> favoritos = new ArrayList<>();
-        favoritos.add(favorito1);        favoritos.add(favorito2);
-        List<Document> restricciones = new ArrayList<>();
-        restricciones.add(restriccion1);        restricciones.add(restriccion2);
-
-
-
-    
-                    Document user = new Document()
-                    .append("username", "Chavirez")                    
-                    .append("correoElectronico", "santiagosanchezch@gmail.com")
-                    .append("contraseña", "12345")
-                    .append("imagenPerfil", null)
-                    .append("favoritos", favoritos)
-                    .append("restricciones", restricciones);
-
-            coleccion.insertOne(user);
             
     coleccion = database.getCollection("Solistas");
     
@@ -150,5 +125,42 @@ public class PresentacionSoundByte {
                     .append("albumes", albumes);
 
             coleccion.insertOne(bandas);
+            
+            
+                    
+    coleccion = database.getCollection("Usuarios");
+    
+        Document favorito1 = new Document("genero", generoId1);
+        Document favorito2 = new Document("genero", generoId2);
+        Document restriccion1 = new Document ("restriccion", generoId3);
+        Document restriccion2 = new Document ("restriccion", generoId4);
+        
+        List<Document> favoritos = new ArrayList<>();
+        favoritos.add(favorito1);        favoritos.add(favorito2);
+        List<Document> restricciones = new ArrayList<>();
+        restricciones.add(restriccion1);        restricciones.add(restriccion2);
+
+
+        UsuarioDTO uDTO = new UsuarioDTO();
+        Favoritos f = new Favoritos();
+        
+        
+        
+        uDTO.setUsername("Chavirez");
+        uDTO.setCorreoElectronico("santiagosanchezch@gmail.com");
+        uDTO.setContraseña("12345");
+        uDTO.setImagenPerfil(null);
+        uDTO.setFavoritos(f);
+        
+                    Document user = new Document()
+                    .append("username", "Chavirez")                    
+                    .append("correoElectronico", "santiagosanchezch@gmail.com")
+                    .append("contraseña", "12345")
+                    .append("imagenPerfil", null)
+                    .append("favoritos", favoritos)
+                    .append("restricciones", restricciones);
+
+            coleccion.insertOne(user);
+            
     }
 }
