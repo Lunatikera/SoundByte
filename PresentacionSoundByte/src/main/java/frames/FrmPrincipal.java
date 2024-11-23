@@ -83,6 +83,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setPreferredSize(new java.awt.Dimension(140, 45));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/genre.png"))); // NOI18N
@@ -239,6 +244,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         // Revalidate and repaint the panel to reflect changes
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.pintarPanelPrincipal(new PanelBusqueda(this));
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void pintarPanelPrincipal(JPanel panel) {
         // Remove all previous content from the scroll pane

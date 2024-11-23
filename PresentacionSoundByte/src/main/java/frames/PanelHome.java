@@ -44,28 +44,34 @@ public class PanelHome extends javax.swing.JPanel {
         jButton27 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        lblInfoAlbum1 = new javax.swing.JLabel();
         lblNombreAlbum1 = new javax.swing.JLabel();
-        lblNombreAlbum2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        btnfavoritoCAlbum1 = new util.BotonToggle();
+        jLabel8 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        lblNombreAlbum3 = new javax.swing.JLabel();
-        lblNombreAlbum4 = new javax.swing.JLabel();
+        lblInfoAlbum2 = new javax.swing.JLabel();
+        lblNombreAlbum2 = new javax.swing.JLabel();
+        btnfavoritoCAlbum2 = new util.BotonToggle();
         jLabel9 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        lblNombreAlbum5 = new javax.swing.JLabel();
-        lblNombreAlbum9 = new javax.swing.JLabel();
+        lblInfoAlbum3 = new javax.swing.JLabel();
+        lblNombreAlbum3 = new javax.swing.JLabel();
+        btnfavoritoCAlbum3 = new util.BotonToggle();
         jLabel7 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        lblNombreAlbum6 = new javax.swing.JLabel();
-        lblNombreAlbum10 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        lblNombreAlbum7 = new javax.swing.JLabel();
-        lblNombreAlbum11 = new javax.swing.JLabel();
+        lblInfoAlbum4 = new javax.swing.JLabel();
+        lblNombreAlbum4 = new javax.swing.JLabel();
+        btnfavoritoCAlbum4 = new util.BotonToggle();
         jLabel6 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        lblInfoAlbum5 = new javax.swing.JLabel();
+        lblNombreAlbum5 = new javax.swing.JLabel();
+        btnfavoritoCAlbum5 = new util.BotonToggle();
+        jLabel10 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        lblNombreAlbum8 = new javax.swing.JLabel();
-        lblNombreAlbum12 = new javax.swing.JLabel();
+        lblInfoAlbum6 = new javax.swing.JLabel();
+        lblNombreAlbum6 = new javax.swing.JLabel();
+        btnfavoritoCAlbum6 = new util.BotonToggle();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -261,22 +267,27 @@ public class PanelHome extends javax.swing.JPanel {
         setBackground(new java.awt.Color(27, 26, 26));
 
         jPanel5.setBackground(new java.awt.Color(27, 26, 26));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1275, 100));
 
         jPanel6.setBackground(new java.awt.Color(27, 26, 26));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.setToolTipText("");
-        jPanel6.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel6.setPreferredSize(new java.awt.Dimension(200, 130));
 
-        lblNombreAlbum1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInfoAlbum1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInfoAlbum1.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfoAlbum1.setText("2002  • Seru Giran");
+        lblInfoAlbum1.setToolTipText("");
+
+        lblNombreAlbum1.setBackground(new java.awt.Color(27, 26, 26));
+        lblNombreAlbum1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreAlbum1.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum1.setText("2002  • Seru Giran");
+        lblNombreAlbum1.setText("Peperina");
         lblNombreAlbum1.setToolTipText("");
 
-        lblNombreAlbum2.setBackground(new java.awt.Color(27, 26, 26));
-        lblNombreAlbum2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreAlbum2.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum2.setText("Peperina");
-        lblNombreAlbum2.setToolTipText("");
+        btnfavoritoCAlbum1.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnfavoritoCAlbum1.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnfavoritoCAlbum1.setPreferredSize(new java.awt.Dimension(28, 28));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -285,36 +296,48 @@ public class PanelHome extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreAlbum2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(lblNombreAlbum1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblNombreAlbum1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(lblInfoAlbum1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnfavoritoCAlbum1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addComponent(lblNombreAlbum2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNombreAlbum1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblInfoAlbum1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnfavoritoCAlbum1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel6);
 
-        jLabel10.setText(" ");
-        jPanel5.add(jLabel10);
+        jLabel8.setText(" ");
+        jPanel5.add(jLabel8);
 
         jPanel7.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel7.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel7.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel7.setToolTipText("");
+        jPanel7.setPreferredSize(new java.awt.Dimension(200, 130));
 
-        lblNombreAlbum3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreAlbum3.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum3.setText("Peperina");
-        lblNombreAlbum3.setToolTipText("");
+        lblInfoAlbum2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInfoAlbum2.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfoAlbum2.setText("2002  • Seru Giran");
+        lblInfoAlbum2.setToolTipText("");
 
-        lblNombreAlbum4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNombreAlbum4.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum4.setText("2002 • Seru Giran");
-        lblNombreAlbum4.setToolTipText("");
+        lblNombreAlbum2.setBackground(new java.awt.Color(27, 26, 26));
+        lblNombreAlbum2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreAlbum2.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreAlbum2.setText("Peperina");
+        lblNombreAlbum2.setToolTipText("");
+
+        btnfavoritoCAlbum2.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnfavoritoCAlbum2.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnfavoritoCAlbum2.setPreferredSize(new java.awt.Dimension(28, 28));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -323,17 +346,22 @@ public class PanelHome extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreAlbum3, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(lblNombreAlbum4, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                    .addComponent(lblNombreAlbum2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(lblInfoAlbum2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnfavoritoCAlbum2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(lblNombreAlbum3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addComponent(lblNombreAlbum2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreAlbum4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblInfoAlbum2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnfavoritoCAlbum2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel7);
@@ -342,17 +370,24 @@ public class PanelHome extends javax.swing.JPanel {
         jPanel5.add(jLabel9);
 
         jPanel8.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel8.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel8.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel8.setToolTipText("");
+        jPanel8.setPreferredSize(new java.awt.Dimension(200, 130));
 
-        lblNombreAlbum5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreAlbum5.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum5.setText("Peperina");
-        lblNombreAlbum5.setToolTipText("");
+        lblInfoAlbum3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInfoAlbum3.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfoAlbum3.setText("2002  • Seru Giran");
+        lblInfoAlbum3.setToolTipText("");
 
-        lblNombreAlbum9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNombreAlbum9.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum9.setText("2002 • Seru Giran");
-        lblNombreAlbum9.setToolTipText("");
+        lblNombreAlbum3.setBackground(new java.awt.Color(27, 26, 26));
+        lblNombreAlbum3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreAlbum3.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreAlbum3.setText("Peperina");
+        lblNombreAlbum3.setToolTipText("");
+
+        btnfavoritoCAlbum3.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnfavoritoCAlbum3.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnfavoritoCAlbum3.setPreferredSize(new java.awt.Dimension(28, 28));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -361,17 +396,22 @@ public class PanelHome extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreAlbum5, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(lblNombreAlbum9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                    .addComponent(lblNombreAlbum3, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(lblInfoAlbum3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnfavoritoCAlbum3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(lblNombreAlbum5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addComponent(lblNombreAlbum3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreAlbum9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblInfoAlbum3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnfavoritoCAlbum3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel8);
@@ -380,17 +420,24 @@ public class PanelHome extends javax.swing.JPanel {
         jPanel5.add(jLabel7);
 
         jPanel9.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel9.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel9.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel9.setToolTipText("");
+        jPanel9.setPreferredSize(new java.awt.Dimension(200, 130));
 
-        lblNombreAlbum6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreAlbum6.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum6.setText("Peperina");
-        lblNombreAlbum6.setToolTipText("");
+        lblInfoAlbum4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInfoAlbum4.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfoAlbum4.setText("2002  • Seru Giran");
+        lblInfoAlbum4.setToolTipText("");
 
-        lblNombreAlbum10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNombreAlbum10.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum10.setText("2002 • Seru Giran");
-        lblNombreAlbum10.setToolTipText("");
+        lblNombreAlbum4.setBackground(new java.awt.Color(27, 26, 26));
+        lblNombreAlbum4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreAlbum4.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreAlbum4.setText("Peperina");
+        lblNombreAlbum4.setToolTipText("");
+
+        btnfavoritoCAlbum4.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnfavoritoCAlbum4.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnfavoritoCAlbum4.setPreferredSize(new java.awt.Dimension(28, 28));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -399,36 +446,48 @@ public class PanelHome extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreAlbum6, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(lblNombreAlbum10, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                    .addComponent(lblNombreAlbum4, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(lblInfoAlbum4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnfavoritoCAlbum4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(lblNombreAlbum6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addComponent(lblNombreAlbum4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreAlbum10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblInfoAlbum4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnfavoritoCAlbum4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel9);
 
-        jLabel8.setText(" ");
-        jPanel5.add(jLabel8);
+        jLabel6.setText(" ");
+        jPanel5.add(jLabel6);
 
         jPanel10.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel10.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel10.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel10.setToolTipText("");
+        jPanel10.setPreferredSize(new java.awt.Dimension(200, 130));
 
-        lblNombreAlbum7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreAlbum7.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum7.setText("Peperina");
-        lblNombreAlbum7.setToolTipText("");
+        lblInfoAlbum5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInfoAlbum5.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfoAlbum5.setText("2002  • Seru Giran");
+        lblInfoAlbum5.setToolTipText("");
 
-        lblNombreAlbum11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNombreAlbum11.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum11.setText("2002 • Seru Giran");
-        lblNombreAlbum11.setToolTipText("");
+        lblNombreAlbum5.setBackground(new java.awt.Color(27, 26, 26));
+        lblNombreAlbum5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreAlbum5.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreAlbum5.setText("Peperina");
+        lblNombreAlbum5.setToolTipText("");
+
+        btnfavoritoCAlbum5.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnfavoritoCAlbum5.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnfavoritoCAlbum5.setPreferredSize(new java.awt.Dimension(28, 28));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -437,36 +496,48 @@ public class PanelHome extends javax.swing.JPanel {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreAlbum7, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(lblNombreAlbum11, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                    .addComponent(lblNombreAlbum5, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(lblInfoAlbum5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnfavoritoCAlbum5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(lblNombreAlbum7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addComponent(lblNombreAlbum5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreAlbum11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblInfoAlbum5, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnfavoritoCAlbum5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel10);
 
-        jLabel6.setText(" ");
-        jPanel5.add(jLabel6);
+        jLabel10.setText(" ");
+        jPanel5.add(jLabel10);
 
         jPanel11.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel11.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel11.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel11.setToolTipText("");
+        jPanel11.setPreferredSize(new java.awt.Dimension(200, 130));
 
-        lblNombreAlbum8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreAlbum8.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum8.setText("Peperina");
-        lblNombreAlbum8.setToolTipText("");
+        lblInfoAlbum6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInfoAlbum6.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfoAlbum6.setText("2002  • Seru Giran");
+        lblInfoAlbum6.setToolTipText("");
 
-        lblNombreAlbum12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNombreAlbum12.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreAlbum12.setText("2002 • Seru Giran");
-        lblNombreAlbum12.setToolTipText("");
+        lblNombreAlbum6.setBackground(new java.awt.Color(27, 26, 26));
+        lblNombreAlbum6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreAlbum6.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreAlbum6.setText("Peperina");
+        lblNombreAlbum6.setToolTipText("");
+
+        btnfavoritoCAlbum6.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnfavoritoCAlbum6.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnfavoritoCAlbum6.setPreferredSize(new java.awt.Dimension(28, 28));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -475,17 +546,22 @@ public class PanelHome extends javax.swing.JPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreAlbum8, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(lblNombreAlbum12, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                    .addComponent(lblNombreAlbum6, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(lblInfoAlbum6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnfavoritoCAlbum6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(lblNombreAlbum8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addComponent(lblNombreAlbum6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreAlbum12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblInfoAlbum6, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnfavoritoCAlbum6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel11);
@@ -734,7 +810,7 @@ public class PanelHome extends javax.swing.JPanel {
                 .addGroup(panelCancion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombreCancion2)
                     .addComponent(lblNombreArtistaCancion2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
                 .addComponent(btnfavoritoCancion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -1562,8 +1638,8 @@ public class PanelHome extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1579,6 +1655,12 @@ public class PanelHome extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private util.BotonMenu botonMenu2;
     private util.BotonMenu botonMenu3;
+    private util.BotonToggle btnfavoritoCAlbum1;
+    private util.BotonToggle btnfavoritoCAlbum2;
+    private util.BotonToggle btnfavoritoCAlbum3;
+    private util.BotonToggle btnfavoritoCAlbum4;
+    private util.BotonToggle btnfavoritoCAlbum5;
+    private util.BotonToggle btnfavoritoCAlbum6;
     private util.BotonToggle btnfavoritoCancion1;
     private util.BotonToggle btnfavoritoCancion13;
     private util.BotonToggle btnfavoritoCancion14;
@@ -1649,18 +1731,18 @@ public class PanelHome extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lblInfoAlbum1;
+    private javax.swing.JLabel lblInfoAlbum2;
+    private javax.swing.JLabel lblInfoAlbum3;
+    private javax.swing.JLabel lblInfoAlbum4;
+    private javax.swing.JLabel lblInfoAlbum5;
+    private javax.swing.JLabel lblInfoAlbum6;
     private javax.swing.JLabel lblNombreAlbum1;
-    private javax.swing.JLabel lblNombreAlbum10;
-    private javax.swing.JLabel lblNombreAlbum11;
-    private javax.swing.JLabel lblNombreAlbum12;
     private javax.swing.JLabel lblNombreAlbum2;
     private javax.swing.JLabel lblNombreAlbum3;
     private javax.swing.JLabel lblNombreAlbum4;
     private javax.swing.JLabel lblNombreAlbum5;
     private javax.swing.JLabel lblNombreAlbum6;
-    private javax.swing.JLabel lblNombreAlbum7;
-    private javax.swing.JLabel lblNombreAlbum8;
-    private javax.swing.JLabel lblNombreAlbum9;
     private javax.swing.JLabel lblNombreArtistaCancion1;
     private javax.swing.JLabel lblNombreArtistaCancion13;
     private javax.swing.JLabel lblNombreArtistaCancion14;
