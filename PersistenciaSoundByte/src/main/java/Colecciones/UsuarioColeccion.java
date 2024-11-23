@@ -4,6 +4,7 @@
  */
 package Colecciones;
 
+import Docs.Favoritos;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -18,7 +19,7 @@ public class UsuarioColeccion {
     private String correoElectronico;
     private String contraseña;
     private byte[] imagenPerfil;
-    private List<ObjectId> favoritos;
+    private Favoritos favoritos;
     private List<ObjectId> restringidos;
 
 
@@ -54,7 +55,7 @@ public class UsuarioColeccion {
         this.contraseña = contraseña;
     }
 
-    public UsuarioColeccion(ObjectId id, String username, String correoElectronico, String contraseña, byte[] imagenPerfil, List<ObjectId> favoritos, List<ObjectId> restringidos) {
+    public UsuarioColeccion(ObjectId id, String username, String correoElectronico, String contraseña, byte[] imagenPerfil, Favoritos favoritos, List<ObjectId> restringidos) {
         this.id = id;
         this.username = username;
         this.correoElectronico = correoElectronico;
@@ -104,14 +105,14 @@ public class UsuarioColeccion {
         this.imagenPerfil = imagenPerfil;
     }
 
-    public List<ObjectId> getFavoritos() {
+    public Favoritos getFavoritos() {
         return favoritos;
     }
 
-    public void setFavoritos(List<ObjectId> favoritos) {
+    public void setFavoritos(Favoritos favoritos) {
         this.favoritos = favoritos;
     }
-
+    
     public List<ObjectId> getRestringidos() {
         return restringidos;
     }
@@ -122,8 +123,11 @@ public class UsuarioColeccion {
 
     @Override
     public String toString() {
-        return "UsuarioColeccion{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos + ", restringidos=" + restringidos + '}';
+        return "UsuarioColeccion{" + "id=" + id + ", username=" + username + ", correoElectronico=" + correoElectronico + ", contrase\u00f1a=" + contraseña + ", imagenPerfil=" + imagenPerfil + ", favoritos=" + favoritos.toString() + ", restringidos=" + restringidos + '}';
     }
+    
+    
+
 
     
 }
