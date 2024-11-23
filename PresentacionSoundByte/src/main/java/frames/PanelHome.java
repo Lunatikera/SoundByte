@@ -618,7 +618,7 @@ public class PanelHome extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nuevos Albums");
+        jLabel2.setText("Nuevos Albumes");
 
         jPanel3.setBackground(new java.awt.Color(27, 26, 26));
 
@@ -1632,7 +1632,6 @@ public class PanelHome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel13;

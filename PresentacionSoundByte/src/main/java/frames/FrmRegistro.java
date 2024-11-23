@@ -4,6 +4,14 @@
  */
 package frames;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author carli
@@ -15,6 +23,105 @@ public class FrmRegistro extends javax.swing.JFrame {
      */
     public FrmRegistro() {
         initComponents();
+        this.jLabel1.setFocusable(true);
+        setDefaultTextAndAddFocusListener(txtEmail, "Email");
+        setDefaultTextAndAddFocusListener(txtUsuario, "Nombre de Usuario");
+
+        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena, "Contraseña");
+        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena2, "Confirmar Contraseña");
+
+        noEspaciosKeyListener(txtEmail);
+        noEspaciosKeyListener(txtUsuario);
+        noEspaciosKeyListener(jPassContrasena);
+        noEspaciosKeyListener(jPassContrasena2);
+        
+         // Añadir un ActionListener al botón
+        btnMostrarContrasena1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jPassContrasena.getEchoChar() == '*') {
+                    // Cambiar a JTextField para mostrar la contraseña
+                    jPassContrasena.setEchoChar((char) 0); // 0 es el carácter que indica que no hay eco
+                } else {
+                    if (!jPassContrasena.getText().equals("Contraseña")) {
+                    jPassContrasena.setEchoChar('*');
+                    }
+                }
+            }
+        });
+        btnMostrarContrasena2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jPassContrasena2.getEchoChar() == '*') {
+                    // Cambiar a JTextField para mostrar la contraseña
+                    jPassContrasena2.setEchoChar((char) 0); // 0 es el carácter que indica que no hay eco
+                } else {
+                    if (!jPassContrasena2.getText().equals("Confirmar Contraseña")) {
+                        jPassContrasena2.setEchoChar('*');
+                    }
+                    
+                }
+            }
+        });
+    }
+
+    private void setDefaultTextAndAddFocusListener(javax.swing.JTextField campoTexto, String textoDefault) {
+        campoTexto.setText(textoDefault);
+        campoTexto.setForeground(Color.GRAY);
+        campoTexto.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (campoTexto.getText().equals(textoDefault)) {
+                    campoTexto.setText("");
+                    campoTexto.setForeground(Color.WHITE);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (campoTexto.getText().isEmpty()) {
+                    campoTexto.setText(textoDefault);
+                    campoTexto.setForeground(Color.GRAY);
+                }
+            }
+        });
+    }
+
+    private void noEspaciosKeyListener(javax.swing.JTextField textField) {
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetterOrDigit(c)) {
+                    e.consume(); 
+                }
+            }
+        });
+    }
+
+    private void setPasswordFieldDefaultTextAndAddFocusListener(javax.swing.JPasswordField campoContrasena, String textoDefault) {
+        campoContrasena.setText(textoDefault);
+        campoContrasena.setForeground(Color.GRAY);
+        campoContrasena.setEchoChar((char) 0);
+        campoContrasena.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (new String(campoContrasena.getPassword()).equals(textoDefault)) {
+                    campoContrasena.setText("");
+                    campoContrasena.setForeground(Color.WHITE);
+                    campoContrasena.setEchoChar('*');
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (new String(campoContrasena.getPassword()).isEmpty()) {
+                    campoContrasena.setText(textoDefault);
+                    campoContrasena.setForeground(Color.GRAY);
+                    campoContrasena.setEchoChar((char) 0);
+                }
+            }
+        });
     }
 
     /**
@@ -32,17 +139,18 @@ public class FrmRegistro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPassContrasena2 = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jButton5 = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        btnMostrarContrasena1 = new javax.swing.JButton();
+        jPassContrasena = new javax.swing.JPasswordField();
+        btnMostrarContrasena2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
+        imagenPerfil1 = new util.ImagenPerfil();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,14 +167,14 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(48, 48, 48));
 
-        jTextField1.setBackground(new java.awt.Color(77, 76, 76));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Username");
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setBackground(new java.awt.Color(77, 76, 76));
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setText("Nombre de Usuario");
+        txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
 
@@ -85,41 +193,43 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginInfo.png"))); // NOI18N
 
-        jPasswordField1.setBackground(new java.awt.Color(77, 76, 76));
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
+        jPassContrasena2.setBackground(new java.awt.Color(77, 76, 76));
+        jPassContrasena2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPassContrasena2.setForeground(new java.awt.Color(255, 255, 255));
+        jPassContrasena2.setText("jPasswordField1");
+        jPassContrasena2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
 
-        jTextField2.setBackground(new java.awt.Color(77, 76, 76));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("Email");
-        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.setBackground(new java.awt.Color(77, 76, 76));
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmail.setText("Email");
+        txtEmail.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(204, 204, 204)));
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
+        btnMostrarContrasena1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
+        btnMostrarContrasena1.setBorderPainted(false);
+        btnMostrarContrasena1.setContentAreaFilled(false);
 
-        jPasswordField2.setBackground(new java.awt.Color(77, 76, 76));
-        jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField2.setText("jPasswordField1");
-        jPasswordField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
+        jPassContrasena.setBackground(new java.awt.Color(77, 76, 76));
+        jPassContrasena.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPassContrasena.setForeground(new java.awt.Color(255, 255, 255));
+        jPassContrasena.setText("jPasswordField1");
+        jPassContrasena.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnMostrarContrasena2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
+        btnMostrarContrasena2.setBorderPainted(false);
+        btnMostrarContrasena2.setContentAreaFilled(false);
+        btnMostrarContrasena2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnMostrarContrasena2ActionPerformed(evt);
             }
         });
 
@@ -145,16 +255,16 @@ public class FrmRegistro extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5))
+                                .addComponent(jPassContrasena2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnMostrarContrasena2))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4))))
+                                .addComponent(jPassContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnMostrarContrasena1))))
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -168,21 +278,20 @@ public class FrmRegistro extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel3)
                 .addGap(50, 50, 50)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnMostrarContrasena1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMostrarContrasena2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPassContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPassContrasena2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jButton1)
                 .addGap(24, 24, 24))
@@ -215,6 +324,8 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(27, 26, 26));
 
+        imagenPerfil1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
+
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seleccion Imagen.png"))); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
@@ -224,14 +335,21 @@ public class FrmRegistro extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(54, 54, 54))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(imagenPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(54, 54, 54))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(741, Short.MAX_VALUE)
+                .addGap(285, 285, 285)
+                .addComponent(imagenPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
                 .addGap(79, 79, 79))
         );
@@ -249,7 +367,7 @@ public class FrmRegistro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -270,17 +388,17 @@ public class FrmRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnMostrarContrasena2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarContrasena2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnMostrarContrasena2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,11 +437,12 @@ public class FrmRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrarContrasena1;
+    private javax.swing.JButton btnMostrarContrasena2;
+    private util.ImagenPerfil imagenPerfil1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -333,9 +452,9 @@ public class FrmRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jPassContrasena;
+    private javax.swing.JPasswordField jPassContrasena2;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
