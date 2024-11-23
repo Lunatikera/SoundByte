@@ -8,6 +8,7 @@ util\ModernScrollBarUI.class
 frames\FrmRegistro$9.class
 frames\PanelCanciones$2.class
 frames\FrmPrincipal$1.class
+frames\FrmLogIn$5.class
 frames\FrmRegistro$2.class
 frames\FrmLogIn$3.class
 frames\FrmRegistro$5.class
@@ -15,6 +16,7 @@ util\ModernScrollBarUI$InvisibleScrollBarButton.class
 frames\FrmPrincipal$4.class
 util\BotonMenu$1.class
 frames\FrmRegistro$8.class
+frames\FrmLogIn$6.class
 frames\FrmRegistro$1.class
 frames\PanelAlbum$1.class
 frames\PanelHome.class
@@ -22,6 +24,7 @@ frames\FrmLogIn$4.class
 frames\PanelRestricciones$2.class
 frames\FrmPrincipal$7.class
 frames\PanelFavoritos$1.class
+frames\FrmLogIn$7.class
 frames\FrmLogIn.class
 frames\PanelCanciones.class
 frames\FrmRegistro$4.class
@@ -36,6 +39,7 @@ util\BotonToggle$1.class
 util\ScrollBar.class
 util\BotonToggle.class
 frames\FrmRegistro$3.class
+frames\FrmLogIn$8.class
 frames\PanelFavoritos.class
 frames\FrmPrincipal$2.class
 frames\FrmRegistro$6.class
