@@ -2140,9 +2140,10 @@ public class PanelBusqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnfavoritoCancion21ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JDialog popup = new JDialog((JFrame) null, "Popup", true);
-        popup.pack();
-        popup.setVisible(true);
+        DialogFiltros popup = new DialogFiltros(frmPrincipal, true); // 'frmPrincipal' is the parent frame
+    popup.setLocationRelativeTo(frmPrincipal);
+    
+    popup.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

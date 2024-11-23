@@ -4,6 +4,8 @@
  */
 package frames;
 
+import util.ScrollBar;
+
 /**
  *
  * @author carli
@@ -16,6 +18,10 @@ public class DialogFiltros extends javax.swing.JDialog {
     public DialogFiltros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Filtros");
+        this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
+        this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
+
     }
 
     /**
