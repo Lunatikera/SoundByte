@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
+import util.CustomSliderUI;
 import util.ModernScrollBarUI;
 import util.ScrollBar;
 
@@ -25,11 +26,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
+        this.setTitle("SouundByte");
+        this.setLocation(265, 76);
         this.setSize(2066, 1321);
         PanelHome panelHome = new PanelHome(this);
         this.pintarPanelPrincipal(panelHome);
         this.jScrollPane1.setVerticalScrollBar(new ScrollBar());
-   
+        jSlider1.setUI(new CustomSliderUI(jSlider1));
+        jSlider1.revalidate();
+        jSlider1.repaint();
+        jSlider1.setOpaque(false);
+        
     }
 
     /**
@@ -58,6 +65,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        imagenCancion16 = new util.ImagenPerfil();
+        lblNombreCancion3 = new javax.swing.JLabel();
+        lblNombreArtistaCancion3 = new javax.swing.JLabel();
+        jSlider1 = new javax.swing.JSlider();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        play7 = new util.BotonToggle();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
 
@@ -83,6 +97,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setPreferredSize(new java.awt.Dimension(140, 45));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/genre.png"))); // NOI18N
@@ -165,6 +184,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
         jButton9.setPreferredSize(new java.awt.Dimension(180, 45));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton9);
         jPanel2.add(jLabel4);
 
@@ -173,21 +197,91 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(19, 19, 19));
         jPanel3.setPreferredSize(new java.awt.Dimension(1920, 80));
 
+        imagenCancion16.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion16.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion3.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion3.setText("Peperina");
+
+        lblNombreArtistaCancion3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion3.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion3.setText("Seru Giran");
+
+        jSlider1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jSlider1.setForeground(new java.awt.Color(135, 116, 249));
+        jSlider1.setToolTipText("");
+        jSlider1.setValue(25);
+        jSlider1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jSlider1.setPreferredSize(new java.awt.Dimension(700, 50));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("00:00");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("03:37");
+
+        play7.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        play7.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        play7.setPreferredSize(new java.awt.Dimension(28, 28));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(917, 917, 917)
+                .addGap(75, 75, 75)
+                .addComponent(imagenCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombreCancion3)
+                    .addComponent(lblNombreArtistaCancion3))
+                .addGap(705, 705, 705)
                 .addComponent(jLabel5)
-                .addContainerGap(1003, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
+                .addComponent(play7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(487, 487, 487))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addGap(5, 5, 5)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(5, 5, 5)
+                    .addComponent(jLabel10)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel5)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblNombreArtistaCancion3))
+                            .addComponent(imagenCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(play7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
+                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel10))))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -234,12 +328,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-
+        
         this.pintarPanelPrincipal(new PanelFavoritos(this));
 
         // Revalidate and repaint the panel to reflect changes
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.pintarPanelPrincipal(new PanelBusqueda(this));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        System.out.println(this.getLocationOnScreen());
+    }//GEN-LAST:event_jButton9ActionPerformed
+    
     public void pintarPanelPrincipal(JPanel panel) {
         // Remove all previous content from the scroll pane
 
@@ -313,7 +415,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //        // Debugging: Check if the JScrollPane is updated
 //        System.out.println("JScrollPane updated: " + jScrollPane1.isVisible());
     }
-
+    
     public JScrollPane getPanelPrincipal() {
         return jScrollPane1;
     }
@@ -358,6 +460,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private util.ImagenPerfil imagenCancion16;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -368,6 +471,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -377,5 +482,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JLabel lblNombreArtistaCancion3;
+    private javax.swing.JLabel lblNombreCancion3;
+    private util.BotonToggle play7;
     // End of variables declaration//GEN-END:variables
 }

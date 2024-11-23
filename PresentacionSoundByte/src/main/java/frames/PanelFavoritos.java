@@ -75,6 +75,11 @@ public class PanelFavoritos extends javax.swing.JPanel {
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setPreferredSize(new java.awt.Dimension(483, 309));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4);
 
         jPanel2.setBackground(new java.awt.Color(27, 26, 26));
@@ -138,6 +143,10 @@ public class PanelFavoritos extends javax.swing.JPanel {
         frmPrincipal.getPanelPrincipal().revalidate();
         frmPrincipal.getPanelPrincipal().repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal));
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
