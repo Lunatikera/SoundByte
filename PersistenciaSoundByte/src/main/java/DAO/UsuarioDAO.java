@@ -6,7 +6,6 @@ package DAO;
 
 import Colecciones.UsuarioColeccion;
 import Conexion.ConexionDB;
-import Docs.FavoritoDoc;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IUsuarioDAO;
 import com.mongodb.MongoClientSettings;
@@ -14,16 +13,12 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import excepciones.PersistenciaException;
-import java.util.Collections;
-import java.util.List;
-import org.bson.Document;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
-import org.bson.types.Binary;
-import org.bson.types.ObjectId;
+
 
 /**
  *
@@ -77,15 +72,13 @@ public class UsuarioDAO implements IUsuarioDAO {
     }
 
     @Override
-    public UsuarioColeccion obtenerUsuarioPorCredenciales(String correoElectronico, String contraseña) throws PersistenciaException {
+    public UsuarioColeccion obtenerUsuarioPorCredenciales(String correoElectronico) throws PersistenciaException {
 
         try
         {
             
             Bson filtro = Filters.regex("correoElectronico", correoElectronico, "i");
-            Bson filtro2 = Filters.eq("contraseña", contraseña);
-            Bson combinedFilter = Filters.and(filtro, filtro2);
-            UsuarioColeccion documentoUsuario = coleccion.find(combinedFilter).first();
+            UsuarioColeccion documentoUsuario = coleccion.find(filtro).first();
 
             return documentoUsuario;
         

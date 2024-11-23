@@ -14,6 +14,8 @@ public class GeneroColeccion {
     
     private ObjectId id;
     private String nombre;
+    private String imagenGenero;
+    private String descrpicion;
 
     public GeneroColeccion() {
     }
@@ -34,9 +36,27 @@ public class GeneroColeccion {
         this.nombre = nombre;
     }
 
+    public String getImagenGenero() {
+        return imagenGenero;
+    }
+
+    public void setImagenGenero(String imagenGenero) {
+        this.imagenGenero = imagenGenero;
+    }
+
+    public String getDescrpicion() {
+        return descrpicion;
+    }
+
+    public void setDescrpicion(String descrpicion) {
+        this.descrpicion = descrpicion;
+    }
+
     @Override
     public String toString() {
-        return "GeneroColeccion{" + "id=" + id + ", nombre=" + nombre + '}';
+        return "GeneroColeccion{" + "id=" + id + ", nombre=" + nombre + ", imagenGenero=" + imagenGenero + ", descrpicion=" + descrpicion + '}';
     }
+
+
     
 }

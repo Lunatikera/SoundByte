@@ -14,6 +14,8 @@ public class GeneroDTO {
     
     private ObjectId id;
     private String nombre;
+    private String imagenGenero;
+    private String descripcion;
 
     public GeneroDTO() {
     }
@@ -34,9 +36,25 @@ public class GeneroDTO {
         this.nombre = nombre;
     }
 
+    public String getImagenGenero() {
+        return imagenGenero;
+    }
+
+    public void setImagenGenero(String imagenGenero) {
+        this.imagenGenero = imagenGenero;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public String toString() {
-        return "GeneroColeccion{" + "id=" + id + ", nombre=" + nombre + '}';
+        return "GeneroDTO{" + "id=" + id + ", nombre=" + nombre + ", imagenGenero=" + imagenGenero + ", descripcion=" + descripcion + '}';
     }
     
 }

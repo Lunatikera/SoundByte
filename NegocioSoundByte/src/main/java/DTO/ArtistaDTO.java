@@ -17,9 +17,9 @@ public class ArtistaDTO {
     private ObjectId id;
     private String nombre;
     private List<GeneroDTO> generos;
-    private List<AlbumDTO> albumes;
     private Boolean esBanda;
     private IntegranteDoc integrante;
+    private String imagen;
 
     public ArtistaDTO() {
     }
@@ -48,14 +48,6 @@ public class ArtistaDTO {
         this.generos = generos;
     }
 
-    public List<AlbumDTO> getAlbumes() {
-        return albumes;
-    }
-
-    public void setAlbumes(List<AlbumDTO> albumes) {
-        this.albumes = albumes;
-    }
-
     public Boolean getEsBanda() {
         return esBanda;
     }
@@ -72,11 +64,20 @@ public class ArtistaDTO {
         this.integrante = integrante;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     @Override
     public String toString() {
-        return "ArtistaColeccion{" + "id=" + id + ", nombre=" + nombre + ", generos=" + generos + ", albumes=" + albumes + ", esBanda=" + esBanda + ", integrante=" + integrante + '}';
+        return "ArtistaColeccion{" + "id=" + id + ", nombre=" + nombre + ", generos=" + generos + ", esBanda=" + esBanda + ", integrante=" + integrante + '}';
     }
-    
+
+
     
     
 }

@@ -9,6 +9,7 @@ import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import InterfacesNegocio.IUsuarioNegocio;
 import excepciones.NegocioException;
+import util.Encriptacion;
 
 /**
  *
@@ -27,6 +28,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         try
         {
             UsuarioColeccion usuarioColeccion = this.convertirUsuarioDTO(usuario);
+            usuarioColeccion.setContraseña(Encriptacion.encriptarPassword(usuarioColeccion.getContraseña()));
             usuarioDAO.crearUsuario(usuarioColeccion);
         } catch (Exception e)
         {
@@ -52,8 +54,14 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         try
         {
             String correoElectronico = dto.getCorreoElectronico();
-            String contraseña = dto.getContraseña();
-            return convertirUsuarioDTO(usuarioDAO.obtenerUsuarioPorCredenciales(correoElectronico, contraseña));
+            UsuarioDTO loggedUser = convertirUsuarioDTO(usuarioDAO.obtenerUsuarioPorCredenciales(correoElectronico));
+            
+            if(Encriptacion.verificarPasswordConHash(dto.getContraseña(), loggedUser.getContraseña()))
+                return loggedUser;
+            else
+                return null;
+            
+            
         } catch (Exception e)
         {
             throw new NegocioException(e.getMessage());
