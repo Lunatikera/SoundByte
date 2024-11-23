@@ -4,18 +4,28 @@
 
 package com.mycompany.presentacionsoundbyte;
 
+import Colecciones.AlbumColeccion;
+import Colecciones.ArtistaColeccion;
+import Colecciones.GeneroColeccion;
 import Colecciones.UsuarioColeccion;
 import Conexion.ConexionDB;
+import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
-import DocsDTO.FavoritoDocDTO;
+import Docs.CancionDoc;
+import Docs.FavoritoDoc;
+import Docs.RestriccionDoc;
 import InterfacesDAO.IConexionDB;
+import Negocio.UsuarioNegocio;
 import com.mongodb.client.*;
+import excepciones.NegocioException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -30,137 +40,103 @@ public class PresentacionSoundByte {
     
     IConexionDB conexionDB = new ConexionDB();
     MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
-    MongoCollection<Document> coleccion;
     
-        MongoCollection<Document> generoCollection = database.getCollection("Generos");
-
-        // Lista de géneros musicales
-        List<Document> genres = Arrays.asList(
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Rock"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Pop"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Jazz"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Hip-Hop"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Clásica"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Reggae"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Blues"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Electrónica"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Metal"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Salsa"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Country"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Funk"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "R&B"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Punk"),
-                new Document("_id", new org.bson.types.ObjectId()).append("genero", "Prog")
-        );
+        MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
 
 
-        generoCollection.insertMany(genres);
+        GeneroColeccion genero1 = new GeneroColeccion();
+        genero1.setNombre("prog");
+        GeneroColeccion genero2 = new GeneroColeccion();
+        genero2.setNombre("Bachata");
 
-        Document genero1 = generoCollection.find(new Document("genero", "Prog")).first();
 
-            ObjectId generoId1 = genero1.getObjectId("_id");
-            
-        Document genero2 = generoCollection.find(new Document("genero", "Rock")).first();
-
-            ObjectId generoId2 = genero2.getObjectId("_id");
-            
-        Document genero3 = generoCollection.find(new Document("genero", "Country")).first();
-
-            ObjectId generoId3 = genero3.getObjectId("_id");
-            
-        Document genero4 = generoCollection.find(new Document("genero", "Reggae")).first();
-
-            ObjectId generoId4 = genero4.getObjectId("_id");
-            
-    coleccion = database.getCollection("Solistas");
+        generoColeccion.insertOne(genero1);
+        generoColeccion.insertOne(genero2);
+   
+    MongoCollection<ArtistaColeccion> artistaColeccion = database.getCollection("Artistas", ArtistaColeccion.class);
     
-        Document album = new Document("nombre", "The New Sound")
-                                .append("fechaLanzamiento", new Date()) 
-                                .append("genero", generoId1)
-                                .append("imagenPortada", null);
-        
-                    Document solista = new Document()
-                    .append("nombre", "Geordie Greep")                    
-                    .append("generoMusical", generoId1)
-                    .append("imagenPerfil", null)
-                    .append("albumes", album);
+    ArtistaColeccion geordie = new ArtistaColeccion();
 
-            coleccion.insertOne(solista);
-           
-    coleccion = database.getCollection("Bandas");
+    List<GeneroColeccion> generos = new ArrayList<>();
+    generos.add(genero1);
+
+    geordie.setNombre("Geordie Greep");
+    geordie.setGeneros(generos);
+    geordie.setEsBanda(false);
+    geordie.setIntegrante(null);
+    geordie.setImagen("/resources/artistas/Geordie.jpg");
     
-            Document album1 = new Document("nombre", "Peperina")
-                                .append("fechaLanzamiento", LocalDate.of(1981, Month.JANUARY, 1))      
-                                .append("genero", generoId1)
-                                .append("imagenPortada", null);
-            Document album2 = new Document("nombre", "La grasa de las capitales")
-                                .append("fechaLanzamiento", LocalDate.of(1978, Month.JANUARY, 1))  
-                                .append("genero", generoId1)
-                                .append("imagenPortada", null);
+    artistaColeccion.insertOne(geordie);
     
-        Document integrante1 = new Document("nombre", "Charly García")
-                                .append("instrumento", "Teclados")
-                                .append("fechaIngreso", LocalDate.of(1978, Month.JANUARY, 1))                                
-                                .append("fechaSalida", null)
-                                .append("estado", true);
-        Document integrante2 = new Document("nombre", "David Lebón")
-                                .append("instrumento", "Guitarra")
-                                .append("fechaIngreso", LocalDate.of(1978, Month.JANUARY, 1))
-                                .append("fechaSalida", new Date())
-                                .append("estado", false);
 
-        List<Document> integrantes = new ArrayList<>();
-        List<Document> albumes = new ArrayList<>();
+    MongoCollection<AlbumColeccion> albumColeccion = database.getCollection("Albumes", AlbumColeccion.class);
 
-        integrantes.add(integrante1);        integrantes.add(integrante2);
-        albumes.add(album1);        albumes.add(album2);
-
-
-        
-
-                    Document bandas = new Document()
-                    .append("nombre", "Serú Girán")                    
-                    .append("generoMusical", generoId1)
-                    .append("imagenPerfil", null)
-                    .append("integrantes", integrantes)
-                    .append("albumes", albumes);
-
-            coleccion.insertOne(bandas);
-            
-            
-                    
-    coleccion = database.getCollection("Usuarios");
+    CancionDoc c1 = new CancionDoc();
+    CancionDoc c2 = new CancionDoc();
+    c1.setId(new ObjectId());
+    c1.setNombre("Salir de la melancolía");
+    c2.setId(new ObjectId());
+    c2.setNombre("Peperina");
     
-        Document favorito1 = new Document("genero", generoId1);
-        Document favorito2 = new Document("genero", generoId2);
-        Document restriccion1 = new Document ("restriccion", generoId3);
-        Document restriccion2 = new Document ("restriccion", generoId4);
-        
-        List<Document> favoritos = new ArrayList<>();
-        favoritos.add(favorito1);        favoritos.add(favorito2);
-        List<Document> restricciones = new ArrayList<>();
-        restricciones.add(restriccion1);        restricciones.add(restriccion2);
+    List<CancionDoc> canciones = new ArrayList<>();
+    canciones.add(c2);
+    canciones.add(c1);
+
+
+    AlbumColeccion album1 = new AlbumColeccion();
+    album1.setNombre("Peperina");
+    album1.setArtista(geordie);
+    album1.setFechaLanzamiento(LocalDate.of(1981, Month.MARCH, 12));
+    album1.setImagen("resources/albums/Peperina.jpg");
+    album1.setCanciones(canciones);
+    
+    albumColeccion.insertOne(album1);
 
 
         UsuarioDTO uDTO = new UsuarioDTO();
-        FavoritoDocDTO f = new FavoritoDocDTO();
+        FavoritoDoc f = new FavoritoDoc();
+        
+        List<AlbumColeccion> albumes = new ArrayList<>();
+        albumes.add(album1);
+        f.setAlbumes(albumes);
+        
+        List<CancionDoc> cancionesFav = new ArrayList<>();
+        cancionesFav.add(c2);
+        cancionesFav.add(c1);
+        f.setCanciones(canciones);
+        
+        List<ArtistaColeccion> artistas = new ArrayList<>();
+        artistas.add(geordie);
+        f.setArtistas(artistas);
+        
+        RestriccionDoc r = new RestriccionDoc();
+        
+        List<GeneroColeccion> generosR = new ArrayList<>();
+        generosR.add(genero2);
+        r.setGeneros(generosR);
+        
+        List<RestriccionDoc> rList = new ArrayList<>();
+        rList.add(r);
             
-   
+        
         
         uDTO.setUsername("Chavirez");
         uDTO.setCorreoElectronico("santiagosanchezch@gmail.com");
         uDTO.setContraseña("12345");
         uDTO.setImagenPerfil(null);
         uDTO.setFavoritos(f);
+        uDTO.setRestringidos(rList);
         
-                    Document user = new Document()
-                    .append("username", "Chavirez")                    
-                    .append("correoElectronico", "santiagosanchezch@gmail.com")
-                    .append("contraseña", "12345")
-                    .append("imagenPerfil", null)
-                    .append("favoritos", favoritos)
-                    .append("restricciones", restricciones);
-
+        UsuarioDAO uDAO = new UsuarioDAO();
+        UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
+        
+        try {
+            uNeg.crearUsuario(uDTO);
+        } catch (NegocioException ex) {
+            Logger.getLogger(PresentacionSoundByte.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            
        
             
     }

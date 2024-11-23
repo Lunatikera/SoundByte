@@ -17,9 +17,9 @@ public class ArtistaColeccion {
     private ObjectId id;
     private String nombre;
     private List<GeneroColeccion> generos;
-    private List<AlbumColeccion> albumes;
     private Boolean esBanda;
     private IntegranteDoc integrante;
+    private String imagen;
 
     public ArtistaColeccion() {
     }
@@ -48,14 +48,6 @@ public class ArtistaColeccion {
         this.generos = generos;
     }
 
-    public List<AlbumColeccion> getAlbumes() {
-        return albumes;
-    }
-
-    public void setAlbumes(List<AlbumColeccion> albumes) {
-        this.albumes = albumes;
-    }
-
     public Boolean getEsBanda() {
         return esBanda;
     }
@@ -72,11 +64,20 @@ public class ArtistaColeccion {
         this.integrante = integrante;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     @Override
     public String toString() {
-        return "ArtistaColeccion{" + "id=" + id + ", nombre=" + nombre + ", generos=" + generos + ", albumes=" + albumes + ", esBanda=" + esBanda + ", integrante=" + integrante + '}';
+        return "ArtistaColeccion{" + "id=" + id + ", nombre=" + nombre + ", generos=" + generos + ", esBanda=" + esBanda + ", integrante=" + integrante + '}';
     }
-    
+
+
     
     
 }

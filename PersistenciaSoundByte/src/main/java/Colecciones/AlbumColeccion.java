@@ -18,7 +18,8 @@ public class AlbumColeccion {
     private ObjectId id;
     private String nombre;
     private LocalDate fechaLanzamiento;
-    private Byte[] imagen;
+    private String imagen;
+    private ArtistaColeccion artista;
     private List<CancionDoc> canciones;
 
     public AlbumColeccion() {
@@ -48,14 +49,6 @@ public class AlbumColeccion {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
-    public Byte[] getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(Byte[] imagen) {
-        this.imagen = imagen;
-    }
-
     public List<CancionDoc> getCanciones() {
         return canciones;
     }
@@ -64,9 +57,28 @@ public class AlbumColeccion {
         this.canciones = canciones;
     }
 
+    public ArtistaColeccion getArtista() {
+        return artista;
+    }
+
+    public void setArtista(ArtistaColeccion artista) {
+        this.artista = artista;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     @Override
     public String toString() {
-        return "Albumes{" + "id=" + id + ", nombre=" + nombre + ", fechaLanzamiento=" + fechaLanzamiento + ", imagen=" + imagen + ", canciones=" + canciones + '}';
+        return "AlbumColeccion{" + "id=" + id + ", nombre=" + nombre + ", fechaLanzamiento=" + fechaLanzamiento + ", imagen=" + imagen + ", artista=" + artista + ", canciones=" + canciones + '}';
     }
+
+
+
     
 }

@@ -20,7 +20,6 @@ public class RestriccionDoc {
     public RestriccionDoc() {
     }
 
-
     public List<GeneroColeccion> getGeneros() {
         return generos;
     }

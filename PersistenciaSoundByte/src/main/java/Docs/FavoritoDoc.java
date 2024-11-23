@@ -4,6 +4,7 @@
  */
 package Docs;
 
+import Colecciones.AlbumColeccion;
 import Colecciones.ArtistaColeccion;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -16,7 +17,7 @@ public class FavoritoDoc {
     
     private List<ArtistaColeccion> Artistas;
     private List<CancionDoc> Canciones;
-    private List<AlbumDoc> albumes;
+    private List<AlbumColeccion> albumes;
 
     public FavoritoDoc() {
     }
@@ -37,11 +38,11 @@ public class FavoritoDoc {
         this.Canciones = Canciones;
     }
 
-    public List<AlbumDoc> getAlbumes() {
+    public List<AlbumColeccion> getAlbumes() {
         return albumes;
     }
 
-    public void setAlbumes(List<AlbumDoc> albumes) {
+    public void setAlbumes(List<AlbumColeccion> albumes) {
         this.albumes = albumes;
     }
 
