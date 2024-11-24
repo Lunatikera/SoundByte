@@ -4,16 +4,64 @@
  */
 package frames;
 
+import DAO.GeneroDAO;
+import DAO.UsuarioDAO;
+import DTO.GeneroDTO;
+import DTO.UsuarioDTO;
+import Docs.RestriccionDoc;
+import InterfacesDAO.IGeneroDAO;
+import InterfacesDAO.IUsuarioDAO;
+import InterfacesNegocio.IUsuarioNegocio;
+import Negocio.GeneroNegocio;
+import Negocio.UsuarioNegocio;
+import InterfacesNegocio.IGeneroNegocio;
+import excepciones.INegocioException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.ListModel;
+
 /**
  *
  * @author carli
  */
 public class PanelRestricciones extends javax.swing.JPanel {
 
-  FrmPrincipal frmPrincipal;
+    FrmPrincipal frmPrincipal;
+    List<GeneroDTO> generos;
+    List<GeneroDTO> generosARestringir = new ArrayList<>();
+    DefaultListModel<String> listModel = new DefaultListModel<>(); 
+    DefaultListModel<String> listModel1 = new DefaultListModel<>();
+    
     public PanelRestricciones(FrmPrincipal frmPrincipal) {
+        
         initComponents();
         this.frmPrincipal=frmPrincipal;
+        
+        IGeneroDAO generoDAO = new GeneroDAO();
+        IGeneroNegocio generoNeg = new GeneroNegocio(generoDAO);
+                
+
+        
+        listGeneros.setModel(listModel1);
+        listGeneros.setVisible(true);
+        
+        listGeneroARestringir.setModel(listModel);
+
+        
+      try {
+          generos = generoNeg.buscarTodosGeneros();
+          
+      } catch (INegocioException ex) {
+        JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+      }
+      
+      llenarListGeneros(generos);
+        
     }
 
     /**
@@ -25,15 +73,17 @@ public class PanelRestricciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listGeneros = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listGeneroARestringir = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        scrollGeneros = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,39 +92,40 @@ public class PanelRestricciones extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(27, 26, 26));
 
-        jList1.setBackground(new java.awt.Color(56, 56, 56));
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList1.setMaximumSize(new java.awt.Dimension(400, 400));
-        jList1.setMinimumSize(new java.awt.Dimension(400, 400));
-        jList1.setPreferredSize(new java.awt.Dimension(400, 400));
-        jScrollPane1.setViewportView(jList1);
+        listGeneros.setBackground(new java.awt.Color(56, 56, 56));
+        listGeneros.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        listGeneros.setForeground(new java.awt.Color(255, 255, 255));
+        listGeneros.setDragEnabled(true);
+        listGeneros.setMaximumSize(new java.awt.Dimension(400, 400));
+        listGeneros.setMinimumSize(new java.awt.Dimension(400, 400));
+        listGeneros.setPreferredSize(new java.awt.Dimension(400, 400));
+        jScrollPane1.setViewportView(listGeneros);
 
-        jList2.setBackground(new java.awt.Color(56, 56, 56));
-        jList2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jList2.setForeground(new java.awt.Color(255, 255, 255));
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList2.setMaximumSize(new java.awt.Dimension(400, 400));
-        jList2.setMinimumSize(new java.awt.Dimension(400, 400));
-        jList2.setPreferredSize(new java.awt.Dimension(400, 400));
-        jScrollPane2.setViewportView(jList2);
+        listGeneroARestringir.setBackground(new java.awt.Color(56, 56, 56));
+        listGeneroARestringir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        listGeneroARestringir.setForeground(new java.awt.Color(255, 255, 255));
+        listGeneroARestringir.setMaximumSize(new java.awt.Dimension(400, 400));
+        listGeneroARestringir.setMinimumSize(new java.awt.Dimension(400, 400));
+        listGeneroARestringir.setPreferredSize(new java.awt.Dimension(400, 400));
+        jScrollPane2.setViewportView(listGeneroARestringir);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/swap.png"))); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saveChanges.png"))); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,9 +142,15 @@ public class PanelRestricciones extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(118, 118, 118)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(118, 118, 118))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(scrollGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -113,7 +170,9 @@ public class PanelRestricciones extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(300, 300, 300)
+                        .addGap(126, 126, 126)
+                        .addComponent(scrollGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -184,6 +243,84 @@ public class PanelRestricciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void llenarListGeneros(List<GeneroDTO> generos){
+    
+        
+        int counter = 0;
+
+        for(GeneroDTO genero : generos){
+            
+           listModel1.add(counter, genero.getNombre());
+           counter++;
+           
+        }
+       
+       
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        int indexSeleccionado1 = listGeneros.getSelectedIndex();
+        
+        int indexSeleccionado2 = listGeneroARestringir.getSelectedIndex();
+        
+        if(indexSeleccionado2 != -1){
+        
+            listModel1.add(listModel1.getSize(), generosARestringir.get(indexSeleccionado2).getNombre());
+            generos.add(generosARestringir.get(indexSeleccionado2));
+            
+            listModel.remove(indexSeleccionado2);
+            generosARestringir.remove(indexSeleccionado2);
+
+            
+            return;
+            
+        }
+        
+        if(indexSeleccionado1 == -1){
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un género" );
+            return;
+        }
+        
+        listModel.add(listModel.getSize(), generos.get(indexSeleccionado1).getNombre());
+        
+        generosARestringir.add(generos.get(indexSeleccionado1));
+        
+        generos.remove(indexSeleccionado1);
+        listModel1.remove(indexSeleccionado1);
+        
+
+
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        IUsuarioDAO uDAO = new UsuarioDAO();
+        IUsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
+        
+        UsuarioDTO usuarioActualizado = frmPrincipal.loggedUser;
+        
+        RestriccionDoc restricciones = new RestriccionDoc();
+        
+        restricciones.setGeneros(uNeg.convertirListaGenerosDTO(generosARestringir));
+        
+        usuarioActualizado.setRestringidos(restricciones);
+        
+        
+        try {
+            uNeg.actualizarUsuario(frmPrincipal.loggedUser, usuarioActualizado);
+        } catch (INegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar usuario " + ex);
+        }
+        
+        frmPrincipal.loggedUser = usuarioActualizado;
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -191,12 +328,14 @@ public class PanelRestricciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<String> listGeneroARestringir;
+    private javax.swing.JList<String> listGeneros;
+    private javax.swing.JScrollPane scrollGeneros;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,9 @@
  */
 package InterfacesNegocio;
 
+import Colecciones.GeneroColeccion;
 import Colecciones.UsuarioColeccion;
+import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
 import excepciones.INegocioException;
 import org.bson.types.ObjectId;
@@ -22,4 +24,5 @@ public interface IUsuarioNegocio {
     
     public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws INegocioException;
 
+    public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos);
 }

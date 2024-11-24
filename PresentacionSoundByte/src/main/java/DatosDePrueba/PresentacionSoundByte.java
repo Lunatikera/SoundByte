@@ -115,8 +115,8 @@ public class PresentacionSoundByte {
         generosR.add(genero2);
         r.setGeneros(generosR);
         
-        List<RestriccionDoc> rList = new ArrayList<>();
-        rList.add(r);
+        RestriccionDoc restricciones = new RestriccionDoc();
+    
             
         
         
@@ -125,7 +125,7 @@ public class PresentacionSoundByte {
         uDTO.setContraseña("12345");
         uDTO.setImagenPerfil(null);
         uDTO.setFavoritos(f);
-        uDTO.setRestringidos(rList);
+        uDTO.setRestringidos(restricciones);
         
         UsuarioDAO uDAO = new UsuarioDAO();
         UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);

@@ -7,7 +7,7 @@ package Negocio;
 import Colecciones.GeneroColeccion;
 import DTO.GeneroDTO;
 import InterfacesDAO.IGeneroDAO;
-import excepciones.IGeneroNegocio;
+import InterfacesNegocio.IGeneroNegocio;
 import excepciones.INegocioException;
 import excepciones.PersistenciaException;
 import java.util.ArrayList;
@@ -21,8 +21,8 @@ public class GeneroNegocio implements IGeneroNegocio{
     
     private final IGeneroDAO generoDAO;
 
-    public GeneroNegocio(IGeneroDAO usuarioDAO) {
-        this.generoDAO = usuarioDAO;
+    public GeneroNegocio(IGeneroDAO generoDAO) {
+        this.generoDAO = generoDAO;
     }
     
     @Override

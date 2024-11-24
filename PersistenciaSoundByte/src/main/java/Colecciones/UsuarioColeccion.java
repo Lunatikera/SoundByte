@@ -21,7 +21,7 @@ public class UsuarioColeccion {
     private String contraseña;
     private byte[] imagenPerfil;
     private FavoritoDoc favoritos;
-    private List<RestriccionDoc> restringidos;
+    private RestriccionDoc restringidos;
 
 
 
@@ -76,11 +76,11 @@ public class UsuarioColeccion {
         this.favoritos = favoritos;
     }
 
-    public List<RestriccionDoc> getRestringidos() {
+    public RestriccionDoc getRestringidos() {
         return restringidos;
     }
 
-    public void setRestringidos(List<RestriccionDoc> restringidos) {
+    public void setRestringidos(RestriccionDoc restringidos) {
         this.restringidos = restringidos;
     }
 

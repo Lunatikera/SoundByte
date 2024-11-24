@@ -4,13 +4,17 @@
  */
 package Negocio;
 
+import Colecciones.GeneroColeccion;
 import Colecciones.UsuarioColeccion;
 import DAO.UsuarioDAO;
+import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IUsuarioNegocio;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import excepciones.INegocioException;
+import java.util.ArrayList;
+import java.util.List;
 import util.Encriptacion;
 
 /**
@@ -114,6 +118,28 @@ public class UsuarioNegocio implements IUsuarioNegocio {
 
         
 
+    }
+    
+    @Override
+    public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos){
+    
+        List<GeneroColeccion> generosColeccion = new ArrayList<>();
+        
+        for(GeneroDTO genero : generos){
+        
+            GeneroColeccion generoC = new GeneroColeccion();
+            
+            generoC.setId(genero.getId());
+            generoC.setNombre(genero.getNombre());
+            generoC.setImagenGenero(genero.getImagenGenero());
+            generoC.setDescrpicion(genero.getDescripcion());
+            
+            generosColeccion.add(generoC);
+            
+        }
+        
+        return generosColeccion;
+        
     }
 
 }
