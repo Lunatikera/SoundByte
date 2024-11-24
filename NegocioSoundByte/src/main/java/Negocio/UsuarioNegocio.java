@@ -12,7 +12,7 @@ import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IUsuarioNegocio;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
 import util.Encriptacion;
@@ -30,7 +30,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
     }
 
     @Override
-    public void crearUsuario(UsuarioDTO usuario) throws INegocioException {
+    public void crearUsuario(UsuarioDTO usuario) throws NegocioException {
         try
         {
             UsuarioColeccion usuarioColeccion = this.convertirUsuarioDTO(usuario);
@@ -38,25 +38,24 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             usuarioDAO.crearUsuario(usuarioColeccion);
         } catch (Exception e)
         {
-            throw new INegocioException(e.getMessage());
+            throw new NegocioException(e.getMessage());
         }
     }
     
     @Override
-    public void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws INegocioException {
+    public void actualizarUsuario( UsuarioDTO usuario)throws NegocioException {
         try
         {
-            UsuarioColeccion usuarioColeccionViejo = this.convertirUsuarioDTO(usuarioViejo);
-            UsuarioColeccion usuarioColeccionNuevo = this.convertirUsuarioDTO(usuarioNuevo);
-            usuarioDAO.actualizarUsuario(usuarioColeccionViejo, usuarioColeccionNuevo);
+            UsuarioColeccion usuarioNuevo = this.convertirUsuarioDTO(usuario);
+            usuarioDAO.actualizarUsuario(usuarioNuevo);
         } catch (Exception e)
         {
-            throw new INegocioException(e.getMessage());
+            throw new NegocioException(e.getMessage());
         }
     }
 
     @Override
-    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws INegocioException {
+    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException {
         try
         {
             String correoElectronico = dto.getCorreoElectronico();
@@ -73,7 +72,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             
         } catch (Exception e)
         {
-            throw new INegocioException(e.getMessage());
+            throw new NegocioException(e.getMessage());
         }
     }
     

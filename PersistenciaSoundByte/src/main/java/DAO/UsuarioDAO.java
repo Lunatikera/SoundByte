@@ -19,77 +19,56 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
 
-
 /**
  *
  * @author SantiagoSanchez
  */
+
 public class UsuarioDAO implements IUsuarioDAO {
 
-    CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-    IConexionDB conexionDB = new ConexionDB();
-    MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte").withCodecRegistry(pojoCodecRegistry);    
+    private final CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+    private final IConexionDB conexionDB;
 
     private final MongoCollection<UsuarioColeccion> coleccion;
 
-    public UsuarioDAO() {
-
-    
-    this.coleccion = database.getCollection("Usuarios", UsuarioColeccion.class);
-        
+    public UsuarioDAO(IConexionDB conexionDB) {
+        this.conexionDB = conexionDB;
+        MongoDatabase database = conexionDB.getDatabase();  // MongoDB o MySQL dependiendo de la implementación
+        this.coleccion = database.getCollection("Usuarios", UsuarioColeccion.class);
     }
-    
+
     @Override
     public void crearUsuario(UsuarioColeccion usuario) throws PersistenciaException {
-        try
-        {
-            coleccion.insertOne(usuario);
-
-        } catch (Exception e)
-        {
+        try {
+            coleccion.insertOne(usuario);  // Inserta un nuevo usuario en la colección
+        } catch (Exception e) {
             throw new PersistenciaException("Error al crear el usuario en la base de datos", e);
         }
     }
-    
 
     @Override
-    public void actualizarUsuario(UsuarioColeccion usuarioViejo, UsuarioColeccion usuarioNuevo) throws PersistenciaException {
-        try
-        {
-            
-            Bson filtro = Filters.eq("_id", usuarioViejo.getId());
+    public void actualizarUsuario( UsuarioColeccion usuarioNuevo) throws PersistenciaException {
+          try {
+        // Usamos el ID del usuarioNuevo para encontrar el usuario a actualizar
+        Bson filtro = Filters.eq("_id", usuarioNuevo.getId());  
 
-            coleccion.replaceOne(filtro, usuarioNuevo);
-
-
-        } catch (Exception e)
-        {
-            throw new PersistenciaException("Error al editar el usuario en la base de datos", e);
-        }
+        // Realizamos el reemplazo del usuario completo
+        coleccion.replaceOne(filtro, usuarioNuevo);
+    } catch (Exception e) {
+        throw new PersistenciaException("Error al actualizar el usuario en la base de datos", e);
     }
+}
+    
 
     @Override
     public UsuarioColeccion obtenerUsuarioPorCredenciales(String correoElectronico) throws PersistenciaException {
+        try {
+            Bson filtro = Filters.regex("correoElectronico", "^" + correoElectronico + "$", "i");  // Filtro para buscar por correo electrónico
+            UsuarioColeccion documentoUsuario = coleccion.find(filtro).first();  // Busca el primer usuario que coincida con el filtro
 
-        try
-        {
-            
-            Bson filtro = Filters.regex("correoElectronico", "^" + correoElectronico + "$", "i");
-            
-            if(coleccion.find(filtro).first() == null)
-                return null;
-            
-            UsuarioColeccion documentoUsuario = coleccion.find(filtro).first();
-            
-            return documentoUsuario;
-        
-        } catch (Exception e)
-        {
-            throw new PersistenciaException("Error al crear el usuario en la base de datos", e);
-        }
-
+            return documentoUsuario;  // Retorna el usuario encontrado o null si no hay coincidencias
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al obtener el usuario por credenciales", e);
         }
     }
-
-
-
+}

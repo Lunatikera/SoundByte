@@ -4,6 +4,12 @@
  */
 package frames;
 
+import Conexion.ConexionDB;
+import DAO.GeneroDAO;
+import InterfacesDAO.IConexionDB;
+import InterfacesDAO.IGeneroDAO;
+import InterfacesNegocio.IGeneroNegocio;
+import Negocio.GeneroNegocio;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -2052,8 +2058,10 @@ public class PanelCanciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        DialogFiltros popup = new DialogFiltros(frmPrincipal, true); // 'frmPrincipal' is the parent frame
-        popup.setLocationRelativeTo(frmPrincipal);
+        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
+        IGeneroDAO generoDAO = new GeneroDAO(conexionDB);
+        IGeneroNegocio generoNegocio = new GeneroNegocio(generoDAO);
+        DialogFiltros popup = new DialogFiltros(frmPrincipal, true, generoNegocio); // 'frmPrincipal' is the parent frame        popup.setLocationRelativeTo(frmPrincipal);
 
         popup.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed

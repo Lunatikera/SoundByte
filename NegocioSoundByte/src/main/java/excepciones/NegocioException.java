@@ -8,12 +8,12 @@ package excepciones;
  *
  * @author Chris
  */
-public class INegocioException extends Exception {
+public class NegocioException extends Exception {
 
     /**
      * Constructor vacío.
      */
-    public INegocioException() {
+    public NegocioException() {
     }
 
     /**
@@ -21,7 +21,7 @@ public class INegocioException extends Exception {
      *
      * @param message de la excepción.
      */
-    public INegocioException(String message) {
+    public NegocioException(String message) {
         super(message);
     }
 
@@ -31,7 +31,7 @@ public class INegocioException extends Exception {
      * @param message de la excepción.
      * @param cause de la excepción.
      */
-    public INegocioException(String message, Throwable cause) {
+    public NegocioException(String message, Throwable cause) {
         super(message, cause);
     }
 }

@@ -9,7 +9,7 @@ import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.UsuarioNegocio;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -41,19 +41,18 @@ public class FrmRegistro extends javax.swing.JFrame {
     /**
      * Creates new form FrmLogIn
      */
-    
+    IUsuarioNegocio usuarioNegocio;
     byte[] imagenPerfilNueva;
-    
-    public FrmRegistro() {
+
+    public FrmRegistro(IUsuarioNegocio usuarioNegocio) {
         initComponents();
-        
+        this.usuarioNegocio = usuarioNegocio;
         this.setTitle("Registrate");
         this.jLabel1.setFocusable(true);
         this.setLocationRelativeTo(null);
         setDefaultTextAndAddFocusListener(txtEmail, "Email *");
         setDefaultTextAndAddFocusListener(txtUsuario, "Nombre de Usuario *");
 
-       
         setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena, "Contraseña *");
         setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena2, "Confirmar Contraseña *");
 
@@ -90,7 +89,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                 }
             }
         });
-        
+
         ImageIcon iDefault = new ImageIcon((getClass().getResource("/images/fotoDefaultPerfil.png")));
         imagenPerfil.setImagen(iDefault);
         this.revalidate();
@@ -127,11 +126,12 @@ public class FrmRegistro extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
-                
-                if( c == '@' || c == '.')
+
+                if (c == '@' || c == '.') {
                     return;
-                
-                if (!Character.isLetterOrDigit(c)|| c == '@' || c == '.') {
+                }
+
+                if (!Character.isLetterOrDigit(c) || c == '@' || c == '.') {
                     e.consume();
                 }
             }
@@ -183,7 +183,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         txtUsuario = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRegistrarUsuario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPassContrasena2 = new javax.swing.JPasswordField();
@@ -193,7 +193,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         jPassContrasena = new javax.swing.JPasswordField();
         btnMostrarContrasena2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnAgregarImagen = new javax.swing.JButton();
         imagenPerfil = new util.ImagenPerfil();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -221,12 +221,12 @@ public class FrmRegistro extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/registrarse.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/registrarse.png"))); // NOI18N
+        btnRegistrarUsuario.setBorderPainted(false);
+        btnRegistrarUsuario.setContentAreaFilled(false);
+        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistrarUsuarioActionPerformed(evt);
             }
         });
 
@@ -308,7 +308,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                                 .addComponent(jPassContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnMostrarContrasena1))))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -336,7 +336,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPassContrasena2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(jButton1)
+                .addComponent(btnRegistrarUsuario)
                 .addGap(24, 24, 24))
         );
 
@@ -367,14 +367,16 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(27, 26, 26));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seleccion Imagen.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seleccion Imagen.png"))); // NOI18N
+        btnAgregarImagen.setBorderPainted(false);
+        btnAgregarImagen.setContentAreaFilled(false);
+        btnAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAgregarImagenActionPerformed(evt);
             }
         });
+
+        imagenPerfil.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -382,7 +384,7 @@ public class FrmRegistro extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(149, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnAgregarImagen)
                 .addGap(91, 91, 91))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
@@ -395,7 +397,7 @@ public class FrmRegistro extends javax.swing.JFrame {
                 .addContainerGap(214, Short.MAX_VALUE)
                 .addComponent(imagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jButton3)
+                .addComponent(btnAgregarImagen)
                 .addGap(83, 83, 83))
         );
 
@@ -429,66 +431,62 @@ public class FrmRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
 
-        if(txtEmail.getText().contains("Email *") || jPassContrasena.getText().contains("Contraseña *") || jPassContrasena2.getText().contains("Contraseña *") || txtUsuario.getText().contains("Usuario *")){
-            
+        if (txtEmail.getText().contains("Email *") || jPassContrasena.getText().contains("Contraseña *") || jPassContrasena2.getText().contains("Contraseña *") || txtUsuario.getText().contains("Usuario *")) {
+
             JOptionPane.showMessageDialog(this, "Por favor rellene todos los campos obligatorios");
-            
+
             return;
-            
+
         }
-        
+
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(txtEmail.getText());
-        
-        if(!matcher.matches()){
-            
+
+        if (!matcher.matches()) {
+
             JOptionPane.showMessageDialog(this, "Por favor introduzca un Email válido");
             return;
-            
-        }
-        
-        if(jPassContrasena.getText().length()<= 7){
-        
-            JOptionPane.showMessageDialog(this, "La contraseña debe ser mínimo de 8 caracteres");
-            return;
-            
+
         }
 
-        if(!jPassContrasena.getText().contains(jPassContrasena2.getText())){
-        
+        if (jPassContrasena.getText().length() <= 7) {
+
+            JOptionPane.showMessageDialog(this, "La contraseña debe ser mínimo de 8 caracteres");
+            return;
+
+        }
+
+        if (!jPassContrasena.getText().contains(jPassContrasena2.getText())) {
+
             JOptionPane.showMessageDialog(this, "Las contraseñas ingresadas no son iguales");
             return;
-            
+
         }
-        
+
         UsuarioDTO usuarioNuevo = new UsuarioDTO();
-        
+
         usuarioNuevo.setContraseña(jPassContrasena.getText());
         usuarioNuevo.setCorreoElectronico(txtEmail.getText());
         usuarioNuevo.setUsername(txtUsuario.getText());
         usuarioNuevo.setImagenPerfil(imagenPerfilNueva);
         usuarioNuevo.setFavoritos(null);
         usuarioNuevo.setRestringidos(null);
-        
-        IUsuarioDAO uDAO = new UsuarioDAO();
-        IUsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
-        
+
         try {
-            uNeg.crearUsuario(usuarioNuevo);
+            this.usuarioNegocio.crearUsuario(usuarioNuevo);
             JOptionPane.showMessageDialog(this, "Usuario creado con éxito");
-            FrmLogIn login = new FrmLogIn();
+            FrmLogIn login = new FrmLogIn(usuarioNegocio);
             login.setVisible(true);
             this.dispose();
-        } catch (INegocioException ex) {
+        } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al crear usuario :" + ex);
         }
-        
-        
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
@@ -509,22 +507,20 @@ public class FrmRegistro extends javax.swing.JFrame {
         inputStream.close();
         return bytes;
     }
-    
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+    private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // Mostrar el selector de archivos
         JFileChooser fileChooser = new JFileChooser();
         int result = fileChooser.showOpenDialog(this);
 
         // Verificar si se seleccionó un archivo
-        if (result == JFileChooser.APPROVE_OPTION)
-        {
+        if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             String imagePath = selectedFile.getAbsolutePath();
             System.out.println(imagePath);
 
             // Convertir la imagen a byte[]
-            try
-            {
+            try {
                 byte[] imageData = convertirImagenABytes(selectedFile);
                 ImageIcon imagen = new ImageIcon(imageData);
                 imagenPerfil.setImagen(imagen);
@@ -532,59 +528,27 @@ public class FrmRegistro extends javax.swing.JFrame {
                 this.repaint();
                 this.imagenPerfilNueva = imageData;
                 // Usar el byte[] para guardar o enviar según sea necesario
-            } catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 ex.printStackTrace();
                 // Manejar el error según sea necesario
             }
         }
 
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmRegistro().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JButton btnMostrarContrasena1;
     private javax.swing.JButton btnMostrarContrasena2;
+    private javax.swing.JButton btnRegistrarUsuario;
     private util.ImagenPerfil imagenPerfil;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

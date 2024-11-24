@@ -9,7 +9,7 @@ import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.UsuarioNegocio;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,11 +26,10 @@ import javax.swing.JOptionPane;
  */
 public class FrmLogIn extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmLogIn
-     */
-    public FrmLogIn() {
+    IUsuarioNegocio usuarioNegocio;
+    public FrmLogIn( IUsuarioNegocio usuarioNegocio) {
         initComponents();
+        this.usuarioNegocio=usuarioNegocio;
         this.setTitle("Log In");
         this.setLocationRelativeTo(null);
         this.jLabel1.setFocusable(true);
@@ -333,10 +332,9 @@ public class FrmLogIn extends javax.swing.JFrame {
             loggingUser.setCorreoElectronico(txtEmail.getText());
             loggingUser.setContraseña(jPassContrasena.getText());
             
-            IUsuarioDAO uDAO = new UsuarioDAO();
-            IUsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
+           
             
-            loggedUser = uNeg.obtenerUsuarioPorCredenciales(loggingUser);
+            loggedUser = usuarioNegocio.obtenerUsuarioPorCredenciales(loggingUser);
             
             if(loggedUser == null){
                  JOptionPane.showMessageDialog(this, "Correo o contraseña incorrecta");
@@ -347,7 +345,7 @@ public class FrmLogIn extends javax.swing.JFrame {
             f.setVisible(true);
             this.dispose();
             
-        } catch (INegocioException ex) {
+        } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al buscar usuario en la BD" + ex);
         }
         
@@ -358,45 +356,12 @@ public class FrmLogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        FrmRegistro registro=new FrmRegistro();
+        FrmRegistro registro=new FrmRegistro(usuarioNegocio);
         registro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmLogIn().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarContrasena1;

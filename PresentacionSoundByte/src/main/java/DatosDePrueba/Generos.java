@@ -25,8 +25,8 @@ public class Generos {
 
     public void insertarGeneros(){
     
-        IConexionDB conexionDB = new ConexionDB();
-        MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
+        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
+        MongoDatabase database = conexionDB.getDatabase();    
     
         MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
 
@@ -158,16 +158,6 @@ public class Generos {
         
     }
     
-    public Boolean existe(){
-        
-        IConexionDB conexionDB = new ConexionDB();
-        MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
-    
-        MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
-        
-        return generoColeccion.countDocuments() != 0;
-            
-    }
-    
+ 
     
 }

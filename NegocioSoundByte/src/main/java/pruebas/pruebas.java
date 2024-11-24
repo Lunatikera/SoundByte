@@ -15,7 +15,7 @@ import InterfacesNegocio.IUsuarioNegocio;
 
 import Negocio.UsuarioNegocio;
 import com.mongodb.client.MongoDatabase;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -28,11 +28,12 @@ public class pruebas {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws INegocioException {
+    public static void main(String[] args) throws NegocioException {
         // TODO code application logic here
         // Configurar la conexión a la base de datos
+        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
 
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO(conexionDB);
 
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio(usuarioDAO);
 
