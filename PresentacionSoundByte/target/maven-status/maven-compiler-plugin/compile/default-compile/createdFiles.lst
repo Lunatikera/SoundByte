@@ -14,6 +14,7 @@ frames\FrmPrincipal$1.class
 frames\FrmRegistro$2.class
 frames\PanelAlbumes$5.class
 util\SwitchButton.class
+DatosDePrueba\Albumes.class
 frames\PanelArtista$3.class
 frames\FrmLogIn$3.class
 frames\PanelBusqueda$10.class
@@ -27,6 +28,7 @@ frames\FrmLogIn$6.class
 frames\PanelBusqueda$8.class
 frames\PanelArtistas.class
 frames\PanelHome.class
+DatosDePrueba\InsercionManual.class
 util\CustomSliderUI.class
 frames\FrmLogIn$7.class
 frames\FrmLogIn.class
@@ -36,8 +38,8 @@ frames\FrmRegistro$4.class
 frames\PanelCuenta$3.class
 frames\PanelCuenta$9.class
 frames\PanelBusqueda$7.class
+DatosDePrueba\Generos.class
 frames\FrmPrincipal$6.class
-com\mycompany\presentacionsoundbyte\PresentacionSoundByte.class
 util\BotonToggle.class
 frames\FrmRegistro$3.class
 frames\PanelBusqueda$6.class
@@ -87,6 +89,7 @@ frames\FrmRegistro.class
 util\SwitchButton$1.class
 frames\FrmRegistro$7.class
 frames\FrmPrincipal$3.class
+DatosDePrueba\PresentacionSoundByte.class
 frames\PanelAlbum.class
 frames\PanelCuenta$6.class
 frames\PanelRestricciones.class
@@ -95,6 +98,7 @@ util\BotonToggle$1.class
 util\ScrollBar.class
 frames\PanelAlbumes$2.class
 frames\PanelCuenta$10.class
+DatosDePrueba\Artistas.class
 util\SwitchButton$2.class
 frames\PanelBusqueda$9.class
 frames\FrmPrincipal$8.class

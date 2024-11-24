@@ -26,7 +26,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
-        this.setTitle("SouundByte");
+        this.setTitle("SoundByte");
         this.setLocation(265, 76);
         this.setSize(2066, 1321);
         this.btnMenuHomeActionPerformed(null);

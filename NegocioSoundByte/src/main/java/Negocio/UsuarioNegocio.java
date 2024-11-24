@@ -56,12 +56,9 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         {
             String correoElectronico = dto.getCorreoElectronico();
             UsuarioDTO loggedUser = convertirUsuarioDTO(usuarioDAO.obtenerUsuarioPorCredenciales(correoElectronico));
-            
 
-            System.out.println(dto.getContraseña());
-            System.out.println(loggedUser.getContraseña());
             
-            if(Encriptacion.verificarPasswordConHash(dto.getContraseña(), loggedUser.getContraseña()))
+            if(BCrypt.verifyer().verify(dto.getContraseña().toCharArray(), loggedUser.getContraseña()).verified)
                 return loggedUser;
             else
                 return null;

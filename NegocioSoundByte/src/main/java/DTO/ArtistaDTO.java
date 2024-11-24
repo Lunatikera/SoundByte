@@ -18,7 +18,7 @@ public class ArtistaDTO {
     private String nombre;
     private List<GeneroDTO> generos;
     private Boolean esBanda;
-    private IntegranteDoc integrante;
+    private List<IntegranteDoc> integrante;
     private String imagen;
 
     public ArtistaDTO() {
@@ -56,11 +56,11 @@ public class ArtistaDTO {
         this.esBanda = esBanda;
     }
 
-    public IntegranteDoc getIntegrante() {
+    public List<IntegranteDoc> getIntegrante() {
         return integrante;
     }
 
-    public void setIntegrante(IntegranteDoc integrante) {
+    public void setIntegrante(List<IntegranteDoc> integrante) {
         this.integrante = integrante;
     }
 

@@ -321,8 +321,11 @@ public class FrmLogIn extends javax.swing.JFrame {
             UsuarioDAO uDAO = new UsuarioDAO();
             UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
             
-            uNeg.obtenerUsuarioPorCredenciales(loggingUser);
-            System.out.println(loggedUser.toString());
+            loggedUser = uNeg.obtenerUsuarioPorCredenciales(loggingUser);
+            
+            if(loggedUser == null)
+                 JOptionPane.showMessageDialog(this, "Correo o contraseña incorrecta");
+            
             
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al buscar usuario en la BD");

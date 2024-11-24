@@ -79,8 +79,7 @@ public class UsuarioDAO implements IUsuarioDAO {
             
             Bson filtro = Filters.regex("correoElectronico", correoElectronico, "i");
             UsuarioColeccion documentoUsuario = coleccion.find(filtro).first();
-
-            System.out.println(documentoUsuario.toString());
+            
             return documentoUsuario;
         
         } catch (Exception e)
