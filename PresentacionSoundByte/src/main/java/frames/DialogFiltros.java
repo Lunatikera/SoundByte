@@ -4,6 +4,17 @@
  */
 package frames;
 
+import DAO.GeneroDAO;
+import DTO.GeneroDTO;
+import InterfacesDAO.IGeneroDAO;
+import InterfacesNegocio.IGeneroNegocio;
+import Negocio.GeneroNegocio;
+import excepciones.INegocioException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import org.bson.types.ObjectId;
 import util.ScrollBar;
 
 /**
@@ -15,13 +26,37 @@ public class DialogFiltros extends javax.swing.JDialog {
     /**
      * Creates new form DialogFiltros
      */
+    List<GeneroDTO> generos;
+    List<GeneroDTO> generosAFiltrar = new ArrayList<>();
+
+    DefaultListModel<String> todosGeneros = new DefaultListModel<>(); 
+    DefaultListModel<String> generosFiltrados = new DefaultListModel<>();
+    
     public DialogFiltros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setTitle("Filtros");
+        
         this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
         this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
 
+        jList4.setModel(todosGeneros);
+        jList5.setModel(generosFiltrados);
+
+        
+        IGeneroDAO generoDAO = new GeneroDAO();
+        IGeneroNegocio generoNeg = new GeneroNegocio(generoDAO);
+        
+        try {
+            
+            generos = generoNeg.buscarTodosGeneros();
+          
+        } catch (INegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+        }
+      
+        llenarListGeneros(generos);
+      
     }
 
     /**
@@ -136,7 +171,7 @@ public class DialogFiltros extends javax.swing.JDialog {
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jList4.setBackground(new java.awt.Color(56, 56, 56));
-        jList4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jList4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jList4.setForeground(new java.awt.Color(255, 255, 255));
         jList4.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -165,24 +200,21 @@ public class DialogFiltros extends javax.swing.JDialog {
                         .addComponent(jLabel10)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(110, 110, 110))))
+                        .addGap(110, 110, 110))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel9.add(jPanel10);
@@ -193,6 +225,11 @@ public class DialogFiltros extends javax.swing.JDialog {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/swap.png"))); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel9.add(jButton3);
 
         jLabel3.setText("  ");
@@ -203,7 +240,7 @@ public class DialogFiltros extends javax.swing.JDialog {
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jList5.setBackground(new java.awt.Color(56, 56, 56));
-        jList5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jList5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jList5.setForeground(new java.awt.Color(255, 255, 255));
         jList5.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -225,19 +262,20 @@ public class DialogFiltros extends javax.swing.JDialog {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                    .addComponent(jLabel11))
+                .addGap(27, 27, 27))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 12, Short.MAX_VALUE)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel9.add(jPanel11);
@@ -314,9 +352,63 @@ public class DialogFiltros extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void llenarListGeneros(List<GeneroDTO> generos){
+    
+        
+        int counter = 0;
+
+        for(GeneroDTO genero : generos){
+
+            todosGeneros.add(counter, genero.getNombre());
+            counter++;
+
+        }
+       
+       
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        int indexSeleccionado1 = jList4.getSelectedIndex();
+        
+        int indexSeleccionado2 = jList5.getSelectedIndex();
+        
+        if(indexSeleccionado2 != -1){
+        
+            todosGeneros.add(todosGeneros.getSize(), generosAFiltrar.get(indexSeleccionado2).getNombre());
+            generos.add(generosAFiltrar.get(indexSeleccionado2));
+            
+            generosFiltrados.remove(indexSeleccionado2);
+            generosAFiltrar.remove(indexSeleccionado2);
+
+            
+            return;
+            
+        }
+        
+        if(indexSeleccionado1 == -1){
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un género" );
+            return;
+        }
+        
+        generosFiltrados.add(generosFiltrados.getSize(), generos.get(indexSeleccionado1).getNombre());
+        
+        generosAFiltrar.add(generos.get(indexSeleccionado1));
+        
+        generos.remove(indexSeleccionado1);
+        todosGeneros.remove(indexSeleccionado1);
+        
+
+
+
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

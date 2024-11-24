@@ -22,7 +22,6 @@ frames\FrmRegistro$5.class
 frames\PanelCuenta.class
 frames\FrmPrincipal$4.class
 frames\FrmRegistro$8.class
-frames\DialogFiltros$4$1.class
 frames\FrmLogIn$6.class
 frames\PanelBusqueda$8.class
 frames\PanelArtistas.class
@@ -39,6 +38,7 @@ frames\PanelCuenta$9.class
 frames\PanelBusqueda$7.class
 DatosDePrueba\Generos.class
 frames\FrmPrincipal$6.class
+frames\DialogFiltros$5.class
 util\BotonToggle.class
 frames\FrmRegistro$3.class
 frames\PanelBusqueda$6.class
@@ -100,6 +100,7 @@ frames\PanelAlbumes$2.class
 frames\PanelCuenta$10.class
 DatosDePrueba\Artistas.class
 util\SwitchButton$2.class
+frames\DialogFiltros$5$1.class
 frames\PanelBusqueda$9.class
 frames\FrmPrincipal$8.class
 frames\FrmPrincipal$2.class

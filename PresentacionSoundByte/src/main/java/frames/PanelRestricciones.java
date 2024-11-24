@@ -47,11 +47,7 @@ public class PanelRestricciones extends javax.swing.JPanel {
         IGeneroNegocio generoNeg = new GeneroNegocio(generoDAO);
                 
         
-                
-        IGeneroDAO gDAO = new GeneroDAO();
-        IGeneroNegocio gNeg = new GeneroNegocio(gDAO);
-        
-        generosARestringir = gNeg.convertirListaGenerosColeccion(frmPrincipal.loggedUser.getRestringidos().getGeneros());
+        generosARestringir = generoNeg.convertirListaGenerosColeccion(frmPrincipal.loggedUser.getRestringidos().getGeneros());
         
         listGeneros.setModel(listModel1);
         listGeneros.setVisible(true);
