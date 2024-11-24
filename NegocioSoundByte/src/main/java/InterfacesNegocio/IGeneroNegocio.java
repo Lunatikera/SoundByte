@@ -4,6 +4,7 @@
  */
 package InterfacesNegocio;
 
+import Colecciones.GeneroColeccion;
 import DTO.GeneroDTO;
 import excepciones.INegocioException;
 import java.util.List;
@@ -16,4 +17,7 @@ public interface IGeneroNegocio {
     
     public List<GeneroDTO> buscarTodosGeneros() throws INegocioException;
     
+    public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos);
+    
+    public List<GeneroDTO> convertirListaGenerosColeccion(List<GeneroColeccion> generos);
 }

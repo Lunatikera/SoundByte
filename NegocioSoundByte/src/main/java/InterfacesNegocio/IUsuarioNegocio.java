@@ -24,5 +24,5 @@ public interface IUsuarioNegocio {
     
     public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws INegocioException;
 
-    public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos);
+
 }

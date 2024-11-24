@@ -24,6 +24,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -45,7 +46,12 @@ public class PanelRestricciones extends javax.swing.JPanel {
         IGeneroDAO generoDAO = new GeneroDAO();
         IGeneroNegocio generoNeg = new GeneroNegocio(generoDAO);
                 
-
+        
+                
+        IGeneroDAO gDAO = new GeneroDAO();
+        IGeneroNegocio gNeg = new GeneroNegocio(gDAO);
+        
+        generosARestringir = gNeg.convertirListaGenerosColeccion(frmPrincipal.loggedUser.getRestringidos().getGeneros());
         
         listGeneros.setModel(listModel1);
         listGeneros.setVisible(true);
@@ -61,6 +67,12 @@ public class PanelRestricciones extends javax.swing.JPanel {
       }
       
       llenarListGeneros(generos);
+      
+      if(frmPrincipal.loggedUser.getRestringidos() != null){
+      
+          llenarListGenerosYaRestringidos(frmPrincipal.loggedUser.getRestringidos());
+          
+      }
         
     }
 
@@ -247,10 +259,39 @@ public class PanelRestricciones extends javax.swing.JPanel {
     
         
         int counter = 0;
+        
+        List<ObjectId> ids = new ArrayList<>();
+        
+        for(GeneroDTO genero : generosARestringir){
+        
+            ids.add(genero.getId());
+            
+        }
 
         for(GeneroDTO genero : generos){
             
-           listModel1.add(counter, genero.getNombre());
+            if(!ids.contains(genero.getId())){
+            
+                listModel1.add(counter, genero.getNombre());
+                counter++;
+                
+            }
+            
+            
+           
+        }
+       
+       
+    }
+    
+    private void llenarListGenerosYaRestringidos(RestriccionDoc restriccion){
+        
+        int counter = 0;
+
+        
+        for(GeneroDTO genero : generosARestringir){
+            
+           listModel.add(counter, genero.getNombre());
            counter++;
            
         }
@@ -302,15 +343,28 @@ public class PanelRestricciones extends javax.swing.JPanel {
         IUsuarioDAO uDAO = new UsuarioDAO();
         IUsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
         
+        IGeneroDAO gDAO = new GeneroDAO();
+        IGeneroNegocio gNeg = new GeneroNegocio(gDAO);
+        
+        
         UsuarioDTO usuarioActualizado = frmPrincipal.loggedUser;
         
         RestriccionDoc restricciones = new RestriccionDoc();
         
-        restricciones.setGeneros(uNeg.convertirListaGenerosDTO(generosARestringir));
+        restricciones.setGeneros(gNeg.convertirListaGenerosDTO(generosARestringir));
         
         usuarioActualizado.setRestringidos(restricciones);
         
+        String generosSeleccionados = new String();
         
+        for(GeneroDTO genero : generosARestringir){
+            
+            String generoS = genero.getNombre() + " ";
+            generosSeleccionados = generosSeleccionados.concat(generoS);
+            
+        }
+        
+        if(JOptionPane.showConfirmDialog(this, "Esta seguro que quiere restringir los siguientes géneros ? \n" + generosSeleccionados) == JOptionPane.YES_OPTION)
         try {
             uNeg.actualizarUsuario(frmPrincipal.loggedUser, usuarioActualizado);
         } catch (INegocioException ex) {

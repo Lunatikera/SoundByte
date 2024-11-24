@@ -59,4 +59,48 @@ public class GeneroNegocio implements IGeneroNegocio{
         
     }
     
+    @Override
+    public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos){
+    
+        List<GeneroColeccion> generosColeccion = new ArrayList<>();
+        
+        for(GeneroDTO genero : generos){
+        
+            GeneroColeccion generoC = new GeneroColeccion();
+            
+            generoC.setId(genero.getId());
+            generoC.setNombre(genero.getNombre());
+            generoC.setImagenGenero(genero.getImagenGenero());
+            generoC.setDescrpicion(genero.getDescripcion());
+            
+            generosColeccion.add(generoC);
+            
+        }
+        
+        return generosColeccion;
+        
+    }
+    
+    @Override
+    public List<GeneroDTO> convertirListaGenerosColeccion(List<GeneroColeccion> generos){
+    
+        List<GeneroDTO> generosDTO = new ArrayList<>();
+        
+        for(GeneroColeccion genero : generos){
+        
+            GeneroDTO generoDTO = new GeneroDTO();
+            
+            generoDTO.setId(genero.getId());
+            generoDTO.setNombre(genero.getNombre());
+            generoDTO.setImagenGenero(genero.getImagenGenero());
+            generoDTO.setDescripcion(genero.getDescrpicion());
+            
+            generosDTO.add(generoDTO);
+            
+        }
+        
+        return generosDTO;
+        
+    }
+    
 }
