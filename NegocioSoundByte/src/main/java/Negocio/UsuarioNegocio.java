@@ -8,6 +8,7 @@ import Colecciones.UsuarioColeccion;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import InterfacesNegocio.IUsuarioNegocio;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import excepciones.NegocioException;
 import util.Encriptacion;
 
@@ -55,6 +56,10 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         {
             String correoElectronico = dto.getCorreoElectronico();
             UsuarioDTO loggedUser = convertirUsuarioDTO(usuarioDAO.obtenerUsuarioPorCredenciales(correoElectronico));
+            
+
+            System.out.println(dto.getContraseña());
+            System.out.println(loggedUser.getContraseña());
             
             if(Encriptacion.verificarPasswordConHash(dto.getContraseña(), loggedUser.getContraseña()))
                 return loggedUser;

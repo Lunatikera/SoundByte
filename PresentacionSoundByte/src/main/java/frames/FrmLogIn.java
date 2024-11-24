@@ -4,6 +4,10 @@
  */
 package frames;
 
+import DAO.UsuarioDAO;
+import DTO.UsuarioDTO;
+import Negocio.UsuarioNegocio;
+import excepciones.NegocioException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +15,10 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -304,7 +311,23 @@ public class FrmLogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            UsuarioDTO loggingUser = new UsuarioDTO();
+            UsuarioDTO loggedUser = new UsuarioDTO();
+            loggingUser.setCorreoElectronico(txtEmail.getText());
+            loggingUser.setContraseña(jPassContrasena.getText());
+            
+            UsuarioDAO uDAO = new UsuarioDAO();
+            UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
+            
+            uNeg.obtenerUsuarioPorCredenciales(loggingUser);
+            System.out.println(loggedUser.toString());
+            
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al buscar usuario en la BD");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
