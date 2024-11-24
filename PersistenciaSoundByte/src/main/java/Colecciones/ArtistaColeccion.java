@@ -20,6 +20,7 @@ public class ArtistaColeccion {
     private Boolean esBanda;
     private List<IntegranteDoc> integrante;
     private String imagen;
+    private List<String> redesSociales;
 
     public ArtistaColeccion() {
     }
@@ -72,6 +73,14 @@ public class ArtistaColeccion {
         this.imagen = imagen;
     }
 
+    public List<String> getRedesSociales() {
+        return redesSociales;
+    }
+
+    public void setRedesSociales(List<String> redesSociales) {
+        this.redesSociales = redesSociales;
+    }
+    
     @Override
     public String toString() {
         return "ArtistaColeccion{" + "id=" + id + ", nombre=" + nombre + ", generos=" + generos + ", esBanda=" + esBanda + ", integrante=" + integrante + '}';

@@ -6,8 +6,10 @@ package frames;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import InterfacesDAO.IUsuarioDAO;
+import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.UsuarioNegocio;
-import excepciones.NegocioException;
+import excepciones.INegocioException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,8 +17,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
@@ -34,8 +34,8 @@ public class FrmLogIn extends javax.swing.JFrame {
         this.setTitle("Log In");
         this.setLocationRelativeTo(null);
         this.jLabel1.setFocusable(true);
-        setDefaultTextAndAddFocusListener(txtEmail, "Email");
-        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena, "Contraseña");
+        setDefaultTextAndAddFocusListener(txtEmail, "Email *");
+        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena, "Contraseña *");
         noEspaciosKeyListener(txtEmail);
         noEspaciosKeyListener(jPassContrasena);
         
@@ -85,6 +85,10 @@ public class FrmLogIn extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
+                
+                if( c == '@' || c == '.')
+                    return;
+                
                 if (!Character.isLetterOrDigit(c)) {
                     e.consume();
                 }
@@ -311,24 +315,40 @@ public class FrmLogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        if(txtEmail.getText().contains("Email *") || jPassContrasena.getText().contains("Contraseña *")){
+        
+            
+            System.out.println(txtEmail.getText());
+            JOptionPane.showMessageDialog(this, "Por favor rellene todos los campos obligatorios");
+            return;
+            
+        }
+        
+        
         try {
             // TODO add your handling code here:
             UsuarioDTO loggingUser = new UsuarioDTO();
-            UsuarioDTO loggedUser = new UsuarioDTO();
+            UsuarioDTO loggedUser;
             loggingUser.setCorreoElectronico(txtEmail.getText());
             loggingUser.setContraseña(jPassContrasena.getText());
             
-            UsuarioDAO uDAO = new UsuarioDAO();
-            UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
+            IUsuarioDAO uDAO = new UsuarioDAO();
+            IUsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
             
             loggedUser = uNeg.obtenerUsuarioPorCredenciales(loggingUser);
             
-            if(loggedUser == null)
+            if(loggedUser == null){
                  JOptionPane.showMessageDialog(this, "Correo o contraseña incorrecta");
+                 return;
+            }
             
+            FrmPrincipal f = new FrmPrincipal(loggedUser);
+            f.setVisible(true);
+            this.dispose();
             
-        } catch (NegocioException ex) {
-            JOptionPane.showMessageDialog(this, "Error al buscar usuario en la BD");
+        } catch (INegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al buscar usuario en la BD" + ex);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

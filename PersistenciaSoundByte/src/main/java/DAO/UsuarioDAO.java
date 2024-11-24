@@ -39,9 +39,6 @@ public class UsuarioDAO implements IUsuarioDAO {
         
     }
     
-    public void abrirConexion(){
-    }
-
     @Override
     public void crearUsuario(UsuarioColeccion usuario) throws PersistenciaException {
         try
@@ -77,7 +74,11 @@ public class UsuarioDAO implements IUsuarioDAO {
         try
         {
             
-            Bson filtro = Filters.regex("correoElectronico", correoElectronico, "i");
+            Bson filtro = Filters.regex("correoElectronico", "^" + correoElectronico + "$", "i");
+            
+            if(coleccion.find(filtro).first() == null)
+                return null;
+            
             UsuarioColeccion documentoUsuario = coleccion.find(filtro).first();
             
             return documentoUsuario;

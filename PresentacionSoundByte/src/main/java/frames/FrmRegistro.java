@@ -4,14 +4,33 @@
  */
 package frames;
 
+import DAO.UsuarioDAO;
+import DTO.UsuarioDTO;
+import InterfacesDAO.IUsuarioDAO;
+import InterfacesNegocio.IUsuarioNegocio;
+import Negocio.UsuarioNegocio;
+import excepciones.INegocioException;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,17 +41,21 @@ public class FrmRegistro extends javax.swing.JFrame {
     /**
      * Creates new form FrmLogIn
      */
+    
+    byte[] imagenPerfilNueva;
+    
     public FrmRegistro() {
         initComponents();
+        
         this.setTitle("Registrate");
         this.jLabel1.setFocusable(true);
         this.setLocationRelativeTo(null);
-        setDefaultTextAndAddFocusListener(txtEmail, "Email");
-        setDefaultTextAndAddFocusListener(txtUsuario, "Nombre de Usuario");
+        setDefaultTextAndAddFocusListener(txtEmail, "Email *");
+        setDefaultTextAndAddFocusListener(txtUsuario, "Nombre de Usuario *");
 
        
-        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena, "Contraseña");
-        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena2, "Confirmar Contraseña");
+        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena, "Contraseña *");
+        setPasswordFieldDefaultTextAndAddFocusListener(jPassContrasena2, "Confirmar Contraseña *");
 
         noEspaciosKeyListener(txtEmail);
         noEspaciosKeyListener(txtUsuario);
@@ -67,6 +90,11 @@ public class FrmRegistro extends javax.swing.JFrame {
                 }
             }
         });
+        
+        ImageIcon iDefault = new ImageIcon((getClass().getResource("/images/fotoDefaultPerfil.png")));
+        imagenPerfil.setImagen(iDefault);
+        this.revalidate();
+        this.repaint();
     }
 
     private void setDefaultTextAndAddFocusListener(javax.swing.JTextField campoTexto, String textoDefault) {
@@ -99,7 +127,11 @@ public class FrmRegistro extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
-                if (!Character.isLetterOrDigit(c)) {
+                
+                if( c == '@' || c == '.')
+                    return;
+                
+                if (!Character.isLetterOrDigit(c)|| c == '@' || c == '.') {
                     e.consume();
                 }
             }
@@ -161,8 +193,8 @@ public class FrmRegistro extends javax.swing.JFrame {
         jPassContrasena = new javax.swing.JPasswordField();
         btnMostrarContrasena2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        imagenPerfil1 = new util.ImagenPerfil();
         jButton3 = new javax.swing.JButton();
+        imagenPerfil = new util.ImagenPerfil();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -335,34 +367,36 @@ public class FrmRegistro extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(27, 26, 26));
 
-        imagenPerfil1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
-
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seleccion Imagen.png"))); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(imagenPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(54, 54, 54))))
+                .addContainerGap(149, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(91, 91, 91))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(imagenPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(imagenPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(214, Short.MAX_VALUE)
+                .addComponent(imagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(jButton3)
-                .addGap(79, 79, 79))
+                .addGap(83, 83, 83))
         );
 
         jPanel5.add(jPanel7);
@@ -396,9 +430,64 @@ public class FrmRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FrmLogIn login = new FrmLogIn();
-        login.setVisible(true);
-        this.dispose();
+
+        if(txtEmail.getText().contains("Email *") || jPassContrasena.getText().contains("Contraseña *") || jPassContrasena2.getText().contains("Contraseña *") || txtUsuario.getText().contains("Usuario *")){
+            
+            JOptionPane.showMessageDialog(this, "Por favor rellene todos los campos obligatorios");
+            
+            return;
+            
+        }
+        
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(txtEmail.getText());
+        
+        if(!matcher.matches()){
+            
+            JOptionPane.showMessageDialog(this, "Por favor introduzca un Email válido");
+            return;
+            
+        }
+        
+        if(jPassContrasena.getText().length()<= 7){
+        
+            JOptionPane.showMessageDialog(this, "La contraseña debe ser mínimo de 8 caracteres");
+            return;
+            
+        }
+
+        if(!jPassContrasena.getText().contains(jPassContrasena2.getText())){
+        
+            JOptionPane.showMessageDialog(this, "Las contraseñas ingresadas no son iguales");
+            return;
+            
+        }
+        
+        UsuarioDTO usuarioNuevo = new UsuarioDTO();
+        
+        usuarioNuevo.setContraseña(jPassContrasena.getText());
+        usuarioNuevo.setCorreoElectronico(txtEmail.getText());
+        usuarioNuevo.setUsername(txtUsuario.getText());
+        usuarioNuevo.setImagenPerfil(imagenPerfilNueva);
+        usuarioNuevo.setFavoritos(null);
+        usuarioNuevo.setRestringidos(null);
+        
+        IUsuarioDAO uDAO = new UsuarioDAO();
+        IUsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
+        
+        try {
+            uNeg.crearUsuario(usuarioNuevo);
+            JOptionPane.showMessageDialog(this, "Usuario creado con éxito");
+            FrmLogIn login = new FrmLogIn();
+            login.setVisible(true);
+            this.dispose();
+        } catch (INegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al crear usuario :" + ex);
+        }
+        
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -412,6 +501,46 @@ public class FrmRegistro extends javax.swing.JFrame {
     private void btnMostrarContrasena2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarContrasena2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarContrasena2ActionPerformed
+
+    public byte[] convertirImagenABytes(File file) throws IOException {
+        // Leer el archivo de imagen en un InputStream
+        InputStream inputStream = new FileInputStream(file);
+        byte[] bytes = inputStream.readAllBytes();
+        inputStream.close();
+        return bytes;
+    }
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Mostrar el selector de archivos
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+
+        // Verificar si se seleccionó un archivo
+        if (result == JFileChooser.APPROVE_OPTION)
+        {
+            File selectedFile = fileChooser.getSelectedFile();
+            String imagePath = selectedFile.getAbsolutePath();
+            System.out.println(imagePath);
+
+            // Convertir la imagen a byte[]
+            try
+            {
+                byte[] imageData = convertirImagenABytes(selectedFile);
+                ImageIcon imagen = new ImageIcon(imageData);
+                imagenPerfil.setImagen(imagen);
+                this.revalidate();
+                this.repaint();
+                this.imagenPerfilNueva = imageData;
+                // Usar el byte[] para guardar o enviar según sea necesario
+            } catch (IOException ex)
+            {
+                ex.printStackTrace();
+                // Manejar el error según sea necesario
+            }
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,7 +581,7 @@ public class FrmRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarContrasena1;
     private javax.swing.JButton btnMostrarContrasena2;
-    private util.ImagenPerfil imagenPerfil1;
+    private util.ImagenPerfil imagenPerfil;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

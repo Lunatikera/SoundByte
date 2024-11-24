@@ -18,7 +18,6 @@ DatosDePrueba\Albumes.class
 frames\PanelArtista$3.class
 frames\FrmLogIn$3.class
 frames\PanelBusqueda$10.class
-frames\FrmPrincipal$10.class
 frames\FrmRegistro$5.class
 frames\PanelCuenta.class
 frames\FrmPrincipal$4.class
@@ -96,6 +95,7 @@ frames\PanelRestricciones.class
 frames\DialogFiltros$2.class
 util\BotonToggle$1.class
 util\ScrollBar.class
+frames\FrmRegistro$11.class
 frames\PanelAlbumes$2.class
 frames\PanelCuenta$10.class
 DatosDePrueba\Artistas.class

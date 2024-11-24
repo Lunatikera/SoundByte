@@ -7,9 +7,10 @@ package Negocio;
 import Colecciones.UsuarioColeccion;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IUsuarioNegocio;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import excepciones.NegocioException;
+import excepciones.INegocioException;
 import util.Encriptacion;
 
 /**
@@ -18,14 +19,14 @@ import util.Encriptacion;
  */
 public class UsuarioNegocio implements IUsuarioNegocio {
 
-    private final UsuarioDAO usuarioDAO;
+    private final IUsuarioDAO usuarioDAO;
 
-    public UsuarioNegocio(UsuarioDAO usuarioDAO) {
+    public UsuarioNegocio(IUsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
 
     @Override
-    public void crearUsuario(UsuarioDTO usuario) throws NegocioException {
+    public void crearUsuario(UsuarioDTO usuario) throws INegocioException {
         try
         {
             UsuarioColeccion usuarioColeccion = this.convertirUsuarioDTO(usuario);
@@ -33,12 +34,12 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             usuarioDAO.crearUsuario(usuarioColeccion);
         } catch (Exception e)
         {
-            throw new NegocioException(e.getMessage());
+            throw new INegocioException(e.getMessage());
         }
     }
     
     @Override
-    public void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws NegocioException {
+    public void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws INegocioException {
         try
         {
             UsuarioColeccion usuarioColeccionViejo = this.convertirUsuarioDTO(usuarioViejo);
@@ -46,19 +47,21 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             usuarioDAO.actualizarUsuario(usuarioColeccionViejo, usuarioColeccionNuevo);
         } catch (Exception e)
         {
-            throw new NegocioException(e.getMessage());
+            throw new INegocioException(e.getMessage());
         }
     }
 
     @Override
-    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException {
+    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws INegocioException {
         try
         {
             String correoElectronico = dto.getCorreoElectronico();
             UsuarioDTO loggedUser = convertirUsuarioDTO(usuarioDAO.obtenerUsuarioPorCredenciales(correoElectronico));
 
             
-            if(BCrypt.verifyer().verify(dto.getContraseña().toCharArray(), loggedUser.getContraseña()).verified)
+            if (loggedUser == null)
+                return null;
+            else if(BCrypt.verifyer().verify(dto.getContraseña().toCharArray(), loggedUser.getContraseña()).verified)
                 return loggedUser;
             else
                 return null;
@@ -66,7 +69,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             
         } catch (Exception e)
         {
-            throw new NegocioException(e.getMessage());
+            throw new INegocioException(e.getMessage());
         }
     }
     

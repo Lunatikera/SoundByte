@@ -17,7 +17,7 @@ import Docs.RestriccionDoc;
 import InterfacesDAO.IConexionDB;
 import Negocio.UsuarioNegocio;
 import com.mongodb.client.*;
-import excepciones.NegocioException;
+import excepciones.INegocioException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -132,7 +132,7 @@ public class PresentacionSoundByte {
         
         try {
             uNeg.crearUsuario(uDTO);
-        } catch (NegocioException ex) {
+        } catch (INegocioException ex) {
             Logger.getLogger(PresentacionSoundByte.class.getName()).log(Level.SEVERE, null, ex);
         }
         

@@ -15,7 +15,7 @@ import InterfacesNegocio.IUsuarioNegocio;
 
 import Negocio.UsuarioNegocio;
 import com.mongodb.client.MongoDatabase;
-import excepciones.NegocioException;
+import excepciones.INegocioException;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -28,7 +28,7 @@ public class pruebas {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws NegocioException {
+    public static void main(String[] args) throws INegocioException {
         // TODO code application logic here
         // Configurar la conexión a la base de datos
 

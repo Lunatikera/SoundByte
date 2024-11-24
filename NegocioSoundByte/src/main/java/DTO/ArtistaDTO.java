@@ -20,6 +20,7 @@ public class ArtistaDTO {
     private Boolean esBanda;
     private List<IntegranteDoc> integrante;
     private String imagen;
+    private List<String> redesSociales;
 
     public ArtistaDTO() {
     }
@@ -72,12 +73,17 @@ public class ArtistaDTO {
         this.imagen = imagen;
     }
 
-    @Override
-    public String toString() {
-        return "ArtistaColeccion{" + "id=" + id + ", nombre=" + nombre + ", generos=" + generos + ", esBanda=" + esBanda + ", integrante=" + integrante + '}';
+    public List<String> getRedesSociales() {
+        return redesSociales;
     }
 
+    public void setRedesSociales(List<String> redesSociales) {
+        this.redesSociales = redesSociales;
+    }
 
-    
+    @Override
+    public String toString() {
+        return "ArtistaDTO{" + "id=" + id + ", nombre=" + nombre + ", generos=" + generos + ", esBanda=" + esBanda + ", integrante=" + integrante + ", imagen=" + imagen + ", redesSociales=" + redesSociales + '}';
+    }    
     
 }

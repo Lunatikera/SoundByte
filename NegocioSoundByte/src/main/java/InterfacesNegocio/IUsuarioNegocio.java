@@ -6,7 +6,7 @@ package InterfacesNegocio;
 
 import Colecciones.UsuarioColeccion;
 import DTO.UsuarioDTO;
-import excepciones.NegocioException;
+import excepciones.INegocioException;
 import org.bson.types.ObjectId;
 import java.util.List;
 
@@ -16,10 +16,10 @@ import java.util.List;
  */
 public interface IUsuarioNegocio {
 
-    void crearUsuario(UsuarioDTO usuario) throws NegocioException;
+    void crearUsuario(UsuarioDTO usuario) throws INegocioException;
     
-    void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws NegocioException;
+    void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws INegocioException;
     
-    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException;
+    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws INegocioException;
 
 }
