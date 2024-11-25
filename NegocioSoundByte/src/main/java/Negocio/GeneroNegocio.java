@@ -8,7 +8,7 @@ import Colecciones.GeneroColeccion;
 import DTO.GeneroDTO;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesNegocio.IGeneroNegocio;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import excepciones.PersistenciaException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class GeneroNegocio implements IGeneroNegocio{
     }
     
     @Override
-    public List<GeneroDTO> buscarTodosGeneros() throws INegocioException {
+    public List<GeneroDTO> buscarTodosGeneros() throws NegocioException {
     
         try {
             
@@ -41,7 +41,7 @@ public class GeneroNegocio implements IGeneroNegocio{
             return generosDTO;
             
         } catch (PersistenciaException ex) {
-             throw new INegocioException("Error en negocio al buscar todos los géneros en la base de datos", ex);
+             throw new NegocioException("Error en negocio al buscar todos los géneros en la base de datos", ex);
         }
         
     } 

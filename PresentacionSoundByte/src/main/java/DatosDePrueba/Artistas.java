@@ -29,8 +29,8 @@ public class Artistas {
     
     public void insertarArtistasSantiago(){
 
-    IConexionDB conexionDB = new ConexionDB();
-    MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
+        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
+    MongoDatabase database = conexionDB.getDatabase();    
 
     MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
     MongoCollection<ArtistaColeccion> artistaColeccion = database.getCollection("Artistas", ArtistaColeccion.class);
@@ -111,16 +111,6 @@ public class Artistas {
         
     }
     
-    public Boolean existe(){
-        
-        IConexionDB conexionDB = new ConexionDB();
-        MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
-    
-        MongoCollection<ArtistaColeccion> artistaColeccion = database.getCollection("Artistas", ArtistaColeccion.class);
- 
-        
-        return artistaColeccion.countDocuments() != 0;
-            
-    }
+
     
 }

@@ -25,29 +25,31 @@ public class ConexionDB implements IConexionDB {
     private MongoClient mongoClient;
     private MongoDatabase database;
 
-    @Override
-    public MongoDatabase conexion(String connectionString, String databaseName) {
-        CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
-        CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
+    // Constructor que recibe parámetros de conexión
+    public ConexionDB(String connectionString, String databaseName) {
+        // Configurar el CodecRegistry para POJOs
+        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
+                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
 
         ConnectionString connString = new ConnectionString(connectionString);
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(connString)
-                .codecRegistry(codecRegistry)
+                .codecRegistry(pojoCodecRegistry)
                 .build();
 
-        mongoClient = MongoClients.create(settings);
-        this.database = mongoClient.getDatabase(databaseName);
+        mongoClient = MongoClients.create(settings); // Crear cliente MongoDB
+        this.database = mongoClient.getDatabase(databaseName); // Obtener base de datos
+    }
 
+    @Override
+    public MongoDatabase getDatabase() {
         return this.database;
     }
 
     @Override
     public void close() {
-        if (mongoClient != null)
-        {
-            mongoClient.close();
+        if (mongoClient != null) {
+            mongoClient.close(); // Cerrar la conexión
         }
     }
-
 }

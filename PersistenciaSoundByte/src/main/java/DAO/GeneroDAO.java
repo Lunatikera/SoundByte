@@ -12,6 +12,7 @@ import InterfacesDAO.IGeneroDAO;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import excepciones.PersistenciaException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,45 +20,48 @@ import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import org.bson.conversions.Bson;
 
 /**
  *
  * @author santi
  */
-public class GeneroDAO implements IGeneroDAO{
+public class GeneroDAO implements IGeneroDAO {
 
-    CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-    IConexionDB conexionDB = new ConexionDB();
-    MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte").withCodecRegistry(pojoCodecRegistry);    
+    private final CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+    private final IConexionDB conexionDB;
 
     private final MongoCollection<GeneroColeccion> coleccion;
 
-    public GeneroDAO() {
-
-    this.coleccion = database.getCollection("Generos", GeneroColeccion.class);
-        
+    // Constructor con inyección de dependencia para la conexión
+    public GeneroDAO(IConexionDB conexionDB) {
+        this.conexionDB = conexionDB;
+        MongoDatabase database = conexionDB.getDatabase();  // MongoDB o MySQL dependiendo de la implementación
+        this.coleccion = database.getCollection("Generos", GeneroColeccion.class);
     }
-    
+
     @Override
     public List<GeneroColeccion> buscarTodosGeneros() throws PersistenciaException {
-    
-        try
-        {
+        try {
             List<GeneroColeccion> todosLosGeneros = new ArrayList<>();
-
-            for(GeneroColeccion genero : coleccion.find()){
-
-                todosLosGeneros.add(genero);
-
-            }
-
+            // Recorremos todos los documentos de la colección y los agregamos a la lista
+            coleccion.find().into(todosLosGeneros);
             return todosLosGeneros;
-            
-        } catch (Exception e)
-        {
-            throw new PersistenciaException("Error en persistencia al buscar todos los géneros en la base de datos", e);
+        } catch (Exception e) {
+            // En caso de error, lanzamos una PersistenciaException con el mensaje adecuado
+            throw new PersistenciaException("Error al buscar todos los géneros en la base de datos", e);
         }
     }
-    
-    
+
+    // Ejemplo de método adicional para búsqueda por nombre
+    public List<GeneroColeccion> buscarGeneroPorNombre(String nombre) throws PersistenciaException {
+        try {
+            Bson filtro = Filters.regex("nombre", "^" + nombre + "$", "i");
+            List<GeneroColeccion> generos = new ArrayList<>();
+            coleccion.find(filtro).into(generos);
+            return generos;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar el género por nombre en la base de datos", e);
+        }
+    }
 }

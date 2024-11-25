@@ -12,7 +12,7 @@ import com.mongodb.client.MongoDatabase;
  */
 public interface IConexionDB {
 
-    public MongoDatabase conexion(String connectionString, String databaseName);
+    public MongoDatabase getDatabase();
 
     public void close();
 }

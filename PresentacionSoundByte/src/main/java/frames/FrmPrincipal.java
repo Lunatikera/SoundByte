@@ -4,7 +4,17 @@
  */
 package frames;
 
+import Conexion.ConexionDB;
+import DAO.GeneroDAO;
+import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import InterfacesDAO.IConexionDB;
+import InterfacesDAO.IGeneroDAO;
+import InterfacesDAO.IUsuarioDAO;
+import InterfacesNegocio.IGeneroNegocio;
+import InterfacesNegocio.IUsuarioNegocio;
+import Negocio.GeneroNegocio;
+import Negocio.UsuarioNegocio;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,9 +30,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form FrmPrincipal
      */
-    
-    UsuarioDTO loggedUser;
-    
+    private UsuarioDTO loggedUser;
+
     public FrmPrincipal(UsuarioDTO loggedUser) {
         initComponents();
         this.setTitle("SoundByte");
@@ -34,9 +43,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jSlider1.revalidate();
         jSlider1.repaint();
         jSlider1.setOpaque(false);
-        
+
         this.loggedUser = loggedUser;
-        
+
     }
 
     /**
@@ -361,7 +370,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(16, 15, 15));
         jPanel14.setPreferredSize(new java.awt.Dimension(270, 40));
 
-        btnMenuRestringidos.setText("aaaa");
         btnMenuRestringidos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hideSelected.png"))); // NOI18N
         btnMenuRestringidos.setSimpleIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restricted.png"))); // NOI18N
         btnMenuRestringidos.addActionListener(new java.awt.event.ActionListener() {
@@ -374,10 +382,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(btnMenuRestringidos, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(btnMenuRestringidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,9 +546,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuHomeActionPerformed
 
     private void btnMenuRestringidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuRestringidosActionPerformed
-        this.pintarPanelPrincipal(new PanelRestricciones(this));
+        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
+        IGeneroDAO generoDAO = new GeneroDAO(conexionDB);
+        IGeneroNegocio generoNegocio = new GeneroNegocio(generoDAO);
+        IUsuarioDAO usuarioDAO = new UsuarioDAO(conexionDB);
+        IUsuarioNegocio usuarioNegocio = new UsuarioNegocio(usuarioDAO);
+        this.pintarPanelPrincipal(new PanelRestricciones(this, generoNegocio, usuarioNegocio));
 
     }//GEN-LAST:event_btnMenuRestringidosActionPerformed
+
+    public UsuarioDTO getLoggedUser() {
+        return this.loggedUser;
+    }
+
+    public void setLoggedUser(UsuarioDTO usuarioDTO) {
+        this.loggedUser = usuarioDTO;
+    }
 
     public void pintarPanelPrincipal(JPanel panel) {
 

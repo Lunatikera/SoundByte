@@ -15,7 +15,7 @@ import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.GeneroNegocio;
 import Negocio.UsuarioNegocio;
 import InterfacesNegocio.IGeneroNegocio;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,21 +33,22 @@ import org.bson.types.ObjectId;
 public class PanelRestricciones extends javax.swing.JPanel {
 
     FrmPrincipal frmPrincipal;
+    IGeneroNegocio generoNegocio;
+    IUsuarioNegocio usuarioNegocio;
     List<GeneroDTO> generos;
     List<GeneroDTO> generosARestringir = new ArrayList<>();
     DefaultListModel<String> listModel = new DefaultListModel<>(); 
     DefaultListModel<String> listModel1 = new DefaultListModel<>();
     
-    public PanelRestricciones(FrmPrincipal frmPrincipal) {
+    public PanelRestricciones(FrmPrincipal frmPrincipal, IGeneroNegocio generoNegocio,IUsuarioNegocio usuarioNegocio) {
         
         initComponents();
         this.frmPrincipal=frmPrincipal;
+        this.generoNegocio= generoNegocio;
+        this.usuarioNegocio=usuarioNegocio;
+   
         
-        IGeneroDAO generoDAO = new GeneroDAO();
-        IGeneroNegocio generoNeg = new GeneroNegocio(generoDAO);
-                
-        
-        generosARestringir = generoNeg.convertirListaGenerosColeccion(frmPrincipal.loggedUser.getRestringidos().getGeneros());
+        generosARestringir = generoNegocio.convertirListaGenerosColeccion(frmPrincipal.getLoggedUser().getRestringidos().getGeneros());
         
         listGeneros.setModel(listModel1);
         listGeneros.setVisible(true);
@@ -56,17 +57,17 @@ public class PanelRestricciones extends javax.swing.JPanel {
 
         
       try {
-          generos = generoNeg.buscarTodosGeneros();
+          generos = generoNegocio.buscarTodosGeneros();
           
-      } catch (INegocioException ex) {
+      } catch (NegocioException ex) {
         JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
       }
       
       llenarListGeneros(generos);
       
-      if(frmPrincipal.loggedUser.getRestringidos() != null){
+      if(frmPrincipal.getLoggedUser().getRestringidos() != null){
       
-          llenarListGenerosYaRestringidos(frmPrincipal.loggedUser.getRestringidos());
+          llenarListGenerosYaRestringidos(frmPrincipal.getLoggedUser().getRestringidos());
           
       }
         
@@ -87,11 +88,10 @@ public class PanelRestricciones extends javax.swing.JPanel {
         listGeneros = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         listGeneroARestringir = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCambiarEstadoGenero = new javax.swing.JButton();
+        btnGuardarCambios = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        scrollGeneros = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -117,21 +117,21 @@ public class PanelRestricciones extends javax.swing.JPanel {
         listGeneroARestringir.setPreferredSize(new java.awt.Dimension(400, 400));
         jScrollPane2.setViewportView(listGeneroARestringir);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/swap.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCambiarEstadoGenero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/swap.png"))); // NOI18N
+        btnCambiarEstadoGenero.setBorderPainted(false);
+        btnCambiarEstadoGenero.setContentAreaFilled(false);
+        btnCambiarEstadoGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCambiarEstadoGeneroActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saveChanges.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCambios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saveChanges.png"))); // NOI18N
+        btnGuardarCambios.setBorderPainted(false);
+        btnGuardarCambios.setContentAreaFilled(false);
+        btnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnGuardarCambiosActionPerformed(evt);
             }
         });
 
@@ -150,22 +150,16 @@ public class PanelRestricciones extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(118, 118, 118))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(scrollGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(btnCambiarEstadoGenero)
+                .addGap(118, 118, 118)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnGuardarCambios)
                 .addGap(346, 346, 346))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -178,10 +172,8 @@ public class PanelRestricciones extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(scrollGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addComponent(jButton1))
+                        .addGap(300, 300, 300)
+                        .addComponent(btnCambiarEstadoGenero))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,7 +183,7 @@ public class PanelRestricciones extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnGuardarCambios)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -295,7 +287,7 @@ public class PanelRestricciones extends javax.swing.JPanel {
        
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCambiarEstadoGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarEstadoGeneroActionPerformed
         // TODO add your handling code here:
         
         int indexSeleccionado1 = listGeneros.getSelectedIndex();
@@ -331,23 +323,19 @@ public class PanelRestricciones extends javax.swing.JPanel {
 
 
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCambiarEstadoGeneroActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosActionPerformed
         // TODO add your handling code here:
         
-        IUsuarioDAO uDAO = new UsuarioDAO();
-        IUsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
-        
-        IGeneroDAO gDAO = new GeneroDAO();
-        IGeneroNegocio gNeg = new GeneroNegocio(gDAO);
+
         
         
-        UsuarioDTO usuarioActualizado = frmPrincipal.loggedUser;
+        UsuarioDTO usuarioActualizado = frmPrincipal.getLoggedUser();
         
         RestriccionDoc restricciones = new RestriccionDoc();
         
-        restricciones.setGeneros(gNeg.convertirListaGenerosDTO(generosARestringir));
+        restricciones.setGeneros(generoNegocio.convertirListaGenerosDTO(generosARestringir));
         
         usuarioActualizado.setRestringidos(restricciones);
         
@@ -362,19 +350,19 @@ public class PanelRestricciones extends javax.swing.JPanel {
         
         if(JOptionPane.showConfirmDialog(this, "Esta seguro que quiere restringir los siguientes géneros ? \n" + generosSeleccionados) == JOptionPane.YES_OPTION)
         try {
-            uNeg.actualizarUsuario(frmPrincipal.loggedUser, usuarioActualizado);
-        } catch (INegocioException ex) {
+           this.usuarioNegocio.actualizarUsuario( usuarioActualizado);
+        } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al actualizar usuario " + ex);
         }
         
-        frmPrincipal.loggedUser = usuarioActualizado;
+        frmPrincipal.setLoggedUser(usuarioActualizado);
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnGuardarCambiosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCambiarEstadoGenero;
+    private javax.swing.JButton btnGuardarCambios;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -386,6 +374,5 @@ public class PanelRestricciones extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<String> listGeneroARestringir;
     private javax.swing.JList<String> listGeneros;
-    private javax.swing.JScrollPane scrollGeneros;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,7 +17,7 @@ import Docs.RestriccionDoc;
 import InterfacesDAO.IConexionDB;
 import Negocio.UsuarioNegocio;
 import com.mongodb.client.*;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -38,8 +38,8 @@ public class PresentacionSoundByte {
 
     public static void main(String[] args) {
     
-    IConexionDB conexionDB = new ConexionDB();
-    MongoDatabase database = conexionDB.conexion("mongodb://localhost:27017", "SoundByte");    
+        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
+    MongoDatabase database = conexionDB.getDatabase();    
     
         MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
 
@@ -127,12 +127,12 @@ public class PresentacionSoundByte {
         uDTO.setFavoritos(f);
         uDTO.setRestringidos(restricciones);
         
-        UsuarioDAO uDAO = new UsuarioDAO();
+        UsuarioDAO uDAO = new UsuarioDAO(conexionDB);
         UsuarioNegocio uNeg = new UsuarioNegocio(uDAO);
         
         try {
             uNeg.crearUsuario(uDTO);
-        } catch (INegocioException ex) {
+        } catch (NegocioException ex) {
             Logger.getLogger(PresentacionSoundByte.class.getName()).log(Level.SEVERE, null, ex);
         }
         

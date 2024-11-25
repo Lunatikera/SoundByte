@@ -8,7 +8,7 @@ import Colecciones.GeneroColeccion;
 import Colecciones.UsuarioColeccion;
 import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
-import excepciones.INegocioException;
+import excepciones.NegocioException;
 import org.bson.types.ObjectId;
 import java.util.List;
 
@@ -18,11 +18,10 @@ import java.util.List;
  */
 public interface IUsuarioNegocio {
 
-    void crearUsuario(UsuarioDTO usuario) throws INegocioException;
-    
-    void actualizarUsuario(UsuarioDTO usuarioViejo, UsuarioDTO usuarioNuevo) throws INegocioException;
-    
-    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws INegocioException;
+    public void crearUsuario(UsuarioDTO usuario) throws NegocioException;
 
+    public void actualizarUsuario(UsuarioDTO usuarioNuevo) throws NegocioException;
+
+    public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException;
 
 }

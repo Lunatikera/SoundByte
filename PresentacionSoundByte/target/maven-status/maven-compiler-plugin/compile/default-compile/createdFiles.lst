@@ -3,6 +3,7 @@ frames\PanelHome$1.class
 util\BotonMenu.class
 frames\PanelArtista.class
 frames\DialogFiltros$3.class
+main\Main.class
 frames\PanelBusqueda$5.class
 frames\PanelCuenta$8.class
 frames\PanelBusqueda.class
@@ -26,7 +27,6 @@ frames\FrmLogIn$6.class
 frames\PanelBusqueda$8.class
 frames\PanelArtistas.class
 frames\PanelHome.class
-DatosDePrueba\InsercionManual.class
 util\CustomSliderUI.class
 frames\FrmLogIn$7.class
 frames\FrmLogIn.class
@@ -38,11 +38,9 @@ frames\PanelCuenta$9.class
 frames\PanelBusqueda$7.class
 DatosDePrueba\Generos.class
 frames\FrmPrincipal$6.class
-frames\DialogFiltros$5.class
 util\BotonToggle.class
 frames\FrmRegistro$3.class
 frames\PanelBusqueda$6.class
-frames\FrmLogIn$8.class
 frames\PanelFavoritos.class
 frames\PanelArtista$2.class
 frames\PanelAlbumes$6.class
@@ -95,12 +93,10 @@ frames\PanelRestricciones.class
 frames\DialogFiltros$2.class
 util\BotonToggle$1.class
 util\ScrollBar.class
-frames\FrmRegistro$11.class
 frames\PanelAlbumes$2.class
 frames\PanelCuenta$10.class
 DatosDePrueba\Artistas.class
 util\SwitchButton$2.class
-frames\DialogFiltros$5$1.class
 frames\PanelBusqueda$9.class
 frames\FrmPrincipal$8.class
 frames\FrmPrincipal$2.class
