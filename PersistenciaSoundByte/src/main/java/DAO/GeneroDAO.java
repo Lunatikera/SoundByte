@@ -54,6 +54,7 @@ public class GeneroDAO implements IGeneroDAO {
     }
 
     // Ejemplo de método adicional para búsqueda por nombre
+    @Override
     public List<GeneroColeccion> buscarGeneroPorNombre(String nombre) throws PersistenciaException {
         try {
             Bson filtro = Filters.regex("nombre", "^" + nombre + "$", "i");

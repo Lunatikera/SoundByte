@@ -5,18 +5,12 @@
 package DAO;
 
 import Colecciones.UsuarioColeccion;
-import Conexion.ConexionDB;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IUsuarioDAO;
-import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import excepciones.PersistenciaException;
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
-import org.bson.codecs.configuration.CodecRegistry;
-import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
 
 /**
@@ -25,14 +19,10 @@ import org.bson.conversions.Bson;
  */
 
 public class UsuarioDAO implements IUsuarioDAO {
-
-    private final CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-    private final IConexionDB conexionDB;
-
+    
     private final MongoCollection<UsuarioColeccion> coleccion;
 
     public UsuarioDAO(IConexionDB conexionDB) {
-        this.conexionDB = conexionDB;
         MongoDatabase database = conexionDB.getDatabase();  // MongoDB o MySQL dependiendo de la implementación
         this.coleccion = database.getCollection("Usuarios", UsuarioColeccion.class);
     }
