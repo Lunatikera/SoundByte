@@ -115,6 +115,26 @@ public class Albumes {
 
         albumColeccion.insertOne(album1);
 
+        
+        ArtistaColeccion artista2 = new ArtistaColeccion();
+
+        Bson filtro2 = Filters.eq("nombre", "Geordie Greep");
+
+        for (ArtistaColeccion artista : artistaColeccion.find(filtro2)) {
+
+            artista2 = artista;
+
+        }
+
+
+        AlbumColeccion album2 = new AlbumColeccion();
+
+        album2.setNombre("The new Sound");
+        album2.setImagen("albums/TheNewSound.jpg");
+        album2.setFechaLanzamiento(LocalDate.of(2024, 1, 1));
+        album2.setArtista(artista2);
+
+        albumColeccion.insertOne(album2);
     }
 
 }

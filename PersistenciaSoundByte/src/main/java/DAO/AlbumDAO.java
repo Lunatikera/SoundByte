@@ -18,6 +18,7 @@ import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.elemMatch;
 import static com.mongodb.client.model.Filters.in;
 import static com.mongodb.client.model.Filters.not;
+import static com.mongodb.client.model.Filters.regex;
 import com.mongodb.client.model.Projections;
 import static com.mongodb.client.model.Projections.computed;
 import static com.mongodb.client.model.Projections.fields;
@@ -51,7 +52,7 @@ public class AlbumDAO implements IAlbumDAO{
 
         Bson filtroArtista = match(not(in("artista.generos", restringidos)));
         
-         Bson filtroProyeccion = project(fields(
+        Bson filtroProyeccion = project(fields(
                 computed("artista", "$artista"), 
                 computed("canciones", new Document("$filter", new Document()
                         .append("input", "$canciones")
@@ -85,27 +86,17 @@ public class AlbumDAO implements IAlbumDAO{
         }
     }
     
+    @Override
     public List<AlbumColeccion> obtenerAlbumesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException{
         try{
         List<AlbumColeccion> albumes = new ArrayList<>();
 
-        Bson filtroArtista = match(not(in("artista.generos", restringidos)));
+        Bson filtroArtista1 = Filters.nin("artista.generos", restringidos);
+        Bson filtroArtista2 = Filters.regex("nombre", "^" +filtro, "i");
         
-         Bson filtroProyeccion = project(fields(
-                computed("artista", "$artista"), 
-                computed("canciones", new Document("$filter", new Document()
-                        .append("input", "$canciones")
-                        .append("as", "cancion") 
-                        .append("cond",  new Document("$and", Arrays.asList(
-                                new Document("$regexMatch", new Document() // Condición $regexMatch
-                                        .append("input", "$$cancion.nombre")
-                                        .append("regex", "^" + filtro)
-                                        .append("options", "i"))
-                        ))
-                ))))
-        );
+        Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
         
-        for(AlbumColeccion album : coleccion.aggregate(Arrays.asList(filtroArtista,filtroProyeccion))){
+        for(AlbumColeccion album : coleccion.find(filtrosCombinados)){
 
             albumes.add(album);
             
@@ -117,7 +108,7 @@ public class AlbumDAO implements IAlbumDAO{
         return albumes;
         
         } catch (Exception e) {
-            throw new PersistenciaException("Error al buscar las canciones por filtro en la base de datos", e);
+            throw new PersistenciaException("Error al buscar los albumes por filtro en la base de datos", e);
         } 
     }
     

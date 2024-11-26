@@ -24,7 +24,7 @@ public class GeneroNegocio implements IGeneroNegocio{
     public GeneroNegocio(IGeneroDAO generoDAO) {
         this.generoDAO = generoDAO;
     }
-    
+
     @Override
     public List<GeneroDTO> buscarTodosGeneros() throws NegocioException {
     

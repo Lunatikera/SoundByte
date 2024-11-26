@@ -4,6 +4,7 @@
  */
 package InterfacesDAO;
 
+import Colecciones.AlbumColeccion;
 import Colecciones.GeneroColeccion;
 import Docs.CancionDoc;
 import excepciones.PersistenciaException;
@@ -16,4 +17,7 @@ import java.util.List;
 public interface IAlbumDAO {
     
     public List<CancionDoc> obtenerCancionesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException;
+    
+    public List<AlbumColeccion> obtenerAlbumesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException;
+    
 }

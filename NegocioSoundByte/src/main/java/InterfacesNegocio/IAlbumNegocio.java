@@ -7,6 +7,7 @@ package InterfacesNegocio;
 import DTO.AlbumDTO;
 import DTO.UsuarioDTO;
 import excepciones.NegocioException;
+import java.util.List;
 
 /**
  *
@@ -16,4 +17,5 @@ public interface IAlbumNegocio {
     
     public AlbumDTO obtenerCancionesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
     
+    public List<AlbumDTO> obtenerAlbumesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
 }

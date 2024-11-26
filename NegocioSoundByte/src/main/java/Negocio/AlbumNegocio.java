@@ -4,6 +4,7 @@
  */
 package Negocio;
 
+import Colecciones.AlbumColeccion;
 import Colecciones.GeneroColeccion;
 import DTO.AlbumDTO;
 import DTO.UsuarioDTO;
@@ -11,6 +12,7 @@ import InterfacesDAO.IAlbumDAO;
 import InterfacesNegocio.IAlbumNegocio;
 import excepciones.NegocioException;
 import excepciones.PersistenciaException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +46,34 @@ public class AlbumNegocio implements IAlbumNegocio{
         
     }
     
+    @Override
+    public List<AlbumDTO> obtenerAlbumesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException{
+        
+        try {
+            
+            List<AlbumDTO> albumes = new ArrayList<>();
+            
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros())){
+            
+                
+                
+            }
+            
+            return albumes;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
+    }
     
+    public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC){
     
+        AlbumDTO albumD = new AlbumDTO();
+        
+        albumD.setId(albumC.getId());
+
+        
+        return albumD;
+    }
 }

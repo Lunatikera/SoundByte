@@ -34,10 +34,9 @@ public class pruebas {
             AlbumDAO albumDAO = new AlbumDAO(conexionDB);
             
             generoDAO.buscarGeneroPorNombre("Prog");
+
             
-            System.out.println(generoDAO.buscarGeneroPorNombre("Rock"));
-            
-            System.out.println(albumDAO.obtenerCancionesPorBusqueda("p",  generoDAO.buscarGeneroPorNombre("Prog")));
+            System.out.println(albumDAO.obtenerAlbumesPorBusqueda("",  generoDAO.buscarGeneroPorNombre("Rock")));
             
         } catch (PersistenciaException ex) {
             Logger.getLogger(pruebas.class.getName()).log(Level.SEVERE, null, ex);
