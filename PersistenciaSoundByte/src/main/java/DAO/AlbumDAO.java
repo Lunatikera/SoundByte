@@ -38,44 +38,46 @@ public class AlbumDAO {
     
         List<CancionDoc> canciones = new ArrayList<>();
         
-        Bson filtroBusqueda = elemMatch("canciones", Filters.regex("nombre", filtro, "i"));
-        Bson filtroProjection = Projections.fields(Projections.include("nombre", "fechaLanzamiento", "artista", "imagen"),Projections.elemMatch("canciones", Filters.regex("nombre", filtro, "i")));
+        Bson filtroBusqueda1 = elemMatch("canciones", Filters.regex("nombre", filtro, "i"));
+        Bson filtroBusqueda2 = Filters.nin("artistas.generos", restringidos);
+        Bson filtrosCombinados = Filters.and(filtroBusqueda1, filtroBusqueda2);
+        Bson filtroProjection = Projections.fields(Projections.include("artista"),Projections.elemMatch("canciones", Filters.regex("nombre", filtro, "i")));
         
-        if(!coleccion.find(filtroBusqueda).projection(filtroProjection).iterator().hasNext())
-            return null;
-        
-        int counterRestringidos = 0;
-        
-        HashMap<Integer, ObjectId> generosRestringidos = new HashMap<>();
-        for(GeneroColeccion generoARestringir : restringidos){
-        
-            generosRestringidos.put(0, generoARestringir.getId());
-            counterRestringidos++;
-        }
-        
-        for(AlbumColeccion album : coleccion.find(filtroBusqueda).projection(filtroProjection)){
+//        if(!coleccion.find(filtroBusqueda1).projection(filtrosCombinados).iterator().hasNext())
+//            return null;
+//        
+//        int counterRestringidos = 0;
+//        
+//        HashMap<Integer, ObjectId> generosRestringidos = new HashMap<>();
+//        for(GeneroColeccion generoARestringir : restringidos){
+//        
+//            generosRestringidos.put(0, generoARestringir.getId());
+//            counterRestringidos++;
+//        }
+//        
+        for(AlbumColeccion album : coleccion.find(filtrosCombinados).projection(filtroProjection)){
             
-            List<GeneroColeccion> generosAValidar = album.getArtista().getGeneros();
-            
-            HashMap<Integer, ObjectId> generosEncontrados = new HashMap<>();
-            int counterEncontrado = 0;
-            
-            for(GeneroColeccion generoAValidar : generosAValidar){
+//            List<GeneroColeccion> generosAValidar = album.getArtista().getGeneros();
+//            
+//            HashMap<Integer, ObjectId> generosEncontrados = new HashMap<>();
+//            int counterEncontrado = 0;
+//            
+//            for(GeneroColeccion generoAValidar : generosAValidar){
+//
+//                generosEncontrados.put(0, generoAValidar.getId());
+//                counterEncontrado++;
+//            }
 
-                generosEncontrados.put(0, generoAValidar.getId());
-                counterEncontrado++;
-            }
-
-            boolean hayCoincidencia = false;
-            
-            for (Map.Entry<Integer, ObjectId> entry : generosRestringidos.entrySet()) {
-            if (generosEncontrados.containsKey(entry.getKey()) && generosEncontrados.get(entry.getKey()).equals(entry.getValue())) {
-                hayCoincidencia = true;
-                break; // Si encontramos una coincidencia, salimos del bucle
-            }}
-            
-            if(hayCoincidencia)
-                continue;
+//            boolean hayCoincidencia = false;
+//            
+//            for (Map.Entry<Integer, ObjectId> entry : generosRestringidos.entrySet()) {
+//            if (generosEncontrados.containsKey(entry.getKey()) && generosEncontrados.get(entry.getKey()).equals(entry.getValue())) {
+//                hayCoincidencia = true;
+//                break; // Si encontramos una coincidencia, salimos del bucle
+//            }}
+//            
+//            if(hayCoincidencia)
+//                continue;
             
             for(CancionDoc cancionEncontrada : album.getCanciones()){
                 

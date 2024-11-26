@@ -35,7 +35,7 @@ public class pruebas {
             
             generoDAO.buscarGeneroPorNombre("Prog");
             
-            System.out.println(albumDAO.obtenerCancionesPorBusqueda("Salir",  null));
+            System.out.println(albumDAO.obtenerCancionesPorBusqueda("",  generoDAO.buscarGeneroPorNombre("Prog")));
             
         } catch (PersistenciaException ex) {
             Logger.getLogger(pruebas.class.getName()).log(Level.SEVERE, null, ex);
