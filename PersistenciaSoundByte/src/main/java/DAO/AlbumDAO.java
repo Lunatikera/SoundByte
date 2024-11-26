@@ -15,6 +15,7 @@ import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Aggregates.match;
 import static com.mongodb.client.model.Aggregates.project;
 import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.elemMatch;
 import static com.mongodb.client.model.Filters.in;
 import static com.mongodb.client.model.Filters.not;
@@ -22,6 +23,7 @@ import static com.mongodb.client.model.Filters.regex;
 import com.mongodb.client.model.Projections;
 import static com.mongodb.client.model.Projections.computed;
 import static com.mongodb.client.model.Projections.fields;
+import static com.mongodb.client.model.Projections.include;
 import excepciones.PersistenciaException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,11 +48,12 @@ public class AlbumDAO implements IAlbumDAO{
     }
 
     @Override
-    public List<CancionDoc> obtenerCancionesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException{
+    public List<AlbumColeccion> obtenerCancionesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException{
         try{
-        List<CancionDoc> canciones = new ArrayList<>();
+        List<AlbumColeccion> albumes = new ArrayList<>();
 
         Bson filtroArtista = match(not(in("artista.generos", restringidos)));
+        
         
         Bson filtroProyeccion = project(fields(
                 computed("artista", "$artista"), 
@@ -63,23 +66,23 @@ public class AlbumDAO implements IAlbumDAO{
                                         .append("regex", "^" + filtro)
                                         .append("options", "i"))
                         ))
-                ))))
-        );
+                ))), include("nombre"), include("imagen")
+        ));
         
-        for(AlbumColeccion album : coleccion.aggregate(Arrays.asList(filtroArtista,filtroProyeccion))){
-
-            for(CancionDoc cancionEncontrada : album.getCanciones()){
-                
-                canciones.add(cancionEncontrada);
-                
-            }
-            
-        }
-
-        if(canciones.isEmpty())
+        if(!coleccion.aggregate(Arrays.asList(filtroArtista,filtroProyeccion)).iterator().hasNext())
             return null;
         
-        return canciones;
+        for(AlbumColeccion album : coleccion.aggregate(Arrays.asList(filtroArtista,filtroProyeccion))){
+            
+                albumes.add(album);
+                
+        }
+
+        
+        if(!albumes.isEmpty())
+            return albumes;
+        else    
+            return null;
         
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar las canciones por filtro en la base de datos", e);

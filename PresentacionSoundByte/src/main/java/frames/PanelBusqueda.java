@@ -6,6 +6,8 @@ package frames;
 
 import Conexion.ConexionDB;
 import DAO.GeneroDAO;
+import DTO.AlbumDTO;
+import Docs.CancionDoc;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesNegocio.IGeneroNegocio;
@@ -15,6 +17,7 @@ import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -1989,11 +1992,30 @@ public class PanelBusqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_buscadorKeyPressed
 
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
+        
+        System.out.println("-----------------------");
+        
         try {
-            System.out.println("canciones = " +  frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(buscador.getText(), frmPrincipal.getLoggedUser()));
+            List<AlbumDTO> albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(buscador.getText(), frmPrincipal.getLoggedUser());
+            
+            if(albumes == null)
+                return;
+            
+            for(AlbumDTO album : albumes){
+            
+                for(CancionDoc cancion : album.getCanciones()){
+                    
+                    System.out.println("Canción = " + cancion.getNombre() + ", del album = " + album.getNombre());
+                    
+                }
+                
+            }
+                
         } catch (NegocioException ex) {
             Logger.getLogger(PanelBusqueda.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        System.out.println("-----------------------");
     }//GEN-LAST:event_buscadorKeyReleased
 
 

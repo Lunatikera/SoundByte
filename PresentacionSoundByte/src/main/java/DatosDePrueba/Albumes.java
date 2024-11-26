@@ -115,6 +115,18 @@ public class Albumes {
 
         albumColeccion.insertOne(album1);
 
+        CancionDoc cancion12 = new CancionDoc();
+        cancion12.setId(new ObjectId());
+        cancion12.setNombre("Holy, Holy");
+
+        CancionDoc cancion13 = new CancionDoc();
+        cancion13.setId(new ObjectId());
+        cancion13.setNombre("Prueba");
+
+        List<CancionDoc> canciones2 = new ArrayList<>();
+        
+        canciones2.add(cancion12);
+        canciones2.add(cancion13);
         
         ArtistaColeccion artista2 = new ArtistaColeccion();
 
@@ -126,9 +138,11 @@ public class Albumes {
 
         }
 
+        
 
         AlbumColeccion album2 = new AlbumColeccion();
 
+        album2.setCanciones(canciones2);
         album2.setNombre("The new Sound");
         album2.setImagen("albums/TheNewSound.jpg");
         album2.setFechaLanzamiento(LocalDate.of(2024, 1, 1));
