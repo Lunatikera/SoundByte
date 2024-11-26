@@ -14,6 +14,7 @@ public class CancionDoc {
     
     private ObjectId id;
     private String nombre;
+    private String rutaCancion;
 
     public CancionDoc() {
     }
@@ -34,11 +35,17 @@ public class CancionDoc {
         this.nombre = nombre;
     }
 
-    @Override
-    public String toString() {
-        return "CancionDoc{" + "id=" + id + ", nombre=" + nombre + '}';
+    public String getRutaCancion() {
+        return rutaCancion;
     }
 
-    
+    public void setRutaCancion(String rutaCancion) {
+        this.rutaCancion = rutaCancion;
+    }
+
+    @Override
+    public String toString() {
+        return "CancionDoc{" + "id=" + id + ", nombre=" + nombre + ", rutaCancion=" + rutaCancion + '}';
+    }    
     
 }

@@ -49,6 +49,7 @@ public class Albumes {
         CancionDoc cancion1 = new CancionDoc();
         cancion1.setId(new ObjectId());
         cancion1.setNombre("Peperina");
+        cancion1.setRutaCancion("");
 
         CancionDoc cancion2 = new CancionDoc();
         cancion2.setId(new ObjectId());
@@ -107,7 +108,7 @@ public class Albumes {
         AlbumColeccion album1 = new AlbumColeccion();
 
         album1.setNombre("Peperina");
-        album1.setImagen("resources/albums/Peperina.jpg");
+        album1.setImagen("albums/Peperina.jpg");
         album1.setFechaLanzamiento(LocalDate.of(1978, 1, 1));
         album1.setCanciones(canciones1);
         album1.setArtista(artista1);

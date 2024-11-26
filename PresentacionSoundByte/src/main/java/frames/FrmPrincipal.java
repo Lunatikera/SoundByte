@@ -11,6 +11,7 @@ import DTO.UsuarioDTO;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
+import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.GeneroNegocio;
@@ -31,9 +32,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
      * Creates new form FrmPrincipal
      */
     private UsuarioDTO loggedUser;
+    
+    IUsuarioNegocio usuarioNegocio;
+    IAlbumNegocio albumNegocio;
 
-    public FrmPrincipal(UsuarioDTO loggedUser) {
+    public FrmPrincipal(UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
         initComponents();
+        
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio=usuarioNegocio;
+        this.albumNegocio=albumNegocio;
+        
         this.setTitle("SoundByte");
         this.setLocation(265, 76);
         this.setSize(2066, 1321);
@@ -44,7 +53,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jSlider1.repaint();
         jSlider1.setOpaque(false);
 
-        this.loggedUser = loggedUser;
+        
 
     }
 

@@ -10,10 +10,13 @@ import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesNegocio.IGeneroNegocio;
 import Negocio.GeneroNegocio;
+import excepciones.NegocioException;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -29,8 +32,9 @@ public class PanelBusqueda extends javax.swing.JPanel {
     /**
      * Creates new form Prueba1
      */
-    public PanelBusqueda(FrmPrincipal frmPrincipal1) {
+    public PanelBusqueda(FrmPrincipal frmPrincipal) {
         initComponents();
+        this.frmPrincipal = frmPrincipal;
         this.revalidate();
         this.repaint();
         setDefaultTextAndAddFocusListener(buscador, "Buscar...");
@@ -343,6 +347,14 @@ public class PanelBusqueda extends javax.swing.JPanel {
         buscador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscadorActionPerformed(evt);
+            }
+        });
+        buscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscadorKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                buscadorKeyReleased(evt);
             }
         });
 
@@ -1930,7 +1942,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buscadorActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1970,6 +1982,19 @@ public class PanelBusqueda extends javax.swing.JPanel {
     private void btnfavoritoCancion22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfavoritoCancion22ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnfavoritoCancion22ActionPerformed
+
+    private void buscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_buscadorKeyPressed
+
+    private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
+        try {
+            System.out.println("canciones = " +  frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(buscador.getText(), frmPrincipal.getLoggedUser()));
+        } catch (NegocioException ex) {
+            Logger.getLogger(PanelBusqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buscadorKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

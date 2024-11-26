@@ -7,6 +7,7 @@ package frames;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
+import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.UsuarioNegocio;
 import excepciones.NegocioException;
@@ -27,9 +28,12 @@ import javax.swing.JOptionPane;
 public class FrmLogIn extends javax.swing.JFrame {
 
     IUsuarioNegocio usuarioNegocio;
-    public FrmLogIn( IUsuarioNegocio usuarioNegocio) {
+    IAlbumNegocio albumNegocio;
+    
+    public FrmLogIn( IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
         initComponents();
         this.usuarioNegocio=usuarioNegocio;
+        this.albumNegocio=albumNegocio;
         this.setTitle("Log In");
         this.setLocationRelativeTo(null);
         this.jLabel1.setFocusable(true);
@@ -334,7 +338,7 @@ public class FrmLogIn extends javax.swing.JFrame {
                  return;
             }
             
-            FrmPrincipal f = new FrmPrincipal(loggedUser);
+            FrmPrincipal f = new FrmPrincipal(loggedUser, usuarioNegocio, albumNegocio);
             f.setVisible(true);
             this.dispose();
             
@@ -349,7 +353,7 @@ public class FrmLogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        FrmRegistro registro=new FrmRegistro(usuarioNegocio);
+        FrmRegistro registro=new FrmRegistro(usuarioNegocio, albumNegocio);
         registro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
