@@ -21,8 +21,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -31,16 +34,36 @@ import javax.swing.JFrame;
 public class PanelBusqueda extends javax.swing.JPanel {
     
     FrmPrincipal frmPrincipal;
+    JPanel[] paneles;
+    JLabel[] labels;
+    JButton[] favCanciones;
 
     /**
      * Creates new form Prueba1
      */
     public PanelBusqueda(FrmPrincipal frmPrincipal) {
         initComponents();
+        
         this.frmPrincipal = frmPrincipal;
         this.revalidate();
         this.repaint();
+        this.paneles = new JPanel[]{panelCancionEncontrada1,panelCancionEncontrada2,panelCancionEncontrada3,panelCancionEncontrada4,panelCancionEncontrada5,
+        panelCancionEncontrada6,panelCancionEncontrada7,panelCancionEncontrada8,panelCancionEncontrada9,panelCancionEncontrada10};
+        this.labels = new JLabel[]{lblNombreCancion1,lblNombreCancion2,lblNombreCancion3,lblNombreCancion4,lblNombreCancion5,
+        lblNombreCancion6,lblNombreCancion7,lblNombreCancion8,lblNombreCancion9,lblNombreCancion10};
+        iniciaCanciones();
+        this.favCanciones = new JButton[]{btnFavCancion1,btnFavCancion2,btnFavCancion3,btnFavCancion4,btnFavCancion5,
+        btnFavCancion6,btnFavCancion7,btnFavCancion8,btnFavCancion9,btnFavCancion10};
         setDefaultTextAndAddFocusListener(buscador, "Buscar...");
+        
+    }
+    
+    private void iniciaCanciones(){
+    
+        for (JPanel panel : paneles) {
+            panel.setVisible(false);
+        }
+
         
     }
     
@@ -97,76 +120,66 @@ public class PanelBusqueda extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        panelCancion3 = new javax.swing.JPanel();
-        numCancion3 = new javax.swing.JLabel();
+        panelCancionEncontrada1 = new javax.swing.JPanel();
         imagenCancion3 = new util.ImagenPerfil();
+        lblNombreCancion1 = new javax.swing.JLabel();
+        lblNombreArtistaCancion1 = new javax.swing.JLabel();
+        btnPlay1 = new util.BotonToggle();
+        btnFavCancion1 = new util.BotonToggle();
+        panelCancionEncontrada2 = new javax.swing.JPanel();
+        imagenCancion4 = new util.ImagenPerfil();
+        lblNombreCancion2 = new javax.swing.JLabel();
+        lblNombreArtistaCancion2 = new javax.swing.JLabel();
+        btnPlay2 = new util.BotonToggle();
+        btnFavCancion2 = new util.BotonToggle();
+        panelCancionEncontrada3 = new javax.swing.JPanel();
+        imagenCancion5 = new util.ImagenPerfil();
         lblNombreCancion3 = new javax.swing.JLabel();
         lblNombreArtistaCancion3 = new javax.swing.JLabel();
-        play3 = new util.BotonToggle();
-        btnfavoritoCancion3 = new util.BotonToggle();
-        panelCancion7 = new javax.swing.JPanel();
-        numCancion7 = new javax.swing.JLabel();
+        btnPlay3 = new util.BotonToggle();
+        btnFavCancion3 = new util.BotonToggle();
+        panelCancionEncontrada4 = new javax.swing.JPanel();
+        imagenCancion6 = new util.ImagenPerfil();
+        lblNombreCancion4 = new javax.swing.JLabel();
+        lblNombreArtistaCancion4 = new javax.swing.JLabel();
+        btnPlay4 = new util.BotonToggle();
+        btnFavCancion4 = new util.BotonToggle();
+        panelCancionEncontrada5 = new javax.swing.JPanel();
         imagenCancion7 = new util.ImagenPerfil();
+        lblNombreCancion5 = new javax.swing.JLabel();
+        lblNombreArtistaCancion5 = new javax.swing.JLabel();
+        btnPlay5 = new util.BotonToggle();
+        btnFavCancion5 = new util.BotonToggle();
+        panelCancionEncontrada6 = new javax.swing.JPanel();
+        imagenCancion8 = new util.ImagenPerfil();
+        lblNombreCancion6 = new javax.swing.JLabel();
+        lblNombreArtistaCancion6 = new javax.swing.JLabel();
+        btnPlay6 = new util.BotonToggle();
+        btnFavCancion6 = new util.BotonToggle();
+        panelCancionEncontrada7 = new javax.swing.JPanel();
+        imagenCancion9 = new util.ImagenPerfil();
         lblNombreCancion7 = new javax.swing.JLabel();
         lblNombreArtistaCancion7 = new javax.swing.JLabel();
-        play7 = new util.BotonToggle();
-        btnfavoritoCancion7 = new util.BotonToggle();
-        panelCancion10 = new javax.swing.JPanel();
-        numCancion10 = new javax.swing.JLabel();
+        btnPlay7 = new util.BotonToggle();
+        btnFavCancion7 = new util.BotonToggle();
+        panelCancionEncontrada8 = new javax.swing.JPanel();
         imagenCancion10 = new util.ImagenPerfil();
+        lblNombreCancion8 = new javax.swing.JLabel();
+        lblNombreArtistaCancion8 = new javax.swing.JLabel();
+        btnPlay8 = new util.BotonToggle();
+        btnFavCancion8 = new util.BotonToggle();
+        panelCancionEncontrada9 = new javax.swing.JPanel();
+        imagenCancion11 = new util.ImagenPerfil();
+        lblNombreCancion9 = new javax.swing.JLabel();
+        lblNombreArtistaCancion9 = new javax.swing.JLabel();
+        btnPlay9 = new util.BotonToggle();
+        btnFavCancion9 = new util.BotonToggle();
+        panelCancionEncontrada10 = new javax.swing.JPanel();
+        imagenCancion12 = new util.ImagenPerfil();
         lblNombreCancion10 = new javax.swing.JLabel();
         lblNombreArtistaCancion10 = new javax.swing.JLabel();
-        play10 = new util.BotonToggle();
-        btnfavoritoCancion10 = new util.BotonToggle();
-        panelCancion11 = new javax.swing.JPanel();
-        numCancion11 = new javax.swing.JLabel();
-        imagenCancion11 = new util.ImagenPerfil();
-        lblNombreCancion11 = new javax.swing.JLabel();
-        lblNombreArtistaCancion11 = new javax.swing.JLabel();
-        play11 = new util.BotonToggle();
-        btnfavoritoCancion11 = new util.BotonToggle();
-        panelCancion12 = new javax.swing.JPanel();
-        numCancion12 = new javax.swing.JLabel();
-        imagenCancion12 = new util.ImagenPerfil();
-        lblNombreCancion12 = new javax.swing.JLabel();
-        lblNombreArtistaCancion12 = new javax.swing.JLabel();
-        play12 = new util.BotonToggle();
-        btnfavoritoCancion12 = new util.BotonToggle();
-        panelCancion13 = new javax.swing.JPanel();
-        numCancion13 = new javax.swing.JLabel();
-        imagenCancion13 = new util.ImagenPerfil();
-        lblNombreCancion13 = new javax.swing.JLabel();
-        lblNombreArtistaCancion13 = new javax.swing.JLabel();
-        play13 = new util.BotonToggle();
-        btnfavoritoCancion13 = new util.BotonToggle();
-        panelCancion14 = new javax.swing.JPanel();
-        numCancion14 = new javax.swing.JLabel();
-        imagenCancion14 = new util.ImagenPerfil();
-        lblNombreCancion14 = new javax.swing.JLabel();
-        lblNombreArtistaCancion14 = new javax.swing.JLabel();
-        play14 = new util.BotonToggle();
-        btnfavoritoCancion14 = new util.BotonToggle();
-        panelCancion15 = new javax.swing.JPanel();
-        numCancion15 = new javax.swing.JLabel();
-        imagenCancion15 = new util.ImagenPerfil();
-        lblNombreCancion15 = new javax.swing.JLabel();
-        lblNombreArtistaCancion15 = new javax.swing.JLabel();
-        play15 = new util.BotonToggle();
-        btnfavoritoCancion15 = new util.BotonToggle();
-        panelCancion16 = new javax.swing.JPanel();
-        numCancion16 = new javax.swing.JLabel();
-        imagenCancion16 = new util.ImagenPerfil();
-        lblNombreCancion16 = new javax.swing.JLabel();
-        lblNombreArtistaCancion16 = new javax.swing.JLabel();
-        play16 = new util.BotonToggle();
-        btnfavoritoCancion16 = new util.BotonToggle();
-        panelCancion17 = new javax.swing.JPanel();
-        numCancion17 = new javax.swing.JLabel();
-        imagenCancion17 = new util.ImagenPerfil();
-        lblNombreCancion17 = new javax.swing.JLabel();
-        lblNombreArtistaCancion17 = new javax.swing.JLabel();
-        play17 = new util.BotonToggle();
-        btnfavoritoCancion17 = new util.BotonToggle();
+        btnPlay10 = new util.BotonToggle();
+        btnFavCancion10 = new util.BotonToggle();
         jLabel7 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -411,15 +424,139 @@ public class PanelBusqueda extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(27, 26, 26));
         jPanel4.setPreferredSize(new java.awt.Dimension(750, 850));
 
-        panelCancion3.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion3.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion3.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion3.setText("01");
+        panelCancionEncontrada1.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada1.setMinimumSize(new java.awt.Dimension(750, 100));
 
         imagenCancion3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
         imagenCancion3.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion1.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion1.setText("Peperina");
+
+        lblNombreArtistaCancion1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion1.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion1.setText("Seru Giran");
+
+        btnPlay1.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay1.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay1.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        btnFavCancion1.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion1.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion1.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        javax.swing.GroupLayout panelCancionEncontrada1Layout = new javax.swing.GroupLayout(panelCancionEncontrada1);
+        panelCancionEncontrada1.setLayout(panelCancionEncontrada1Layout);
+        panelCancionEncontrada1Layout.setHorizontalGroup(
+            panelCancionEncontrada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(imagenCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelCancionEncontrada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada1Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+        panelCancionEncontrada1Layout.setVerticalGroup(
+            panelCancionEncontrada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada1Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada1Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombreArtistaCancion1))
+                            .addGroup(panelCancionEncontrada1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(panelCancionEncontrada1);
+
+        panelCancionEncontrada2.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada2.setMinimumSize(new java.awt.Dimension(750, 100));
+
+        imagenCancion4.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion4.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion2.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion2.setText("Peperina");
+
+        lblNombreArtistaCancion2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion2.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion2.setText("Seru Giran");
+
+        btnPlay2.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay2.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay2.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        btnFavCancion2.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion2.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion2.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        javax.swing.GroupLayout panelCancionEncontrada2Layout = new javax.swing.GroupLayout(panelCancionEncontrada2);
+        panelCancionEncontrada2.setLayout(panelCancionEncontrada2Layout);
+        panelCancionEncontrada2Layout.setHorizontalGroup(
+            panelCancionEncontrada2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(imagenCancion4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelCancionEncontrada2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada2Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion2, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+        panelCancionEncontrada2Layout.setVerticalGroup(
+            panelCancionEncontrada2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada2Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada2Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada2Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombreArtistaCancion2))
+                            .addGroup(panelCancionEncontrada2Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(panelCancionEncontrada2);
+
+        panelCancionEncontrada3.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada3.setMinimumSize(new java.awt.Dimension(750, 100));
+
+        imagenCancion5.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion5.setPreferredSize(new java.awt.Dimension(50, 50));
 
         lblNombreCancion3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreCancion3.setForeground(new java.awt.Color(255, 255, 255));
@@ -429,67 +566,253 @@ public class PanelBusqueda extends javax.swing.JPanel {
         lblNombreArtistaCancion3.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreArtistaCancion3.setText("Seru Giran");
 
-        play3.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play3.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play3.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnPlay3.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay3.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay3.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        btnfavoritoCancion3.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion3.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion3.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnFavCancion3.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion3.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion3.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        javax.swing.GroupLayout panelCancion3Layout = new javax.swing.GroupLayout(panelCancion3);
-        panelCancion3.setLayout(panelCancion3Layout);
-        panelCancion3Layout.setHorizontalGroup(
-            panelCancion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion3)
-                .addGap(18, 18, 18)
-                .addComponent(play3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout panelCancionEncontrada3Layout = new javax.swing.GroupLayout(panelCancionEncontrada3);
+        panelCancionEncontrada3.setLayout(panelCancionEncontrada3Layout);
+        panelCancionEncontrada3Layout.setHorizontalGroup(
+            panelCancionEncontrada3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(imagenCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagenCancion5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addGroup(panelCancion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion3)
-                    .addComponent(lblNombreArtistaCancion3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelCancionEncontrada3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada3Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion3, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
-        panelCancion3Layout.setVerticalGroup(
-            panelCancion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion3Layout.createSequentialGroup()
-                .addGroup(panelCancion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion3Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion3Layout.createSequentialGroup()
+        panelCancionEncontrada3Layout.setVerticalGroup(
+            panelCancionEncontrada3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada3Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada3Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada3Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada3Layout.createSequentialGroup()
                                 .addComponent(lblNombreCancion3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion3))))
-                    .addGroup(panelCancion3Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion3)))
-                    .addGroup(panelCancion3Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblNombreArtistaCancion3))
+                            .addGroup(panelCancionEncontrada3Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jPanel4.add(panelCancion3);
+        jPanel4.add(panelCancionEncontrada3);
 
-        panelCancion7.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion7.setMinimumSize(new java.awt.Dimension(750, 100));
+        panelCancionEncontrada4.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada4.setMinimumSize(new java.awt.Dimension(750, 100));
 
-        numCancion7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion7.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion7.setText("01");
+        imagenCancion6.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion6.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion4.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion4.setText("Peperina");
+
+        lblNombreArtistaCancion4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion4.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion4.setText("Seru Giran");
+
+        btnPlay4.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay4.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay4.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        btnFavCancion4.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion4.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion4.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        javax.swing.GroupLayout panelCancionEncontrada4Layout = new javax.swing.GroupLayout(panelCancionEncontrada4);
+        panelCancionEncontrada4.setLayout(panelCancionEncontrada4Layout);
+        panelCancionEncontrada4Layout.setHorizontalGroup(
+            panelCancionEncontrada4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada4Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(imagenCancion6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelCancionEncontrada4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada4Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion4, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+        panelCancionEncontrada4Layout.setVerticalGroup(
+            panelCancionEncontrada4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada4Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada4Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada4Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada4Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombreArtistaCancion4))
+                            .addGroup(panelCancionEncontrada4Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(panelCancionEncontrada4);
+
+        panelCancionEncontrada5.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada5.setMinimumSize(new java.awt.Dimension(750, 100));
 
         imagenCancion7.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
         imagenCancion7.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion5.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion5.setText("Peperina");
+
+        lblNombreArtistaCancion5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion5.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion5.setText("Seru Giran");
+
+        btnPlay5.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay5.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay5.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        btnFavCancion5.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion5.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion5.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        javax.swing.GroupLayout panelCancionEncontrada5Layout = new javax.swing.GroupLayout(panelCancionEncontrada5);
+        panelCancionEncontrada5.setLayout(panelCancionEncontrada5Layout);
+        panelCancionEncontrada5Layout.setHorizontalGroup(
+            panelCancionEncontrada5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada5Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(imagenCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelCancionEncontrada5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada5Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion5, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+        panelCancionEncontrada5Layout.setVerticalGroup(
+            panelCancionEncontrada5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada5Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada5Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada5Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada5Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombreArtistaCancion5))
+                            .addGroup(panelCancionEncontrada5Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(panelCancionEncontrada5);
+
+        panelCancionEncontrada6.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada6.setMinimumSize(new java.awt.Dimension(750, 100));
+
+        imagenCancion8.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion8.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion6.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion6.setText("Peperina");
+
+        lblNombreArtistaCancion6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion6.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion6.setText("Seru Giran");
+
+        btnPlay6.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay6.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay6.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        btnFavCancion6.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion6.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion6.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        javax.swing.GroupLayout panelCancionEncontrada6Layout = new javax.swing.GroupLayout(panelCancionEncontrada6);
+        panelCancionEncontrada6.setLayout(panelCancionEncontrada6Layout);
+        panelCancionEncontrada6Layout.setHorizontalGroup(
+            panelCancionEncontrada6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada6Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(imagenCancion8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelCancionEncontrada6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada6Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion6)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion6, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+        panelCancionEncontrada6Layout.setVerticalGroup(
+            panelCancionEncontrada6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada6Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada6Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada6Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada6Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombreArtistaCancion6))
+                            .addGroup(panelCancionEncontrada6Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(panelCancionEncontrada6);
+
+        panelCancionEncontrada7.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada7.setMinimumSize(new java.awt.Dimension(750, 100));
+
+        imagenCancion9.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion9.setPreferredSize(new java.awt.Dimension(50, 50));
 
         lblNombreCancion7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreCancion7.setForeground(new java.awt.Color(255, 255, 255));
@@ -499,67 +822,189 @@ public class PanelBusqueda extends javax.swing.JPanel {
         lblNombreArtistaCancion7.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreArtistaCancion7.setText("Seru Giran");
 
-        play7.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play7.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play7.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnPlay7.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay7.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay7.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        btnfavoritoCancion7.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion7.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion7.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnFavCancion7.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion7.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion7.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        javax.swing.GroupLayout panelCancion7Layout = new javax.swing.GroupLayout(panelCancion7);
-        panelCancion7.setLayout(panelCancion7Layout);
-        panelCancion7Layout.setHorizontalGroup(
-            panelCancion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion7Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion7)
-                .addGap(18, 18, 18)
-                .addComponent(play7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout panelCancionEncontrada7Layout = new javax.swing.GroupLayout(panelCancionEncontrada7);
+        panelCancionEncontrada7.setLayout(panelCancionEncontrada7Layout);
+        panelCancionEncontrada7Layout.setHorizontalGroup(
+            panelCancionEncontrada7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada7Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(imagenCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagenCancion9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addGroup(panelCancion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion7)
-                    .addComponent(lblNombreArtistaCancion7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelCancionEncontrada7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada7Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion7)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion7, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
-        panelCancion7Layout.setVerticalGroup(
-            panelCancion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion7Layout.createSequentialGroup()
-                .addGroup(panelCancion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion7Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion7Layout.createSequentialGroup()
+        panelCancionEncontrada7Layout.setVerticalGroup(
+            panelCancionEncontrada7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada7Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada7Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada7Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada7Layout.createSequentialGroup()
                                 .addComponent(lblNombreCancion7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion7))))
-                    .addGroup(panelCancion7Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion7)))
-                    .addGroup(panelCancion7Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblNombreArtistaCancion7))
+                            .addGroup(panelCancionEncontrada7Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jPanel4.add(panelCancion7);
+        jPanel4.add(panelCancionEncontrada7);
 
-        panelCancion10.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion10.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion10.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion10.setText("01");
+        panelCancionEncontrada8.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada8.setMinimumSize(new java.awt.Dimension(750, 100));
 
         imagenCancion10.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
         imagenCancion10.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion8.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion8.setText("Peperina");
+
+        lblNombreArtistaCancion8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion8.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion8.setText("Seru Giran");
+
+        btnPlay8.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay8.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay8.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        btnFavCancion8.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion8.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion8.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        javax.swing.GroupLayout panelCancionEncontrada8Layout = new javax.swing.GroupLayout(panelCancionEncontrada8);
+        panelCancionEncontrada8.setLayout(panelCancionEncontrada8Layout);
+        panelCancionEncontrada8Layout.setHorizontalGroup(
+            panelCancionEncontrada8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada8Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(imagenCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelCancionEncontrada8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada8Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion8, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+        panelCancionEncontrada8Layout.setVerticalGroup(
+            panelCancionEncontrada8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada8Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada8Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada8Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada8Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombreArtistaCancion8))
+                            .addGroup(panelCancionEncontrada8Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(panelCancionEncontrada8);
+
+        panelCancionEncontrada9.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada9.setMinimumSize(new java.awt.Dimension(750, 100));
+
+        imagenCancion11.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion11.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblNombreCancion9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreCancion9.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreCancion9.setText("Peperina");
+
+        lblNombreArtistaCancion9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreArtistaCancion9.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreArtistaCancion9.setText("Seru Giran");
+
+        btnPlay9.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay9.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay9.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        btnFavCancion9.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion9.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion9.setPreferredSize(new java.awt.Dimension(28, 28));
+
+        javax.swing.GroupLayout panelCancionEncontrada9Layout = new javax.swing.GroupLayout(panelCancionEncontrada9);
+        panelCancionEncontrada9.setLayout(panelCancionEncontrada9Layout);
+        panelCancionEncontrada9Layout.setHorizontalGroup(
+            panelCancionEncontrada9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada9Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(imagenCancion11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelCancionEncontrada9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada9Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion9)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion9, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+        panelCancionEncontrada9Layout.setVerticalGroup(
+            panelCancionEncontrada9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada9Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada9Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada9Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagenCancion11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCancionEncontrada9Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombreArtistaCancion9))
+                            .addGroup(panelCancionEncontrada9Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(panelCancionEncontrada9);
+
+        panelCancionEncontrada10.setBackground(new java.awt.Color(27, 26, 26));
+        panelCancionEncontrada10.setMinimumSize(new java.awt.Dimension(750, 100));
+
+        imagenCancion12.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion12.setPreferredSize(new java.awt.Dimension(50, 50));
 
         lblNombreCancion10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreCancion10.setForeground(new java.awt.Color(255, 255, 255));
@@ -569,547 +1014,55 @@ public class PanelBusqueda extends javax.swing.JPanel {
         lblNombreArtistaCancion10.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreArtistaCancion10.setText("Seru Giran");
 
-        play10.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play10.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play10.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnPlay10.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
+        btnPlay10.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
+        btnPlay10.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        btnfavoritoCancion10.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion10.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion10.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnFavCancion10.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
+        btnFavCancion10.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        btnFavCancion10.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        javax.swing.GroupLayout panelCancion10Layout = new javax.swing.GroupLayout(panelCancion10);
-        panelCancion10.setLayout(panelCancion10Layout);
-        panelCancion10Layout.setHorizontalGroup(
-            panelCancion10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion10Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion10)
-                .addGap(18, 18, 18)
-                .addComponent(play10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(imagenCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelCancion10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion10)
-                    .addComponent(lblNombreArtistaCancion10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelCancion10Layout.setVerticalGroup(
-            panelCancion10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion10Layout.createSequentialGroup()
-                .addGroup(panelCancion10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion10Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion10Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion10))))
-                    .addGroup(panelCancion10Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion10)))
-                    .addGroup(panelCancion10Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(panelCancion10);
-
-        panelCancion11.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion11.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion11.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion11.setText("01");
-
-        imagenCancion11.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
-        imagenCancion11.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblNombreCancion11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreCancion11.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreCancion11.setText("Peperina");
-
-        lblNombreArtistaCancion11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreArtistaCancion11.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreArtistaCancion11.setText("Seru Giran");
-
-        play11.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play11.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play11.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        btnfavoritoCancion11.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion11.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion11.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout panelCancion11Layout = new javax.swing.GroupLayout(panelCancion11);
-        panelCancion11.setLayout(panelCancion11Layout);
-        panelCancion11Layout.setHorizontalGroup(
-            panelCancion11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion11Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion11)
-                .addGap(18, 18, 18)
-                .addComponent(play11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(imagenCancion11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelCancion11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion11)
-                    .addComponent(lblNombreArtistaCancion11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelCancion11Layout.setVerticalGroup(
-            panelCancion11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion11Layout.createSequentialGroup()
-                .addGroup(panelCancion11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion11Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion11Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion11))))
-                    .addGroup(panelCancion11Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion11)))
-                    .addGroup(panelCancion11Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(panelCancion11);
-
-        panelCancion12.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion12.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion12.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion12.setText("01");
-
-        imagenCancion12.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
-        imagenCancion12.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblNombreCancion12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreCancion12.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreCancion12.setText("Peperina");
-
-        lblNombreArtistaCancion12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreArtistaCancion12.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreArtistaCancion12.setText("Seru Giran");
-
-        play12.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play12.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play12.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        btnfavoritoCancion12.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion12.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion12.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout panelCancion12Layout = new javax.swing.GroupLayout(panelCancion12);
-        panelCancion12.setLayout(panelCancion12Layout);
-        panelCancion12Layout.setHorizontalGroup(
-            panelCancion12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion12Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion12)
-                .addGap(18, 18, 18)
-                .addComponent(play12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout panelCancionEncontrada10Layout = new javax.swing.GroupLayout(panelCancionEncontrada10);
+        panelCancionEncontrada10.setLayout(panelCancionEncontrada10Layout);
+        panelCancionEncontrada10Layout.setHorizontalGroup(
+            panelCancionEncontrada10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada10Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnPlay10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(imagenCancion12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addGroup(panelCancion12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion12)
-                    .addComponent(lblNombreArtistaCancion12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelCancionEncontrada10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada10Layout.createSequentialGroup()
+                        .addComponent(lblNombreArtistaCancion10)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblNombreCancion10, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnFavCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
-        panelCancion12Layout.setVerticalGroup(
-            panelCancion12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion12Layout.createSequentialGroup()
-                .addGroup(panelCancion12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion12Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelCancionEncontrada10Layout.setVerticalGroup(
+            panelCancionEncontrada10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCancionEncontrada10Layout.createSequentialGroup()
+                .addGroup(panelCancionEncontrada10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCancionEncontrada10Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFavCancion10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCancionEncontrada10Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelCancionEncontrada10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(imagenCancion12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion12Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion12)
+                            .addGroup(panelCancionEncontrada10Layout.createSequentialGroup()
+                                .addComponent(lblNombreCancion10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion12))))
-                    .addGroup(panelCancion12Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion12)))
-                    .addGroup(panelCancion12Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblNombreArtistaCancion10))
+                            .addGroup(panelCancionEncontrada10Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnPlay10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jPanel4.add(panelCancion12);
-
-        panelCancion13.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion13.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion13.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion13.setText("01");
-
-        imagenCancion13.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
-        imagenCancion13.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblNombreCancion13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreCancion13.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreCancion13.setText("Peperina");
-
-        lblNombreArtistaCancion13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreArtistaCancion13.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreArtistaCancion13.setText("Seru Giran");
-
-        play13.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play13.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play13.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        btnfavoritoCancion13.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion13.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion13.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout panelCancion13Layout = new javax.swing.GroupLayout(panelCancion13);
-        panelCancion13.setLayout(panelCancion13Layout);
-        panelCancion13Layout.setHorizontalGroup(
-            panelCancion13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion13Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion13)
-                .addGap(18, 18, 18)
-                .addComponent(play13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(imagenCancion13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelCancion13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion13)
-                    .addComponent(lblNombreArtistaCancion13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelCancion13Layout.setVerticalGroup(
-            panelCancion13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion13Layout.createSequentialGroup()
-                .addGroup(panelCancion13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion13Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion13Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion13))))
-                    .addGroup(panelCancion13Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion13)))
-                    .addGroup(panelCancion13Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(panelCancion13);
-
-        panelCancion14.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion14.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion14.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion14.setText("01");
-
-        imagenCancion14.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
-        imagenCancion14.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblNombreCancion14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreCancion14.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreCancion14.setText("Peperina");
-
-        lblNombreArtistaCancion14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreArtistaCancion14.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreArtistaCancion14.setText("Seru Giran");
-
-        play14.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play14.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play14.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        btnfavoritoCancion14.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion14.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion14.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout panelCancion14Layout = new javax.swing.GroupLayout(panelCancion14);
-        panelCancion14.setLayout(panelCancion14Layout);
-        panelCancion14Layout.setHorizontalGroup(
-            panelCancion14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion14Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion14)
-                .addGap(18, 18, 18)
-                .addComponent(play14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(imagenCancion14, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelCancion14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion14)
-                    .addComponent(lblNombreArtistaCancion14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelCancion14Layout.setVerticalGroup(
-            panelCancion14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion14Layout.createSequentialGroup()
-                .addGroup(panelCancion14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion14Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion14, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion14Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion14))))
-                    .addGroup(panelCancion14Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion14)))
-                    .addGroup(panelCancion14Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(panelCancion14);
-
-        panelCancion15.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion15.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion15.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion15.setText("01");
-
-        imagenCancion15.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
-        imagenCancion15.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblNombreCancion15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreCancion15.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreCancion15.setText("Peperina");
-
-        lblNombreArtistaCancion15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreArtistaCancion15.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreArtistaCancion15.setText("Seru Giran");
-
-        play15.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play15.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play15.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        btnfavoritoCancion15.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion15.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion15.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout panelCancion15Layout = new javax.swing.GroupLayout(panelCancion15);
-        panelCancion15.setLayout(panelCancion15Layout);
-        panelCancion15Layout.setHorizontalGroup(
-            panelCancion15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion15Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion15)
-                .addGap(18, 18, 18)
-                .addComponent(play15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(imagenCancion15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelCancion15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion15)
-                    .addComponent(lblNombreArtistaCancion15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelCancion15Layout.setVerticalGroup(
-            panelCancion15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion15Layout.createSequentialGroup()
-                .addGroup(panelCancion15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion15Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion15Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion15))))
-                    .addGroup(panelCancion15Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion15)))
-                    .addGroup(panelCancion15Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(panelCancion15);
-
-        panelCancion16.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion16.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion16.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion16.setText("01");
-
-        imagenCancion16.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
-        imagenCancion16.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblNombreCancion16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreCancion16.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreCancion16.setText("Peperina");
-
-        lblNombreArtistaCancion16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreArtistaCancion16.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreArtistaCancion16.setText("Seru Giran");
-
-        play16.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play16.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play16.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        btnfavoritoCancion16.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion16.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion16.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout panelCancion16Layout = new javax.swing.GroupLayout(panelCancion16);
-        panelCancion16.setLayout(panelCancion16Layout);
-        panelCancion16Layout.setHorizontalGroup(
-            panelCancion16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion16Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion16)
-                .addGap(18, 18, 18)
-                .addComponent(play16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(imagenCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelCancion16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion16)
-                    .addComponent(lblNombreArtistaCancion16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelCancion16Layout.setVerticalGroup(
-            panelCancion16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion16Layout.createSequentialGroup()
-                .addGroup(panelCancion16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion16Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion16Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion16))))
-                    .addGroup(panelCancion16Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion16)))
-                    .addGroup(panelCancion16Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(panelCancion16);
-
-        panelCancion17.setBackground(new java.awt.Color(27, 26, 26));
-        panelCancion17.setMinimumSize(new java.awt.Dimension(750, 100));
-
-        numCancion17.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        numCancion17.setForeground(new java.awt.Color(255, 255, 255));
-        numCancion17.setText("01");
-
-        imagenCancion17.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
-        imagenCancion17.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblNombreCancion17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNombreCancion17.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreCancion17.setText("Peperina");
-
-        lblNombreArtistaCancion17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreArtistaCancion17.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreArtistaCancion17.setText("Seru Giran");
-
-        play17.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
-        play17.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        play17.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        btnfavoritoCancion17.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
-        btnfavoritoCancion17.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
-        btnfavoritoCancion17.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout panelCancion17Layout = new javax.swing.GroupLayout(panelCancion17);
-        panelCancion17.setLayout(panelCancion17Layout);
-        panelCancion17Layout.setHorizontalGroup(
-            panelCancion17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion17Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(numCancion17)
-                .addGap(18, 18, 18)
-                .addComponent(play17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(imagenCancion17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(panelCancion17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreCancion17)
-                    .addComponent(lblNombreArtistaCancion17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addComponent(btnfavoritoCancion17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        panelCancion17Layout.setVerticalGroup(
-            panelCancion17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCancion17Layout.createSequentialGroup()
-                .addGroup(panelCancion17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCancion17Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelCancion17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagenCancion17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCancion17Layout.createSequentialGroup()
-                                .addComponent(lblNombreCancion17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNombreArtistaCancion17))))
-                    .addGroup(panelCancion17Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelCancion17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(play17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numCancion17)))
-                    .addGroup(panelCancion17Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnfavoritoCancion17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(panelCancion17);
+        jPanel4.add(panelCancionEncontrada10);
 
         jPanel3.add(jPanel4);
 
@@ -1961,7 +1914,8 @@ public class PanelBusqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnfavoritoCancion5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
+           
+        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
         IGeneroDAO generoDAO= new GeneroDAO(conexionDB);
         IGeneroNegocio generoNegocio= new GeneroNegocio(generoDAO);
         DialogFiltros popup = new DialogFiltros(frmPrincipal, true,generoNegocio); // 'frmPrincipal' is the parent frame
@@ -1993,6 +1947,10 @@ public class PanelBusqueda extends javax.swing.JPanel {
 
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
         
+        
+        iniciaCanciones();
+        int counter = 0;
+        
         System.out.println("-----------------------");
         
         try {
@@ -2003,10 +1961,25 @@ public class PanelBusqueda extends javax.swing.JPanel {
             
             for(AlbumDTO album : albumes){
             
+                if(counter >= 9)
+                    return;
+                
                 for(CancionDoc cancion : album.getCanciones()){
                     
                     System.out.println("Canción = " + cancion.getNombre() + ", del album = " + album.getNombre());
                     
+                    if(cancion.getNombre().length() >= 40){
+                    
+                        String nombreCortado = cancion.getNombre().substring(0, 40) + "...";
+                        
+                        labels[counter].setText(nombreCortado);
+                    }
+                    else
+                        labels[counter].setText(cancion.getNombre());
+                    
+                    
+                    paneles[counter].setVisible(true);
+                    counter++;
                 }
                 
             }
@@ -2020,26 +1993,36 @@ public class PanelBusqueda extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private util.BotonToggle btnFavCancion1;
+    private util.BotonToggle btnFavCancion10;
+    private util.BotonToggle btnFavCancion2;
+    private util.BotonToggle btnFavCancion3;
+    private util.BotonToggle btnFavCancion4;
+    private util.BotonToggle btnFavCancion5;
+    private util.BotonToggle btnFavCancion6;
+    private util.BotonToggle btnFavCancion7;
+    private util.BotonToggle btnFavCancion8;
+    private util.BotonToggle btnFavCancion9;
+    private util.BotonToggle btnPlay1;
+    private util.BotonToggle btnPlay10;
+    private util.BotonToggle btnPlay2;
+    private util.BotonToggle btnPlay3;
+    private util.BotonToggle btnPlay4;
+    private util.BotonToggle btnPlay5;
+    private util.BotonToggle btnPlay6;
+    private util.BotonToggle btnPlay7;
+    private util.BotonToggle btnPlay8;
+    private util.BotonToggle btnPlay9;
     private util.BotonToggle btnfavoritoCAlbum1;
     private util.BotonToggle btnfavoritoCAlbum2;
     private util.BotonToggle btnfavoritoCAlbum3;
     private util.BotonToggle btnfavoritoCAlbum4;
     private util.BotonToggle btnfavoritoCAlbum5;
     private util.BotonToggle btnfavoritoCAlbum6;
-    private util.BotonToggle btnfavoritoCancion10;
-    private util.BotonToggle btnfavoritoCancion11;
-    private util.BotonToggle btnfavoritoCancion12;
-    private util.BotonToggle btnfavoritoCancion13;
-    private util.BotonToggle btnfavoritoCancion14;
-    private util.BotonToggle btnfavoritoCancion15;
-    private util.BotonToggle btnfavoritoCancion16;
-    private util.BotonToggle btnfavoritoCancion17;
     private util.BotonToggle btnfavoritoCancion18;
     private util.BotonToggle btnfavoritoCancion22;
-    private util.BotonToggle btnfavoritoCancion3;
     private util.BotonToggle btnfavoritoCancion4;
     private util.BotonToggle btnfavoritoCancion5;
-    private util.BotonToggle btnfavoritoCancion7;
     private util.BotonToggle btnfavoritoCancion8;
     private util.BotonToggle btnfavoritoCancion9;
     private javax.swing.JTextField buscador;
@@ -2053,13 +2036,13 @@ public class PanelBusqueda extends javax.swing.JPanel {
     private util.ImagenPerfil imagenCancion10;
     private util.ImagenPerfil imagenCancion11;
     private util.ImagenPerfil imagenCancion12;
-    private util.ImagenPerfil imagenCancion13;
-    private util.ImagenPerfil imagenCancion14;
-    private util.ImagenPerfil imagenCancion15;
-    private util.ImagenPerfil imagenCancion16;
-    private util.ImagenPerfil imagenCancion17;
     private util.ImagenPerfil imagenCancion3;
+    private util.ImagenPerfil imagenCancion4;
+    private util.ImagenPerfil imagenCancion5;
+    private util.ImagenPerfil imagenCancion6;
     private util.ImagenPerfil imagenCancion7;
+    private util.ImagenPerfil imagenCancion8;
+    private util.ImagenPerfil imagenCancion9;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
@@ -2139,55 +2122,35 @@ public class PanelBusqueda extends javax.swing.JPanel {
     private javax.swing.JLabel lblNombreArtista7;
     private javax.swing.JLabel lblNombreArtista8;
     private javax.swing.JLabel lblNombreArtista9;
+    private javax.swing.JLabel lblNombreArtistaCancion1;
     private javax.swing.JLabel lblNombreArtistaCancion10;
-    private javax.swing.JLabel lblNombreArtistaCancion11;
-    private javax.swing.JLabel lblNombreArtistaCancion12;
-    private javax.swing.JLabel lblNombreArtistaCancion13;
-    private javax.swing.JLabel lblNombreArtistaCancion14;
-    private javax.swing.JLabel lblNombreArtistaCancion15;
-    private javax.swing.JLabel lblNombreArtistaCancion16;
-    private javax.swing.JLabel lblNombreArtistaCancion17;
+    private javax.swing.JLabel lblNombreArtistaCancion2;
     private javax.swing.JLabel lblNombreArtistaCancion3;
+    private javax.swing.JLabel lblNombreArtistaCancion4;
+    private javax.swing.JLabel lblNombreArtistaCancion5;
+    private javax.swing.JLabel lblNombreArtistaCancion6;
     private javax.swing.JLabel lblNombreArtistaCancion7;
+    private javax.swing.JLabel lblNombreArtistaCancion8;
+    private javax.swing.JLabel lblNombreArtistaCancion9;
+    private javax.swing.JLabel lblNombreCancion1;
     private javax.swing.JLabel lblNombreCancion10;
-    private javax.swing.JLabel lblNombreCancion11;
-    private javax.swing.JLabel lblNombreCancion12;
-    private javax.swing.JLabel lblNombreCancion13;
-    private javax.swing.JLabel lblNombreCancion14;
-    private javax.swing.JLabel lblNombreCancion15;
-    private javax.swing.JLabel lblNombreCancion16;
-    private javax.swing.JLabel lblNombreCancion17;
+    private javax.swing.JLabel lblNombreCancion2;
     private javax.swing.JLabel lblNombreCancion3;
+    private javax.swing.JLabel lblNombreCancion4;
+    private javax.swing.JLabel lblNombreCancion5;
+    private javax.swing.JLabel lblNombreCancion6;
     private javax.swing.JLabel lblNombreCancion7;
-    private javax.swing.JLabel numCancion10;
-    private javax.swing.JLabel numCancion11;
-    private javax.swing.JLabel numCancion12;
-    private javax.swing.JLabel numCancion13;
-    private javax.swing.JLabel numCancion14;
-    private javax.swing.JLabel numCancion15;
-    private javax.swing.JLabel numCancion16;
-    private javax.swing.JLabel numCancion17;
-    private javax.swing.JLabel numCancion3;
-    private javax.swing.JLabel numCancion7;
-    private javax.swing.JPanel panelCancion10;
-    private javax.swing.JPanel panelCancion11;
-    private javax.swing.JPanel panelCancion12;
-    private javax.swing.JPanel panelCancion13;
-    private javax.swing.JPanel panelCancion14;
-    private javax.swing.JPanel panelCancion15;
-    private javax.swing.JPanel panelCancion16;
-    private javax.swing.JPanel panelCancion17;
-    private javax.swing.JPanel panelCancion3;
-    private javax.swing.JPanel panelCancion7;
-    private util.BotonToggle play10;
-    private util.BotonToggle play11;
-    private util.BotonToggle play12;
-    private util.BotonToggle play13;
-    private util.BotonToggle play14;
-    private util.BotonToggle play15;
-    private util.BotonToggle play16;
-    private util.BotonToggle play17;
-    private util.BotonToggle play3;
-    private util.BotonToggle play7;
+    private javax.swing.JLabel lblNombreCancion8;
+    private javax.swing.JLabel lblNombreCancion9;
+    private javax.swing.JPanel panelCancionEncontrada1;
+    private javax.swing.JPanel panelCancionEncontrada10;
+    private javax.swing.JPanel panelCancionEncontrada2;
+    private javax.swing.JPanel panelCancionEncontrada3;
+    private javax.swing.JPanel panelCancionEncontrada4;
+    private javax.swing.JPanel panelCancionEncontrada5;
+    private javax.swing.JPanel panelCancionEncontrada6;
+    private javax.swing.JPanel panelCancionEncontrada7;
+    private javax.swing.JPanel panelCancionEncontrada8;
+    private javax.swing.JPanel panelCancionEncontrada9;
     // End of variables declaration//GEN-END:variables
 }
