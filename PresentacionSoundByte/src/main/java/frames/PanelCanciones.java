@@ -1984,7 +1984,7 @@ public class PanelCanciones extends javax.swing.JPanel {
                         .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         PanelBusqudaLayout.setVerticalGroup(
             PanelBusqudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2014,11 +2014,11 @@ public class PanelCanciones extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(PanelBusquda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
+                        .addGap(91, 91, 91)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1628, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2043,7 +2043,7 @@ public class PanelCanciones extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addGap(912, 912, 912))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

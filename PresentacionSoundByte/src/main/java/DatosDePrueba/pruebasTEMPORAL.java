@@ -15,9 +15,16 @@ public class pruebasTEMPORAL {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+   
+        Generos g = new Generos();
+        g.insertarGeneros();
+        
+        Artistas ar = new Artistas();
+        ar.insertarArtistasSantiago();
         
         Albumes a = new Albumes();
         a.insertarAlbumesSantiago();
+        
     }
     
 }

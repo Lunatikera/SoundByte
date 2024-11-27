@@ -47,8 +47,8 @@ public class PanelRestricciones extends javax.swing.JPanel {
         this.generoNegocio= generoNegocio;
         this.usuarioNegocio=usuarioNegocio;
    
-        
-        generosARestringir = generoNegocio.convertirListaGenerosColeccion(frmPrincipal.getLoggedUser().getRestringidos().getGeneros());
+        if(frmPrincipal.getLoggedUser().getRestringidos() != null)
+            generosARestringir = generoNegocio.convertirListaGenerosColeccion(frmPrincipal.getLoggedUser().getRestringidos().getGeneros());
         
         listGeneros.setModel(listModel1);
         listGeneros.setVisible(true);
@@ -67,9 +67,9 @@ public class PanelRestricciones extends javax.swing.JPanel {
       
       if(frmPrincipal.getLoggedUser().getRestringidos() != null){
       
-          llenarListGenerosYaRestringidos(frmPrincipal.getLoggedUser().getRestringidos());
+          llenarListGenerosYaRestringidos();
           
-      }
+       }
         
     }
 
@@ -272,10 +272,11 @@ public class PanelRestricciones extends javax.swing.JPanel {
        
     }
     
-    private void llenarListGenerosYaRestringidos(RestriccionDoc restriccion){
+    private void llenarListGenerosYaRestringidos(){
         
         int counter = 0;
 
+        
         
         for(GeneroDTO genero : generosARestringir){
             
