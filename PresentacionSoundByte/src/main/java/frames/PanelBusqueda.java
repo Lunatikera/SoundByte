@@ -2036,8 +2036,9 @@ public class PanelBusqueda extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buscadorKeyReleased
 
-    private void btnFavCancion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavCancion1ActionPerformed
-        try {
+    public void agregarCancionFav(int numBoton){
+    
+                try {
             // TODO add your handling code here:
             
             UsuarioDTO a = this.frmPrincipal.getLoggedUser();
@@ -2054,7 +2055,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
                 
             }
             
-            favoritas.add(cancionesDesplegadas.get(0));
+            favoritas.add(cancionesDesplegadas.get(numBoton));
             
             favNuevo.setCanciones(favoritas);
             
@@ -2062,39 +2063,22 @@ public class PanelBusqueda extends javax.swing.JPanel {
             
             this.frmPrincipal.usuarioNegocio.actualizarUsuario(a);
         } catch (NegocioException ex) {
-             JOptionPane.showMessageDialog(this, "Error al guardar esta cancion " + cancionesDesplegadas.get(0).getNombre() + "en favoritos." + ex);
+             JOptionPane.showMessageDialog(this, "Error al guardar esta cancion " + cancionesDesplegadas.get(numBoton).getNombre() + "en favoritos." + ex);
         }
+        
+        
+    }
+    
+    private void btnFavCancion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavCancion1ActionPerformed
+
+        agregarCancionFav(0);
         
     }//GEN-LAST:event_btnFavCancion1ActionPerformed
 
     private void btnFavCancion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavCancion2ActionPerformed
         // TODO add your handling code here:
-        try{
-        UsuarioDTO a = this.frmPrincipal.getLoggedUser();
+        agregarCancionFav(1);
         
-        FavoritoDoc favNuevo = new FavoritoDoc();
-        
-        List<CancionDoc> favoritas = new ArrayList<>();
-        
-        if(a.getFavoritos()!= null){
-        
-            favNuevo = a.getFavoritos();
-            
-            favoritas = favNuevo.getCanciones();
-            
-        }
-
-        favoritas.add(cancionesDesplegadas.get(1));
-        
-        favNuevo.setCanciones(favoritas);
-        
-        a.setFavoritos(favNuevo);
-        
-        this.frmPrincipal.usuarioNegocio.actualizarUsuario(a);
-        
-        }catch(NegocioException ex){
-            JOptionPane.showMessageDialog(this, "Error al guardar esta cancion " + cancionesDesplegadas.get(1).getNombre() + "en favoritos." + ex);
-        }
     }//GEN-LAST:event_btnFavCancion2ActionPerformed
 
 

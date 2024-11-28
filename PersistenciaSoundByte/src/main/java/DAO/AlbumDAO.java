@@ -6,8 +6,6 @@ package DAO;
 
 import Colecciones.AlbumColeccion;
 import Colecciones.GeneroColeccion;
-import Colecciones.UsuarioColeccion;
-import Docs.CancionDoc;
 import InterfacesDAO.IAlbumDAO;
 import InterfacesDAO.IConexionDB;
 import com.mongodb.client.MongoCollection;
@@ -15,24 +13,17 @@ import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Aggregates.match;
 import static com.mongodb.client.model.Aggregates.project;
 import com.mongodb.client.model.Filters;
-import static com.mongodb.client.model.Filters.and;
-import static com.mongodb.client.model.Filters.elemMatch;
 import static com.mongodb.client.model.Filters.in;
 import static com.mongodb.client.model.Filters.not;
-import static com.mongodb.client.model.Filters.regex;
-import com.mongodb.client.model.Projections;
 import static com.mongodb.client.model.Projections.computed;
 import static com.mongodb.client.model.Projections.fields;
 import static com.mongodb.client.model.Projections.include;
 import excepciones.PersistenciaException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import org.bson.types.ObjectId;
 
 /**
  *
