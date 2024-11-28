@@ -6,13 +6,23 @@ package main;
 
 import Conexion.ConexionDB;
 import DAO.AlbumDAO;
+import DAO.ArtistaDAO;
+import DAO.GeneroDAO;
 import DAO.UsuarioDAO;
 import InterfacesDAO.IAlbumDAO;
+import InterfacesDAO.IArtistaDAO;
 import InterfacesDAO.IConexionDB;
+import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IAlbumNegocio;
+import InterfacesNegocio.IArtistaNegocio;
+import InterfacesNegocio.IFachadaNegocio;
+import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.AlbumNegocio;
+import Negocio.ArtistaNegocio;
+import Negocio.FachadaNegocio;
+import Negocio.GeneroNegocio;
 import Negocio.UsuarioNegocio;
 import frames.FrmLogIn;
 
@@ -35,8 +45,15 @@ public class Main {
         IAlbumDAO albumDAO = new AlbumDAO(conexionDB);
         IAlbumNegocio albumNegocio = new AlbumNegocio(albumDAO);
         
+        IArtistaDAO artistaDAO = new ArtistaDAO(conexionDB);
+        IArtistaNegocio artistaNegocio = new ArtistaNegocio(artistaDAO);
         
-        FrmLogIn logIn = new FrmLogIn(usuarioNegocio, albumNegocio);
+        IGeneroDAO generoDAO = new GeneroDAO(conexionDB);
+        IGeneroNegocio generoNegocio = new GeneroNegocio(generoDAO);
+        
+        IFachadaNegocio fachada = new FachadaNegocio(albumNegocio, artistaNegocio, generoNegocio, usuarioNegocio);
+        
+        FrmLogIn logIn = new FrmLogin(fachada);
         logIn.setVisible(true);
 
     }

@@ -6,14 +6,21 @@ package Negocio;
 
 import Colecciones.ArtistaColeccion;
 import DTO.ArtistaDTO;
+import InterfacesDAO.IArtistaDAO;
+import InterfacesNegocio.IArtistaNegocio;
 
 /**
  *
  * @author santi
  */
-public class ArtistaNegocio {
+public class ArtistaNegocio implements IArtistaNegocio{
 
-    public ArtistaNegocio() {
+    private final IArtistaDAO artistaDAO;
+    
+    public ArtistaNegocio(IArtistaDAO artistaDAO) {
+        
+        this.artistaDAO = artistaDAO;
+        
     }
     
     public ArtistaDTO convertirArtistaColeccion(ArtistaColeccion artistaC){
