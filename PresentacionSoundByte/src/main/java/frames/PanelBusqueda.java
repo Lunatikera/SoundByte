@@ -7,25 +7,32 @@ package frames;
 import Conexion.ConexionDB;
 import DAO.GeneroDAO;
 import DTO.AlbumDTO;
+import DTO.UsuarioDTO;
 import Docs.CancionDoc;
+import Docs.FavoritoDoc;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesNegocio.IGeneroNegocio;
 import Negocio.GeneroNegocio;
+import Negocio.UsuarioNegocio;
 import excepciones.NegocioException;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import util.ImagenPerfil;
 
 /**
  *
@@ -35,8 +42,11 @@ public class PanelBusqueda extends javax.swing.JPanel {
     
     FrmPrincipal frmPrincipal;
     JPanel[] paneles;
-    JLabel[] labels;
-    JButton[] favCanciones;
+    JLabel[] labelsNombreCancion;
+    JLabel[] labelNombreAlbumCancion;
+    ImagenPerfil[] imagenesAlbumesCancion;
+    List<CancionDoc> cancionesDesplegadas = new ArrayList<>();
+    
 
     /**
      * Creates new form Prueba1
@@ -47,18 +57,27 @@ public class PanelBusqueda extends javax.swing.JPanel {
         this.frmPrincipal = frmPrincipal;
         this.revalidate();
         this.repaint();
+        
         this.paneles = new JPanel[]{panelCancionEncontrada1,panelCancionEncontrada2,panelCancionEncontrada3,panelCancionEncontrada4,panelCancionEncontrada5,
         panelCancionEncontrada6,panelCancionEncontrada7,panelCancionEncontrada8,panelCancionEncontrada9,panelCancionEncontrada10};
-        this.labels = new JLabel[]{lblNombreCancion1,lblNombreCancion2,lblNombreCancion3,lblNombreCancion4,lblNombreCancion5,
+        
+        this.labelsNombreCancion = new JLabel[]{lblNombreCancion1,lblNombreCancion2,lblNombreCancion3,lblNombreCancion4,lblNombreCancion5,
         lblNombreCancion6,lblNombreCancion7,lblNombreCancion8,lblNombreCancion9,lblNombreCancion10};
-        iniciaCanciones();
-        this.favCanciones = new JButton[]{btnFavCancion1,btnFavCancion2,btnFavCancion3,btnFavCancion4,btnFavCancion5,
-        btnFavCancion6,btnFavCancion7,btnFavCancion8,btnFavCancion9,btnFavCancion10};
+        
+        this.labelNombreAlbumCancion = new JLabel[]{lblNombreArtistaCancion1,lblNombreArtistaCancion2,lblNombreArtistaCancion3,lblNombreArtistaCancion4,lblNombreArtistaCancion5,
+        lblNombreArtistaCancion6,lblNombreArtistaCancion7,lblNombreArtistaCancion8,lblNombreArtistaCancion9,lblNombreArtistaCancion10};
+
+        this.imagenesAlbumesCancion = new ImagenPerfil[] {imagenCancion3,imagenCancion4,imagenCancion5,
+        imagenCancion6,imagenCancion7,imagenCancion8,imagenCancion9,imagenCancion10, imagenCancion11,imagenCancion12};
+        
+        
+        
         setDefaultTextAndAddFocusListener(buscador, "Buscar...");
+        eliminaCanciones();
         
     }
     
-    private void iniciaCanciones(){
+    private void eliminaCanciones(){
     
         for (JPanel panel : paneles) {
             panel.setVisible(false);
@@ -399,7 +418,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
                         .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,6 +464,11 @@ public class PanelBusqueda extends javax.swing.JPanel {
         btnFavCancion1.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
         btnFavCancion1.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         btnFavCancion1.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnFavCancion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFavCancion1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCancionEncontrada1Layout = new javax.swing.GroupLayout(panelCancionEncontrada1);
         panelCancionEncontrada1.setLayout(panelCancionEncontrada1Layout);
@@ -509,6 +533,11 @@ public class PanelBusqueda extends javax.swing.JPanel {
         btnFavCancion2.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
         btnFavCancion2.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         btnFavCancion2.setPreferredSize(new java.awt.Dimension(28, 28));
+        btnFavCancion2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFavCancion2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCancionEncontrada2Layout = new javax.swing.GroupLayout(panelCancionEncontrada2);
         panelCancionEncontrada2.setLayout(panelCancionEncontrada2Layout);
@@ -1947,11 +1976,12 @@ public class PanelBusqueda extends javax.swing.JPanel {
 
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
         
+        if(!cancionesDesplegadas.isEmpty())
+            cancionesDesplegadas.clear();
         
-        iniciaCanciones();
+        eliminaCanciones();
         int counter = 0;
         
-        System.out.println("-----------------------");
         
         try {
             List<AlbumDTO> albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(buscador.getText(), frmPrincipal.getLoggedUser());
@@ -1961,35 +1991,111 @@ public class PanelBusqueda extends javax.swing.JPanel {
             
             for(AlbumDTO album : albumes){
             
-                if(counter >= 9)
-                    return;
+
                 
                 for(CancionDoc cancion : album.getCanciones()){
                     
-                    System.out.println("Canción = " + cancion.getNombre() + ", del album = " + album.getNombre());
+                    if(counter >= 9)
+                        return;
                     
                     if(cancion.getNombre().length() >= 40){
                     
-                        String nombreCortado = cancion.getNombre().substring(0, 40) + "...";
+                        String nombreCortadoCancion = cancion.getNombre().substring(0, 40) + "...";
                         
-                        labels[counter].setText(nombreCortado);
+                        labelsNombreCancion[counter].setText(nombreCortadoCancion);
+                        
                     }
                     else
-                        labels[counter].setText(cancion.getNombre());
+                        labelsNombreCancion[counter].setText(cancion.getNombre());
+
+                    if(album.getNombre().length() >= 40){
+                    
+                        String nombreCortadoAlbum = album.getNombre().substring(0, 40) + "...";
+                        
+                        labelNombreAlbumCancion[counter].setText(nombreCortadoAlbum);
+                        
+                    }
+                    else
+                        labelNombreAlbumCancion[counter].setText(album.getNombre());
+                    
+                    ImageIcon imagen = new ImageIcon(getClass().getResource(album.getImagen()));
+                    imagenesAlbumesCancion[counter].setImagen(imagen);
                     
                     
                     paneles[counter].setVisible(true);
                     counter++;
+                    
+                    cancionesDesplegadas.add(cancion);
+                    
                 }
                 
             }
                 
         } catch (NegocioException ex) {
-            Logger.getLogger(PanelBusqueda.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al buscar las  canciones" + ex);
+        }
+    }//GEN-LAST:event_buscadorKeyReleased
+
+    private void btnFavCancion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavCancion1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            
+            UsuarioDTO a = this.frmPrincipal.getLoggedUser();
+            
+            FavoritoDoc favNuevo = new FavoritoDoc();
+            
+            List<CancionDoc> favoritas = new ArrayList<>();
+            
+            if(a.getFavoritos()!= null){
+                
+                favNuevo = a.getFavoritos();
+                
+                favoritas = favNuevo.getCanciones();
+                
+            }
+            
+            favoritas.add(cancionesDesplegadas.get(0));
+            
+            favNuevo.setCanciones(favoritas);
+            
+            a.setFavoritos(favNuevo);
+            
+            this.frmPrincipal.usuarioNegocio.actualizarUsuario(a);
+        } catch (NegocioException ex) {
+             JOptionPane.showMessageDialog(this, "Error al guardar esta cancion " + cancionesDesplegadas.get(0).getNombre() + "en favoritos." + ex);
         }
         
-        System.out.println("-----------------------");
-    }//GEN-LAST:event_buscadorKeyReleased
+    }//GEN-LAST:event_btnFavCancion1ActionPerformed
+
+    private void btnFavCancion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavCancion2ActionPerformed
+        // TODO add your handling code here:
+        try{
+        UsuarioDTO a = this.frmPrincipal.getLoggedUser();
+        
+        FavoritoDoc favNuevo = new FavoritoDoc();
+        
+        List<CancionDoc> favoritas = new ArrayList<>();
+        
+        if(a.getFavoritos()!= null){
+        
+            favNuevo = a.getFavoritos();
+            
+            favoritas = favNuevo.getCanciones();
+            
+        }
+
+        favoritas.add(cancionesDesplegadas.get(1));
+        
+        favNuevo.setCanciones(favoritas);
+        
+        a.setFavoritos(favNuevo);
+        
+        this.frmPrincipal.usuarioNegocio.actualizarUsuario(a);
+        
+        }catch(NegocioException ex){
+            JOptionPane.showMessageDialog(this, "Error al guardar esta cancion " + cancionesDesplegadas.get(1).getNombre() + "en favoritos." + ex);
+        }
+    }//GEN-LAST:event_btnFavCancion2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,6 +6,7 @@ frames\DialogFiltros$3.class
 main\Main.class
 frames\PanelBusqueda$5.class
 frames\PanelCuenta$8.class
+frames\PanelBusqueda$13.class
 frames\PanelBusqueda.class
 frames\PanelBusqueda$2.class
 frames\PanelFavoritos$2.class
@@ -100,6 +101,7 @@ frames\PanelCuenta$10.class
 DatosDePrueba\Artistas.class
 util\SwitchButton$2.class
 frames\PanelBusqueda$9.class
+frames\PanelBusqueda$12.class
 frames\FrmPrincipal$8.class
 frames\FrmPrincipal$2.class
 frames\PanelBusqueda$3.class
