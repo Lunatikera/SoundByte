@@ -20,9 +20,11 @@ frames\PanelArtista$3.class
 frames\FrmLogIn$3.class
 frames\PanelBusqueda$10.class
 frames\FrmRegistro$5.class
+util\PanelAlbumDesplegado$1.class
 frames\PanelCuenta.class
 frames\FrmPrincipal$4.class
 frames\FrmRegistro$8.class
+util\ImagenAlbum.class
 frames\FrmLogIn$6.class
 frames\PanelBusqueda$8.class
 frames\PanelArtistas.class
@@ -76,6 +78,7 @@ frames\DialogFiltros$4.class
 frames\PanelAlbumes$1.class
 frames\PanelAlbumes$4.class
 frames\DialogFiltros$1.class
+util\PanelCancionDesplegada.class
 DatosDePrueba\pruebasTEMPORAL.class
 frames\PanelAlbumes$3.class
 frames\FrmLogIn$4.class
@@ -98,9 +101,12 @@ util\ScrollBar.class
 frames\PanelAlbumes$2.class
 frames\PanelCuenta$10.class
 DatosDePrueba\Artistas.class
+util\PanelCancionDesplegada$1.class
 util\SwitchButton$2.class
 frames\PanelBusqueda$9.class
+frames\PanelBusqueda$12.class
 frames\FrmPrincipal$8.class
+util\PanelAlbumDesplegado.class
 frames\FrmPrincipal$2.class
 frames\PanelBusqueda$3.class
 frames\FrmRegistro$6.class

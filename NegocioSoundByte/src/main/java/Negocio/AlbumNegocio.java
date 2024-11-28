@@ -62,12 +62,11 @@ public class AlbumNegocio implements IAlbumNegocio{
             
             List<AlbumDTO> albumes = new ArrayList<>();
             
-            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros())){
+            if(albumDAO.obtenerAlbumesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros()) == null)
+                return null;
             
-                if(!album.getCanciones().isEmpty())
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros()))
                 albumes.add(convertirAlbumDTO(album));
-                
-            }
             
             return albumes;
             

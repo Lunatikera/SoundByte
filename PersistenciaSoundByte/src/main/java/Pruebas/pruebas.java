@@ -35,9 +35,9 @@ public class pruebas {
             
             generoDAO.buscarGeneroPorNombre("Prog");
 
-            System.out.println(albumDAO.obtenerCancionesPorBusqueda("p",  generoDAO.buscarGeneroPorNombre("pock")));
+//            System.out.println(albumDAO.obtenerCancionesPorBusqueda("p",  generoDAO.buscarGeneroPorNombre("pock")));
 
-//            System.out.println(albumDAO.obtenerAlbumesPorBusqueda("",  generoDAO.buscarGeneroPorNombre("Rock")));
+            System.out.println(albumDAO.obtenerAlbumesPorBusqueda("Peperina",  generoDAO.buscarGeneroPorNombre("pock")));
             
         } catch (PersistenciaException ex) {
             Logger.getLogger(pruebas.class.getName()).log(Level.SEVERE, null, ex);

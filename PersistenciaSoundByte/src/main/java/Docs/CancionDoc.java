@@ -19,6 +19,12 @@ public class CancionDoc {
     public CancionDoc() {
     }
 
+    public CancionDoc(ObjectId id, String nombre, String rutaCancion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.rutaCancion = rutaCancion;
+    }
+    
     public ObjectId getId() {
         return id;
     }
