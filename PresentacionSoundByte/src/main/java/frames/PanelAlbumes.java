@@ -6,6 +6,7 @@ package frames;
 
 import Conexion.ConexionDB;
 import DAO.GeneroDAO;
+import DTO.FiltroMusicaDTO;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesNegocio.IGeneroNegocio;
@@ -26,6 +27,8 @@ import javax.swing.JPanel;
 public class PanelAlbumes extends javax.swing.JPanel {
     
     FrmPrincipal frmPrincipal;
+    FiltroMusicaDTO filtros;
+    
 
     /**
      * Creates new form Prueba1
@@ -1742,10 +1745,9 @@ public class PanelAlbumes extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
-        IGeneroDAO generoDAO= new GeneroDAO(conexionDB);
-        IGeneroNegocio generoNegocio= new GeneroNegocio(generoDAO);
-        DialogFiltros popup = new DialogFiltros(frmPrincipal, true, generoNegocio); // 'frmPrincipal' is the parent frame
+
+       
+        DialogFiltros popup = new DialogFiltros(this, frmPrincipal.generoNegocio, frmPrincipal.getLoggedUser(), filtros); // 'frmPrincipal' is the parent frame
         popup.setLocationRelativeTo(frmPrincipal);
 
         popup.setVisible(true);

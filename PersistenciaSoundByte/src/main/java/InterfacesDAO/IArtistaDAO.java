@@ -16,5 +16,8 @@ import java.util.List;
 public interface IArtistaDAO {
     
     public List<ArtistaColeccion> obtenerArtistasPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException;
-            
+    
+    public List<ArtistaColeccion> obtenerArtistasPorBusquedaGeneros(String filtro, List<GeneroColeccion> especificados) throws PersistenciaException;
+
+    
 }

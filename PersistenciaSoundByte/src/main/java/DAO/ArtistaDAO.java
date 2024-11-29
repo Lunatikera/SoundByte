@@ -36,7 +36,33 @@ public class ArtistaDAO implements IArtistaDAO{
         try{
         List<ArtistaColeccion> artistas = new ArrayList<>();
 
-        Bson filtroArtista1 = Filters.nin("artista.generos", restringidos);
+        Bson filtroArtista1 = Filters.nin("generos", restringidos);
+        Bson filtroArtista2 = Filters.regex("nombre", "^" +filtro, "i");
+        
+        Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
+        
+        for(ArtistaColeccion artista : coleccion.find(filtrosCombinados)){
+
+            artistas.add(artista);
+            
+        }
+
+        if(artistas.isEmpty())
+            return null;
+        
+        return artistas;
+        
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar los artistas por filtro en la base de datos", e);
+        } 
+    }
+        
+    @Override
+    public List<ArtistaColeccion> obtenerArtistasPorBusquedaGeneros(String filtro, List<GeneroColeccion> especificados) throws PersistenciaException{
+        try{
+        List<ArtistaColeccion> artistas = new ArrayList<>();
+
+        Bson filtroArtista1 = Filters.in("generos", especificados);
         Bson filtroArtista2 = Filters.regex("nombre", "^" +filtro, "i");
         
         Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);

@@ -4,13 +4,17 @@
  */
 package frames;
 
+import Colecciones.GeneroColeccion;
 import DAO.GeneroDAO;
+import DTO.FiltroMusicaDTO;
 import DTO.GeneroDTO;
+import DTO.UsuarioDTO;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesNegocio.IGeneroNegocio;
 import Negocio.GeneroNegocio;
 import excepciones.NegocioException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -26,25 +30,32 @@ public class DialogFiltros extends javax.swing.JDialog {
     /**
      * Creates new form DialogFiltros
      */
-    IGeneroNegocio generoNegocio;
-    List<GeneroDTO> generos;
-    List<GeneroDTO> generosAFiltrar = new ArrayList<>();
     
-    boolean buscarCanciones = false;
-    boolean buscarArtistas = false;
-    boolean buscarAlbumes = false;
-
-
+    List<GeneroDTO> generos = new ArrayList<>();
+    List<GeneroDTO> generosAFiltrar = new ArrayList<>();
+    FiltroMusicaDTO filtros;
+    
+    
+    PanelAlbumes pAlbumes;
+    PanelBusqueda pBusqueda;
+    PanelArtistas pArtistas;
+    PanelCanciones pCanciones;
+    
+    
     DefaultListModel<String> todosGeneros = new DefaultListModel<>();
     DefaultListModel<String> generosFiltrados = new DefaultListModel<>();
 
-    public DialogFiltros(java.awt.Frame parent, boolean modal, IGeneroNegocio generoNegocio) {
+    public DialogFiltros(PanelBusqueda panelBusqueda, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
         
-        super(parent, modal);
+ 
         initComponents();
-        this.generoNegocio = generoNegocio;
+
         this.setTitle("Filtros");
 
+        this.filtros = filtros;
+        
+        inicializaFiltros(filtros);
+        
         this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
         this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
 
@@ -52,8 +63,182 @@ public class DialogFiltros extends javax.swing.JDialog {
         jList5.setModel(generosFiltrados);
 
         try {
+            
+            
+            HashMap<Integer, ObjectId> mapIds = new HashMap<>();
+            
+            for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
+                mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+                
+            
+            
+            for(int i = loggedUser.getRestringidos().getGeneros().size(); i<=generosAFiltrar.size()-1+loggedUser.getRestringidos().getGeneros().size(); i++)
+                mapIds.put(i, generosAFiltrar.get(i).getId());
+            
+            for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
+            
+                if(!mapIds.containsValue(generoAux.getId()))
+                    generos.add(generoAux);
+                
+            }
 
-            this.generos = generoNegocio.buscarTodosGeneros();
+            
+
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+        }
+
+        llenarListGeneros(generos);
+
+    }
+    public DialogFiltros(PanelAlbumes panelAlbumes, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+        
+ 
+        initComponents();
+
+        this.setTitle("Filtros");
+
+        this.filtros = filtros;
+        
+        inicializaFiltros(filtros);
+        
+        switchArtistas.setSelected(false);
+        switchArtistas.disable();
+        
+        switchCanciones.setSelected(false);
+        switchArtistas.disable();
+        
+        this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
+        this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
+
+        jList4.setModel(todosGeneros);
+        jList5.setModel(generosFiltrados);
+
+        try {
+            
+            
+            HashMap<Integer, ObjectId> mapIds = new HashMap<>();
+            
+            for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
+                mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+                
+            
+            
+            for(int i = loggedUser.getRestringidos().getGeneros().size(); i<=generosAFiltrar.size()-1+loggedUser.getRestringidos().getGeneros().size(); i++)
+                mapIds.put(i, generosAFiltrar.get(i).getId());
+            
+            for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
+            
+                if(!mapIds.containsValue(generoAux.getId()))
+                    generos.add(generoAux);
+                
+            }
+
+            
+
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+        }
+
+        llenarListGeneros(generos);
+
+    }
+    public DialogFiltros(PanelArtistas panelArtistas, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+        
+ 
+        initComponents();
+
+        this.setTitle("Filtros");
+
+        this.filtros = filtros;
+        
+        inicializaFiltros(filtros);
+        
+        switchAlbumes.setSelected(false);
+        switchAlbumes.disable();
+        
+        switchCanciones.setSelected(false);
+        switchCanciones.disable();
+        
+        this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
+        this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
+
+        jList4.setModel(todosGeneros);
+        jList5.setModel(generosFiltrados);
+
+        try {
+            
+            
+            HashMap<Integer, ObjectId> mapIds = new HashMap<>();
+            
+            for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
+                mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+                
+            
+            
+            for(int i = loggedUser.getRestringidos().getGeneros().size(); i<=generosAFiltrar.size()-1+loggedUser.getRestringidos().getGeneros().size(); i++)
+                mapIds.put(i, generosAFiltrar.get(i).getId());
+            
+            for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
+            
+                if(!mapIds.containsValue(generoAux.getId()))
+                    generos.add(generoAux);
+                
+            }
+
+            
+
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+        }
+
+        llenarListGeneros(generos);
+
+    }
+    public DialogFiltros(PanelCanciones panelCanciones, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+        
+ 
+        initComponents();
+
+        this.setTitle("Filtros");
+
+        this.filtros = filtros;
+        
+        inicializaFiltros(filtros);
+        
+        switchAlbumes.setSelected(false);
+        switchAlbumes.disable();
+        
+        switchArtistas.setSelected(false);
+        switchArtistas.disable();
+        
+        this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
+        this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
+
+        jList4.setModel(todosGeneros);
+        jList5.setModel(generosFiltrados);
+
+        try {
+            
+            
+            HashMap<Integer, ObjectId> mapIds = new HashMap<>();
+            
+            for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
+                mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+                
+            
+            
+            for(int i = loggedUser.getRestringidos().getGeneros().size(); i<=generosAFiltrar.size()-1+loggedUser.getRestringidos().getGeneros().size(); i++)
+                mapIds.put(i, generosAFiltrar.get(i).getId());
+            
+            for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
+            
+                if(!mapIds.containsValue(generoAux.getId()))
+                    generos.add(generoAux);
+                
+            }
+
+            
 
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
@@ -63,6 +248,31 @@ public class DialogFiltros extends javax.swing.JDialog {
 
     }
 
+    public FiltroMusicaDTO getFiltros() {
+        return filtros;
+    }
+
+    public void inicializaFiltros(FiltroMusicaDTO filtro){
+    
+        if(filtro == null)
+            return;
+        
+        if(filtro.getAlbumes())
+           switchAlbumes.setSelected(true);
+       
+        if(filtro.getArtistas())
+           switchArtistas.setSelected(true);
+       
+        if(filtro.getCanciones())
+           switchCanciones.setSelected(true);
+       
+       
+        if(filtro.getGeneros() != null)
+            this.generosAFiltrar = filtro.getGeneros();
+        
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,14 +301,14 @@ public class DialogFiltros extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnCambiarAFiltrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jList5 = new javax.swing.JList<>();
         jLabel11 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnGuardarFiltros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -226,15 +436,15 @@ public class DialogFiltros extends javax.swing.JDialog {
         jLabel12.setText("  ");
         jPanel9.add(jLabel12);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/swap.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnCambiarAFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/swap.png"))); // NOI18N
+        btnCambiarAFiltrar.setBorderPainted(false);
+        btnCambiarAFiltrar.setContentAreaFilled(false);
+        btnCambiarAFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnCambiarAFiltrarActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton3);
+        jPanel9.add(btnCambiarAFiltrar);
 
         jLabel3.setText("  ");
         jPanel9.add(jLabel3);
@@ -286,15 +496,15 @@ public class DialogFiltros extends javax.swing.JDialog {
 
         jPanel12.setBackground(new java.awt.Color(48, 48, 48));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aceptar.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarFiltros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aceptar.png"))); // NOI18N
+        btnGuardarFiltros.setBorderPainted(false);
+        btnGuardarFiltros.setContentAreaFilled(false);
+        btnGuardarFiltros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnGuardarFiltrosActionPerformed(evt);
             }
         });
-        jPanel12.add(jButton2);
+        jPanel12.add(btnGuardarFiltros);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -369,15 +579,38 @@ public class DialogFiltros extends javax.swing.JDialog {
 
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnGuardarFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarFiltrosActionPerformed
 
-        buscarAlbumes = switchAlbumes.isSelected();
-        buscarCanciones = switchCanciones.isSelected();
-        buscarArtistas = switchArtistas.isSelected();   
+        FiltroMusicaDTO filtros = new FiltroMusicaDTO();
+        
+        filtros.setAlbumes(switchAlbumes.isSelected());
+        filtros.setCanciones(switchCanciones.isSelected());
+        filtros.setArtistas(switchArtistas.isSelected());
+        
+        if(!generosAFiltrar.isEmpty())
+            filtros.setGeneros(generosAFiltrar);
+        else
+            filtros.setGeneros(generos);
+        
+        this.filtros = filtros;
+        
+        if(pAlbumes != null)
+            pAlbumes.filtros = filtros;
+        
+        if(pArtistas != null)
+            pArtistas.filtro = filtros;
+        
+        if(pBusqueda != null)
+            pBusqueda.filtroMusica = filtros;
+        
+        if(pCanciones != null)
+            pCanciones.filtro = filtros;
+        
+        this.dispose();
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnGuardarFiltrosActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnCambiarAFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarAFiltrarActionPerformed
 
         int indexSeleccionado1 = jList4.getSelectedIndex();
 
@@ -408,12 +641,12 @@ public class DialogFiltros extends javax.swing.JDialog {
         todosGeneros.remove(indexSeleccionado1);
 
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnCambiarAFiltrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnCambiarAFiltrar;
+    private javax.swing.JButton btnGuardarFiltros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -89,6 +89,81 @@ public class AlbumNegocio implements IAlbumNegocio{
             throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
         }
         
+    }    
+    @Override
+    public List<AlbumDTO> obtenerCancionesPorBusquedaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException{
+        
+        try {
+            
+            List<AlbumDTO> albumes = new ArrayList<>();
+            List<GeneroColeccion> generosEspecificados = new ArrayList<>();
+            
+            for(GeneroDTO genero : generos){
+            
+                GeneroColeccion generoC = new GeneroColeccion();
+                
+                generoC.setId(genero.getId());
+                generoC.setNombre(genero.getNombre());
+                generoC.setDescrpicion(genero.getDescripcion());
+                generoC.setImagenGenero(genero.getImagenGenero());
+                
+                generosEspecificados.add(generoC);
+                
+            }
+            
+
+            if(albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados)){
+            
+                albumes.add(convertirAlbumDTO(album));
+                
+            }
+            
+            return albumes;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
+    }
+    
+    @Override
+    public List<AlbumDTO> obtenerAlbumesPorBusquedaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException{
+        
+        try {
+            
+            List<AlbumDTO> albumes = new ArrayList<>();
+            List<GeneroColeccion> generosEspecificados = new ArrayList<>();
+
+            
+            for(GeneroDTO genero : generos){
+            
+                GeneroColeccion generoC = new GeneroColeccion();
+                
+                generoC.setId(genero.getId());
+                generoC.setNombre(genero.getNombre());
+                generoC.setDescrpicion(genero.getDescripcion());
+                generoC.setImagenGenero(genero.getImagenGenero());
+                
+                generosEspecificados.add(generoC);
+                
+            }
+            
+            
+            if(albumDAO.obtenerAlbumesPorBusqueda(filtro, generosEspecificados) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusqueda(filtro, generosEspecificados))
+                albumes.add(convertirAlbumDTO(album));
+            
+            return albumes;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
     }
     
     @Override

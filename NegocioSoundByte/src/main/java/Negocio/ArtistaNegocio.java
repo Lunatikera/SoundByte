@@ -4,12 +4,17 @@
  */
 package Negocio;
 
+import Colecciones.AlbumColeccion;
 import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
+import DTO.AlbumDTO;
 import DTO.ArtistaDTO;
 import DTO.GeneroDTO;
+import DTO.UsuarioDTO;
 import InterfacesDAO.IArtistaDAO;
 import InterfacesNegocio.IArtistaNegocio;
+import excepciones.NegocioException;
+import excepciones.PersistenciaException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +33,72 @@ public class ArtistaNegocio implements IArtistaNegocio{
     }
     
     @Override
-    public ArtistaDTO convertirArtistaColeccion(ArtistaColeccion artistaC){
+    public List<ArtistaDTO> obtenerArtistasPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException{
+        
+        try {
+            
+            List<ArtistaDTO> artistas = new ArrayList<>();
+            List<GeneroColeccion> generosRestringidos = new ArrayList<>();
+
+            
+            if(restringidos.getRestringidos() != null)
+                if(restringidos.getRestringidos().getGeneros() != null)
+                    generosRestringidos = restringidos.getRestringidos().getGeneros();
+            
+            
+            
+            if(artistaDAO.obtenerArtistasPorBusqueda(filtro, generosRestringidos) == null)
+                return null;
+            
+            for(ArtistaColeccion artista : artistaDAO.obtenerArtistasPorBusqueda(filtro, generosRestringidos))
+                artistas.add(convertirArtistaDTO(artista));
+            
+            return artistas;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
+    }    
+    
+    @Override
+    public List<ArtistaDTO> obtenerArtistasPorBusquedaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException{
+        
+        try {
+            
+            List<ArtistaDTO> artistas = new ArrayList<>();
+            List<GeneroColeccion> generosEspecificados = new ArrayList<>();
+            
+            for(GeneroDTO genero : generos){
+            
+                GeneroColeccion generoC = new GeneroColeccion();
+                
+                generoC.setId(genero.getId());
+                generoC.setNombre(genero.getNombre());
+                generoC.setDescrpicion(genero.getDescripcion());
+                generoC.setImagenGenero(genero.getImagenGenero());
+                
+                generosEspecificados.add(generoC);
+                
+            }
+            
+
+            if(artistaDAO.obtenerArtistasPorBusquedaGeneros(filtro, generosEspecificados) == null)
+                return null;
+            
+            for(ArtistaColeccion artista : artistaDAO.obtenerArtistasPorBusquedaGeneros(filtro, generosEspecificados))
+                artistas.add(convertirArtistaDTO(artista));
+            
+            return artistas;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
+    }
+    
+    @Override
+    public ArtistaDTO convertirArtistaDTO(ArtistaColeccion artistaC){
     
         ArtistaDTO artD = new ArtistaDTO();
             
@@ -71,6 +141,52 @@ public class ArtistaNegocio implements IArtistaNegocio{
         }
         
         return artD;
+        
+    }    
+    @Override
+    public ArtistaColeccion convertirArtistaColeccion(ArtistaDTO artistaDTO){
+    
+        ArtistaColeccion artColeccion = new ArtistaColeccion();
+            
+        artColeccion.setId(artistaDTO.getId());
+
+        if (artistaDTO.getGeneros() != null){
+
+            List<GeneroColeccion> generos = new ArrayList<>();
+
+            for(GeneroDTO genero : artistaDTO.getGeneros()){
+
+                GeneroColeccion generoD = new GeneroColeccion();
+
+                generoD.setId(genero.getId());
+                generoD.setImagenGenero(genero.getImagenGenero());
+                generoD.setNombre(genero.getNombre());
+
+                generos.add(generoD);
+
+            }
+
+            artColeccion.setGeneros(generos);
+
+        } else
+            artColeccion.setGeneros(null);
+
+        artColeccion.setNombre(artistaDTO.getNombre());
+        artColeccion.setImagen(artistaDTO.getImagen());
+//        artD.setRedesSociales(albumC.getRedesSociales());
+//        artD.setEsBanda(albumC.getArtista().getEsBanda());
+
+        if(artistaDTO.getIntegrante() != null){
+
+            artColeccion.setIntegrante(artistaDTO.getIntegrante());
+
+        } else{
+
+            artColeccion.setIntegrante(null);
+
+        }
+        
+        return artColeccion;
         
     }
 }

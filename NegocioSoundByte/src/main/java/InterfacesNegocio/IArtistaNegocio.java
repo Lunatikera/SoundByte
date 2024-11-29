@@ -6,6 +6,10 @@ package InterfacesNegocio;
 
 import Colecciones.ArtistaColeccion;
 import DTO.ArtistaDTO;
+import DTO.GeneroDTO;
+import DTO.UsuarioDTO;
+import excepciones.NegocioException;
+import java.util.List;
 
 /**
  *
@@ -13,6 +17,12 @@ import DTO.ArtistaDTO;
  */
 public interface IArtistaNegocio {
     
-    public ArtistaDTO convertirArtistaColeccion(ArtistaColeccion artistaC);
+    public ArtistaDTO convertirArtistaDTO(ArtistaColeccion artistaC);
+    
+    public List<ArtistaDTO> obtenerArtistasPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
+    
+    public List<ArtistaDTO> obtenerArtistasPorBusquedaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException;
+    
+    public ArtistaColeccion convertirArtistaColeccion(ArtistaDTO artistaDTO);
     
 }
