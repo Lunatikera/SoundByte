@@ -8,6 +8,8 @@ import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IAlbumNegocio;
+import InterfacesNegocio.IArtistaNegocio;
+import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.UsuarioNegocio;
 import excepciones.NegocioException;
@@ -44,12 +46,18 @@ public class FrmRegistro extends javax.swing.JFrame {
      */
     IUsuarioNegocio usuarioNegocio;
     IAlbumNegocio albumNegocio;
+    IGeneroNegocio generoNegocio;
+    IArtistaNegocio artistaNegocio;
+    
     byte[] imagenPerfilNueva;
 
-    public FrmRegistro(IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+    public FrmRegistro(IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio, IGeneroNegocio generoNegocio, IArtistaNegocio artistaNegocio) {
         initComponents();
         this.usuarioNegocio = usuarioNegocio;
         this.albumNegocio = albumNegocio;
+        this.generoNegocio = generoNegocio;
+        this.artistaNegocio = artistaNegocio;
+        
         this.setTitle("Registrate");
         this.jLabel1.setFocusable(true);
         this.setLocationRelativeTo(null);
@@ -481,7 +489,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         try {
             this.usuarioNegocio.crearUsuario(usuarioNuevo);
             JOptionPane.showMessageDialog(this, "Usuario creado con éxito");
-            FrmLogIn login = new FrmLogIn(usuarioNegocio, albumNegocio);
+            FrmLogIn login = new FrmLogIn(usuarioNegocio, albumNegocio, generoNegocio, artistaNegocio);
             login.setVisible(true);
             this.dispose();
         } catch (NegocioException ex) {

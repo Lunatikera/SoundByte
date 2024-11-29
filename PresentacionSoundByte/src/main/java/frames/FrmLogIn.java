@@ -8,6 +8,8 @@ import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IAlbumNegocio;
+import InterfacesNegocio.IArtistaNegocio;
+import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.UsuarioNegocio;
 import excepciones.NegocioException;
@@ -29,11 +31,17 @@ public class FrmLogIn extends javax.swing.JFrame {
 
     IUsuarioNegocio usuarioNegocio;
     IAlbumNegocio albumNegocio;
+    IGeneroNegocio generoNegocio;
+    IArtistaNegocio artistaNegocio;
     
-    public FrmLogIn( IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+    
+    public FrmLogIn( IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio, IGeneroNegocio generoNegocio, IArtistaNegocio artistaNegocio) {
         initComponents();
         this.usuarioNegocio=usuarioNegocio;
         this.albumNegocio=albumNegocio;
+        this.generoNegocio=generoNegocio;
+        this.artistaNegocio=artistaNegocio;
+        
         this.setTitle("Log In");
         this.setLocationRelativeTo(null);
         this.jLabel1.setFocusable(true);
@@ -338,7 +346,7 @@ public class FrmLogIn extends javax.swing.JFrame {
                  return;
             }
             
-            FrmPrincipal f = new FrmPrincipal(loggedUser, usuarioNegocio, albumNegocio);
+            FrmPrincipal f = new FrmPrincipal(loggedUser, usuarioNegocio, albumNegocio, generoNegocio, artistaNegocio);
             f.setVisible(true);
             this.dispose();
             
@@ -353,7 +361,7 @@ public class FrmLogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        FrmRegistro registro=new FrmRegistro(usuarioNegocio, albumNegocio);
+        FrmRegistro registro=new FrmRegistro(usuarioNegocio, albumNegocio, generoNegocio,artistaNegocio);
         registro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed

@@ -12,6 +12,7 @@ import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IAlbumNegocio;
+import InterfacesNegocio.IArtistaNegocio;
 import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.GeneroNegocio;
@@ -35,13 +36,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
     
     IUsuarioNegocio usuarioNegocio;
     IAlbumNegocio albumNegocio;
+    IGeneroNegocio generoNegocio;
+    IArtistaNegocio artistaNegocio;
 
-    public FrmPrincipal(UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+    public FrmPrincipal(UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio, IGeneroNegocio generoNegocio, IArtistaNegocio artistaNegocio) {
         initComponents();
         
         this.loggedUser = loggedUser;
         this.usuarioNegocio=usuarioNegocio;
         this.albumNegocio=albumNegocio;
+        this.generoNegocio=generoNegocio;
+        this.artistaNegocio=artistaNegocio;
         
         this.setTitle("SoundByte");
         this.setLocation(265, 76);

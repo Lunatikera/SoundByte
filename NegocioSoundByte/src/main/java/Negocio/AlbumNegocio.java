@@ -10,6 +10,7 @@ import DTO.AlbumDTO;
 import DTO.ArtistaDTO;
 import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
+import Docs.RestriccionDoc;
 import InterfacesDAO.IAlbumDAO;
 import InterfacesNegocio.IAlbumNegocio;
 import excepciones.NegocioException;
@@ -61,11 +62,19 @@ public class AlbumNegocio implements IAlbumNegocio{
         try {
             
             List<AlbumDTO> albumes = new ArrayList<>();
+            List<GeneroColeccion> generosRestringidos = new ArrayList<>();
+
             
-            if(albumDAO.obtenerAlbumesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros()) == null)
+            if(restringidos.getRestringidos() != null)
+                if(restringidos.getRestringidos().getGeneros() != null)
+                    generosRestringidos = restringidos.getRestringidos().getGeneros();
+            
+            
+            
+            if(albumDAO.obtenerAlbumesPorBusqueda(filtro, generosRestringidos) == null)
                 return null;
             
-            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros()))
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusqueda(filtro, generosRestringidos))
                 albumes.add(convertirAlbumDTO(album));
             
             return albumes;

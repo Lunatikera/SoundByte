@@ -51,9 +51,7 @@ public class Main {
         IGeneroDAO generoDAO = new GeneroDAO(conexionDB);
         IGeneroNegocio generoNegocio = new GeneroNegocio(generoDAO);
         
-        IFachadaNegocio fachada = new FachadaNegocio(albumNegocio, artistaNegocio, generoNegocio, usuarioNegocio);
-        
-        FrmLogIn logIn = new FrmLogin(fachada);
+        FrmLogIn logIn = new FrmLogIn(usuarioNegocio, albumNegocio, generoNegocio, artistaNegocio);
         logIn.setVisible(true);
 
     }
