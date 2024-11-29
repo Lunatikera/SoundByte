@@ -4,12 +4,15 @@
  */
 package InterfacesNegocio;
 
+import Colecciones.ArtistaColeccion;
+import DTO.ArtistaDTO;
+
 /**
  *
  * @author santi
  */
 public interface IArtistaNegocio {
     
-    
+    public ArtistaDTO convertirArtistaColeccion(ArtistaColeccion artistaC);
     
 }

@@ -4,6 +4,7 @@
  */
 package InterfacesNegocio;
 
+import Colecciones.AlbumColeccion;
 import DTO.AlbumDTO;
 import DTO.UsuarioDTO;
 import excepciones.NegocioException;
@@ -18,5 +19,9 @@ public interface IAlbumNegocio {
     public List<AlbumDTO> obtenerCancionesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
     
     public List<AlbumDTO> obtenerAlbumesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
+    
+    public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC);
+    
+    public AlbumColeccion convertirAlbumColeccion(AlbumDTO albumDTO);
     
 }

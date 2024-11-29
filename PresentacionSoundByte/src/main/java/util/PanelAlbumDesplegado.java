@@ -4,15 +4,21 @@
  */
 package util;
 
+import Colecciones.AlbumColeccion;
 import DTO.AlbumDTO;
 import DTO.UsuarioDTO;
 import Docs.FavoritoDoc;
+import InterfacesNegocio.IAlbumNegocio;
+import InterfacesNegocio.IUsuarioNegocio;
+import excepciones.NegocioException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,6 +32,9 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
   
     AlbumDTO album = new AlbumDTO();
     UsuarioDTO loggedUser = new UsuarioDTO();
+    private final IUsuarioNegocio usuarioNegocio;
+    private final IAlbumNegocio albumNegocio;
+    ImageIcon iconoActivo;
 
     boolean esFav = false;
 
@@ -33,56 +42,59 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
      * Creates new form PanelAlbumDesplegado
      * @param panelPadre
      */
-    public PanelAlbumDesplegado() {
+    public PanelAlbumDesplegado(AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+        
+        
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        this.albumNegocio = albumNegocio;
         
         initComponents();
-
         
-
+        this.setOpaque(false);
         
-    }
-
-    public void iniciarAlbum(){
-    
-        esFav = checarSiEsFav();
         
         cargarComponentes();
+        checarSiEsFav();
         
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
     }
-    
-    public void setAlbum(AlbumDTO album){
-    
-        this.album = album;
-        
-    }
-    
-    public void setUsuario(UsuarioDTO loggedUser){
-    
-        this.loggedUser = loggedUser;
-        
-    }
-    
-    public boolean checarSiEsFav(){
+
+    public void checarSiEsFav(){
     
         FavoritoDoc favorito = new FavoritoDoc();
         
         if(loggedUser.getFavoritos() != null)
             favorito = loggedUser.getFavoritos();
-        else 
-            return false;
+        else {
+            esFav = false;
+            return;
+        }
         
-        if(loggedUser.getFavoritos().getAlbumes() == null)
-            return false;
+        if(loggedUser.getFavoritos().getAlbumes() == null){
+            esFav = false;
+            return;
+        }
         
         HashMap<Integer, ObjectId> mapIds = new HashMap<>();
         
-        for(int i = 0; i>=favorito.getAlbumes().size(); i++){
+        for(int i = 0; i<=favorito.getAlbumes().size()-1; i++){
         
             mapIds.put(i, favorito.getAlbumes().get(i).getId());
             
         }
         
-        return mapIds.containsValue(album.getId());
+        esFav = mapIds.containsValue(album.getId());
         
     }
 
@@ -91,8 +103,11 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
 
         Graphics2D g2d = (Graphics2D) g.create();
 
-
-
+        super.paintComponent(g);
+        
+        btnAgregarAFav.setIcon(iconoActivo);
+        
+        
         g2d.dispose(); // Dispose of the graphics context
     }
 
@@ -110,7 +125,6 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
         lblNombreArtista.setText("2002  • Seru Giran");
         lblNombreArtista.setToolTipText("");
 
-        btnAgregarAFav.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starClick.png"))); // NOI18N
         btnAgregarAFav.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         btnAgregarAFav.setPreferredSize(new java.awt.Dimension(28, 28));
         btnAgregarAFav.addActionListener(new java.awt.event.ActionListener() {
@@ -156,39 +170,93 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    public void cargarComponentes(){
-        
-        setNombreAlbum();
-        setNombreArtistas();
-        setImagenPerfil();
-        
-    }
-    
     private void btnAgregarAFavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAFavActionPerformed
 
+        checarSiEsFav();
+        
+        if(!esFav){
             FavoritoDoc favNuevo = new FavoritoDoc();
 
-            List<AlbumDTO> favoritos = new ArrayList<>();
-//
-//            if(loggedUser.getFavoritos()!= null){
-//
-//                favNuevo = loggedUser.getFavoritos();
-//
-//                favoritos = favNuevo.getAlbumes();
-//
-//            }
-//
-//            favoritas.add(cancion);
-//
-//            favNuevo.setCanciones(favoritas);
+            List<AlbumDTO> favDTO = new ArrayList<>();
+            List<AlbumColeccion> favColeccion = new ArrayList<>();
 
-            loggedUser.setFavoritos(favNuevo);
+
+            try {
+                
+            
+                if(loggedUser.getFavoritos()!= null){
+
+                    favNuevo = loggedUser.getFavoritos();
+
+                    if(favNuevo.getAlbumes() != null)
+
+                        for(AlbumColeccion albumC : favNuevo.getAlbumes()){
+
+                            favDTO.add(albumNegocio.convertirAlbumDTO(albumC));
+
+                        }
+                }
+
+                for(AlbumDTO albumDTO : favDTO)
+                    favColeccion.add(albumNegocio.convertirAlbumColeccion(albumDTO));
+
+                favColeccion.add(albumNegocio.convertirAlbumColeccion(album));
+                favNuevo.setAlbumes(favColeccion);
+
+                loggedUser.setFavoritos(favNuevo);
+
+                usuarioNegocio.actualizarUsuario(loggedUser);
+
+                ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+                iconoActivo = icon;
+
+                
+                
+            } catch (NegocioException ex) {
+                JOptionPane.showMessageDialog(this, "Error al agregar el album " + album.getNombre() + " a favoritos para el usuario " + loggedUser.getUsername() + ex);
+            }
+            
+            }
+            else{
+            
+            try {
+                
+                FavoritoDoc favNuevo = loggedUser.getFavoritos();
+                
+                List<AlbumColeccion> favColeccion = favNuevo.getAlbumes();
+                List<AlbumColeccion> favColeccionNuevo = new ArrayList<>();
+
+                for(AlbumColeccion albumExistente : favColeccion){
+                
+                    if(!albumExistente.getId().equals(album.getId()))
+                        favColeccionNuevo.add(albumExistente);
+                    
+                }
+                
+
+                favNuevo.setAlbumes(favColeccionNuevo);
+                
+                loggedUser.setFavoritos(favNuevo);
+                
+                usuarioNegocio.actualizarUsuario(loggedUser);
+                
+                ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+                iconoActivo = icon;
+                
+                
+            } catch (NegocioException ex) {
+                 JOptionPane.showMessageDialog(this, "Error al elimnar el album " + album.getNombre() + " de favoritos para el usuario " + loggedUser.getUsername() + ex);
+            }
+                
+            }
+            
+            this.repaint();
         
     }//GEN-LAST:event_btnAgregarAFavActionPerformed
 
     public void setNombreAlbum(){
     
-        //Si el nombre del album es muy larga, lo cortamos
+        //Si el nombre del album es muy largo, lo cortamos
         if(album.getNombre().length() >= 15){
 
             String nombreCortadoAlbum = album.getNombre().substring(0, 15) + "...";
@@ -227,7 +295,15 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
         imagenAlbum1.setImagen(imagen);
 
     }
-
+    
+    public void cargarComponentes(){
+        
+        setNombreAlbum();
+        setNombreArtistas();
+        setImagenPerfil();
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private util.BotonToggle btnAgregarAFav;
     private util.ImagenAlbum imagenAlbum1;

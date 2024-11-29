@@ -5,9 +5,13 @@
 package Negocio;
 
 import Colecciones.ArtistaColeccion;
+import Colecciones.GeneroColeccion;
 import DTO.ArtistaDTO;
+import DTO.GeneroDTO;
 import InterfacesDAO.IArtistaDAO;
 import InterfacesNegocio.IArtistaNegocio;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -23,13 +27,50 @@ public class ArtistaNegocio implements IArtistaNegocio{
         
     }
     
+    @Override
     public ArtistaDTO convertirArtistaColeccion(ArtistaColeccion artistaC){
     
-        ArtistaDTO artistaD = new ArtistaDTO();
+        ArtistaDTO artD = new ArtistaDTO();
+            
+        artD.setId(artistaC.getId());
+
+        if (artistaC.getGeneros() != null){
+
+            List<GeneroDTO> generos = new ArrayList<>();
+
+            for(GeneroColeccion genero : artistaC.getGeneros()){
+
+                GeneroDTO generoD = new GeneroDTO();
+
+                generoD.setId(genero.getId());
+                generoD.setImagenGenero(genero.getImagenGenero());
+                generoD.setNombre(genero.getNombre());
+
+                generos.add(generoD);
+
+            }
+
+            artD.setGeneros(generos);
+
+        } else
+            artD.setGeneros(null);
+
+        artD.setNombre(artistaC.getNombre());
+        artD.setImagen(artistaC.getImagen());
+//        artD.setRedesSociales(albumC.getRedesSociales());
+//        artD.setEsBanda(albumC.getArtista().getEsBanda());
+
+        if(artistaC.getIntegrante() != null){
+
+            artD.setIntegrante(artistaC.getIntegrante());
+
+        } else{
+
+            artD.setIntegrante(null);
+
+        }
         
-        artistaD.setId(artistaC.getId());
-        
-        return artistaD;
+        return artD;
         
     }
 }

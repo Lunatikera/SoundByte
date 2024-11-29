@@ -4,6 +4,8 @@
  */
 package frames;
 
+import DTO.UsuarioDTO;
+import excepciones.NegocioException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +13,20 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import util.Encriptacion;
 
 /**
  *
@@ -21,6 +36,8 @@ public class PanelCuenta extends javax.swing.JPanel {
 
     FrmPrincipal frmPrincipal;
     private boolean cambiarContrasena = false;
+    UsuarioDTO usuarioCambiado;
+    byte[] imagenNueva;
 
     /**
      * Creates new form Prueba1
@@ -93,6 +110,17 @@ public class PanelCuenta extends javax.swing.JPanel {
             }
         });
 
+        txtEmail.setText(frmPrincipal.getLoggedUser().getCorreoElectronico());
+        txtUsuario.setText(frmPrincipal.getLoggedUser().getUsername());
+    
+        if(frmPrincipal.getLoggedUser().getImagenPerfil() != null){
+            
+        imagenNueva = frmPrincipal.getLoggedUser().getImagenPerfil();
+        ImageIcon imagen = new ImageIcon(imagenNueva);
+        imagenPerfil1.setImagen(imagen);
+        
+        }
+        
     }
 
     private void setDefaultTextAndAddFocusListener(javax.swing.JTextField campoTexto, String textoDefault) {
@@ -230,6 +258,11 @@ public class PanelCuenta extends javax.swing.JPanel {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EditarCuenta.png"))); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         btnMostrarContrasena1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view.png"))); // NOI18N
         btnMostrarContrasena1.setBorderPainted(false);
@@ -376,10 +409,118 @@ public class PanelCuenta extends javax.swing.JPanel {
     private void btnMostrarContrasena2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarContrasena2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarContrasena2ActionPerformed
-
+  
+    public byte[] convertirImagenABytes(File file) throws IOException {
+        // Leer el archivo de imagen en un InputStream
+        InputStream inputStream = new FileInputStream(file);
+        byte[] bytes = inputStream.readAllBytes();
+        inputStream.close();
+        return bytes;
+    }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+            // Mostrar el selector de archivos
+        JFileChooser fileChooser = new JFileChooser();
+        
+        fileChooser.setFileFilter(new FileFilter() {
+        @Override
+        public boolean accept(File file) {
+            if (file.isDirectory()) {
+                return true; // Allow navigation
+            }
+            String fileName = file.getName().toLowerCase();
+            return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") ||
+                   fileName.endsWith(".png") || fileName.endsWith(".gif") ||
+                   fileName.endsWith(".bmp");
+        }
+
+        @Override
+        public String getDescription() {
+            return "Image Files (*.jpg, *.jpeg, *.png, *.gif, *.bmp)";
+        }
+        });
+        
+        int result = fileChooser.showOpenDialog(this);
+
+        // Verificar si se seleccionó un archivo
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String imagePath = selectedFile.getAbsolutePath();
+            System.out.println(imagePath);
+
+            // Convertir la imagen a byte[]
+            try {
+                byte[] imageData = convertirImagenABytes(selectedFile);
+                ImageIcon imagen = new ImageIcon(imageData);
+                imagenPerfil1.setImagen(imagen);
+                this.revalidate();
+                this.repaint();
+                imagenNueva = imageData;
+                // Usar el byte[] para guardar o enviar según sea necesario
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                // Manejar el error según sea necesario
+            }
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            
+            usuarioCambiado = frmPrincipal.getLoggedUser();
+            
+            
+            String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+            Pattern pattern = Pattern.compile(emailRegex);
+            Matcher matcher = pattern.matcher(txtEmail.getText());
+
+            if (!matcher.matches()) {
+
+                JOptionPane.showMessageDialog(this, "Por favor introduzca un Email válido");
+                return;
+
+            }
+
+            if(cambiarContrasena){
+            
+            if (jPassContrasena.getText().length() <= 7) {
+
+                JOptionPane.showMessageDialog(this, "La contraseña debe ser mínimo de 8 caracteres");
+                return;
+
+            }
+
+            if (!jPassContrasena.getText().contains(jPassContrasena2.getText())) {
+
+                JOptionPane.showMessageDialog(this, "Las contraseñas ingresadas no son iguales");
+                return;
+
+            }
+
+            usuarioCambiado.setContraseña(Encriptacion.encriptarPassword(jPassContrasena.getText()));
+            
+            }
+            
+            
+            
+            
+            usuarioCambiado.setUsername(txtUsuario.getText());
+            usuarioCambiado.setCorreoElectronico(txtEmail.getText());
+
+            usuarioCambiado.setImagenPerfil(imagenNueva);
+            
+            frmPrincipal.usuarioNegocio.actualizarUsuario(usuarioCambiado);
+            frmPrincipal.setLoggedUser(usuarioCambiado);
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al modificar el usuario :" + ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente!");
+        frmPrincipal.pintarPanelPrincipal(new PanelHome(frmPrincipal));
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

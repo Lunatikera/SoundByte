@@ -5,6 +5,7 @@
 package Negocio;
 
 import Colecciones.AlbumColeccion;
+import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
 import DTO.AlbumDTO;
 import DTO.ArtistaDTO;
@@ -38,11 +39,16 @@ public class AlbumNegocio implements IAlbumNegocio{
         try {
             
             List<AlbumDTO> albumes = new ArrayList<>();
+            List<GeneroColeccion> generosRestringidos = new ArrayList<>();
             
-            if(albumDAO.obtenerCancionesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros()) == null)
+            if(restringidos.getRestringidos() != null)
+                if(restringidos.getRestringidos().getGeneros() != null)
+                    generosRestringidos = restringidos.getRestringidos().getGeneros();
+            
+            if(albumDAO.obtenerCancionesPorBusqueda(filtro, generosRestringidos) == null)
                 return null;
             
-            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusqueda(filtro, restringidos.getRestringidos().getGeneros())){
+            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusqueda(filtro, generosRestringidos)){
             
                 albumes.add(convertirAlbumDTO(album));
                 
@@ -85,6 +91,7 @@ public class AlbumNegocio implements IAlbumNegocio{
         
     }
     
+    @Override
     public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC){
     
         AlbumDTO albumD = new AlbumDTO();
@@ -120,7 +127,6 @@ public class AlbumNegocio implements IAlbumNegocio{
             
             artD.setNombre(albumC.getArtista().getNombre());
             artD.setImagen(albumC.getArtista().getImagen());
-            artD.setId(albumC.getArtista().getId());
 //            artD.setRedesSociales(albumC.getRedesSociales());
             artD.setEsBanda(albumC.getArtista().getEsBanda());
             
@@ -148,4 +154,69 @@ public class AlbumNegocio implements IAlbumNegocio{
         
         return albumD;
     }
+    
+    @Override
+    public AlbumColeccion convertirAlbumColeccion(AlbumDTO albumDTO){
+
+            AlbumColeccion albumColeccion = new AlbumColeccion();
+
+            albumColeccion.setId(albumDTO.getId());
+
+            if(albumDTO.getArtista() != null){
+
+                ArtistaColeccion artColeccion = new ArtistaColeccion();
+
+                artColeccion.setId(albumDTO.getArtista().getId());
+
+                if (albumDTO.getArtista().getGeneros() != null){
+
+                    List<GeneroColeccion> generos = new ArrayList<>();
+
+                    for(GeneroDTO genero : albumDTO.getArtista().getGeneros()){
+
+                        GeneroColeccion generoColeccion = new GeneroColeccion();
+
+                        generoColeccion.setId(genero.getId());
+                        generoColeccion.setImagenGenero(genero.getImagenGenero());
+                        generoColeccion.setNombre(genero.getNombre());
+
+                        generos.add(generoColeccion);
+
+                    }
+
+                    artColeccion.setGeneros(generos);
+
+                } else
+                    artColeccion.setGeneros(null);
+
+                artColeccion.setNombre(albumDTO.getArtista().getNombre());
+                artColeccion.setImagen(albumDTO.getArtista().getImagen());
+                artColeccion.setId(albumDTO.getArtista().getId());
+    //            artD.setRedesSociales(albumC.getRedesSociales());
+                artColeccion.setEsBanda(albumDTO.getArtista().getEsBanda());
+
+                if(albumDTO.getArtista().getEsBanda()){
+
+                    artColeccion.setIntegrante(albumDTO.getArtista().getIntegrante());
+
+                } else{
+
+                    artColeccion.setIntegrante(null);
+
+                }
+
+                albumColeccion.setArtista(artColeccion);
+
+            } else
+                albumColeccion.setArtista(null);
+
+            albumColeccion.setFechaLanzamiento(albumDTO.getFechaLanzamiento());
+            albumColeccion.setNombre(albumDTO.getNombre());
+            albumColeccion.setImagen(albumDTO.getImagen());
+            albumColeccion.setCanciones(albumDTO.getCanciones());
+
+
+
+            return albumColeccion;
+        }
 }

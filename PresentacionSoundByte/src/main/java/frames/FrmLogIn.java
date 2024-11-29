@@ -21,6 +21,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,6 +43,7 @@ public class FrmLogIn extends javax.swing.JFrame {
         this.generoNegocio=generoNegocio;
         this.artistaNegocio=artistaNegocio;
         
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Log In");
         this.setLocationRelativeTo(null);
         this.jLabel1.setFocusable(true);

@@ -4,10 +4,17 @@
  */
 package InterfacesDAO;
 
+import Colecciones.ArtistaColeccion;
+import Colecciones.GeneroColeccion;
+import excepciones.PersistenciaException;
+import java.util.List;
+
 /**
  *
  * @author santi
  */
 public interface IArtistaDAO {
     
+    public List<ArtistaColeccion> obtenerArtistasPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException;
+            
 }

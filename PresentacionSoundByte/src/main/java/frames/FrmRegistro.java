@@ -33,7 +33,9 @@ import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 
 /**
  *
@@ -58,6 +60,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         this.generoNegocio = generoNegocio;
         this.artistaNegocio = artistaNegocio;
         
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Registrate");
         this.jLabel1.setFocusable(true);
         this.setLocationRelativeTo(null);
@@ -522,6 +525,25 @@ public class FrmRegistro extends javax.swing.JFrame {
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // Mostrar el selector de archivos
         JFileChooser fileChooser = new JFileChooser();
+        
+        fileChooser.setFileFilter(new FileFilter() {
+            @Override
+            public boolean accept(File file) {
+                if (file.isDirectory()) {
+                    return true; // Allow navigation
+                }
+                String fileName = file.getName().toLowerCase();
+                return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") ||
+                       fileName.endsWith(".png") || fileName.endsWith(".gif") ||
+                       fileName.endsWith(".bmp");
+            }
+
+            @Override
+            public String getDescription() {
+                return "Image Files (*.jpg, *.jpeg, *.png, *.gif, *.bmp)";
+            }
+            });
+        
         int result = fileChooser.showOpenDialog(this);
 
         // Verificar si se seleccionó un archivo

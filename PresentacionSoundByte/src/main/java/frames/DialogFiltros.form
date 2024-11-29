@@ -145,7 +145,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                      <Component id="switchButton3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="switchArtistas" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -154,8 +154,8 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="switchButton2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="switchButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="switchAlbumes" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="switchCanciones" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -168,18 +168,18 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="switchButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="switchCanciones" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="switchButton2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="switchAlbumes" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="switchButton3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="switchArtistas" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="48" max="32767" attributes="0"/>
                           </Group>
@@ -198,9 +198,9 @@
                         <Property name="text" type="java.lang.String" value="Canciones"/>
                       </Properties>
                     </Component>
-                    <Component class="util.SwitchButton" name="switchButton1">
+                    <Component class="util.SwitchButton" name="switchCanciones">
                     </Component>
-                    <Component class="util.SwitchButton" name="switchButton2">
+                    <Component class="util.SwitchButton" name="switchAlbumes">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
@@ -224,7 +224,7 @@
                         <Property name="text" type="java.lang.String" value="Artistas"/>
                       </Properties>
                     </Component>
-                    <Component class="util.SwitchButton" name="switchButton3">
+                    <Component class="util.SwitchButton" name="switchArtistas">
                     </Component>
                   </SubComponents>
                 </Container>

@@ -18,6 +18,7 @@ import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.GeneroNegocio;
 import Negocio.UsuarioNegocio;
 import java.awt.Dimension;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import util.CustomSliderUI;
@@ -58,6 +59,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jSlider1.repaint();
         jSlider1.setOpaque(false);
 
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
 
     }
