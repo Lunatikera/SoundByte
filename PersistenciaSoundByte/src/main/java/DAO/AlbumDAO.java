@@ -15,15 +15,14 @@ import static com.mongodb.client.model.Aggregates.project;
 import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.in;
 import static com.mongodb.client.model.Filters.not;
-import static com.mongodb.client.model.Projections.computed;
-import static com.mongodb.client.model.Projections.fields;
-import static com.mongodb.client.model.Projections.include;
+import static com.mongodb.client.model.Projections.*;
 import excepciones.PersistenciaException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -42,7 +41,7 @@ public class AlbumDAO implements IAlbumDAO{
     public List<AlbumColeccion> obtenerCancionesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException{
         try{
         List<AlbumColeccion> albumes = new ArrayList<>();
-
+        
         Bson filtroArtista = match(not(in("artista.generos", restringidos)));
         
         
@@ -84,9 +83,8 @@ public class AlbumDAO implements IAlbumDAO{
     public List<AlbumColeccion> obtenerCancionesPorBusquedaGeneros(String filtro, List<GeneroColeccion> especificados) throws PersistenciaException{
         try{
         List<AlbumColeccion> albumes = new ArrayList<>();
-
+            
         Bson filtroArtista = match(in("artista.generos", especificados));
-        
         
         Bson filtroProyeccion = project(fields(
                 computed("artista", "$artista"), 
@@ -110,6 +108,78 @@ public class AlbumDAO implements IAlbumDAO{
                 albumes.add(album);
                 
         }
+
+        
+        if(!albumes.isEmpty())
+            return albumes;
+        else    
+            return null;
+        
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar las canciones por filtro en la base de datos", e);
+        }
+    }
+    @Override
+    public List<AlbumColeccion> obtenerCancionesPorFecha(int anio, List<GeneroColeccion> restringidos) throws PersistenciaException{
+  
+        
+        try{
+        List<AlbumColeccion> albumes = new ArrayList<>();
+        
+        Bson filtroArtista = Filters.nin("artista.generos", restringidos);
+        
+        Bson filtroArtista2 = Filters.expr(
+                new Document("$eq", Arrays.asList(
+                new Document("$year", "$fechaLanzamiento"), 
+                anio                
+            ))
+        );
+        
+        Bson filtrosCombinados = Filters.and(filtroArtista, filtroArtista2);
+        
+        
+        if(!coleccion.find(filtrosCombinados).iterator().hasNext())
+            return null;
+        
+        for(AlbumColeccion album : coleccion.find(filtrosCombinados)){
+            
+                albumes.add(album);
+                
+        }
+        
+        if(!albumes.isEmpty())
+            return albumes;
+        else    
+            return null;
+        
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar las canciones por filtro en la base de datos", e);
+        }
+    }
+    
+    @Override
+    public List<AlbumColeccion> obtenerCancionesPorFechaGeneros(int anio, List<GeneroColeccion> especificados) throws PersistenciaException{
+        try{
+        List<AlbumColeccion> albumes = new ArrayList<>();
+            
+        Bson filtroArtista = match(in("artista.generos", especificados));
+        
+        Bson filtroArtista2 = Filters.expr(         new Document("$eq", Arrays.asList(
+                new Document("$year", "$fechaLanzamiento"), 
+                anio                
+            )));
+        
+        Bson filtrosCombinados = Filters.and(filtroArtista, filtroArtista2);
+        
+        if(!coleccion.find(filtrosCombinados).iterator().hasNext())
+            return null;
+        
+        for(AlbumColeccion album : coleccion.find(filtrosCombinados)){
+            
+                albumes.add(album);
+                
+        }
+
 
         
         if(!albumes.isEmpty())

@@ -4,6 +4,7 @@ util\BotonMenu.class
 frames\PanelArtista.class
 frames\DialogFiltros$3.class
 main\Main.class
+frames\PanelBusqueda$5.class
 frames\PanelCuenta$8.class
 frames\PanelBusqueda.class
 frames\PanelBusqueda$2.class
@@ -35,11 +36,13 @@ frames\PanelCanciones.class
 frames\FrmRegistro$4.class
 frames\PanelCuenta$3.class
 frames\PanelCuenta$9.class
+frames\PanelBusqueda$7.class
 DatosDePrueba\Generos.class
 frames\FrmPrincipal$6.class
 util\BotonToggle.class
 util\PanelArtistaDesplegado.class
 frames\FrmRegistro$3.class
+frames\PanelBusqueda$6.class
 frames\PanelFavoritos.class
 frames\PanelArtista$2.class
 util\PanelArtistaDesplegado$1.class

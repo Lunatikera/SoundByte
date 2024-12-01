@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -49,6 +50,44 @@ public class AlbumNegocio implements IAlbumNegocio{
                 return null;
             
             for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusqueda(filtro, generosRestringidos)){
+            
+                albumes.add(convertirAlbumDTO(album));
+                
+            }
+            
+            return albumes;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
+    }
+    
+    @Override
+    public List<AlbumDTO> obtenerCancionesPorFecha(String filtro, UsuarioDTO restringidos) throws NegocioException{
+        
+        try {
+            
+            List<AlbumDTO> albumes = new ArrayList<>();
+            List<GeneroColeccion> generosRestringidos = new ArrayList<>();
+            
+            if(restringidos.getRestringidos() != null)
+                if(restringidos.getRestringidos().getGeneros() != null)
+                    generosRestringidos = restringidos.getRestringidos().getGeneros();
+            
+            if(!StringUtils.isNumeric(filtro))
+                return null;
+            
+            int anio = Integer.parseInt(filtro);
+            
+            if(anio > 2050 || anio < 1800)
+                return null;
+            
+            
+            if(albumDAO.obtenerCancionesPorFecha(anio, generosRestringidos) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerCancionesPorFecha(anio, generosRestringidos)){
             
                 albumes.add(convertirAlbumDTO(album));
                 
@@ -111,16 +150,12 @@ public class AlbumNegocio implements IAlbumNegocio{
                 
             }
             
-
             if(albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados) == null)
                 return null;
             
-            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados)){
-            
+            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados))
                 albumes.add(convertirAlbumDTO(album));
-                
-            }
-            
+              
             return albumes;
             
         } catch (PersistenciaException ex) {
@@ -152,10 +187,10 @@ public class AlbumNegocio implements IAlbumNegocio{
             }
             
             
-            if(albumDAO.obtenerAlbumesPorBusqueda(filtro, generosEspecificados) == null)
+            if(albumDAO.obtenerAlbumesPorBusquedaGeneros(filtro, generosEspecificados) == null)
                 return null;
             
-            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusqueda(filtro, generosEspecificados))
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusquedaGeneros(filtro, generosEspecificados))
                 albumes.add(convertirAlbumDTO(album));
             
             return albumes;
@@ -165,6 +200,8 @@ public class AlbumNegocio implements IAlbumNegocio{
         }
         
     }
+    
+    
     
     @Override
     public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC){
@@ -294,4 +331,6 @@ public class AlbumNegocio implements IAlbumNegocio{
 
             return albumColeccion;
         }
+    
+    
 }

@@ -35,7 +35,7 @@ public class DialogFiltros extends javax.swing.JDialog {
     List<GeneroDTO> generosAFiltrar = new ArrayList<>();
     FiltroMusicaDTO filtros;
     
-    
+    FrmPrincipal frmPrincipal;
     PanelAlbumes pAlbumes;
     PanelBusqueda pBusqueda;
     PanelArtistas pArtistas;
@@ -45,13 +45,15 @@ public class DialogFiltros extends javax.swing.JDialog {
     DefaultListModel<String> todosGeneros = new DefaultListModel<>();
     DefaultListModel<String> generosFiltrados = new DefaultListModel<>();
 
-    public DialogFiltros(PanelBusqueda panelBusqueda, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+    public DialogFiltros(FrmPrincipal frmPrincipal, PanelBusqueda panelBusqueda, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
         
  
         initComponents();
 
         this.setTitle("Filtros");
 
+        this.frmPrincipal = frmPrincipal;
+        this.pBusqueda = panelBusqueda;
         this.filtros = filtros;
         
         inicializaFiltros(filtros);
@@ -59,8 +61,8 @@ public class DialogFiltros extends javax.swing.JDialog {
         this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
         this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
 
-        jList4.setModel(todosGeneros);
-        jList5.setModel(generosFiltrados);
+        listGeneros.setModel(todosGeneros);
+        listGenerosFiltrados.setModel(generosFiltrados);
 
         try {
             
@@ -69,11 +71,20 @@ public class DialogFiltros extends javax.swing.JDialog {
             
             for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
                 mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+
+            if(filtros != null){
                 
-            
-            
-            for(int i = loggedUser.getRestringidos().getGeneros().size(); i<=generosAFiltrar.size()-1+loggedUser.getRestringidos().getGeneros().size(); i++)
-                mapIds.put(i, generosAFiltrar.get(i).getId());
+                generosAFiltrar = filtros.getGeneros();
+                
+                for(int i = 0; i<=filtros.getGeneros().size()-1;i++){
+                    
+                    int size = i + loggedUser.getRestringidos().getGeneros().size();
+                    
+                    mapIds.put(size, filtros.getGeneros().get(i).getId());
+                    
+                    
+                }
+            }
             
             for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
             
@@ -82,13 +93,14 @@ public class DialogFiltros extends javax.swing.JDialog {
                 
             }
 
-            
+        llenarListGeneros(generos);
+        llenarListGenerosYaRestringidos();
 
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
         }
 
-        llenarListGeneros(generos);
+
 
     }
     public DialogFiltros(PanelAlbumes panelAlbumes, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
@@ -111,8 +123,8 @@ public class DialogFiltros extends javax.swing.JDialog {
         this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
         this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
 
-        jList4.setModel(todosGeneros);
-        jList5.setModel(generosFiltrados);
+        listGeneros.setModel(todosGeneros);
+        listGenerosFiltrados.setModel(generosFiltrados);
 
         try {
             
@@ -163,8 +175,8 @@ public class DialogFiltros extends javax.swing.JDialog {
         this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
         this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
 
-        jList4.setModel(todosGeneros);
-        jList5.setModel(generosFiltrados);
+        listGeneros.setModel(todosGeneros);
+        listGenerosFiltrados.setModel(generosFiltrados);
 
         try {
             
@@ -215,8 +227,8 @@ public class DialogFiltros extends javax.swing.JDialog {
         this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
         this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
 
-        jList4.setModel(todosGeneros);
-        jList5.setModel(generosFiltrados);
+        listGeneros.setModel(todosGeneros);
+        listGenerosFiltrados.setModel(generosFiltrados);
 
         try {
             
@@ -266,6 +278,7 @@ public class DialogFiltros extends javax.swing.JDialog {
         if(filtro.getCanciones())
            switchCanciones.setSelected(true);
        
+            
        
         if(filtro.getGeneros() != null)
             this.generosAFiltrar = filtro.getGeneros();
@@ -297,7 +310,7 @@ public class DialogFiltros extends javax.swing.JDialog {
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
+        listGeneros = new javax.swing.JList<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -305,7 +318,7 @@ public class DialogFiltros extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
+        listGenerosFiltrados = new javax.swing.JList<>();
         jLabel11 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         btnGuardarFiltros = new javax.swing.JButton();
@@ -384,18 +397,18 @@ public class DialogFiltros extends javax.swing.JDialog {
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jList4.setBackground(new java.awt.Color(56, 56, 56));
-        jList4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList4.setForeground(new java.awt.Color(255, 255, 255));
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+        listGeneros.setBackground(new java.awt.Color(56, 56, 56));
+        listGeneros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        listGeneros.setForeground(new java.awt.Color(255, 255, 255));
+        listGeneros.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList4.setMaximumSize(new java.awt.Dimension(400, 400));
-        jList4.setMinimumSize(new java.awt.Dimension(400, 400));
-        jList4.setPreferredSize(new java.awt.Dimension(400, 400));
-        jScrollPane4.setViewportView(jList4);
+        listGeneros.setMaximumSize(new java.awt.Dimension(400, 400));
+        listGeneros.setMinimumSize(new java.awt.Dimension(400, 400));
+        listGeneros.setPreferredSize(new java.awt.Dimension(400, 400));
+        jScrollPane4.setViewportView(listGeneros);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -453,18 +466,18 @@ public class DialogFiltros extends javax.swing.JDialog {
 
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jList5.setBackground(new java.awt.Color(56, 56, 56));
-        jList5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList5.setForeground(new java.awt.Color(255, 255, 255));
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
+        listGenerosFiltrados.setBackground(new java.awt.Color(56, 56, 56));
+        listGenerosFiltrados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        listGenerosFiltrados.setForeground(new java.awt.Color(255, 255, 255));
+        listGenerosFiltrados.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList5.setMaximumSize(new java.awt.Dimension(400, 400));
-        jList5.setMinimumSize(new java.awt.Dimension(400, 400));
-        jList5.setPreferredSize(new java.awt.Dimension(400, 400));
-        jScrollPane5.setViewportView(jList5);
+        listGenerosFiltrados.setMaximumSize(new java.awt.Dimension(400, 400));
+        listGenerosFiltrados.setMinimumSize(new java.awt.Dimension(400, 400));
+        listGenerosFiltrados.setPreferredSize(new java.awt.Dimension(400, 400));
+        jScrollPane5.setViewportView(listGenerosFiltrados);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -565,7 +578,19 @@ public class DialogFiltros extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void llenarListGenerosYaRestringidos(){
+        
+        int counter = 0;
 
+        for(GeneroDTO genero : generosAFiltrar){
+            
+           generosFiltrados.add(counter, genero.getNombre());
+           counter++;
+           
+        }
+       
+       
+    }
     private void llenarListGeneros(List<GeneroDTO> generos) {
 
         int counter = 0;
@@ -587,6 +612,15 @@ public class DialogFiltros extends javax.swing.JDialog {
         filtros.setCanciones(switchCanciones.isSelected());
         filtros.setArtistas(switchArtistas.isSelected());
         
+        if(filtros.getAlbumes() == false && filtros.getArtistas() == false && filtros.getCanciones() == false){
+        
+            filtros.setAlbumes(true);
+            filtros.setArtistas(true);
+            filtros.setCanciones(true);
+            
+            
+        }
+        
         if(!generosAFiltrar.isEmpty())
             filtros.setGeneros(generosAFiltrar);
         else
@@ -600,8 +634,13 @@ public class DialogFiltros extends javax.swing.JDialog {
         if(pArtistas != null)
             pArtistas.filtro = filtros;
         
-        if(pBusqueda != null)
+        if(pBusqueda != null){
+ 
             pBusqueda.filtroMusica = filtros;
+            pBusqueda.setFiltroMusica(filtros);
+            frmPrincipal.pintarPanelPrincipal(pBusqueda);
+            
+        }
         
         if(pCanciones != null)
             pCanciones.filtro = filtros;
@@ -612,9 +651,9 @@ public class DialogFiltros extends javax.swing.JDialog {
 
     private void btnCambiarAFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarAFiltrarActionPerformed
 
-        int indexSeleccionado1 = jList4.getSelectedIndex();
+        int indexSeleccionado1 = listGeneros.getSelectedIndex();
 
-        int indexSeleccionado2 = jList5.getSelectedIndex();
+        int indexSeleccionado2 = listGenerosFiltrados.getSelectedIndex();
 
         if (indexSeleccionado2 != -1) {
 
@@ -656,8 +695,6 @@ public class DialogFiltros extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -669,6 +706,8 @@ public class DialogFiltros extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JList<String> listGeneros;
+    private javax.swing.JList<String> listGenerosFiltrados;
     private util.SwitchButton switchAlbumes;
     private util.SwitchButton switchArtistas;
     private util.SwitchButton switchCanciones;
