@@ -11,6 +11,7 @@ import Conexion.ConexionDB;
 import Docs.CancionDoc;
 import Docs.IntegranteDoc;
 import InterfacesDAO.IConexionDB;
+import InterfacesDAO.IDatosDAO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -24,7 +25,7 @@ import org.bson.types.ObjectId;
  *
  * @author stae
  */
-public class DatosDAO {
+public class DatosDAO implements IDatosDAO{
 
     public DatosDAO() {
 
