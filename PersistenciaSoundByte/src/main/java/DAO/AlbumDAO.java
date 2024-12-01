@@ -162,9 +162,10 @@ public class AlbumDAO implements IAlbumDAO{
         try{
         List<AlbumColeccion> albumes = new ArrayList<>();
             
-        Bson filtroArtista = match(in("artista.generos", especificados));
+        Bson filtroArtista = Filters.in("artista.generos", especificados);
         
-        Bson filtroArtista2 = Filters.expr(         new Document("$eq", Arrays.asList(
+        Bson filtroArtista2 = Filters.expr(         
+                new Document("$eq", Arrays.asList(
                 new Document("$year", "$fechaLanzamiento"), 
                 anio                
             )));
@@ -225,6 +226,68 @@ public class AlbumDAO implements IAlbumDAO{
 
         Bson filtroArtista1 = Filters.in("artista.generos", especificados);
         Bson filtroArtista2 = Filters.regex("nombre", "^" +filtro, "i");
+        
+        Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
+        
+        for(AlbumColeccion album : coleccion.find(filtrosCombinados)){
+
+            albumes.add(album);
+            
+        }
+
+        if(albumes.isEmpty())
+            return null;
+        
+        return albumes;
+        
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar los albumes por filtro en la base de datos", e);
+        } 
+    }
+        
+    @Override
+    public List<AlbumColeccion> obtenerAlbumesPorFecha(int anio, List<GeneroColeccion> restringidos) throws PersistenciaException{
+        try{
+        List<AlbumColeccion> albumes = new ArrayList<>();
+
+        Bson filtroArtista1 = Filters.nin("artista.generos", restringidos);
+        
+        Bson filtroArtista2 = Filters.expr(         
+                new Document("$eq", Arrays.asList(
+                new Document("$year", "$fechaLanzamiento"), 
+                anio                
+            )));
+        
+        Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
+        
+        for(AlbumColeccion album : coleccion.find(filtrosCombinados)){
+
+            albumes.add(album);
+            
+        }
+
+        if(albumes.isEmpty())
+            return null;
+        
+        return albumes;
+        
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar los albumes por filtro en la base de datos", e);
+        } 
+    }
+        
+    @Override
+    public List<AlbumColeccion> obtenerAlbumesPorFechaGeneros(int anio, List<GeneroColeccion> especificados) throws PersistenciaException{
+        try{
+        List<AlbumColeccion> albumes = new ArrayList<>();
+
+        Bson filtroArtista1 = Filters.in("artista.generos", especificados);
+        
+        Bson filtroArtista2 = Filters.expr(         
+                new Document("$eq", Arrays.asList(
+                new Document("$year", "$fechaLanzamiento"), 
+                anio                
+            )));
         
         Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
         

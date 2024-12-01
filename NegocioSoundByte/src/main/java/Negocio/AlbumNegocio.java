@@ -61,6 +61,43 @@ public class AlbumNegocio implements IAlbumNegocio{
             throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
         }
         
+    }  
+    
+    @Override
+    public List<AlbumDTO> obtenerCancionesPorBusquedaGeneros(String filtro, List<GeneroDTO> especificados) throws NegocioException{
+        
+        try {
+            
+            List<AlbumDTO> albumes = new ArrayList<>();            
+            List<GeneroColeccion> generosEspecificados = new ArrayList<>();
+            
+            for(GeneroDTO genero : especificados){
+            
+                GeneroColeccion generoC = new GeneroColeccion();
+                
+                generoC.setId(genero.getId());
+                generoC.setNombre(genero.getNombre());
+                generoC.setDescrpicion(genero.getDescripcion());
+                generoC.setImagenGenero(genero.getImagenGenero());
+                
+                generosEspecificados.add(generoC);
+            } 
+            
+            if(albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusqueda(filtro, generosEspecificados)){
+            
+                albumes.add(convertirAlbumDTO(album));
+                
+            }
+            
+            return albumes;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
     }
     
     @Override
@@ -128,9 +165,47 @@ public class AlbumNegocio implements IAlbumNegocio{
             throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
         }
         
-    }    
+    }   
+    
     @Override
-    public List<AlbumDTO> obtenerCancionesPorBusquedaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException{
+    public List<AlbumDTO> obtenerAlbumesPorFecha(String filtro, UsuarioDTO restringidos) throws NegocioException{
+        
+        try {
+            
+            List<AlbumDTO> albumes = new ArrayList<>();
+            List<GeneroColeccion> generosRestringidos = new ArrayList<>();
+
+            
+            if(restringidos.getRestringidos() != null)
+                if(restringidos.getRestringidos().getGeneros() != null)
+                    generosRestringidos = restringidos.getRestringidos().getGeneros();
+            
+            if(!StringUtils.isNumeric(filtro))
+                return null;
+            
+            int anio = Integer.parseInt(filtro);
+            
+            if(anio > 2050 || anio < 1800)
+                return null;
+            
+            
+            
+            if(albumDAO.obtenerAlbumesPorFecha(anio, generosRestringidos) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorFecha(anio, generosRestringidos))
+                albumes.add(convertirAlbumDTO(album));
+            
+            return albumes;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
+    }    
+    
+    @Override
+    public List<AlbumDTO> obtenerCancionesPorFechaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException{
         
         try {
             
@@ -150,12 +225,22 @@ public class AlbumNegocio implements IAlbumNegocio{
                 
             }
             
-            if(albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados) == null)
+            if(!StringUtils.isNumeric(filtro))
                 return null;
             
-            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados))
+            int anio = Integer.parseInt(filtro);
+            
+            if(anio > 2050 || anio < 1800)
+                return null;
+            
+            
+            
+            if(albumDAO.obtenerCancionesPorFechaGeneros(anio, generosEspecificados) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerCancionesPorFechaGeneros(anio, generosEspecificados))
                 albumes.add(convertirAlbumDTO(album));
-              
+
             return albumes;
             
         } catch (PersistenciaException ex) {
@@ -191,6 +276,52 @@ public class AlbumNegocio implements IAlbumNegocio{
                 return null;
             
             for(AlbumColeccion album : albumDAO.obtenerAlbumesPorBusquedaGeneros(filtro, generosEspecificados))
+                albumes.add(convertirAlbumDTO(album));
+            
+            return albumes;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar canciones por filtro en la base de datos", ex);
+        }
+        
+    }
+        
+    @Override
+    public List<AlbumDTO> obtenerAlbumesPorFechaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException{
+        
+        try {
+            
+            List<AlbumDTO> albumes = new ArrayList<>();
+            List<GeneroColeccion> generosEspecificados = new ArrayList<>();
+
+            
+            for(GeneroDTO genero : generos){
+            
+                GeneroColeccion generoC = new GeneroColeccion();
+                
+                generoC.setId(genero.getId());
+                generoC.setNombre(genero.getNombre());
+                generoC.setDescrpicion(genero.getDescripcion());
+                generoC.setImagenGenero(genero.getImagenGenero());
+                
+                generosEspecificados.add(generoC);
+                
+            }
+            
+            if(!StringUtils.isNumeric(filtro))
+                return null;
+            
+            int anio = Integer.parseInt(filtro);
+            
+            if(anio > 2050 || anio < 1800)
+                return null;
+            
+            
+            
+            if(albumDAO.obtenerAlbumesPorFechaGeneros(anio, generosEspecificados) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorFechaGeneros(anio, generosEspecificados))
                 albumes.add(convertirAlbumDTO(album));
             
             return albumes;

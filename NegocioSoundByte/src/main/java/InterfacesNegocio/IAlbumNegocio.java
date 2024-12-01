@@ -21,9 +21,15 @@ public interface IAlbumNegocio {
     
     public List<AlbumDTO> obtenerCancionesPorFecha(String fecha, UsuarioDTO restringidos) throws NegocioException;
     
+    public List<AlbumDTO> obtenerAlbumesPorFecha(String filtro, UsuarioDTO restringidos) throws NegocioException;
+    
     public List<AlbumDTO> obtenerAlbumesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
         
     public List<AlbumDTO> obtenerCancionesPorBusquedaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException;
+    
+    public List<AlbumDTO> obtenerCancionesPorFechaGeneros(String filtro, List<GeneroDTO> generos) throws NegocioException;
+
+    public List<AlbumDTO> obtenerAlbumesPorFechaGeneros(String filtro, List<GeneroDTO>  generos) throws NegocioException;
     
     public List<AlbumDTO> obtenerAlbumesPorBusquedaGeneros(String filtro, List<GeneroDTO>  generos) throws NegocioException;
     

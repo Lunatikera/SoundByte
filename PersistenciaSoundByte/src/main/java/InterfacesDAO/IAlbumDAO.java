@@ -28,4 +28,8 @@ public interface IAlbumDAO {
     
     public List<AlbumColeccion> obtenerAlbumesPorBusquedaGeneros(String filtro, List<GeneroColeccion> especificados) throws PersistenciaException;
     
+    public List<AlbumColeccion> obtenerAlbumesPorFechaGeneros(int anio, List<GeneroColeccion> especificados) throws PersistenciaException;
+    
+    public List<AlbumColeccion> obtenerAlbumesPorFecha(int anio, List<GeneroColeccion> restringidos) throws PersistenciaException;
+    
 }

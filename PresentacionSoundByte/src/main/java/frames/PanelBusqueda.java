@@ -80,23 +80,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
         this.filtroMusica = filtro;
         
     }
-    
-    public void eliminarPanelesInecesarios(){
-    
-        if(filtroMusica == null)
-            return;
-        
-        if(!filtroMusica.getAlbumes())
-            panelAlbumes.setVisible(false);
-        
-        if(!filtroMusica.getArtistas())
-            panelArtistas.setVisible(false);
-        
-        if(!filtroMusica.getCanciones())
-            panelCanciones.setVisible(false);
-        
-    }
-    
+
     private void setDefaultTextAndAddFocusListener(javax.swing.JTextField campoTexto, String textoDefault) {
         campoTexto.setText(textoDefault);
         campoTexto.setForeground(Color.GRAY);
@@ -655,18 +639,15 @@ public class PanelBusqueda extends javax.swing.JPanel {
             
             
             if(filtroMusica == null)
-                if(checkGenero.isSelected()){
-                    System.out.println("genero");
+                if(checkGenero.isSelected())
                     albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(filtro, frmPrincipal.getLoggedUser());
-                }
-                else if(checkFechaLanzamiento.isSelected()){
-                    System.out.println("fecha");
+                
+                else if(checkFechaLanzamiento.isSelected())
                     albumes = frmPrincipal.albumNegocio.obtenerCancionesPorFecha(filtro, frmPrincipal.getLoggedUser());
-                }
-                else{
-                    System.out.println("nombre");
+                
+                else
                     albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(filtro, frmPrincipal.getLoggedUser());
-                }
+            
             else
                 albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusquedaGeneros(filtro, filtroMusica.getGeneros());
             
@@ -808,9 +789,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
     }
     
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
-        
-        eliminarPanelesInecesarios();
-        
+    
         if(buscador.getText().equals("")){
          
             panelAlbumes.removeAll();
