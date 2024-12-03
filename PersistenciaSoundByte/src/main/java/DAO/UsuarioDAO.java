@@ -22,11 +22,22 @@ public class UsuarioDAO implements IUsuarioDAO {
     
     private final MongoCollection<UsuarioColeccion> coleccion;
 
+    /**
+     * Creamos la conexion en el constructor
+     * @param conexionDB usamos la conexion de parametro para obtener la bd
+     */
     public UsuarioDAO(IConexionDB conexionDB) {
         MongoDatabase database = conexionDB.getDatabase();  // MongoDB o MySQL dependiendo de la implementación
         this.coleccion = database.getCollection("Usuarios", UsuarioColeccion.class);
     }
 
+    /**
+     * Método para crear un usuario, inserta ala colección con .insertOne
+     * @param usuario de tipo UsuarioColeccion
+     * 
+     * @throws PersistenciaException lanza una excepción en cado de tener un error 
+     * al crear el usuario
+     */
     @Override
     public void crearUsuario(UsuarioColeccion usuario) throws PersistenciaException {
         try {
@@ -36,6 +47,14 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Actualiza el usuario por medio de _id para buscar el usuario a actualizar
+     * @param usuarioNuevo parámetro que se usará para actualizar y tener el nuevo usuario
+     * 
+     * @throws PersistenciaException lanzamos una excepcion de tipo persistencia 
+     * en caso de que exista un error
+     * 
+     */
     @Override
     public void actualizarUsuario( UsuarioColeccion usuarioNuevo) throws PersistenciaException {
           try {
@@ -50,6 +69,13 @@ public class UsuarioDAO implements IUsuarioDAO {
 }
     
 
+    /**
+     * Usamos una credencial, en este caso el Correo Electrónico para obtener el usuario deseado
+     * @param correoElectronico por medio de este parámetro obtenemos el usuario de requerido
+     * @return regresamos el usuario filtrado
+     * @throws PersistenciaException lanzamos una excepcion tipo persistencia en caso de obtener un error en el 
+     * proceso
+     */
     @Override
     public UsuarioColeccion obtenerUsuarioPorCredenciales(String correoElectronico) throws PersistenciaException {
         try {
