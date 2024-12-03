@@ -8,7 +8,7 @@ import Colecciones.ArtistaColeccion;
 import DTO.ArtistaDTO;
 
 /**
- *
+ * Clase de artista negocio
  * @author santi
  */
 public class ArtistaNegocio {

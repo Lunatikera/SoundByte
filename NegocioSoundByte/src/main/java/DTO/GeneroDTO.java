@@ -7,7 +7,7 @@ package DTO;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Clase de Genero DTO
  * @author santi
  */
 public class GeneroDTO {

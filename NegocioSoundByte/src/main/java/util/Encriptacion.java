@@ -7,13 +7,13 @@ package util;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 /**
- *
+ * Clase de encriptación
  * @author santi
  */
 public class Encriptacion {
 
     /**
-     * Declaracón de variables
+     * Declaración de variables
      */
     public static final int COST = 12;
 

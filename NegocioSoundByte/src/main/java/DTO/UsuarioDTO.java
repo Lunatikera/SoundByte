@@ -11,7 +11,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Clase de UsuarioDTO
  * @author SantiagoSanchez
  */
 public class UsuarioDTO {

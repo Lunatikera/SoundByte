@@ -9,8 +9,8 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- *
- * @author santi
+ * Clase Artista DTO
+ * @author santi 
  */
 public class ArtistaDTO {
     

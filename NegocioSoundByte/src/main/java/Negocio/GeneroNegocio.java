@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Clase de genero negocio
  * @author santi
  */
 public class GeneroNegocio implements IGeneroNegocio{

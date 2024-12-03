@@ -5,7 +5,7 @@
 package excepciones;
 
 /**
- *
+ * Clase de excepciones negocio
  * @author Chris
  */
 public class NegocioException extends Exception {

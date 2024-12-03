@@ -10,7 +10,7 @@ import excepciones.NegocioException;
 import java.util.List;
 
 /**
- *
+ * Interfaz de género
  * @author santi
  */
 public interface IGeneroNegocio {

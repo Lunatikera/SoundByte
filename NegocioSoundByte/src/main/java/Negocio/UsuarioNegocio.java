@@ -18,7 +18,7 @@ import java.util.List;
 import util.Encriptacion;
 
 /**
- *
+ * Clase de usuario negocio
  * @author SantiagoSanchez
  */
 public class UsuarioNegocio implements IUsuarioNegocio {
@@ -36,7 +36,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
     /**
      * Método para crear un usuario en la colección
      * @param usuario usuario a crear en la colección
-     * @throws NegocioException 
+     * @throws NegocioException lanza excepcion de negocio
      */
     @Override
     public void crearUsuario(UsuarioDTO usuario) throws NegocioException {
@@ -54,7 +54,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
     /**
      * Método para actualizar un usuario en la colección
      * @param usuario usuario a actualizar
-     * @throws NegocioException 
+     * @throws NegocioException lanza excepcion de negocio
      */
     @Override
     public void actualizarUsuario( UsuarioDTO usuario)throws NegocioException {
@@ -72,7 +72,7 @@ public class UsuarioNegocio implements IUsuarioNegocio {
      * Método Método para obtener usuario por medio de correo electronico
      * @param dto UsuarioDto
      * @return regresa el usaurio loggeado
-     * @throws NegocioException 
+     * @throws NegocioException lanza excepcion de negocio
      */
     @Override
     public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException {
@@ -97,7 +97,12 @@ public class UsuarioNegocio implements IUsuarioNegocio {
     }
     
 
-    // Método para convertir UsuarioDTO a UsuarioColeccion
+    
+    /**
+     * Método para convertir UsuarioDTO a UsuarioColeccion
+     * @param dto convertir
+     * @return regresa el usuario convertiso
+     */
     private UsuarioColeccion convertirUsuarioDTO(UsuarioDTO dto) {
         UsuarioColeccion usuario = new UsuarioColeccion();
 
@@ -114,7 +119,12 @@ public class UsuarioNegocio implements IUsuarioNegocio {
 
     }
 
-    // Método para convertir UsuarioColeccion a UsuarioDTO
+    
+    /**
+     * Método para convertir UsuarioColeccion a UsuarioDTO
+     * @param usuario de la colección
+     * @return regrresa el usuario convertido
+     */
     public UsuarioDTO convertirUsuarioDTO(UsuarioColeccion usuario) {
         UsuarioDTO u = new UsuarioDTO();
 

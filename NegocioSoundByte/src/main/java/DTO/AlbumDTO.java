@@ -10,8 +10,8 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- *
- * @author santi
+ * Clase de ÁlbumDTO
+ * @author santi Autor
  */
 public class AlbumDTO {
     

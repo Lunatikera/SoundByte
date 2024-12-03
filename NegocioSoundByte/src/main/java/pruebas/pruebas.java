@@ -20,13 +20,16 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Clase de pruebas
  * @author santi
  */
 public class pruebas {
 
+    
     /**
-     * @param args the command line arguments
+     * Constructor 
+     * @param args argumentos
+     * @throws NegocioException excepcion de tipo negocio
      */
     public static void main(String[] args) throws NegocioException {
         // TODO code application logic here

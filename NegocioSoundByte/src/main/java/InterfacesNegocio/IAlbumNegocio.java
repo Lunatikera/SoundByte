@@ -10,7 +10,7 @@ import excepciones.NegocioException;
 import java.util.List;
 
 /**
- *
+ * Interfaz de álbum negocio
  * @author santi
  */
 public interface IAlbumNegocio {
@@ -27,9 +27,9 @@ public interface IAlbumNegocio {
     /**
      * Método para obtener los álbumes de acuerdo a los filtros
      * @param filtro condiciones de la búsqueda
-     * @param restringidos
-     * @return
-     * @throws NegocioException 
+     * @param restringidos génerps no deseados
+     * @return regresa los álbumes
+     * @throws NegocioException lanza una excepción tipo negocio
      */
     public List<AlbumDTO> obtenerAlbumesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
 }

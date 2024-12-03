@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase de lógica de álbum
  * @author santi
  */
 public class AlbumNegocio implements IAlbumNegocio{

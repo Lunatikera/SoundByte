@@ -7,7 +7,7 @@ package DTO;
 import java.util.List;
 
 /**
- *
+ * Clase de Filtro DTO
  * @author santi
  */
 public class FiltroMusicaDTO {

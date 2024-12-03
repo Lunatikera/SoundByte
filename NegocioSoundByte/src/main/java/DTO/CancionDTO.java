@@ -5,9 +5,15 @@
 package DTO;
 
 /**
- *
- * @author santi
+ * Clase cancion DTO
+ * @author santi 
  */
 public class CancionDTO {
+
+    /**
+     * Método por omisión
+     */
+    public CancionDTO() {
+    }
     
 }
