@@ -156,7 +156,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        lblAlbumes = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/left.png"))); // NOI18N
@@ -506,9 +506,15 @@ public class PanelBusqueda extends javax.swing.JPanel {
         jLabel16.setText(" ");
         panelAlbumes.add(jLabel16);
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Albumes");
+        lblAlbumes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblAlbumes.setForeground(new java.awt.Color(255, 255, 255));
+        lblAlbumes.setText("Albumes");
+        lblAlbumes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAlbumes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAlbumesMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -539,7 +545,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
                     .addComponent(panelAlbumes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(262, 262, 262)
-                        .addComponent(jLabel24)))
+                        .addComponent(lblAlbumes)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -554,7 +560,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel24)
+                .addComponent(lblAlbumes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelAlbumes, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
@@ -863,8 +869,12 @@ public class PanelBusqueda extends javax.swing.JPanel {
 
     private void lblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblArtistasMouseClicked
         // TODO add your handling code here:
-//        frmPrincipal.pintarPanelPrincipal(new PanelArtistas(frmPrincipal, buscador.getText(), filtroMusica, checkFechaLanzamiento.isSelected()));
+        frmPrincipal.pintarPanelPrincipal(new PanelArtistas(frmPrincipal, buscador.getText(), filtroMusica));
     }//GEN-LAST:event_lblArtistasMouseClicked
+
+    private void lblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAlbumesMouseClicked
+        frmPrincipal.pintarPanelPrincipal(new PanelAlbumes(frmPrincipal, buscador.getText(), filtroMusica, checkFechaLanzamiento.isSelected()));
+    }//GEN-LAST:event_lblAlbumesMouseClicked
 
 
 
@@ -885,7 +895,6 @@ public class PanelBusqueda extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -908,6 +917,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel48;
     private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lblAlbumes;
     private javax.swing.JLabel lblArtistas;
     private javax.swing.JLabel lblCanciones;
     private javax.swing.JPanel panelAlbumes;

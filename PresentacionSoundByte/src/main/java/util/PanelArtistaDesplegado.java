@@ -293,6 +293,9 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
         if(pBusqueda != null)
             frmPrincipal.pintarPanelPrincipal(new PanelArtista(frmPrincipal, pBusqueda, artista, loggedUser));
         
+        if(pArtistas != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelArtista(frmPrincipal, pArtistas, artista, loggedUser));
+        
     }//GEN-LAST:event_lblNombreArtistaMouseClicked
     
     public void setNombreArtista(){

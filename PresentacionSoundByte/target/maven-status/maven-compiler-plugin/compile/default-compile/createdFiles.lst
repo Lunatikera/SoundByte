@@ -1,7 +1,9 @@
+util\BotonMenu.class
 frames\PanelBusqueda.class
 frames\PanelBusqueda$2.class
 frames\PanelFavoritos$2.class
 frames\PanelArtistas$3.class
+frames\FrmPrincipal$9.class
 frames\PanelCuenta$12.class
 frames\PanelAlbumes$5.class
 frames\PanelArtista$3.class
@@ -11,6 +13,7 @@ frames\PanelCuenta.class
 frames\FrmPrincipal$4.class
 util\ImagenAlbum.class
 frames\FrmLogIn$6.class
+frames\PanelBusqueda$8.class
 frames\PanelArtistas.class
 frames\PanelCancion$4.class
 frames\PanelHome.class
@@ -20,10 +23,12 @@ frames\FrmRegistro$4.class
 frames\PanelBusqueda$7.class
 DatosDePrueba\Generos.class
 frames\PanelCancion$5.class
+util\BotonToggle.class
 util\PanelArtistaDesplegado.class
 frames\PanelFavoritos.class
 frames\PanelArtista$2.class
 frames\PanelAlbumes$6.class
+frames\FrmPrincipal.class
 frames\FrmLogIn$1.class
 frames\PanelCanciones$1.class
 frames\PanelCuenta$1.class
@@ -32,6 +37,9 @@ frames\PanelArtistas$2.class
 frames\PanelCanciones$2.class
 frames\FrmLogIn$5.class
 frames\PanelCanciones$5.class
+frames\PanelArtistas$5.class
+util\BotonMenu$1.class
+frames\PanelAlbumes$7.class
 frames\FrmRegistro$1.class
 frames\PanelAlbum$1.class
 DatosDePrueba\pruebasTEMPORAL.class
@@ -45,8 +53,10 @@ util\PanelCancionDesplegada$1.class
 frames\PanelCanciones$4.class
 frames\FrmPrincipal$8.class
 util\PanelAlbumDesplegado.class
+frames\PanelArtistas$4.class
 util\ImagenPanel.class
 util\ImagenPerfil.class
+frames\PanelArtistas$6.class
 frames\PanelArtista.class
 frames\PanelAlbum$2.class
 frames\DialogFiltros$3.class
@@ -113,6 +123,7 @@ frames\PanelAlbum.class
 frames\PanelCuenta$6.class
 frames\PanelRestricciones.class
 frames\DialogFiltros$2.class
+util\BotonToggle$1.class
 frames\FrmRegistro$11.class
 frames\PanelAlbumes$2.class
 frames\PanelCuenta$10.class

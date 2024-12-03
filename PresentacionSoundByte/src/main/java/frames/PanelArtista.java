@@ -65,6 +65,27 @@ public class PanelArtista extends javax.swing.JPanel {
         this.repaint();
         
     }
+    public PanelArtista(FrmPrincipal frmPrincipal, PanelArtistas pArtistas, ArtistaDTO artista, UsuarioDTO loggedUser) {
+        
+        initComponents();
+
+        this.frmPrincipal = frmPrincipal;
+        this.pArtistas = pArtistas;
+        this.artista = artista;
+        this.loggedUser = loggedUser;
+
+        panelContenedor.setLayout(new FlowLayout());
+        
+        panelContenedor.setOpaque(true);
+        
+        buscarAlbumesYCanciones();
+        inicializar();
+        llenarCanciones();
+        
+        this.revalidate();
+        this.repaint();
+        
+    }
 
 
     private void buscarAlbumesYCanciones(){
@@ -116,8 +137,8 @@ public class PanelArtista extends javax.swing.JPanel {
             
         }
         
-        informacion = informacion.concat(albumesArtista.size() + " • ");
-        informacion = informacion.concat(cancionesArtista.size() + "");
+        informacion = informacion.concat(albumesArtista.size() + " album/es • ");
+        informacion = informacion.concat(cancionesArtista.size() + " canciones");
         
         lblInformacion.setText(informacion);
         
@@ -464,6 +485,9 @@ public class PanelArtista extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(pBusqueda != null)
         frmPrincipal.pintarPanelPrincipal(pBusqueda);
+        
+        if(pArtistas != null)
+        frmPrincipal.pintarPanelPrincipal(pArtistas);
 
     }//GEN-LAST:event_btnAtrasActionPerformed
 
