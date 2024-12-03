@@ -25,10 +25,19 @@ public class UsuarioNegocio implements IUsuarioNegocio {
 
     private final IUsuarioDAO usuarioDAO;
 
+    /**
+     * Método construtor que inicializa usuarioDAO
+     * @param usuarioDAO parámetro a inicializar
+     */
     public UsuarioNegocio(IUsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
 
+    /**
+     * Método para crear un usuario en la colección
+     * @param usuario usuario a crear en la colección
+     * @throws NegocioException 
+     */
     @Override
     public void crearUsuario(UsuarioDTO usuario) throws NegocioException {
         try
@@ -42,6 +51,11 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         }
     }
     
+    /**
+     * Método para actualizar un usuario en la colección
+     * @param usuario usuario a actualizar
+     * @throws NegocioException 
+     */
     @Override
     public void actualizarUsuario( UsuarioDTO usuario)throws NegocioException {
         try
@@ -54,6 +68,12 @@ public class UsuarioNegocio implements IUsuarioNegocio {
         }
     }
 
+    /**
+     * Método Método para obtener usuario por medio de correo electronico
+     * @param dto UsuarioDto
+     * @return regresa el usaurio loggeado
+     * @throws NegocioException 
+     */
     @Override
     public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException {
         try

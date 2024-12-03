@@ -18,10 +18,26 @@ import java.util.List;
  */
 public interface IUsuarioNegocio {
 
+    /**
+     * Método para crear un usuario en la colección
+     * @param usuario usuario a crear en la colección
+     * @throws NegocioException  
+     */
     public void crearUsuario(UsuarioDTO usuario) throws NegocioException;
 
+    /**
+     * Método para actualizar un usuario en la colección
+     * @param usuario usuario a actualizar
+     * @throws NegocioException 
+     */
     public void actualizarUsuario(UsuarioDTO usuarioNuevo) throws NegocioException;
 
+    /**
+     * Método Método para obtener usuario por medio de correo electronico
+     * @param dto UsuarioDto
+     * @return regresa el usaurio loggeado
+     * @throws NegocioException 
+     */
     public UsuarioDTO obtenerUsuarioPorCredenciales(UsuarioDTO dto) throws NegocioException;
 
 }
