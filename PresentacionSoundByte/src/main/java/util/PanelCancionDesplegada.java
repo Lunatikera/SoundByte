@@ -18,6 +18,8 @@ import frames.PanelArtista;
 import frames.PanelBusqueda;
 import frames.PanelCancion;
 import frames.PanelCanciones;
+import frames.PanelCancionesFavoritas;
+import frames.PanelHome;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
@@ -44,8 +46,10 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
     //Paneles
     PanelBusqueda pBusqueda;
     PanelCanciones pCanciones;
+    PanelCancionesFavoritas pCancionesFav;
     PanelAlbum pAlbum;
     PanelArtista pArtista;
+    PanelHome pHome;
     
     boolean esFav = false;
     
@@ -80,12 +84,71 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
         this.repaint();
     
     }
+    public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelHome pHome, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
+        
+        this.pHome = pHome;
+        this.frmPrincipal = frmPrincipal;
+        this.cancion = cancion;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        
+        initComponents();
+       
+        this.setOpaque(false);
+
+        cargarComponentes();
+        checarSiEsFav();
+        
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
     /**
      * Creates new form PanelCancionDesplegada
      */
     public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelCanciones pCanciones, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
         
         this.pCanciones = pCanciones;
+        this.frmPrincipal = frmPrincipal;
+        this.cancion = cancion;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        
+        initComponents();
+       
+        this.setOpaque(false);
+
+        cargarComponentes();
+        checarSiEsFav();
+        
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    /**
+     * Creates new form PanelCancionDesplegada
+     */
+    public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelCancionesFavoritas pCancionesFav, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
+        
+        this.pCancionesFav = pCancionesFav;
         this.frmPrincipal = frmPrincipal;
         this.cancion = cancion;
         this.album = album;
@@ -251,7 +314,7 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
         lblNombreArtistaCancion1.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreArtistaCancion1.setText("Seru Giran");
 
-        imagenCancion3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
         imagenCancion3.setPreferredSize(new java.awt.Dimension(50, 50));
 
         btnPlay1.setClickedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pause.png"))); // NOI18N
@@ -392,6 +455,10 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
             frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pAlbum, album, cancion, loggedUser));
         if(pArtista != null)
             frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pArtista, album, cancion, loggedUser));
+        if(pHome != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pHome, album, cancion, loggedUser));
+        if(pCancionesFav != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pCancionesFav, album, cancion, loggedUser));
 
         
     }//GEN-LAST:event_lblNombreCancion1MouseClicked
@@ -433,9 +500,10 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
     public void setImagenAlbum(){
                     
         //Le ponemos la imagen del album correspondiente
+        try{
         ImageIcon imagen = new ImageIcon(getClass().getResource(album.getImagen()));
         imagenCancion3.setImagen(imagen);
-
+        } catch(NullPointerException ex){}
     }
     
     public void cargarComponentes(){

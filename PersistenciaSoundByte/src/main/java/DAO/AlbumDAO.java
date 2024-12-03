@@ -7,6 +7,7 @@ package DAO;
 import Colecciones.AlbumColeccion;
 import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
+import Docs.CancionDoc;
 import InterfacesDAO.IAlbumDAO;
 import InterfacesDAO.IConexionDB;
 import com.mongodb.client.MongoCollection;
@@ -333,6 +334,32 @@ public class AlbumDAO implements IAlbumDAO{
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar los albumes por filtro en la base de datos", e);
         } 
+        
+    }
+    
+    @Override
+    public List<GeneroColeccion> obtenerGenerosPorCancion(CancionDoc cancion) throws PersistenciaException{
+    
+        AlbumColeccion album;
+        
+        Bson filtroCancion = Filters.in("canciones", cancion);
+        
+        album = coleccion.find(filtroCancion).first();
+        
+        return album.getArtista().getGeneros();
+        
+    }
+    
+    @Override
+    public AlbumColeccion obtenerAlbumPorCancion(CancionDoc cancion) throws PersistenciaException{
+    
+        AlbumColeccion album;
+        
+        Bson filtroCancion = Filters.in("canciones", cancion);
+        
+        album = coleccion.find(filtroCancion).first();
+        
+        return album;
         
     }
     

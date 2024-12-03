@@ -17,6 +17,7 @@ import excepciones.NegocioException;
 import frames.FrmPrincipal;
 import frames.PanelArtista;
 import frames.PanelArtistas;
+import frames.PanelArtistasFavoritos;
 import frames.PanelBusqueda;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -46,6 +47,7 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
     //paneles
     PanelBusqueda pBusqueda;
     PanelArtistas pArtistas;
+    PanelArtistasFavoritos pArtistasFav;
     
     boolean esFav = false;
     
@@ -84,6 +86,34 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
         
         this.frmPrincipal = frmPrincipal;
         this.pArtistas = pArtistas;
+        this.artista = artista;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        this.artistaNegocio = artistaNegocio;
+        
+        initComponents();
+       
+        this.setOpaque(false);
+
+        cargarComponentes();
+        checarSiEsFav();
+        
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    public PanelArtistaDesplegado(FrmPrincipal frmPrincipal,PanelArtistasFavoritos pArtistasFav, ArtistaDTO artista, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IArtistaNegocio artistaNegocio) {
+        
+        this.frmPrincipal = frmPrincipal;
+        this.pArtistasFav = pArtistasFav;
         this.artista = artista;
         this.loggedUser = loggedUser;
         this.usuarioNegocio = usuarioNegocio;
@@ -295,6 +325,9 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
         
         if(pArtistas != null)
             frmPrincipal.pintarPanelPrincipal(new PanelArtista(frmPrincipal, pArtistas, artista, loggedUser));
+        
+        if(pArtistasFav != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelArtista(frmPrincipal, pArtistasFav, artista, loggedUser));
         
     }//GEN-LAST:event_lblNombreArtistaMouseClicked
     

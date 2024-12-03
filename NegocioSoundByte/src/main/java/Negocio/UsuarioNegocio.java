@@ -4,11 +4,14 @@
  */
 package Negocio;
 
+import Colecciones.AlbumColeccion;
+import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
 import Colecciones.UsuarioColeccion;
 import DAO.UsuarioDAO;
 import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
+import Docs.CancionDoc;
 import Docs.FavoritoDoc;
 import Docs.RestriccionDoc;
 import InterfacesDAO.IUsuarioDAO;
@@ -48,7 +51,17 @@ public class UsuarioNegocio implements IUsuarioNegocio {
             RestriccionDoc restriccion = new RestriccionDoc();
             restriccion.setGeneros(generos);
             usuario.setRestringidos(restriccion);
-            usuario.setFavoritos(new FavoritoDoc());
+            
+            FavoritoDoc favoritoDoc = new FavoritoDoc();
+            List<AlbumColeccion> albumes = new ArrayList<>();
+            List<ArtistaColeccion> artistas = new ArrayList<>();
+            List<CancionDoc> canciones = new ArrayList<>();
+            
+            favoritoDoc.setAlbumes(albumes);
+            favoritoDoc.setArtistas(artistas);
+            favoritoDoc.setCanciones(canciones);
+            
+            usuario.setFavoritos(favoritoDoc);
             
             UsuarioColeccion usuarioColeccion = this.convertirUsuarioDTO(usuario);
             usuarioColeccion.setContraseña(Encriptacion.encriptarPassword(usuarioColeccion.getContraseña()));

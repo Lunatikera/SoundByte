@@ -6,6 +6,7 @@ package InterfacesDAO;
 
 import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
+import Colecciones.UsuarioColeccion;
 import excepciones.PersistenciaException;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -20,6 +21,7 @@ public interface IArtistaDAO {
     
     public List<ArtistaColeccion> obtenerArtistasPorBusquedaGeneros(String filtro, List<GeneroColeccion> especificados) throws PersistenciaException;
 
+    public List<ArtistaColeccion> obtenerArtistasPorFavoritosGeneros(String filtro,UsuarioColeccion usuario, List<GeneroColeccion> especificados) throws PersistenciaException;
     
     
 }

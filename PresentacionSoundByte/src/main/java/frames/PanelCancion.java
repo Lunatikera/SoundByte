@@ -47,9 +47,11 @@ public class PanelCancion extends javax.swing.JPanel {
     
     //Paneles
     PanelCanciones pCanciones;
+    PanelCancionesFavoritas pCancionesFav;
     PanelBusqueda pBusqueda;
     PanelAlbum pAlbum;
     PanelArtista pArtista;
+    PanelHome pHome;
 
     
     //Favorito
@@ -63,6 +65,22 @@ public class PanelCancion extends javax.swing.JPanel {
         
         initComponents();
         this.pBusqueda = pBusqueda;
+        this.cancion = cancion;
+        this.album = album;
+        this.frmPrincipal = frmPrincipal;
+        this.loggedUser = loggedUser;
+        
+        btnAtras.setOpaque(false);
+        
+        listGeneros.setModel(todosGeneros);
+        inicializar();
+
+    }
+    
+    public PanelCancion(FrmPrincipal frmPrincipal,PanelHome pHome, AlbumDTO album, CancionDoc cancion, UsuarioDTO loggedUser) {
+        
+        initComponents();
+        this.pHome = pHome;
         this.cancion = cancion;
         this.album = album;
         this.frmPrincipal = frmPrincipal;
@@ -95,6 +113,22 @@ public class PanelCancion extends javax.swing.JPanel {
         
         initComponents();
         this.pCanciones = pCanciones;
+        this.cancion = cancion;
+        this.album = album;
+        this.frmPrincipal = frmPrincipal;
+        this.loggedUser = loggedUser;
+        
+        btnAtras.setOpaque(false);
+        
+        listGeneros.setModel(todosGeneros);
+        inicializar();
+
+    }
+    
+    public PanelCancion(FrmPrincipal frmPrincipal,PanelCancionesFavoritas pCancionesFav, AlbumDTO album, CancionDoc cancion, UsuarioDTO loggedUser) {
+        
+        initComponents();
+        this.pCancionesFav = pCancionesFav;
         this.cancion = cancion;
         this.album = album;
         this.frmPrincipal = frmPrincipal;
@@ -664,6 +698,12 @@ public class PanelCancion extends javax.swing.JPanel {
         
         if(pArtista != null)
             frmPrincipal.pintarPanelPrincipal(pArtista);
+        
+        if(pHome != null)
+            frmPrincipal.pintarPanelPrincipal(pHome);
+        
+        if(pCancionesFav != null)
+            frmPrincipal.pintarPanelPrincipal(pCancionesFav);
         
     }//GEN-LAST:event_btnAtrasActionPerformed
 

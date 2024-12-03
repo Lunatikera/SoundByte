@@ -35,5 +35,8 @@ public interface IAlbumDAO {
     
     public List<AlbumColeccion> obtenerAlbumesPorArtista(ArtistaColeccion artista) throws PersistenciaException;
 
-                
+    public List<GeneroColeccion> obtenerGenerosPorCancion(CancionDoc cancion) throws PersistenciaException;
+            
+    public AlbumColeccion obtenerAlbumPorCancion(CancionDoc cancion) throws PersistenciaException;
+    
 }

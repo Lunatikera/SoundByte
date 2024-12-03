@@ -11,9 +11,11 @@ import DTO.AlbumDTO;
 import DTO.ArtistaDTO;
 import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
+import Docs.CancionDoc;
 import Docs.RestriccionDoc;
 import InterfacesDAO.IAlbumDAO;
 import InterfacesNegocio.IAlbumNegocio;
+import com.mongodb.client.model.Filters;
 import excepciones.NegocioException;
 import excepciones.PersistenciaException;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.lang3.StringUtils;
+import org.bson.conversions.Bson;
 
 /**
  *
@@ -353,6 +356,48 @@ public class AlbumNegocio implements IAlbumNegocio{
         }
     }
     
+    @Override
+    public List<GeneroDTO> obtenerGenerosPorCancion(AlbumDTO cancion) throws NegocioException{
+        
+        try {
+            List<GeneroDTO> generosD = new ArrayList<>();
+            
+            for(GeneroColeccion generoC : albumDAO.obtenerGenerosPorCancion(cancion.getCanciones().get(0))){
+                
+                GeneroDTO genero = new GeneroDTO();
+                
+                genero.setId(generoC.getId());
+                genero.setDescripcion(genero.getDescripcion());
+                genero.setImagenGenero(genero.getImagenGenero());
+                genero.setNombre(genero.getNombre());
+                
+                generosD.add(genero);
+                
+                
+            }
+            
+            
+            return generosD;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar géneros por canción en la base de datos", ex);
+        }
+        
+    }
+    
+    
+    @Override
+    public AlbumDTO obtenerAlbumPorCancion(AlbumDTO cancion) throws NegocioException{
+        
+        try {
+            
+            
+            return convertirAlbumDTO(albumDAO.obtenerAlbumPorCancion(cancion.getCanciones().get(0)));
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar géneros por canción en la base de datos", ex);
+        }
+        
+    }
     
     @Override
     public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC){

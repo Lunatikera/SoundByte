@@ -7,6 +7,7 @@ package DAO;
 import Colecciones.AlbumColeccion;
 import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
+import Colecciones.UsuarioColeccion;
 import InterfacesDAO.IArtistaDAO;
 import InterfacesDAO.IConexionDB;
 import com.mongodb.client.MongoCollection;
@@ -60,6 +61,34 @@ public class ArtistaDAO implements IArtistaDAO{
         
     @Override
     public List<ArtistaColeccion> obtenerArtistasPorBusquedaGeneros(String filtro, List<GeneroColeccion> especificados) throws PersistenciaException{
+        try{
+        List<ArtistaColeccion> artistas = new ArrayList<>();
+
+        Bson filtroArtista1 = Filters.in("generos", especificados);
+        Bson filtroArtista2 = Filters.regex("nombre", "^" +filtro, "i");
+        
+        Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
+        
+            System.out.println(coleccion.find());
+
+        for(ArtistaColeccion artista : coleccion.find(filtrosCombinados)){
+
+            artistas.add(artista);
+            
+        }
+
+        if(artistas.isEmpty())
+            return null;
+        
+        return artistas;
+        
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar los artistas por filtro en la base de datos", e);
+        } 
+    }
+    
+    @Override
+    public List<ArtistaColeccion> obtenerArtistasPorFavoritosGeneros(String filtro,UsuarioColeccion usuario, List<GeneroColeccion> especificados) throws PersistenciaException{
         try{
         List<ArtistaColeccion> artistas = new ArrayList<>();
 

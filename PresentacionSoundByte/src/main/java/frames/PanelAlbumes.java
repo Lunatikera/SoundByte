@@ -513,8 +513,13 @@ public class PanelAlbumes extends javax.swing.JPanel {
     public void paginacionAdelante(int contador){
     
         panelAlbumesDesplegados.removeAll();
+        
+        this.revalidate();
+        this.repaint();
         //Iteramos por cada album que nos regresa
+        if(LIMITE < cantidadAlbumes){
         for(int i = contador; i < LIMITE; i++){
+
 
 
                 PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, this, albumesTotal.get(i), frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
@@ -528,7 +533,22 @@ public class PanelAlbumes extends javax.swing.JPanel {
         
         this.revalidate();
         this.repaint();
+        }
+                for(int i = contador; i < cantidadAlbumes; i++){
+
+
+
+                PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, this, albumesTotal.get(i), frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
+
+                panelAlbumesDesplegados.add(panel);
+
+
+                
+
+            }
         
+        this.revalidate();
+        this.repaint();
         
     }
     
@@ -616,7 +636,7 @@ public class PanelAlbumes extends javax.swing.JPanel {
 
     private void btnPaginaMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMasActionPerformed
 
-        if(LIMITE+15 > cantidadAlbumes){
+        if(LIMITE < cantidadAlbumes){
             JOptionPane.showMessageDialog(this, "No hay más páginas en frente");
             return;
         }

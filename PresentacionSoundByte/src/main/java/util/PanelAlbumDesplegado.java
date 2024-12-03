@@ -14,8 +14,10 @@ import excepciones.NegocioException;
 import frames.FrmPrincipal;
 import frames.PanelAlbum;
 import frames.PanelAlbumes;
+import frames.PanelAlbumesFavoritos;
 import frames.PanelArtista;
 import frames.PanelBusqueda;
+import frames.PanelHome;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
@@ -47,7 +49,9 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
     //Paneles
     PanelBusqueda pBusqueda;
     PanelAlbumes pAlbumes;
+    PanelAlbumesFavoritos pAlbumesFav;
     PanelArtista pArtista;
+    PanelHome pHome;
     
     /**
      * Creates new form PanelAlbumDesplegado
@@ -86,6 +90,64 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
         
         this.frmPrincipal = frmPrincipal;
         this.pAlbumes = pAlbumes;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        this.albumNegocio = albumNegocio;
+        
+        initComponents();
+        
+        this.setOpaque(false);
+        
+        
+        cargarComponentes();
+        checarSiEsFav();
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    
+    public PanelAlbumDesplegado(FrmPrincipal frmPrincipal, PanelHome pHome, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+        
+        this.frmPrincipal = frmPrincipal;
+        this.pHome = pHome;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        this.albumNegocio = albumNegocio;
+        
+        initComponents();
+        
+        this.setOpaque(false);
+        
+        
+        cargarComponentes();
+        checarSiEsFav();
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    
+    public PanelAlbumDesplegado(FrmPrincipal frmPrincipal, PanelAlbumesFavoritos pAlbumesFav, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+        
+        this.frmPrincipal = frmPrincipal;
+        this.pAlbumesFav = pAlbumesFav;
         this.album = album;
         this.loggedUser = loggedUser;
         this.usuarioNegocio = usuarioNegocio;
@@ -215,6 +277,8 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
             }
         });
 
+        imagenAlbum1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -339,8 +403,14 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
         if(pAlbumes != null)
             frmPrincipal.pintarPanelPrincipal(new PanelAlbum(frmPrincipal, pAlbumes, album, loggedUser));
 
+        if(pAlbumesFav != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelAlbum(frmPrincipal, pAlbumesFav, album, loggedUser));
+
         if(pArtista != null)
             frmPrincipal.pintarPanelPrincipal(new PanelAlbum(frmPrincipal, pArtista, album, loggedUser));
+        
+        if(pHome != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelAlbum(frmPrincipal, pHome, album, loggedUser));
         
     }//GEN-LAST:event_lblNombreAlbumMouseClicked
 
@@ -381,9 +451,10 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
     public void setImagenPerfil(){
                     
         //Le ponemos la imagen del album correspondiente
+        try{
         ImageIcon imagen = new ImageIcon(getClass().getResource(album.getImagen()));
         imagenAlbum1.setImagen(imagen);
-
+        }catch(NullPointerException ex){}
     }
     
     public void cargarComponentes(){

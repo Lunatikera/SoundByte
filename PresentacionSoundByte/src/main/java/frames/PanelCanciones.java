@@ -19,7 +19,10 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,6 +37,7 @@ public class PanelCanciones extends javax.swing.JPanel {
     FrmPrincipal frmPrincipal;
     
     List<CancionDoc> cancionesDesplegadas = new ArrayList<>();
+    List<AlbumDTO> albumesDesplegados = new ArrayList<>();
     
     FiltroMusicaDTO filtroMusica = null;
     
@@ -449,10 +453,16 @@ public class PanelCanciones extends javax.swing.JPanel {
     }//GEN-LAST:event_buscadorActionPerformed
     public void buscarCanciones(String filtro){
     
+        LIMITE = 22;
+        pagina = 1;
+        lblPagina.setText("Página " + pagina);
+        cantidadCanciones = 0;
         
         //Eliminamos las canciones previamente desplegadas si existen        
         if(!cancionesDesplegadas.isEmpty())
             cancionesDesplegadas.clear();
+        if(!albumesDesplegados.isEmpty())
+            albumesDesplegados.clear();
         
         //Eliminamos las canciones que se estén mostrando en pantalla
         panelCanciones1.removeAll();
@@ -487,9 +497,20 @@ public class PanelCanciones extends javax.swing.JPanel {
             if(albumes == null)
                 return;
             
-            for(AlbumDTO album : albumes)
-                for(CancionDoc cancion : album.getCanciones())
+            albumesDesplegados = albumes;
+            
+            
+            for(AlbumDTO album : albumes){
+
+                for(CancionDoc cancion : album.getCanciones()){
+                    
+                    cancionesDesplegadas.add(cancion);
                     cantidadCanciones++;
+                 
+                    
+                   
+                }
+            }
             
             //Iteramos por cada album que nos regresa
             for(AlbumDTO album : albumes){
@@ -499,11 +520,8 @@ public class PanelCanciones extends javax.swing.JPanel {
                 for(CancionDoc cancion : album.getCanciones()){
                     
                     PanelCancionDesplegada panel = new PanelCancionDesplegada(frmPrincipal, this, cancion, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
-                   
-                    if(counter < LIMITE)
-                        continue;
-                    
-                    if(counter <= LIMITE + 11){
+
+                    if(counter <= LIMITE+11){
 
                     //Agregamos la canción desplegada en la lista de canciones
                     cancionesDesplegadas.add(cancion);
@@ -534,6 +552,118 @@ public class PanelCanciones extends javax.swing.JPanel {
         
     }
     
+    public void paginacionAdelante(int contador){
+    
+        panelCanciones1.removeAll();
+        panelCanciones2.removeAll();
+        try {
+        this.revalidate();
+        this.repaint();
+        //Iteramos por cada album que nos regresa
+        int aux = 0;
+        
+        if(LIMITE < cantidadCanciones){
+        for(int i = contador; i < LIMITE; i++){
+            
+            AlbumDTO cancion = new AlbumDTO();
+            
+            cancion.setCanciones(Arrays.asList(cancionesDesplegadas.get(i)));
+            
+            AlbumDTO album = frmPrincipal.albumNegocio.obtenerAlbumPorCancion(cancion);
+            
+            PanelCancionDesplegada panel = new PanelCancionDesplegada(frmPrincipal, this, cancionesDesplegadas.get(i), album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
+                 
+            if(aux <= 11)
+                panelCanciones1.add(panel);
+            else if(aux >= 12 && aux < 22)
+                panelCanciones2.add(panel);
+            else 
+                return;
+
+                        
+            aux++;
+                
+
+            }
+        
+        this.revalidate();
+        this.repaint();
+        
+        }
+        for(int i = contador; i < LIMITE; i++){
+            
+            AlbumDTO cancion = new AlbumDTO();
+            
+            cancion.setCanciones(Arrays.asList(cancionesDesplegadas.get(i)));
+            
+            AlbumDTO album = frmPrincipal.albumNegocio.obtenerAlbumPorCancion(cancion);
+            
+            PanelCancionDesplegada panel = new PanelCancionDesplegada(frmPrincipal, this, cancionesDesplegadas.get(i), album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
+                 
+            if(aux <= 11)
+                panelCanciones1.add(panel);
+            else if(aux >= 12 && aux < 22)
+                panelCanciones2.add(panel);
+            else 
+                return;
+
+                        
+            aux++;
+                
+
+            }
+        
+        this.revalidate();
+        this.repaint();
+                    } catch (NegocioException ex) {
+                JOptionPane.showMessageDialog(this, "Error al buscar las canciones " + ex);
+            }
+        
+    }
+    
+    
+    public void paginacionAtras(int contador){
+    
+        panelCanciones1.removeAll();
+        panelCanciones2.removeAll();
+        try {
+        this.revalidate();
+        this.repaint();
+        //Iteramos por cada album que nos regresa
+        int aux = 0;
+        
+        for(int i = contador; i < LIMITE; i++){
+            
+            AlbumDTO cancion = new AlbumDTO();
+            
+            cancion.setCanciones(Arrays.asList(cancionesDesplegadas.get(i)));
+            
+            AlbumDTO album = frmPrincipal.albumNegocio.obtenerAlbumPorCancion(cancion);
+            
+            PanelCancionDesplegada panel = new PanelCancionDesplegada(frmPrincipal, this, cancionesDesplegadas.get(i), album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
+                 
+            if(aux <= 11)
+                panelCanciones1.add(panel);
+            else if(aux >= 12 && aux < 22)
+                panelCanciones2.add(panel);
+            else 
+                return;
+
+                        
+            aux++;
+                
+
+            }
+        
+        this.revalidate();
+        this.repaint();
+        
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al buscar las canciones " + ex);
+        }
+        
+        
+    }
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
         
         if(buscador.getText().equals("")){
@@ -580,7 +710,7 @@ public class PanelCanciones extends javax.swing.JPanel {
 
     private void btnPaginaMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMenosActionPerformed
 
-        if(LIMITE < 22){
+        if(LIMITE <= 22){
             JOptionPane.showMessageDialog(this, "No hay más páginas para atrás");
             return;
         }
@@ -588,21 +718,25 @@ public class PanelCanciones extends javax.swing.JPanel {
         pagina--;
         lblPagina.setText("Página " + pagina);
         
+        int contador = LIMITE-44;
         LIMITE = LIMITE - 22;
+        paginacionAtras(contador);
         
     }//GEN-LAST:event_btnPaginaMenosActionPerformed
 
     private void btnPaginaMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMasActionPerformed
 
-        if(LIMITE+22 > cantidadCanciones){
+        if(cantidadCanciones < LIMITE){
             JOptionPane.showMessageDialog(this, "No hay más páginas en frente");
             return;
         }
         
         pagina++;
         lblPagina.setText("Página " + pagina);
-        
+        int contador = LIMITE;
         LIMITE = LIMITE + 22;
+        
+        paginacionAdelante(contador);
         
     }//GEN-LAST:event_btnPaginaMasActionPerformed
 

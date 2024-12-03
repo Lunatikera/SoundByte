@@ -33,7 +33,9 @@ public class PanelAlbum extends javax.swing.JPanel {
     //Paneles
     PanelBusqueda pBusqueda;
     PanelAlbumes pAlbumes;
+    PanelAlbumesFavoritos pAlbumesFav;
     PanelArtista pArtista;
+    PanelHome pHome;
     
     Boolean esFav = false;
 
@@ -77,6 +79,25 @@ public class PanelAlbum extends javax.swing.JPanel {
         this.repaint();
         
     }
+    
+    public PanelAlbum(FrmPrincipal frmPrincipal,PanelHome pHome, AlbumDTO album, UsuarioDTO loggedUser) {
+       
+        initComponents();
+        
+        this.pHome = pHome;
+        this.album = album;
+        this.frmPrincipal = frmPrincipal;
+        this.loggedUser = loggedUser;
+        
+        checarSiEsFav();
+        inicializar();
+        llenarCanciones();
+        
+        btnAgregarAFav.setSelected(esFav);
+
+        this.repaint();
+        
+    }
     /**
      * Creates new form Prueba1
      */
@@ -85,6 +106,24 @@ public class PanelAlbum extends javax.swing.JPanel {
         initComponents();
         
         this.pAlbumes = pAlbumes;
+        this.album = album;
+        this.frmPrincipal = frmPrincipal;
+        this.loggedUser = loggedUser;
+        
+        checarSiEsFav();
+        inicializar();
+        llenarCanciones();
+        
+        btnAgregarAFav.setSelected(esFav);
+
+        this.repaint();
+        
+    }
+    public PanelAlbum(FrmPrincipal frmPrincipal,PanelAlbumesFavoritos pAlbumesFav, AlbumDTO album, UsuarioDTO loggedUser) {
+       
+        initComponents();
+        
+        this.pAlbumesFav = pAlbumesFav;
         this.album = album;
         this.frmPrincipal = frmPrincipal;
         this.loggedUser = loggedUser;
@@ -499,6 +538,9 @@ public class PanelAlbum extends javax.swing.JPanel {
         
         if(pAlbumes != null)
             frmPrincipal.pintarPanelPrincipal(pAlbumes);
+        
+        if(pAlbumesFav != null)
+            frmPrincipal.pintarPanelPrincipal(pAlbumesFav);
         
         if(pArtista != null)
             frmPrincipal.pintarPanelPrincipal(pArtista);

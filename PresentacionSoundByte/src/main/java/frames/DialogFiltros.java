@@ -38,9 +38,12 @@ public class DialogFiltros extends javax.swing.JDialog {
     
     FrmPrincipal frmPrincipal;
     PanelAlbumes pAlbumes;
+    PanelAlbumesFavoritos pAlbumesFav;
     PanelBusqueda pBusqueda;
     PanelArtistas pArtistas;
+    PanelArtistasFavoritos pArtistasFav;
     PanelCanciones pCanciones;
+    PanelCancionesFavoritas pCancionesFav;
     
     
     DefaultListModel<String> todosGeneros = new DefaultListModel<>();
@@ -168,6 +171,72 @@ public class DialogFiltros extends javax.swing.JDialog {
         }
     }
     
+    public DialogFiltros(FrmPrincipal frmPrincipal, PanelCancionesFavoritas pCancionesFav, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+        
+ 
+        initComponents();
+
+        this.setTitle("Filtros");
+
+        this.frmPrincipal = frmPrincipal;
+        this.pCancionesFav = pCancionesFav;
+        this.filtros = filtros;
+        
+        inicializaFiltros(filtros);
+        
+        switchAlbumes.setVisible(false);
+        switchCanciones.setVisible(false);
+        switchArtistas.setVisible(false);
+        
+        lblAlbumes.setVisible(false);
+        lblCanciones.setVisible(false);
+        lblArtistas.setVisible(false);
+        
+        this.setLayout(new GridLayout(1,1));
+        
+        this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
+        this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
+
+        listGeneros.setModel(todosGeneros);
+        listGenerosFiltrados.setModel(generosFiltrados);
+
+        try {
+            
+            
+            HashMap<Integer, ObjectId> mapIds = new HashMap<>();
+            
+            for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
+                mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+
+            if(filtros != null){
+                
+                generosAFiltrar = filtros.getGeneros();
+                
+                for(int i = 0; i<=filtros.getGeneros().size()-1;i++){
+                    
+                    int size = i + loggedUser.getRestringidos().getGeneros().size();
+                    
+                    mapIds.put(size, filtros.getGeneros().get(i).getId());
+                    
+                    
+                }
+            }
+            
+            for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
+            
+                if(!mapIds.containsValue(generoAux.getId()))
+                    generos.add(generoAux);
+                
+            }
+
+        llenarListGeneros(generos);
+        llenarListGenerosYaRestringidos();
+
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+        }
+    }
+    
     public DialogFiltros(FrmPrincipal frmPrincipal, PanelAlbumes pAlbumes, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
         
  
@@ -234,6 +303,72 @@ public class DialogFiltros extends javax.swing.JDialog {
         }
     }
     
+    public DialogFiltros(FrmPrincipal frmPrincipal, PanelAlbumesFavoritos pAlbumesFav, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+        
+ 
+        initComponents();
+
+        this.setTitle("Filtros");
+
+        this.frmPrincipal = frmPrincipal;
+        this.pAlbumesFav = pAlbumesFav;
+        this.filtros = filtros;
+        
+        inicializaFiltros(filtros);
+        
+        switchAlbumes.setVisible(false);
+        switchCanciones.setVisible(false);
+        switchArtistas.setVisible(false);
+        
+        lblAlbumes.setVisible(false);
+        lblCanciones.setVisible(false);
+        lblArtistas.setVisible(false);
+        
+        this.setLayout(new GridLayout(1,1));
+        
+        this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
+        this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
+
+        listGeneros.setModel(todosGeneros);
+        listGenerosFiltrados.setModel(generosFiltrados);
+
+        try {
+            
+            
+            HashMap<Integer, ObjectId> mapIds = new HashMap<>();
+            
+            for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
+                mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+
+            if(filtros != null){
+                
+                generosAFiltrar = filtros.getGeneros();
+                
+                for(int i = 0; i<=filtros.getGeneros().size()-1;i++){
+                    
+                    int size = i + loggedUser.getRestringidos().getGeneros().size();
+                    
+                    mapIds.put(size, filtros.getGeneros().get(i).getId());
+                    
+                    
+                }
+            }
+            
+            for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
+            
+                if(!mapIds.containsValue(generoAux.getId()))
+                    generos.add(generoAux);
+                
+            }
+
+        llenarListGeneros(generos);
+        llenarListGenerosYaRestringidos();
+
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+        }
+    }
+    
     public DialogFiltros(FrmPrincipal frmPrincipal, PanelArtistas pArtistas, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
         
  
@@ -243,6 +378,72 @@ public class DialogFiltros extends javax.swing.JDialog {
 
         this.frmPrincipal = frmPrincipal;
         this.pArtistas = pArtistas;
+        this.filtros = filtros;
+        
+        inicializaFiltros(filtros);
+        
+        switchAlbumes.setVisible(false);
+        switchCanciones.setVisible(false);
+        switchArtistas.setVisible(false);
+        
+        lblAlbumes.setVisible(false);
+        lblCanciones.setVisible(false);
+        lblArtistas.setVisible(false);
+        
+        this.setLayout(new GridLayout(1,1));
+        
+        this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
+        this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
+
+        listGeneros.setModel(todosGeneros);
+        listGenerosFiltrados.setModel(generosFiltrados);
+
+        try {
+            
+            
+            HashMap<Integer, ObjectId> mapIds = new HashMap<>();
+            
+            for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
+                mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+
+            if(filtros != null){
+                
+                generosAFiltrar = filtros.getGeneros();
+                
+                for(int i = 0; i<=filtros.getGeneros().size()-1;i++){
+                    
+                    int size = i + loggedUser.getRestringidos().getGeneros().size();
+                    
+                    mapIds.put(size, filtros.getGeneros().get(i).getId());
+                    
+                    
+                }
+            }
+            
+            for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
+            
+                if(!mapIds.containsValue(generoAux.getId()))
+                    generos.add(generoAux);
+                
+            }
+
+        llenarListGeneros(generos);
+        llenarListGenerosYaRestringidos();
+
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
+        }
+    }
+    
+    public DialogFiltros(FrmPrincipal frmPrincipal, PanelArtistasFavoritos pArtistasFav, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+        
+ 
+        initComponents();
+
+        this.setTitle("Filtros");
+
+        this.frmPrincipal = frmPrincipal;
+        this.pArtistasFav = pArtistasFav;
         this.filtros = filtros;
         
         inicializaFiltros(filtros);
@@ -671,23 +872,25 @@ public class DialogFiltros extends javax.swing.JDialog {
         if(pAlbumes != null)
             pAlbumes.filtroMusica = filtros;
         
+        if(pAlbumesFav != null)
+            pAlbumesFav.filtroMusica = filtros;
+        
         if(pArtistas != null)
             pArtistas.filtroMusica = filtros;
         
-        if(pBusqueda != null){
- 
+        if(pBusqueda != null)
             pBusqueda.filtroMusica = filtros;
-            pBusqueda.setFiltroMusica(filtros);
-            frmPrincipal.pintarPanelPrincipal(pBusqueda);
-            
-        }
         
-        if(pCanciones != null){
-            
+        if(pCanciones != null)    
             pCanciones.setFiltroMusica(filtros);
-            frmPrincipal.pintarPanelPrincipal(pCanciones);
-            
-        }
+        
+        if(pArtistasFav != null)
+            pArtistasFav.filtroMusica = filtros;
+        
+        if(pCancionesFav != null)
+            pCancionesFav.filtroMusica = filtros;
+
+        
         this.dispose();
 
     }//GEN-LAST:event_btnGuardarFiltrosActionPerformed

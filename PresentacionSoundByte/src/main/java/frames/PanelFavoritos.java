@@ -32,10 +32,9 @@ public class PanelFavoritos extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAlbumesFav = new javax.swing.JButton();
+        btnArtistasFav = new javax.swing.JButton();
+        btnCancionesFav = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,39 +43,38 @@ public class PanelFavoritos extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(27, 26, 26));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AlbumesFavoritos.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setPreferredSize(new java.awt.Dimension(483, 309));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAlbumesFav.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AlbumesFavoritos.png"))); // NOI18N
+        btnAlbumesFav.setBorderPainted(false);
+        btnAlbumesFav.setContentAreaFilled(false);
+        btnAlbumesFav.setPreferredSize(new java.awt.Dimension(483, 309));
+        btnAlbumesFav.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAlbumesFavActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(btnAlbumesFav);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/artistasFavoritos.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setPreferredSize(new java.awt.Dimension(483, 309));
-        jPanel1.add(jButton2);
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/busquedaFavoritos.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setPreferredSize(new java.awt.Dimension(483, 309));
-        jPanel1.add(jButton3);
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancionesfavoritos.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setPreferredSize(new java.awt.Dimension(483, 309));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnArtistasFav.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/artistasFavoritos.png"))); // NOI18N
+        btnArtistasFav.setBorderPainted(false);
+        btnArtistasFav.setContentAreaFilled(false);
+        btnArtistasFav.setPreferredSize(new java.awt.Dimension(483, 309));
+        btnArtistasFav.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnArtistasFavActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
+        jPanel1.add(btnArtistasFav);
+
+        btnCancionesFav.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancionesfavoritos.png"))); // NOI18N
+        btnCancionesFav.setBorderPainted(false);
+        btnCancionesFav.setContentAreaFilled(false);
+        btnCancionesFav.setPreferredSize(new java.awt.Dimension(483, 309));
+        btnCancionesFav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancionesFavActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancionesFav);
 
         jPanel2.setBackground(new java.awt.Color(27, 26, 26));
 
@@ -129,20 +127,25 @@ public class PanelFavoritos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAlbumesFavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlbumesFavActionPerformed
+        frmPrincipal.pintarPanelPrincipal(new PanelAlbumesFavoritos(frmPrincipal));
+    }//GEN-LAST:event_btnAlbumesFavActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCancionesFavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancionesFavActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        frmPrincipal.pintarPanelPrincipal(new PanelCancionesFavoritas(frmPrincipal));
+    }//GEN-LAST:event_btnCancionesFavActionPerformed
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnArtistasFavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtistasFavActionPerformed
+        // TODO add your handling code here:
+        frmPrincipal.pintarPanelPrincipal(new PanelArtistasFavoritos(frmPrincipal, this));
+    }//GEN-LAST:event_btnArtistasFavActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAlbumesFav;
+    private javax.swing.JButton btnArtistasFav;
+    private javax.swing.JButton btnCancionesFav;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

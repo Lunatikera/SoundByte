@@ -37,6 +37,7 @@ public class PanelArtista extends javax.swing.JPanel {
     //Paneles
     PanelBusqueda pBusqueda;
     PanelArtistas pArtistas;
+    PanelArtistasFavoritos pArtistasFav;
     
     List<AlbumDTO> albumesArtista;
     List<CancionDoc> cancionesArtista;
@@ -71,6 +72,27 @@ public class PanelArtista extends javax.swing.JPanel {
 
         this.frmPrincipal = frmPrincipal;
         this.pArtistas = pArtistas;
+        this.artista = artista;
+        this.loggedUser = loggedUser;
+
+        panelContenedor.setLayout(new FlowLayout());
+        
+        panelContenedor.setOpaque(true);
+        
+        buscarAlbumesYCanciones();
+        inicializar();
+        llenarCanciones();
+        
+        this.revalidate();
+        this.repaint();
+        
+    }
+    public PanelArtista(FrmPrincipal frmPrincipal, PanelArtistasFavoritos pArtistasFav, ArtistaDTO artista, UsuarioDTO loggedUser) {
+        
+        initComponents();
+
+        this.frmPrincipal = frmPrincipal;
+        this.pArtistasFav = pArtistasFav;
         this.artista = artista;
         this.loggedUser = loggedUser;
 
@@ -484,10 +506,13 @@ public class PanelArtista extends javax.swing.JPanel {
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         if(pBusqueda != null)
-        frmPrincipal.pintarPanelPrincipal(pBusqueda);
-        
+            frmPrincipal.pintarPanelPrincipal(pBusqueda);
+
         if(pArtistas != null)
-        frmPrincipal.pintarPanelPrincipal(pArtistas);
+            frmPrincipal.pintarPanelPrincipal(pArtistas);
+        
+        if(pArtistasFav != null)
+            frmPrincipal.pintarPanelPrincipal(pArtistasFav);
 
     }//GEN-LAST:event_btnAtrasActionPerformed
 

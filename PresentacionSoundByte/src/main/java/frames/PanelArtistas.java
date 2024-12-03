@@ -482,7 +482,11 @@ public class PanelArtistas extends javax.swing.JPanel {
     public void paginacionAdelante(int contador){
     
         panelArtistasDesplegados.removeAll();
+        
+        this.revalidate();
+        this.repaint();
         //Iteramos por cada album que nos regresa
+        if(LIMITE < cantidadArtistas){
         for(int i = contador; i < LIMITE; i++){
 
 
@@ -497,9 +501,24 @@ public class PanelArtistas extends javax.swing.JPanel {
         
         this.revalidate();
         this.repaint();
+        }
+                for(int i = contador; i < cantidadArtistas; i++){
+
+
+                PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal, this, artistasTotal.get(i), frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
+
+                panelArtistasDesplegados.add(panel);
+
+
+                
+
+            }
         
+        this.revalidate();
+        this.repaint();
         
     }
+    
     
     public void paginacionAtras(int contador){
     
@@ -583,7 +602,8 @@ public class PanelArtistas extends javax.swing.JPanel {
 
     private void btnPaginaMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMasActionPerformed
 
-        if(LIMITE+15 > cantidadArtistas){
+
+        if(cantidadArtistas < LIMITE){
             JOptionPane.showMessageDialog(this, "No hay más páginas en frente");
             return;
         }

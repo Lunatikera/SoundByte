@@ -4,10 +4,17 @@
  */
 package frames;
 
+import Colecciones.AlbumColeccion;
+import Colecciones.ArtistaColeccion;
+import Colecciones.GeneroColeccion;
 import DAO.GeneroDAO;
 import DAO.UsuarioDAO;
+import DTO.AlbumDTO;
+import DTO.ArtistaDTO;
 import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
+import Docs.CancionDoc;
+import Docs.FavoritoDoc;
 import Docs.RestriccionDoc;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
@@ -17,6 +24,8 @@ import Negocio.UsuarioNegocio;
 import InterfacesNegocio.IGeneroNegocio;
 import excepciones.NegocioException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +48,10 @@ public class PanelRestricciones extends javax.swing.JPanel {
     List<GeneroDTO> generosARestringir = new ArrayList<>();
     DefaultListModel<String> listModel = new DefaultListModel<>(); 
     DefaultListModel<String> listModel1 = new DefaultListModel<>();
+    
+    String cancionesARestringir = new String();
+    String albumesARestringir = new String();
+    String artistasARestringir = new String();
     
     public PanelRestricciones(FrmPrincipal frmPrincipal, IGeneroNegocio generoNegocio,IUsuarioNegocio usuarioNegocio) {
         
@@ -326,6 +339,111 @@ public class PanelRestricciones extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnCambiarEstadoGeneroActionPerformed
 
+    private FavoritoDoc eliminarFavoritos(){
+    
+        FavoritoDoc favoritos = frmPrincipal.getLoggedUser().getFavoritos();
+
+        HashMap<Integer, ObjectId> idsGeneros = new HashMap<>();
+        boolean esRestringido = false;
+        
+        for(int i = 0; i<=generosARestringir.size()-1; i++)
+            idsGeneros.put(i, generosARestringir.get(i).getId());
+        
+        List<ArtistaColeccion> artistasFavoritos = new ArrayList<>();
+
+        List<ArtistaDTO> artistasARemover = new ArrayList<>(); 
+        
+        if(!favoritos.getArtistas().isEmpty()){
+        
+            for(ArtistaColeccion artista : favoritos.getArtistas()){
+
+            esRestringido = false;
+
+            for(GeneroColeccion genero : artista.getGeneros())
+                if(idsGeneros.containsValue(genero.getId()))
+                    esRestringido = true;
+
+
+            if(esRestringido)
+                artistasARemover.add(frmPrincipal.artistaNegocio.convertirArtistaDTO(artista));
+            else
+                artistasFavoritos.add(artista);
+            
+            }
+        
+        }
+        
+        List<AlbumColeccion> albumesFavoritos = new ArrayList<>();
+
+        List<AlbumDTO> albumesARemover = new ArrayList<>(); 
+        
+        if(!favoritos.getAlbumes().isEmpty()){
+        
+            for(AlbumColeccion album : favoritos.getAlbumes()){
+
+                esRestringido = false;
+
+                for(GeneroColeccion genero : album.getArtista().getGeneros())
+                    if(idsGeneros.containsValue(genero.getId()))
+                        esRestringido = true;
+
+
+                if(esRestringido)
+                    albumesARemover.add(frmPrincipal.albumNegocio.convertirAlbumDTO(album));
+                else
+                    albumesFavoritos.add(album);
+
+            }
+        }
+        
+        List<CancionDoc> cancionesFavoritas = new ArrayList<>();
+
+        List<CancionDoc> cancionesARemover = new ArrayList<>(); 
+        
+        if(!favoritos.getCanciones().isEmpty()){
+        
+            for(CancionDoc cancion : favoritos.getCanciones()){
+
+                try {
+                    esRestringido = false;
+                    AlbumDTO albumCancion = new AlbumDTO();
+                    
+                    albumCancion.setCanciones(Arrays.asList(cancion));
+                    
+                    for(GeneroDTO genero : frmPrincipal.albumNegocio.obtenerGenerosPorCancion(albumCancion))
+                        if(idsGeneros.containsValue(genero.getId()))
+                            esRestringido = true;
+                    
+                    
+                    if(esRestringido){
+                        cancionesARemover.add((cancion));
+                    }
+                    else
+                        cancionesFavoritas.add(cancion);
+                } catch (NegocioException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al buscar géneros por canción" );
+                }
+
+            }
+        }
+        
+        for(CancionDoc cancion : cancionesARemover)
+            cancionesARestringir = cancionesARestringir + cancion.getNombre() + " • ";
+        
+        for(AlbumDTO album : albumesARemover)
+            albumesARestringir = albumesARestringir + album.getNombre() + " • ";
+        
+        for(ArtistaDTO artista : artistasARemover)
+            artistasARestringir = artistasARestringir + artista.getNombre() + " • ";
+        
+        favoritos.setAlbumes(albumesFavoritos);
+        favoritos.setArtistas(artistasFavoritos);
+        favoritos.setCanciones(cancionesFavoritas);
+            
+        return favoritos;
+        
+    }
+    
     private void btnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosActionPerformed
         // TODO add your handling code here:
         
@@ -349,14 +467,19 @@ public class PanelRestricciones extends javax.swing.JPanel {
             
         }
         
-        if(JOptionPane.showConfirmDialog(this, "Esta seguro que quiere restringir los siguientes géneros ? \n" + generosSeleccionados) == JOptionPane.YES_OPTION)
-        try {
-           this.usuarioNegocio.actualizarUsuario( usuarioActualizado);
-        } catch (NegocioException ex) {
-            JOptionPane.showMessageDialog(this, "Error al actualizar usuario " + ex);
-        }
+        usuarioActualizado.setFavoritos(eliminarFavoritos());
         
-        frmPrincipal.setLoggedUser(usuarioActualizado);
+        if(JOptionPane.showConfirmDialog(this, "Esta seguro que quiere restringir los siguientes géneros ? \n" + generosSeleccionados) == JOptionPane.YES_OPTION)
+            if(JOptionPane.showConfirmDialog(this, "Esto eliminaría las siguientes canciones \n" + cancionesARestringir + "\n" + "Los siguientes álbumes \n"
+            + albumesARestringir + "\n" + "Lxs siguientes artistas \n" + artistasARestringir) == JOptionPane.YES_OPTION)
+                
+                try {
+                       this.usuarioNegocio.actualizarUsuario( usuarioActualizado);
+                    } catch (NegocioException ex) {
+                        JOptionPane.showMessageDialog(this, "Error al actualizar usuario " + ex);
+                    }
+        
+                frmPrincipal.setLoggedUser(usuarioActualizado);
         
     }//GEN-LAST:event_btnGuardarCambiosActionPerformed
 

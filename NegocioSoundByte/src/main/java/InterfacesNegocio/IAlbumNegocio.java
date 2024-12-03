@@ -36,6 +36,10 @@ public interface IAlbumNegocio {
     
     public List<AlbumDTO> obtenerAlbumesPorArtista(ArtistaDTO artistaC) throws NegocioException;
     
+    public AlbumDTO obtenerAlbumPorCancion(AlbumDTO cancion) throws NegocioException;
+    
+    public List<GeneroDTO> obtenerGenerosPorCancion(AlbumDTO cancion) throws NegocioException;
+    
     public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC);
     
     public AlbumColeccion convertirAlbumColeccion(AlbumDTO albumDTO);
