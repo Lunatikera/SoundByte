@@ -340,9 +340,6 @@ public class AlbumNegocio implements IAlbumNegocio{
             ArtistaColeccion artista = convertirArtistaColeccion(artistaC);
             List<AlbumDTO> albumes = new ArrayList<>();
             
-            System.out.println(artista.toString());
-            
-            
             if(albumDAO.obtenerAlbumesPorArtista(artista) == null)
                 return null;
             

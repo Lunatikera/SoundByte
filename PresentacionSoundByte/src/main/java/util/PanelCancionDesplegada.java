@@ -167,6 +167,8 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
             ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
             iconoActivo = icon;
         }
+        
+        btnFavCancion1.move(200, 35);
         this.repaint();
     
     }

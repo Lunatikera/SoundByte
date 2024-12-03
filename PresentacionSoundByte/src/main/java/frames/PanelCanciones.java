@@ -36,10 +36,12 @@ public class PanelCanciones extends javax.swing.JPanel {
     List<CancionDoc> cancionesDesplegadas = new ArrayList<>();
     
     FiltroMusicaDTO filtroMusica = null;
+    
+    int cantidadCanciones = 0;
 
     
     private int pagina=1;
-    private int LIMITE=3;
+    private int LIMITE=0;
 
     /**
      * Creates new form Prueba1
@@ -136,11 +138,11 @@ public class PanelCanciones extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnPaginaMenos = new util.BotonMenu();
         jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblPagina = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnPaginaMas = new util.BotonMenu();
         PanelBusquda = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -268,26 +270,34 @@ public class PanelCanciones extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(27, 26, 26));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paginaAnterior.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jPanel1.add(jButton2);
+        btnPaginaMenos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/leftSelected.png"))); // NOI18N
+        btnPaginaMenos.setSimpleIcon(new javax.swing.ImageIcon(getClass().getResource("/images/left.png"))); // NOI18N
+        btnPaginaMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaginaMenosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPaginaMenos);
 
         jLabel2.setText("                        ");
         jPanel1.add(jLabel2);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Pagina 01");
-        jPanel1.add(jLabel6);
+        lblPagina.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPagina.setForeground(new java.awt.Color(255, 255, 255));
+        lblPagina.setText("Página 1");
+        jPanel1.add(lblPagina);
 
         jLabel1.setText("                        ");
         jPanel1.add(jLabel1);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paginaSiguiente.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jPanel1.add(jButton1);
+        btnPaginaMas.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rightSelected.png"))); // NOI18N
+        btnPaginaMas.setSimpleIcon(new javax.swing.ImageIcon(getClass().getResource("/images/right.png"))); // NOI18N
+        btnPaginaMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaginaMasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPaginaMas);
 
         PanelBusquda.setBackground(new java.awt.Color(27, 26, 26));
         PanelBusquda.setPreferredSize(new java.awt.Dimension(1500, 261));
@@ -477,6 +487,10 @@ public class PanelCanciones extends javax.swing.JPanel {
             if(albumes == null)
                 return;
             
+            for(AlbumDTO album : albumes)
+                for(CancionDoc cancion : album.getCanciones())
+                    cantidadCanciones++;
+            
             //Iteramos por cada album que nos regresa
             for(AlbumDTO album : albumes){
                 
@@ -485,10 +499,12 @@ public class PanelCanciones extends javax.swing.JPanel {
                 for(CancionDoc cancion : album.getCanciones()){
                     
                     PanelCancionDesplegada panel = new PanelCancionDesplegada(frmPrincipal, this, cancion, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
-                    //Si ya están desplegadas más de 9 canciones terminamos la ejecución, ya que ya no hay espacio para mostrar
-                    if(counter <= 11){
-
+                   
+                    if(counter < LIMITE)
+                        continue;
                     
+                    if(counter <= LIMITE + 11){
+
                     //Agregamos la canción desplegada en la lista de canciones
                     cancionesDesplegadas.add(cancion);
                     
@@ -496,7 +512,7 @@ public class PanelCanciones extends javax.swing.JPanel {
                     
                     counter++;
                     }
-                    else if(counter >= 12 && counter <= 22){
+                    else if(counter >= LIMITE + 12 && counter <= LIMITE + 22){
 
                     
                     //Agregamos la canción desplegada en la lista de canciones
@@ -505,6 +521,7 @@ public class PanelCanciones extends javax.swing.JPanel {
                     panelCanciones2.add(panel);
                     
                     counter++;
+                    
                     }
                 }
                 
@@ -561,14 +578,42 @@ public class PanelCanciones extends javax.swing.JPanel {
 
     }//GEN-LAST:event_checkFechaLanzamientoActionPerformed
 
+    private void btnPaginaMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMenosActionPerformed
+
+        if(LIMITE < 22){
+            JOptionPane.showMessageDialog(this, "No hay más páginas para atrás");
+            return;
+        }
+        
+        pagina--;
+        lblPagina.setText("Página " + pagina);
+        
+        LIMITE = LIMITE - 22;
+        
+    }//GEN-LAST:event_btnPaginaMenosActionPerformed
+
+    private void btnPaginaMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMasActionPerformed
+
+        if(LIMITE+22 > cantidadCanciones){
+            JOptionPane.showMessageDialog(this, "No hay más páginas en frente");
+            return;
+        }
+        
+        pagina++;
+        lblPagina.setText("Página " + pagina);
+        
+        LIMITE = LIMITE + 22;
+        
+    }//GEN-LAST:event_btnPaginaMasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelBusquda;
     private javax.swing.JButton btnFiltros;
+    private util.BotonMenu btnPaginaMas;
+    private util.BotonMenu btnPaginaMenos;
     private javax.swing.JTextField buscador;
     private javax.swing.JCheckBox checkFechaLanzamiento;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
@@ -581,7 +626,6 @@ public class PanelCanciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -591,6 +635,7 @@ public class PanelCanciones extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblPagina;
     private javax.swing.JPanel panelCanciones1;
     private javax.swing.JPanel panelCanciones2;
     // End of variables declaration//GEN-END:variables

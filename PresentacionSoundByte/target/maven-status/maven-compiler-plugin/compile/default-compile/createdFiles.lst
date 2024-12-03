@@ -5,6 +5,7 @@ frames\PanelArtistas$3.class
 frames\PanelCuenta$12.class
 frames\PanelAlbumes$5.class
 frames\PanelArtista$3.class
+frames\PanelCanciones$6.class
 frames\FrmRegistro$5.class
 frames\PanelCuenta.class
 frames\FrmPrincipal$4.class
@@ -14,6 +15,7 @@ frames\PanelArtistas.class
 frames\PanelCancion$4.class
 frames\PanelHome.class
 frames\FrmLogIn$7.class
+frames\PanelCanciones$7.class
 frames\FrmRegistro$4.class
 frames\PanelBusqueda$7.class
 DatosDePrueba\Generos.class
@@ -34,6 +36,7 @@ frames\FrmRegistro$1.class
 frames\PanelAlbum$1.class
 DatosDePrueba\pruebasTEMPORAL.class
 frames\FrmLogIn$4.class
+frames\PanelArtista$4.class
 frames\FrmPrincipal$7.class
 frames\PanelCanciones$3.class
 util\ScrollBar.class

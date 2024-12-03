@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import util.ScrollBar;
 import frames.*;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -52,7 +53,7 @@ public class PanelArtista extends javax.swing.JPanel {
         this.artista = artista;
         this.loggedUser = loggedUser;
 
-        panelContenedor.setLayout(new GridLayout(13,1));
+        panelContenedor.setLayout(new FlowLayout());
         
         panelContenedor.setOpaque(true);
         
@@ -201,7 +202,7 @@ public class PanelArtista extends javax.swing.JPanel {
         btnIntegrantes = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         btnAlbumes = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        btnAtras = new util.BotonMenu();
         panelContenedor = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -394,12 +395,16 @@ public class PanelArtista extends javax.swing.JPanel {
         });
         jPanel7.add(btnAlbumes);
 
-        jPanel3.setLayout(new java.awt.BorderLayout());
+        btnAtras.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/leftSelected.png"))); // NOI18N
+        btnAtras.setSimpleIcon(new javax.swing.ImageIcon(getClass().getResource("/images/left.png"))); // NOI18N
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         panelContenedor.setBackground(new java.awt.Color(27, 26, 26));
-        panelContenedor.setAutoscrolls(true);
-        panelContenedor.setPreferredSize(new java.awt.Dimension(750, 2000));
-        jPanel3.add(panelContenedor, java.awt.BorderLayout.CENTER);
+        panelContenedor.setPreferredSize(new java.awt.Dimension(750, 850));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -407,21 +412,28 @@ public class PanelArtista extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(60, 60, 60)
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 126, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 1350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(283, 283, 283))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1673, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(808, Short.MAX_VALUE))
         );
 
         jLabel5.setText(" ");
@@ -448,40 +460,46 @@ public class PanelArtista extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntegrantesActionPerformed
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+        if(pBusqueda != null)
+        frmPrincipal.pintarPanelPrincipal(pBusqueda);
 
-        panelContenedor.removeAll();
-        llenarIntegrantes();
-        
-        this.revalidate();
-        this.repaint();
-
-    }//GEN-LAST:event_btnIntegrantesActionPerformed
-
-    private void btnCancionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancionesActionPerformed
-        
-        panelContenedor.removeAll();
-        llenarCanciones();
-        
-        this.revalidate();
-        this.repaint();
-        
-    }//GEN-LAST:event_btnCancionesActionPerformed
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnAlbumesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlbumesActionPerformed
 
         panelContenedor.removeAll();
         llenarAlbumes();
-        
+
         this.revalidate();
         this.repaint();
-        
-        
+
     }//GEN-LAST:event_btnAlbumesActionPerformed
+
+    private void btnIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntegrantesActionPerformed
+
+        panelContenedor.removeAll();
+        llenarIntegrantes();
+
+        this.revalidate();
+        this.repaint();
+    }//GEN-LAST:event_btnIntegrantesActionPerformed
+
+    private void btnCancionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancionesActionPerformed
+
+        panelContenedor.removeAll();
+        llenarCanciones();
+
+        this.revalidate();
+        this.repaint();
+
+    }//GEN-LAST:event_btnCancionesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlbumes;
+    private util.BotonMenu btnAtras;
     private javax.swing.JButton btnCanciones;
     private javax.swing.JButton btnIntegrantes;
     private util.ImagenPerfil imagenArtista;
@@ -500,7 +518,6 @@ public class PanelArtista extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
