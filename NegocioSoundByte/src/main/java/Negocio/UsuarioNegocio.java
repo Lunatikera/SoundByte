@@ -44,8 +44,10 @@ public class UsuarioNegocio implements IUsuarioNegocio {
     public void crearUsuario(UsuarioDTO usuario) throws NegocioException {
         try
         {
-            
-            usuario.setRestringidos(new RestriccionDoc());
+            List<GeneroColeccion> generos = new ArrayList<>();
+            RestriccionDoc restriccion = new RestriccionDoc();
+            restriccion.setGeneros(generos);
+            usuario.setRestringidos(restriccion);
             usuario.setFavoritos(new FavoritoDoc());
             
             UsuarioColeccion usuarioColeccion = this.convertirUsuarioDTO(usuario);
