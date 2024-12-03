@@ -86,7 +86,7 @@ public class AlbumNegocio implements IAlbumNegocio{
             if(albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados) == null)
                 return null;
             
-            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusqueda(filtro, generosEspecificados)){
+            for(AlbumColeccion album : albumDAO.obtenerCancionesPorBusquedaGeneros(filtro, generosEspecificados)){
             
                 albumes.add(convertirAlbumDTO(album));
                 

@@ -17,6 +17,8 @@ public interface IGeneroNegocio {
     
     public List<GeneroDTO> buscarTodosGeneros() throws NegocioException;
     
+    public GeneroDTO buscarGeneroPorNombre(String genero) throws NegocioException;
+    
     public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos);
     
     public List<GeneroDTO> convertirListaGenerosColeccion(List<GeneroColeccion> generos);

@@ -16,6 +16,6 @@ public interface IGeneroDAO {
     
     public List<GeneroColeccion> buscarTodosGeneros() throws PersistenciaException;
     
-    public List<GeneroColeccion> buscarGeneroPorNombre(String nombre) throws PersistenciaException;
+    public GeneroColeccion buscarGeneroPorNombre(String nombre) throws PersistenciaException;
     
 }

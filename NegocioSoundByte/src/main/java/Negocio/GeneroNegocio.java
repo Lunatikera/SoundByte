@@ -41,10 +41,22 @@ public class GeneroNegocio implements IGeneroNegocio{
             return generosDTO;
             
         } catch (PersistenciaException ex) {
-             throw new NegocioException("Error en negocio al buscar todos los géneros en la base de datos", ex);
+            throw new NegocioException("Error en negocio al buscar todos los géneros en la base de datos", ex);
         }
         
     } 
+    
+    @Override
+    public GeneroDTO buscarGeneroPorNombre(String genero) throws NegocioException{
+    
+        try{
+        
+            return convertirAGeneroDTO(generoDAO.buscarGeneroPorNombre(genero));
+            
+        } catch (PersistenciaException ex){
+            throw new NegocioException("Error en negocio al buscar género por nombre en la base de datos", ex);
+        }
+    }
     
     public GeneroDTO convertirAGeneroDTO(GeneroColeccion gen){
     

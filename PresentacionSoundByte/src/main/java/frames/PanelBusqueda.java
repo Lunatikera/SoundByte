@@ -68,8 +68,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
         setDefaultTextAndAddFocusListener(buscador, "Buscar...");
 
         checkFechaLanzamiento.setOpaque(false);
-        checkNombre.setOpaque(false);
-        checkGenero.setOpaque(false);
+
         
         this.revalidate();
         this.repaint();
@@ -132,8 +131,6 @@ public class PanelBusqueda extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         buscador = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        checkNombre = new javax.swing.JCheckBox();
-        checkGenero = new javax.swing.JCheckBox();
         checkFechaLanzamiento = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         panelCanciones = new javax.swing.JPanel();
@@ -284,20 +281,6 @@ public class PanelBusqueda extends javax.swing.JPanel {
             }
         });
 
-        checkNombre.setText("Buscar por Nombre");
-        checkNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkNombreActionPerformed(evt);
-            }
-        });
-
-        checkGenero.setText("Buscar por Género");
-        checkGenero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkGeneroActionPerformed(evt);
-            }
-        });
-
         checkFechaLanzamiento.setText("Buscar por fecha de lanzamiento");
         checkFechaLanzamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,13 +301,8 @@ public class PanelBusqueda extends javax.swing.JPanel {
                         .addGap(165, 165, 165)
                         .addComponent(jLabel8)
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(checkNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(checkGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(checkFechaLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(checkFechaLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
@@ -338,10 +316,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(checkFechaLanzamiento)
-                            .addComponent(checkNombre)
-                            .addComponent(checkGenero))
+                        .addComponent(checkFechaLanzamiento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -639,17 +614,20 @@ public class PanelBusqueda extends javax.swing.JPanel {
             
             
             if(filtroMusica == null)
-                if(checkGenero.isSelected())
-                    albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(filtro, frmPrincipal.getLoggedUser());
-                
-                else if(checkFechaLanzamiento.isSelected())
+                    
+                if(checkFechaLanzamiento.isSelected())
                     albumes = frmPrincipal.albumNegocio.obtenerCancionesPorFecha(filtro, frmPrincipal.getLoggedUser());
                 
                 else
                     albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusqueda(filtro, frmPrincipal.getLoggedUser());
             
             else
-                albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusquedaGeneros(filtro, filtroMusica.getGeneros());
+
+                if(checkFechaLanzamiento.isSelected())
+                    albumes = frmPrincipal.albumNegocio.obtenerCancionesPorFechaGeneros(filtro, filtroMusica.getGeneros());
+                
+                else
+                    albumes = frmPrincipal.albumNegocio.obtenerCancionesPorBusquedaGeneros(filtro, filtroMusica.getGeneros());
             
             //Si nos regresa datos vacíos, terminamos ejecución
             if(albumes == null)
@@ -685,9 +663,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
     }
     
     public void buscarAlbumes(String filtro){
-    
-        
-        
+
         //Eliminamos los albumes previamente desplegadas si existen        
         if(!albumesDesplegados.isEmpty())
             albumesDesplegados.clear();
@@ -703,9 +679,20 @@ public class PanelBusqueda extends javax.swing.JPanel {
             List<AlbumDTO> albumes = new ArrayList<>();
             
             if(filtroMusica == null)
-                albumes = frmPrincipal.albumNegocio.obtenerAlbumesPorBusqueda(filtro, frmPrincipal.getLoggedUser());
+                    
+                if(checkFechaLanzamiento.isSelected())
+                    albumes = frmPrincipal.albumNegocio.obtenerAlbumesPorFecha(filtro, frmPrincipal.getLoggedUser());
+                
+                else
+                    albumes = frmPrincipal.albumNegocio.obtenerAlbumesPorBusqueda(filtro, frmPrincipal.getLoggedUser());
+            
             else
-                albumes = frmPrincipal.albumNegocio.obtenerAlbumesPorBusquedaGeneros(filtro, filtroMusica.getGeneros());
+
+                if(checkFechaLanzamiento.isSelected())
+                    albumes = frmPrincipal.albumNegocio.obtenerAlbumesPorFechaGeneros(filtro, filtroMusica.getGeneros());
+                
+                else
+                    albumes = frmPrincipal.albumNegocio.obtenerAlbumesPorBusquedaGeneros(filtro, filtroMusica.getGeneros());
             
             //Si nos regresa datos vacíos, terminamos ejecución
             if(albumes == null)
@@ -735,9 +722,8 @@ public class PanelBusqueda extends javax.swing.JPanel {
         }
         
     }    
-    public void buscarArtistas(String filtro){
     
-        
+    public void buscarArtistas(String filtro){
         
         //Eliminamos los albumes previamente desplegadas si existen        
         if(!artistasDesplegados.isEmpty())
@@ -844,27 +830,17 @@ public class PanelBusqueda extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buscadorKeyReleased
 
-    private void checkNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkNombreActionPerformed
-        // TODO add your handling code here:
-        
-        checkGenero.setSelected(false);
-        checkFechaLanzamiento.setSelected(false);
-        
-    }//GEN-LAST:event_checkNombreActionPerformed
-
-    private void checkGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkGeneroActionPerformed
-        // TODO add your handling code here:
-        
-        checkNombre.setSelected(false);
-        checkFechaLanzamiento.setSelected(false);
-        
-    }//GEN-LAST:event_checkGeneroActionPerformed
-
     private void checkFechaLanzamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFechaLanzamientoActionPerformed
         // TODO add your handling code here:
         
-        checkGenero.setSelected(false);
-        checkNombre.setSelected(false);
+        if(filtroMusica != null)
+            if(filtroMusica.getArtistas()){
+            
+                 JOptionPane.showMessageDialog(this, "No se puede buscar por fecha de lanzamiento cuando estás filtrando artistas");
+                 checkFechaLanzamiento.setSelected(false);
+                
+            }
+
         
     }//GEN-LAST:event_checkFechaLanzamientoActionPerformed
 
@@ -873,8 +849,6 @@ public class PanelBusqueda extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscador;
     private javax.swing.JCheckBox checkFechaLanzamiento;
-    private javax.swing.JCheckBox checkGenero;
-    private javax.swing.JCheckBox checkNombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
