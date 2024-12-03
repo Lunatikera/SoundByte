@@ -915,6 +915,35 @@ public class DatosDAO {
         banda2.setIntegrante(Arrays.asList(integrante8, integrante7, integrante6, integrante5));
         banda2.setNombre("Led Zeppelin");
 
+        // Álbum de Led Zeppelin
+        AlbumColeccion album3 = new AlbumColeccion();
+        album3.setNombre("Led Zeppelin IV");
+        album3.setImagen("/albumes/LedZeppelinIV.jpg");
+        album3.setFechaLanzamiento(LocalDate.of(1971, 11, 8));
+        album3.setCanciones(Arrays.asList(
+                new CancionDoc("Black Dog"),
+                new CancionDoc("Rock and Roll"),
+                new CancionDoc("The Battle of Evermore"),
+                new CancionDoc("Stairway to Heaven"),
+                new CancionDoc("Misty Mountain Hop"),
+                new CancionDoc("When the Levee Breaks")
+        ));
+        album3.setArtista(banda2);
+// Álbum de Led Zeppelin
+        AlbumColeccion album4 = new AlbumColeccion();
+        album4.setNombre("Physical Graffiti");
+        album4.setImagen("/albumes/PhysicalGraffiti.jpg");
+        album4.setFechaLanzamiento(LocalDate.of(1975, 2, 24));
+        album4.setCanciones(Arrays.asList(
+                new CancionDoc("Custard Pie"),
+                new CancionDoc("The Rover"),
+                new CancionDoc("Kashmir"),
+                new CancionDoc("In the Light"),
+                new CancionDoc("Ten Years Gone"),
+                new CancionDoc("Trampled Under Foot")
+        ));
+        album4.setArtista(banda2);
+
 // Queen
         IntegranteDoc integrante10 = new IntegranteDoc();
         integrante10.setEsActivo(false);
@@ -952,6 +981,35 @@ public class DatosDAO {
         banda3.setIntegrante(Arrays.asList(integrante10, integrante11, integrante12, integrante13));
         banda3.setNombre("Queen");
 
+        // Álbum de Queen
+        AlbumColeccion album5 = new AlbumColeccion();
+        album5.setNombre("A Night at the Opera");
+        album5.setImagen("/albumes/ANightAtTheOpera.jpg");
+        album5.setFechaLanzamiento(LocalDate.of(1975, 11, 21));
+        album5.setCanciones(Arrays.asList(
+                new CancionDoc("Death on Two Legs"),
+                new CancionDoc("You're My Best Friend"),
+                new CancionDoc("Love of My Life"),
+                new CancionDoc("Bohemian Rhapsody"),
+                new CancionDoc("The Prophet's Song"),
+                new CancionDoc("God Save the Queen")
+        ));
+        album5.setArtista(banda3);
+// Álbum de Queen
+        AlbumColeccion album6 = new AlbumColeccion();
+        album6.setNombre("The Game");
+        album6.setImagen("/albumes/TheGame.jpg");
+        album6.setFechaLanzamiento(LocalDate.of(1980, 6, 30));
+        album6.setCanciones(Arrays.asList(
+                new CancionDoc("Play the Game"),
+                new CancionDoc("Another One Bites the Dust"),
+                new CancionDoc("Crazy Little Thing Called Love"),
+                new CancionDoc("Save Me"),
+                new CancionDoc("Need Your Loving Tonight"),
+                new CancionDoc("Rock It (Prime Jive)")
+        ));
+        album6.setArtista(banda3);
+
 // The Rolling Stones
         IntegranteDoc integrante14 = new IntegranteDoc();
         integrante14.setEsActivo(true);
@@ -984,12 +1042,39 @@ public class DatosDAO {
         banda4.setImagen("/artistas/RollingStones.jpg");
         banda4.setIntegrante(Arrays.asList(integrante14, integrante15, integrante16, integrante17));
         banda4.setNombre("The Rolling Stones");
+// Álbum de The Rolling Stones
+        AlbumColeccion album7 = new AlbumColeccion();
+        album7.setNombre("Sticky Fingers");
+        album7.setImagen("/albumes/StickyFingers.jpg");
+        album7.setFechaLanzamiento(LocalDate.of(1971, 4, 23));
+        album7.setCanciones(Arrays.asList(
+                new CancionDoc("Brown Sugar"),
+                new CancionDoc("Wild Horses"),
+                new CancionDoc("Can't You Hear Me Knocking"),
+                new CancionDoc("Dead Flowers"),
+                new CancionDoc("Moonlight Mile")
+        ));
+        album7.setArtista(banda4);
+// Álbum de The Rolling Stones
+        AlbumColeccion album8 = new AlbumColeccion();
+        album8.setNombre("Exile on Main St.");
+        album8.setImagen("/albumes/ExileOnMainSt.jpg");
+        album8.setFechaLanzamiento(LocalDate.of(1972, 5, 12));
+        album8.setCanciones(Arrays.asList(
+                new CancionDoc("Rocks Off"),
+                new CancionDoc("Rip This Joint"),
+                new CancionDoc("Tumbling Dice"),
+                new CancionDoc("Happy"),
+                new CancionDoc("Sweet Virginia"),
+                new CancionDoc("Shine a Light")
+        ));
+        album8.setArtista(banda4);
 
 // Gorillaz
         IntegranteDoc integrante18 = new IntegranteDoc();
         integrante18.setEsActivo(true);
         integrante18.setFechaIngreso(LocalDate.of(1998, 1, 1));
-        integrante18.setInstrumento("Voz y guitarra");
+        integrante18.setInstrumento("Voz y Teclado");
         integrante18.setNombre("2D (Stuart Pot)");
 
         IntegranteDoc integrante19 = new IntegranteDoc();
@@ -1007,7 +1092,7 @@ public class DatosDAO {
         IntegranteDoc integrante21 = new IntegranteDoc();
         integrante21.setEsActivo(true);
         integrante21.setFechaIngreso(LocalDate.of(1998, 1, 1));
-        integrante21.setInstrumento("Teclado");
+        integrante21.setInstrumento(" Guitarra");
         integrante21.setNombre("Noodle");
 
 // Gorillaz Band
@@ -1017,6 +1102,35 @@ public class DatosDAO {
         banda5.setImagen("/artistas/Gorillaz.jpg");
         banda5.setIntegrante(Arrays.asList(integrante18, integrante19, integrante20, integrante21));
         banda5.setNombre("Gorillaz");
+
+        // Álbum de Gorillaz
+        AlbumColeccion album9 = new AlbumColeccion();
+        album9.setNombre("Demon Days");
+        album9.setImagen("/albumes/DemonDays.jpg");
+        album9.setFechaLanzamiento(LocalDate.of(2005, 5, 11));
+        album9.setCanciones(Arrays.asList(
+                new CancionDoc("Feel Good Inc."),
+                new CancionDoc("DARE"),
+                new CancionDoc("Dirty Harry"),
+                new CancionDoc("El Mañana"),
+                new CancionDoc("Kids with Guns"),
+                new CancionDoc("Fire Coming Out of the Monkey's Head")
+        ));
+        album9.setArtista(banda5);
+// Álbum de Gorillaz
+        AlbumColeccion album10 = new AlbumColeccion();
+        album10.setNombre("Plastic Beach");
+        album10.setImagen("/albumes/PlasticBeach.jpg");
+        album10.setFechaLanzamiento(LocalDate.of(2010, 3, 3));
+        album10.setCanciones(Arrays.asList(
+                new CancionDoc("On Melancholy Hill"),
+                new CancionDoc("Stylo"),
+                new CancionDoc("Empire Ants"),
+                new CancionDoc("Rhinestone Eyes"),
+                new CancionDoc("Superfast Jellyfish"),
+                new CancionDoc("Plastic Beach")
+        ));
+        album10.setArtista(banda5);
 
         IntegranteDoc integrante22 = new IntegranteDoc();
         integrante22.setEsActivo(false);
@@ -1049,6 +1163,32 @@ public class DatosDAO {
         banda6.setImagen("/artistas/HerbieHancockHeadhunters.jpg");
         banda6.setIntegrante(Arrays.asList(integrante22, integrante23, integrante24, integrante25));
         banda6.setNombre("Herbie Hancock's Headhunters");
+
+        // Álbum de Herbie Hancock's Headhunters
+        AlbumColeccion album11 = new AlbumColeccion();
+        album11.setNombre("Head Hunters");
+        album11.setImagen("/albumes/HeadHunters.jpg");
+        album11.setFechaLanzamiento(LocalDate.of(1973, 10, 13));
+        album11.setCanciones(Arrays.asList(
+                new CancionDoc("Chameleon"),
+                new CancionDoc("Watermelon Man"),
+                new CancionDoc("Sly"),
+                new CancionDoc("Vein Melter")
+        ));
+        album11.setArtista(banda6);
+
+        // Álbum de Herbie Hancock's Headhunters
+        AlbumColeccion album12 = new AlbumColeccion();
+        album12.setNombre("Thrust");
+        album12.setImagen("/albumes/Thrust.jpg");
+        album12.setFechaLanzamiento(LocalDate.of(1974, 8, 26));
+        album12.setCanciones(Arrays.asList(
+                new CancionDoc("Palm Grease"),
+                new CancionDoc("Actual Proof"),
+                new CancionDoc("Butterfly"),
+                new CancionDoc("Spank-A-Lee")
+        ));
+        album12.setArtista(banda6);
 
 // Integrantes - Sun Ra Arkestra
         IntegranteDoc integrante30 = new IntegranteDoc();
@@ -1086,6 +1226,33 @@ public class DatosDAO {
         banda8.setIntegrante(Arrays.asList(integrante30, integrante31, integrante32, integrante33));
         banda8.setNombre("Sun Ra Arkestra");
 
+        // Álbum de Sun Ra Arkestra
+        AlbumColeccion album13 = new AlbumColeccion();
+        album13.setNombre("Space Is the Place");
+        album13.setImagen("/albumes/SpaceIsThePlace.jpg");
+        album13.setFechaLanzamiento(LocalDate.of(1973, 11, 1));
+        album13.setCanciones(Arrays.asList(
+                new CancionDoc("Space Is the Place"),
+                new CancionDoc("Images"),
+                new CancionDoc("Discipline 33"),
+                new CancionDoc("Sea of Sound"),
+                new CancionDoc("Rocket Number Nine")
+        ));
+        album13.setArtista(banda8);
+
+// Álbum de Sun Ra Arkestra
+        AlbumColeccion album14 = new AlbumColeccion();
+        album14.setNombre("The Magic City");
+        album14.setImagen("/albumes/TheMagicCity.jpg");
+        album14.setFechaLanzamiento(LocalDate.of(1965, 8, 1));
+        album14.setCanciones(Arrays.asList(
+                new CancionDoc("The Magic City"),
+                new CancionDoc("The Shadow World"),
+                new CancionDoc("Abstract Eye"),
+                new CancionDoc("Abstract I")
+        ));
+        album14.setArtista(banda8);
+
 // Integrantes - Dizzy Gillespie Big Band
         IntegranteDoc integrante34 = new IntegranteDoc();
         integrante34.setEsActivo(false);
@@ -1121,6 +1288,33 @@ public class DatosDAO {
         banda9.setIntegrante(Arrays.asList(integrante34, integrante35, integrante36, integrante37));
         banda9.setNombre("Dizzy Gillespie Big Band");
 
+        // Álbum de Dizzy Gillespie Big Band
+        AlbumColeccion album15 = new AlbumColeccion();
+        album15.setNombre("Afro");
+        album15.setImagen("/albumes/Afro.jpg");
+        album15.setFechaLanzamiento(LocalDate.of(1954, 6, 1));
+        album15.setCanciones(Arrays.asList(
+                new CancionDoc("Manteca Theme"),
+                new CancionDoc("Contraste"),
+                new CancionDoc("A Night in Tunisia"),
+                new CancionDoc("Guarachi Guaro")
+        ));
+        album15.setArtista(banda9);
+
+// Álbum de Dizzy Gillespie Big Band
+        AlbumColeccion album16 = new AlbumColeccion();
+        album16.setNombre("World Statesman");
+        album16.setImagen("/albumes/WorldStatesman.jpg");
+        album16.setFechaLanzamiento(LocalDate.of(1956, 3, 1));
+        album16.setCanciones(Arrays.asList(
+                new CancionDoc("Dizzy's Business"),
+                new CancionDoc("Stablemates"),
+                new CancionDoc("I Remember Clifford"),
+                new CancionDoc("Cool Breeze"),
+                new CancionDoc("School Days")
+        ));
+        album16.setArtista(banda9);
+
 // Integrantes - Cannonball Adderley Quintet
         IntegranteDoc integrante38 = new IntegranteDoc();
         integrante38.setEsActivo(true);
@@ -1142,6 +1336,34 @@ public class DatosDAO {
         banda10.setImagen("/artistas/CannonballAdderleyQuintet.jpg");
         banda10.setIntegrante(Arrays.asList(integrante38, integrante39));
         banda10.setNombre("Cannonball Adderley Quintet");
+
+        // Álbum de Cannonball Adderley Quintet
+        AlbumColeccion album17 = new AlbumColeccion();
+        album17.setNombre("Somethin' Else");
+        album17.setImagen("/albumes/SomethinElse.jpg");
+        album17.setFechaLanzamiento(LocalDate.of(1958, 8, 9));
+        album17.setCanciones(Arrays.asList(
+                new CancionDoc("Autumn Leaves"),
+                new CancionDoc("Love for Sale"),
+                new CancionDoc("Somethin' Else"),
+                new CancionDoc("One for Daddy-O"),
+                new CancionDoc("Dancing in the Dark")
+        ));
+        album17.setArtista(banda10);
+
+        // Álbum de Cannonball Adderley Quintet
+        AlbumColeccion album18 = new AlbumColeccion();
+        album18.setNombre("Mercy, Mercy, Mercy!");
+        album18.setImagen("/albumes/MercyMercyMercy.jpg");
+        album18.setFechaLanzamiento(LocalDate.of(1966, 10, 20));
+        album18.setCanciones(Arrays.asList(
+                new CancionDoc("Fun"),
+                new CancionDoc("Games"),
+                new CancionDoc("Mercy, Mercy, Mercy"),
+                new CancionDoc("Sticks"),
+                new CancionDoc("Hippodelphia")
+        ));
+        album18.setArtista(banda10);
 
 // Integrantes - Maroon 5
         IntegranteDoc integrante40 = new IntegranteDoc();
@@ -1175,6 +1397,34 @@ public class DatosDAO {
         banda11.setImagen("/artistas/Maroon5.jpg");
         banda11.setIntegrante(Arrays.asList(integrante40, integrante41, integrante42, integrante43));
         banda11.setNombre("Maroon 5");
+
+        // Álbum de Maroon 5
+        AlbumColeccion album19 = new AlbumColeccion();
+        album19.setNombre("Songs About Jane");
+        album19.setImagen("/albumes/SongsAboutJane.jpg");
+        album19.setFechaLanzamiento(LocalDate.of(2002, 6, 25));
+        album19.setCanciones(Arrays.asList(
+                new CancionDoc("Harder to Breathe"),
+                new CancionDoc("This Love"),
+                new CancionDoc("She Will Be Loved"),
+                new CancionDoc("Sunday Morning"),
+                new CancionDoc("Must Get Out")
+        ));
+        album19.setArtista(banda11);
+
+// Álbum de Maroon 5
+        AlbumColeccion album20 = new AlbumColeccion();
+        album20.setNombre("It Won't Be Soon Before Long");
+        album20.setImagen("/albumes/ItWontBeSoonBeforeLong.jpg");
+        album20.setFechaLanzamiento(LocalDate.of(2007, 5, 16));
+        album20.setCanciones(Arrays.asList(
+                new CancionDoc("If I Never See Your Face Again"),
+                new CancionDoc("Makes Me Wonder"),
+                new CancionDoc("Wake Up Call"),
+                new CancionDoc("Won't Go Home Without You"),
+                new CancionDoc("Goodnight Goodnight")
+        ));
+        album20.setArtista(banda11);
 
 // Integrantes - One Direction
         IntegranteDoc integrante44 = new IntegranteDoc();
@@ -1220,6 +1470,34 @@ public class DatosDAO {
         banda12.setIntegrante(Arrays.asList(integrante44, integrante45, integrante46, integrante47, integrante48));
         banda12.setNombre("One Direction");
 
+        // Álbum de One Direction
+        AlbumColeccion album21 = new AlbumColeccion();
+        album21.setNombre("Up All Night");
+        album21.setImagen("/albumes/UpAllNight.jpg");
+        album21.setFechaLanzamiento(LocalDate.of(2011, 11, 18));
+        album21.setCanciones(Arrays.asList(
+                new CancionDoc("What Makes You Beautiful"),
+                new CancionDoc("Gotta Be You"),
+                new CancionDoc("One Thing"),
+                new CancionDoc("Up All Night"),
+                new CancionDoc("More Than This")
+        ));
+        album21.setArtista(banda12);
+
+        // Álbum de One Direction
+        AlbumColeccion album22 = new AlbumColeccion();
+        album22.setNombre("Take Me Home");
+        album22.setImagen("/albumes/TakeMeHome.jpg");
+        album22.setFechaLanzamiento(LocalDate.of(2012, 11, 9));
+        album22.setCanciones(Arrays.asList(
+                new CancionDoc("Live While We're Young"),
+                new CancionDoc("Little Things"),
+                new CancionDoc("Kiss You"),
+                new CancionDoc("Last First Kiss"),
+                new CancionDoc("Heart Attack")
+        ));
+        album22.setArtista(banda12);
+
         // Backstreet Boys
         IntegranteDoc integrante49 = new IntegranteDoc();
         integrante49.setEsActivo(true);
@@ -1258,6 +1536,30 @@ public class DatosDAO {
         banda13.setIntegrante(Arrays.asList(integrante49, integrante50, integrante51, integrante52, integrante53));
         banda13.setNombre("Backstreet Boys");
 
+        AlbumColeccion album210 = new AlbumColeccion();
+        album21.setNombre("Backstreet's Back");
+        album21.setImagen("/albumes/BackstreetsBack.jpg");
+        album21.setFechaLanzamiento(LocalDate.of(1997, 8, 11));
+        album21.setCanciones(Arrays.asList(
+                new CancionDoc("Everybody (Backstreet's Back)"),
+                new CancionDoc("As Long As You Love Me"),
+                new CancionDoc("All I Have To Give"),
+                new CancionDoc("I'll Never Break Your Heart")
+        ));
+        album21.setArtista(banda13);  // Usa el objeto de la banda Backstreet Boys en la variable 'artista'
+
+        AlbumColeccion album220 = new AlbumColeccion();
+        album22.setNombre("Millennium");
+        album22.setImagen("/albumes/Millennium.jpg");
+        album22.setFechaLanzamiento(LocalDate.of(1999, 5, 18));
+        album22.setCanciones(Arrays.asList(
+                new CancionDoc("I Want It That Way"),
+                new CancionDoc("Larger Than Life"),
+                new CancionDoc("Show Me The Meaning Of Being Lonely"),
+                new CancionDoc("The One")
+        ));
+        album22.setArtista(banda13);  // Usa el objeto de la banda Backstreet Boys en la variable 'artista'
+
 // OneRepublic
         IntegranteDoc integrante54 = new IntegranteDoc();
         integrante54.setEsActivo(true);
@@ -1290,6 +1592,34 @@ public class DatosDAO {
         banda14.setIntegrante(Arrays.asList(integrante54, integrante55, integrante56, integrante57));
         banda14.setNombre("OneRepublic");
 
+        // Álbum de OneRepublic
+        AlbumColeccion album23 = new AlbumColeccion();
+        album23.setNombre("Dreaming Out Loud");
+        album23.setImagen("/albumes/DreamingOutLoud.jpg");
+        album23.setFechaLanzamiento(LocalDate.of(2007, 11, 20));
+        album23.setCanciones(Arrays.asList(
+                new CancionDoc("Apologize"),
+                new CancionDoc("Stop and Stare"),
+                new CancionDoc("Say (All I Need)"),
+                new CancionDoc("All Fall Down"),
+                new CancionDoc("Mercy")
+        ));
+        album23.setArtista(banda14);
+
+// Álbum de OneRepublic
+        AlbumColeccion album24 = new AlbumColeccion();
+        album24.setNombre("Waking Up");
+        album24.setImagen("/albumes/WakingUp.jpg");
+        album24.setFechaLanzamiento(LocalDate.of(2009, 11, 17));
+        album24.setCanciones(Arrays.asList(
+                new CancionDoc("All the Right Moves"),
+                new CancionDoc("Secrets"),
+                new CancionDoc("Good Life"),
+                new CancionDoc("Marchin On"),
+                new CancionDoc("Fear")
+        ));
+        album24.setArtista(banda14);
+
 // Coldplay
         IntegranteDoc integrante58 = new IntegranteDoc();
         integrante58.setEsActivo(true);
@@ -1321,6 +1651,30 @@ public class DatosDAO {
         banda15.setImagen("/artistas/Coldplay.jpg");
         banda15.setIntegrante(Arrays.asList(integrante58, integrante59, integrante60, integrante61));
         banda15.setNombre("Coldplay");
+
+        AlbumColeccion album25 = new AlbumColeccion();
+        album25.setNombre("Parachutes");
+        album25.setImagen("/albumes/Parachutes.jpg");
+        album25.setFechaLanzamiento(LocalDate.of(2000, 7, 10));
+        album25.setCanciones(Arrays.asList(
+                new CancionDoc("Yellow"),
+                new CancionDoc("Shiver"),
+                new CancionDoc("Trouble"),
+                new CancionDoc("Don't Panic")
+        ));
+        album25.setArtista(banda15);  // Usa el objeto de la banda Coldplay en la variable 'artista'
+
+        AlbumColeccion album26 = new AlbumColeccion();
+        album26.setNombre("A Rush of Blood to the Head");
+        album26.setImagen("/albumes/ARushOfBloodToTheHead.jpg");
+        album26.setFechaLanzamiento(LocalDate.of(2002, 8, 26));
+        album26.setCanciones(Arrays.asList(
+                new CancionDoc("Clocks"),
+                new CancionDoc("The Scientist"),
+                new CancionDoc("In My Place"),
+                new CancionDoc("God Put a Smile Upon Your Face")
+        ));
+        album26.setArtista(banda15);  // Usa el objeto de la banda Coldplay en la variable 'artista'
 
 // Bob Marley & The Wailers
         IntegranteDoc integrante62 = new IntegranteDoc();
@@ -1356,6 +1710,30 @@ public class DatosDAO {
         banda16.setImagen("/artistas/BobMarleyTheWailers.jpg");
         banda16.setIntegrante(Arrays.asList(integrante62, integrante63, integrante64, integrante65));
         banda16.setNombre("Bob Marley & The Wailers");
+
+        AlbumColeccion album27 = new AlbumColeccion();
+        album26.setNombre("Catch a Fire");
+        album26.setImagen("/albumes/CatchAFire.jpg");
+        album26.setFechaLanzamiento(LocalDate.of(1973, 4, 13));
+        album26.setCanciones(Arrays.asList(
+                new CancionDoc("Concrete Jungle"),
+                new CancionDoc("Slave Driver"),
+                new CancionDoc("Catch a Fire"),
+                new CancionDoc("Stir It Up")
+        ));
+        album26.setArtista(banda16);  // Usa el objeto de la banda Bob Marley & The Wailers en la variable 'artista'
+
+        AlbumColeccion album28 = new AlbumColeccion();
+        album27.setNombre("Legend");
+        album27.setImagen("/albumes/Legend.jpg");
+        album27.setFechaLanzamiento(LocalDate.of(1984, 5, 8));
+        album27.setCanciones(Arrays.asList(
+                new CancionDoc("No Woman, No Cry"),
+                new CancionDoc("Buffalo Soldier"),
+                new CancionDoc("One Love"),
+                new CancionDoc("Redemption Song")
+        ));
+        album27.setArtista(banda16);  // Usa el objeto de la banda Bob Marley & The Wailers en la variable 'artista'
 
 // Toots and the Maytals
         IntegranteDoc integrante66 = new IntegranteDoc();
@@ -1396,6 +1774,32 @@ public class DatosDAO {
         banda17.setIntegrante(Arrays.asList(integrante66, integrante67, integrante68, integrante69, integrante70));
         banda17.setNombre("Toots and the Maytals");
 
+        AlbumColeccion album29 = new AlbumColeccion();
+        album29.setNombre("Funky Kingston");
+        album29.setImagen("/albumes/FunkyKingston.jpg");
+        album29.setFechaLanzamiento(LocalDate.of(1973, 2, 1));
+        album29.setCanciones(Arrays.asList(
+                new CancionDoc("Time Tough"),
+                new CancionDoc("Funky Kingston"),
+                new CancionDoc("In The Dark"),
+                new CancionDoc("God, Let Me Live"),
+                new CancionDoc("Pressure Drop")
+        ));
+        album29.setArtista(banda17); // Artista previamente creado para Toots and the Maytals
+
+        AlbumColeccion album30 = new AlbumColeccion();
+        album30.setNombre("Reggae Got Soul");
+        album30.setImagen("/albumes/ReggaeGotSoul.jpg");
+        album30.setFechaLanzamiento(LocalDate.of(1976, 1, 1));
+        album30.setCanciones(Arrays.asList(
+                new CancionDoc("Reggae Got Soul"),
+                new CancionDoc("Take Me Home, Country Roads"),
+                new CancionDoc("57 Channels (And Nothin' On)"),
+                new CancionDoc("Never You Change"),
+                new CancionDoc("Mop Up Woman")
+        ));
+        album30.setArtista(banda17); // Artista previamente creado para Toots and the Maytals
+
         IntegranteDoc integrante71 = new IntegranteDoc();
         integrante71.setEsActivo(true);
         integrante71.setFechaIngreso(LocalDate.of(1972, 1, 1));
@@ -1427,6 +1831,32 @@ public class DatosDAO {
         banda18.setImagen("/artistas/BlackUhuru.jpg");
         banda18.setIntegrante(Arrays.asList(integrante71, integrante72, integrante73, integrante74));
         banda18.setNombre("Black Uhuru");
+
+        AlbumColeccion album31 = new AlbumColeccion();
+        album31.setNombre("Red");
+        album31.setImagen("/albumes/Red.jpg");
+        album31.setFechaLanzamiento(LocalDate.of(1981, 9, 1));
+        album31.setCanciones(Arrays.asList(
+                new CancionDoc("Sponji Reggae"),
+                new CancionDoc("Guess Who's Coming to Dinner"),
+                new CancionDoc("Satta Massagana"),
+                new CancionDoc("I See You"),
+                new CancionDoc("Abortion")
+        ));
+        album31.setArtista(banda18); // Artista previamente creado para Black Uhuru
+
+        AlbumColeccion album32 = new AlbumColeccion();
+        album32.setNombre("Chill Out");
+        album32.setImagen("/albumes/ChillOut.jpg");
+        album32.setFechaLanzamiento(LocalDate.of(1982, 5, 1));
+        album32.setCanciones(Arrays.asList(
+                new CancionDoc("Chill Out"),
+                new CancionDoc("The Great Train Robbery"),
+                new CancionDoc("I See You"),
+                new CancionDoc("One Love"),
+                new CancionDoc("World is Africa")
+        ));
+        album32.setArtista(banda18); // Artista previamente creado para Black Uhuru
 
         // Conversión para Steel Pulse
         IntegranteDoc integrante75 = new IntegranteDoc();
@@ -1460,6 +1890,32 @@ public class DatosDAO {
         banda19.setImagen("/artistas/SteelPulse.jpg");
         banda19.setIntegrante(Arrays.asList(integrante75, integrante76, integrante77, integrante78));
         banda19.setNombre("Steel Pulse");
+
+        AlbumColeccion album33 = new AlbumColeccion();
+        album33.setNombre("Handsworth Revolution");
+        album33.setImagen("/albumes/HandsworthRevolution.jpg");
+        album33.setFechaLanzamiento(LocalDate.of(1978, 9, 1));
+        album33.setCanciones(Arrays.asList(
+                new CancionDoc("Handsworth Revolution"),
+                new CancionDoc("Ku Klux Klan"),
+                new CancionDoc("Macka Splaff"),
+                new CancionDoc("Your House"),
+                new CancionDoc("The Prisoner")
+        ));
+        album33.setArtista(banda19); // Artista previamente creado para Steel Pulse
+
+        AlbumColeccion album34 = new AlbumColeccion();
+        album34.setNombre("True Democracy");
+        album34.setImagen("/albumes/TrueDemocracy.jpg");
+        album34.setFechaLanzamiento(LocalDate.of(1982, 4, 1));
+        album34.setCanciones(Arrays.asList(
+                new CancionDoc("True Democracy"),
+                new CancionDoc("Ravers"),
+                new CancionDoc("Your House"),
+                new CancionDoc("Blues Dance Raid"),
+                new CancionDoc("Prodigal Son")
+        ));
+        album34.setArtista(banda19); // Artista previamente creado para Steel Pulse
 
         // Conversión para Inner Circle
         IntegranteDoc integrante79 = new IntegranteDoc();
@@ -1501,6 +1957,32 @@ public class DatosDAO {
         banda20.setIntegrante(Arrays.asList(integrante79, integrante80, integrante81, integrante82, integrante83));
         banda20.setNombre("Inner Circle");
 
+        AlbumColeccion album35 = new AlbumColeccion();
+        album35.setNombre("Bad Boys");
+        album35.setImagen("/albumes/BadBoys.jpg");
+        album35.setFechaLanzamiento(LocalDate.of(1987, 1, 1));
+        album35.setCanciones(Arrays.asList(
+                new CancionDoc("Bad Boys"),
+                new CancionDoc("Sweat (A La La La La Long)"),
+                new CancionDoc("I'm a Rastaman"),
+                new CancionDoc("Li'l Bit of Love"),
+                new CancionDoc("Ain't No Giving In")
+        ));
+        album35.setArtista(banda20); // Artista previamente creado para Inner Circle
+
+        AlbumColeccion album36 = new AlbumColeccion();
+        album36.setNombre("Ready for the World");
+        album36.setImagen("/albumes/ReadyForTheWorld.jpg");
+        album36.setFechaLanzamiento(LocalDate.of(1992, 5, 5));
+        album36.setCanciones(Arrays.asList(
+                new CancionDoc("Ready for the World"),
+                new CancionDoc("We Can Make It"),
+                new CancionDoc("Who Knows"),
+                new CancionDoc("Pretty Looks"),
+                new CancionDoc("Can't Stop")
+        ));
+        album36.setArtista(banda20); // Artista previamente creado para Inner Circle
+
         // Conversión para B.B. King and the Blues Boys
         IntegranteDoc integrante84 = new IntegranteDoc();
         integrante84.setEsActivo(false);
@@ -1534,6 +2016,32 @@ public class DatosDAO {
         banda21.setImagen("/artistas/BBKingBluesBoys.jpg");
         banda21.setIntegrante(Arrays.asList(integrante84, integrante85, integrante86, integrante87));
         banda21.setNombre("B.B. King and the Blues Boys");
+
+        AlbumColeccion album37 = new AlbumColeccion();
+        album37.setNombre("Live at the Regal");
+        album37.setImagen("/albumes/LiveAtTheRegal.jpg");
+        album37.setFechaLanzamiento(LocalDate.of(1965, 12, 1));
+        album37.setCanciones(Arrays.asList(
+                new CancionDoc("Every Day I Have the Blues"),
+                new CancionDoc("How Blue Can You Get"),
+                new CancionDoc("It's My Own Fault"),
+                new CancionDoc("Don't Answer the Door"),
+                new CancionDoc("Sweet Little Angel")
+        ));
+        album37.setArtista(banda21); // Artista previamente creado para B.B. King and the Blues Boys
+
+        AlbumColeccion album38 = new AlbumColeccion();
+        album38.setNombre("Completely Well");
+        album38.setImagen("/albumes/CompletelyWell.jpg");
+        album38.setFechaLanzamiento(LocalDate.of(1969, 9, 1));
+        album38.setCanciones(Arrays.asList(
+                new CancionDoc("The Thrill Is Gone"),
+                new CancionDoc("Cryin' Won't Help You"),
+                new CancionDoc("Reaching for the Moon"),
+                new CancionDoc("So Excited"),
+                new CancionDoc("Confessin' the Blues")
+        ));
+        album38.setArtista(banda21); // Artista previamente creado para B.B. King and the Blues Boys
 
         // Conversión para John Lee Hooker and the Coast to Coast Blues Band
         IntegranteDoc integrante95 = new IntegranteDoc();
@@ -1569,6 +2077,32 @@ public class DatosDAO {
         banda24.setIntegrante(Arrays.asList(integrante95, integrante96, integrante97, integrante98));
         banda24.setNombre("John Lee Hooker and the Coast to Coast Blues Band");
 
+        AlbumColeccion album39 = new AlbumColeccion();
+        album39.setNombre("Live at the Cafe au Go Go");
+        album39.setImagen("/albumes/LiveAtTheCafeAuGoGo.jpg");
+        album39.setFechaLanzamiento(LocalDate.of(1966, 1, 1));
+        album39.setCanciones(Arrays.asList(
+                new CancionDoc("Boom Boom"),
+                new CancionDoc("I'm So Excited"),
+                new CancionDoc("One Bourbon, One Scotch, One Beer"),
+                new CancionDoc("Little Wheel"),
+                new CancionDoc("How Long Blues")
+        ));
+        album39.setArtista(banda24); // Artista previamente creado para John Lee Hooker and the Coast to Coast Blues Band
+
+        AlbumColeccion album40 = new AlbumColeccion();
+        album40.setNombre("The Healer");
+        album40.setImagen("/albumes/TheHealer.jpg");
+        album40.setFechaLanzamiento(LocalDate.of(1989, 9, 19));
+        album40.setCanciones(Arrays.asList(
+                new CancionDoc("I'm in the Mood"),
+                new CancionDoc("The Healer"),
+                new CancionDoc("Cuttin' Out"),
+                new CancionDoc("It Serves You Right to Suffer"),
+                new CancionDoc("Rockin' Chair")
+        ));
+        album40.setArtista(banda24); // Artista previamente creado para John Lee Hooker and the Coast to Coast Blues Band
+
         IntegranteDoc integrante99 = new IntegranteDoc();
         integrante99.setEsActivo(false);
         integrante99.setFechaIngreso(LocalDate.of(1963, 1, 1));
@@ -1600,6 +2134,32 @@ public class DatosDAO {
         banda25.setImagen("/artistas/Yardbirds.jpg");
         banda25.setIntegrante(Arrays.asList(integrante99, integrante100, integrante101, integrante102));
         banda25.setNombre("Eric Clapton and The Yardbirds");
+
+        AlbumColeccion album43 = new AlbumColeccion();
+        album43.setNombre("Having a Rave Up with The Yardbirds");
+        album43.setImagen("/albumes/HavingARaveUp.jpg");
+        album43.setFechaLanzamiento(LocalDate.of(1965, 11, 15));
+        album43.setCanciones(Arrays.asList(
+                new CancionDoc("Heart Full of Soul"),
+                new CancionDoc("I'm a Man"),
+                new CancionDoc("The Train Kept A-Rollin'"),
+                new CancionDoc("Still I'm Sad"),
+                new CancionDoc("Evil Hearted You")
+        ));
+        album43.setArtista(banda25); // Artista previamente creado para The Yardbirds
+
+        AlbumColeccion album44 = new AlbumColeccion();
+        album44.setNombre("The Yardbirds (Greatest Hits)");
+        album44.setImagen("/albumes/YardbirdsGreatestHits.jpg");
+        album44.setFechaLanzamiento(LocalDate.of(1970, 5, 1));
+        album44.setCanciones(Arrays.asList(
+                new CancionDoc("For Your Love"),
+                new CancionDoc("Over Under Sideways Down"),
+                new CancionDoc("Shapes of Things"),
+                new CancionDoc("I’m a Man"),
+                new CancionDoc("Little Games")
+        ));
+        album44.setArtista(banda25); // Artista previamente creado para The Yardbirds
 
         // Banda: The Highwaymen
         IntegranteDoc integrante103 = new IntegranteDoc();
@@ -1637,6 +2197,32 @@ public class DatosDAO {
         banda26.setIntegrante(Arrays.asList(integrante103, integrante104, integrante105, integrante106));
         banda26.setNombre("The Highwaymen");
 
+        AlbumColeccion album41 = new AlbumColeccion();
+        album41.setNombre("The Highwaymen");
+        album41.setImagen("/albumes/TheHighwaymen.jpg");
+        album41.setFechaLanzamiento(LocalDate.of(1985, 3, 1));
+        album41.setCanciones(Arrays.asList(
+                new CancionDoc("Highwayman"),
+                new CancionDoc("The Last Cowboy Song"),
+                new CancionDoc("Desperados Waiting for a Train"),
+                new CancionDoc("Jim, I Wore a Tie Today"),
+                new CancionDoc("Big River")
+        ));
+        album41.setArtista(banda26); // Artista previamente creado para The Highwaymen
+
+        AlbumColeccion album42 = new AlbumColeccion();
+        album42.setNombre("Highwaymen 2");
+        album42.setImagen("/albumes/Highwaymen2.jpg");
+        album42.setFechaLanzamiento(LocalDate.of(1990, 9, 25));
+        album42.setCanciones(Arrays.asList(
+                new CancionDoc("Silver Stallion"),
+                new CancionDoc("The King of Broken Hearts"),
+                new CancionDoc("It Is What It Is"),
+                new CancionDoc("Anthem '84"),
+                new CancionDoc("Prisoner")
+        ));
+        album42.setArtista(banda26); // Artista previamente creado para The Highwaymen
+
         // Banda: The Dixie Chicks
         IntegranteDoc integrante107 = new IntegranteDoc();
         integrante107.setEsActivo(true);
@@ -1662,6 +2248,32 @@ public class DatosDAO {
         banda27.setImagen("/artistas/DixieChicks.jpg");
         banda27.setIntegrante(Arrays.asList(integrante107, integrante108, integrante109));
         banda27.setNombre("The Dixie Chicks");
+
+        AlbumColeccion album45 = new AlbumColeccion();
+        album45.setNombre("Wide Open Spaces");
+        album45.setImagen("/albumes/WideOpenSpaces.jpg");
+        album45.setFechaLanzamiento(LocalDate.of(1998, 1, 27));
+        album45.setCanciones(Arrays.asList(
+                new CancionDoc("I Can Love You Better"),
+                new CancionDoc("Wide Open Spaces"),
+                new CancionDoc("Landslide"),
+                new CancionDoc("There's Your Trouble"),
+                new CancionDoc("You Were Mine")
+        ));
+        album45.setArtista(banda27); // Artista previamente creado para The Dixie Chicks
+
+        AlbumColeccion album46 = new AlbumColeccion();
+        album46.setNombre("Home");
+        album46.setImagen("/albumes/Home.jpg");
+        album46.setFechaLanzamiento(LocalDate.of(2002, 8, 27));
+        album46.setCanciones(Arrays.asList(
+                new CancionDoc("Long Time Gone"),
+                new CancionDoc("Travelin' Soldier"),
+                new CancionDoc("Godspeed (Sweet Dreams)"),
+                new CancionDoc("More Love"),
+                new CancionDoc("White Trash Wedding")
+        ));
+        album46.setArtista(banda27); // Artista previamente creado para The Dixie Chicks
 
         // Banda: Alabama
         IntegranteDoc integrante110 = new IntegranteDoc();
@@ -1689,6 +2301,32 @@ public class DatosDAO {
         banda28.setIntegrante(Arrays.asList(integrante110, integrante111, integrante112));
         banda28.setNombre("Alabama");
 
+        AlbumColeccion album47 = new AlbumColeccion();
+        album47.setNombre("Mountain Music");
+        album47.setImagen("/albumes/MountainMusic.jpg");
+        album47.setFechaLanzamiento(LocalDate.of(1982, 4, 1));
+        album47.setCanciones(Arrays.asList(
+                new CancionDoc("Mountain Music"),
+                new CancionDoc("Close Enough to Perfect"),
+                new CancionDoc("Take Me Down"),
+                new CancionDoc("The Borderline"),
+                new CancionDoc("We Can't Love Like This Anymore")
+        ));
+        album47.setArtista(banda28); // Artista previamente creado para Alabama
+
+        AlbumColeccion album48 = new AlbumColeccion();
+        album48.setNombre("The Closer You Get");
+        album48.setImagen("/albumes/TheCloserYouGet.jpg");
+        album48.setFechaLanzamiento(LocalDate.of(1983, 9, 1));
+        album48.setCanciones(Arrays.asList(
+                new CancionDoc("The Closer You Get"),
+                new CancionDoc("Lady Down on Love"),
+                new CancionDoc("Dixieland Delight"),
+                new CancionDoc("If You're Gonna Play in Texas (You Gotta Have a Fiddle in the Band)"),
+                new CancionDoc("Gonna Have a Party")
+        ));
+        album48.setArtista(banda28); // Artista previamente creado para Alabama
+
         // Banda: Brooks & Dunn
         IntegranteDoc integrante113 = new IntegranteDoc();
         integrante113.setEsActivo(true);
@@ -1708,6 +2346,32 @@ public class DatosDAO {
         banda29.setImagen("/artistas/BrooksAndDunn.jpg");
         banda29.setIntegrante(Arrays.asList(integrante113, integrante114));
         banda29.setNombre("Brooks & Dunn");
+
+        AlbumColeccion album49 = new AlbumColeccion();
+        album49.setNombre("Brand New Man");
+        album49.setImagen("/albumes/BrandNewMan.jpg");
+        album49.setFechaLanzamiento(LocalDate.of(1991, 4, 23));
+        album49.setCanciones(Arrays.asList(
+                new CancionDoc("Brand New Man"),
+                new CancionDoc("My Next Broken Heart"),
+                new CancionDoc("Neon Moon"),
+                new CancionDoc("Lost and Found"),
+                new CancionDoc("And Then Some")
+        ));
+        album49.setArtista(banda29); // Artista previamente creado para Brooks & Dunn
+
+        AlbumColeccion album50 = new AlbumColeccion();
+        album50.setNombre("Waitin' on Sundown");
+        album50.setImagen("/albumes/WaitinonSundown.jpg");
+        album50.setFechaLanzamiento(LocalDate.of(1994, 9, 13));
+        album50.setCanciones(Arrays.asList(
+                new CancionDoc("Neon Moon"),
+                new CancionDoc("Boot Scootin' Boogie"),
+                new CancionDoc("You're Gonna Miss Me When I'm Gone"),
+                new CancionDoc("She Used to Be Mine"),
+                new CancionDoc("That Ain't No Way to Go")
+        ));
+        album50.setArtista(banda29); // Artista previamente creado para Brooks & Dunn
 
         // Banda: Zac Brown Band
         IntegranteDoc integrante115 = new IntegranteDoc();
@@ -1747,6 +2411,32 @@ public class DatosDAO {
         banda30.setIntegrante(Arrays.asList(integrante115, integrante116, integrante117, integrante118, integrante119));
         banda30.setNombre("Zac Brown Band");
 
+        AlbumColeccion album51 = new AlbumColeccion();
+        album51.setNombre("The Foundation");
+        album51.setImagen("/albumes/TheFoundation.jpg");
+        album51.setFechaLanzamiento(LocalDate.of(2008, 11, 18));
+        album51.setCanciones(Arrays.asList(
+                new CancionDoc("Chicken Fried"),
+                new CancionDoc("Toes"),
+                new CancionDoc("Whatever It Is"),
+                new CancionDoc("Where the Boat Leaves From"),
+                new CancionDoc("Free")
+        ));
+        album51.setArtista(banda30); // Artista previamente creado para Zac Brown Band
+
+        AlbumColeccion album52 = new AlbumColeccion();
+        album52.setNombre("You Get What You Give");
+        album52.setImagen("/albumes/YouGetWhatYouGive.jpg");
+        album52.setFechaLanzamiento(LocalDate.of(2010, 9, 21));
+        album52.setCanciones(Arrays.asList(
+                new CancionDoc("Colder Weather"),
+                new CancionDoc("As She's Walking Away"),
+                new CancionDoc("Knee Deep"),
+                new CancionDoc("Whiskey's Gone"),
+                new CancionDoc("Let It Go")
+        ));
+        album52.setArtista(banda30); // Artista previamente creado para Zac Brown Band
+
         // Banda: Metallica
         IntegranteDoc integrante120 = new IntegranteDoc();
         integrante120.setEsActivo(true);
@@ -1778,6 +2468,32 @@ public class DatosDAO {
         banda31.setImagen("/artistas/Metallica.jpg");
         banda31.setIntegrante(Arrays.asList(integrante120, integrante121, integrante122, integrante123));
         banda31.setNombre("Metallica");
+
+        AlbumColeccion album53 = new AlbumColeccion();
+        album53.setNombre("Metallica (The Black Album)");
+        album53.setImagen("/albumes/MetallicaBlackAlbum.jpg");
+        album53.setFechaLanzamiento(LocalDate.of(1991, 8, 12));
+        album53.setCanciones(Arrays.asList(
+                new CancionDoc("Enter Sandman"),
+                new CancionDoc("The Unforgiven"),
+                new CancionDoc("Wherever I May Roam"),
+                new CancionDoc("Sad But True"),
+                new CancionDoc("Nothing Else Matters")
+        ));
+        album53.setArtista(banda31); // Artista previamente creado para Metallica
+
+        AlbumColeccion album54 = new AlbumColeccion();
+        album54.setNombre("Master of Puppets");
+        album54.setImagen("/albumes/MasterOfPuppets.jpg");
+        album54.setFechaLanzamiento(LocalDate.of(1986, 3, 3));
+        album54.setCanciones(Arrays.asList(
+                new CancionDoc("Battery"),
+                new CancionDoc("Master of Puppets"),
+                new CancionDoc("Welcome Home (Sanitarium)"),
+                new CancionDoc("Disposable Heroes"),
+                new CancionDoc("Orion")
+        ));
+        album54.setArtista(banda31); // Artista previamente creado para Metallica
 
 // Banda: Iron Maiden
         IntegranteDoc integrante124 = new IntegranteDoc();
@@ -1817,6 +2533,32 @@ public class DatosDAO {
         banda32.setIntegrante(Arrays.asList(integrante124, integrante125, integrante126, integrante127, integrante128));
         banda32.setNombre("Iron Maiden");
 
+        AlbumColeccion album55 = new AlbumColeccion();
+        album55.setNombre("The Number of the Beast");
+        album55.setImagen("/albumes/TheNumberOfTheBeast.jpg");
+        album55.setFechaLanzamiento(LocalDate.of(1982, 3, 22));
+        album55.setCanciones(Arrays.asList(
+                new CancionDoc("Invaders"),
+                new CancionDoc("Children of the Damned"),
+                new CancionDoc("The Number of the Beast"),
+                new CancionDoc("Run to the Hills"),
+                new CancionDoc("Hallowed Be Thy Name")
+        ));
+        album55.setArtista(banda32); // Artista previamente creado para Iron Maiden
+
+        AlbumColeccion album56 = new AlbumColeccion();
+        album56.setNombre("Powerslave");
+        album56.setImagen("/albumes/Powerslave.jpg");
+        album56.setFechaLanzamiento(LocalDate.of(1984, 9, 3));
+        album56.setCanciones(Arrays.asList(
+                new CancionDoc("Aces High"),
+                new CancionDoc("2 Minutes to Midnight"),
+                new CancionDoc("Losfer Words (Big 'Orra)"),
+                new CancionDoc("Flash of the Blade"),
+                new CancionDoc("Powerslave")
+        ));
+        album56.setArtista(banda32); // Artista previamente creado para Iron Maiden
+
 // Banda: Judas Priest
         IntegranteDoc integrante129 = new IntegranteDoc();
         integrante129.setEsActivo(true);
@@ -1855,6 +2597,32 @@ public class DatosDAO {
         banda33.setIntegrante(Arrays.asList(integrante129, integrante130, integrante131, integrante132, integrante133));
         banda33.setNombre("Judas Priest");
 
+        AlbumColeccion album57 = new AlbumColeccion();
+        album57.setNombre("British Steel");
+        album57.setImagen("/albumes/BritishSteel.jpg");
+        album57.setFechaLanzamiento(LocalDate.of(1980, 4, 14));
+        album57.setCanciones(Arrays.asList(
+                new CancionDoc("Rapid Fire"),
+                new CancionDoc("Metal Gods"),
+                new CancionDoc("Breaking the Law"),
+                new CancionDoc("Grinder"),
+                new CancionDoc("Living After Midnight")
+        ));
+        album57.setArtista(banda33); // Artista previamente creado para Judas Priest
+
+        AlbumColeccion album58 = new AlbumColeccion();
+        album58.setNombre("Screaming for Vengeance");
+        album58.setImagen("/albumes/ScreamingForVengeance.jpg");
+        album58.setFechaLanzamiento(LocalDate.of(1982, 7, 17));
+        album58.setCanciones(Arrays.asList(
+                new CancionDoc("The Hellion"),
+                new CancionDoc("Electric Eye"),
+                new CancionDoc("Riding on the Wind"),
+                new CancionDoc("Bloodstone"),
+                new CancionDoc("Screaming for Vengeance")
+        ));
+        album58.setArtista(banda33); // Artista previamente creado para Judas Priest
+
 // Banda: Black Sabbath
         IntegranteDoc integrante134 = new IntegranteDoc();
         integrante134.setEsActivo(false);
@@ -1887,6 +2655,32 @@ public class DatosDAO {
         banda34.setIntegrante(Arrays.asList(integrante134, integrante135, integrante136, integrante137));
         banda34.setNombre("Black Sabbath");
 
+        AlbumColeccion album59 = new AlbumColeccion();
+        album59.setNombre("Paranoid");
+        album59.setImagen("/albumes/Paranoid.jpg");
+        album59.setFechaLanzamiento(LocalDate.of(1970, 9, 18));
+        album59.setCanciones(Arrays.asList(
+                new CancionDoc("War Pigs"),
+                new CancionDoc("Paranoid"),
+                new CancionDoc("Iron Man"),
+                new CancionDoc("Hand of Doom"),
+                new CancionDoc("Fairies Wear Boots")
+        ));
+        album59.setArtista(banda34); // Artista previamente creado para Black Sabbath
+
+        AlbumColeccion album60 = new AlbumColeccion();
+        album60.setNombre("Master of Reality");
+        album60.setImagen("/albumes/MasterOfReality.jpg");
+        album60.setFechaLanzamiento(LocalDate.of(1971, 7, 21));
+        album60.setCanciones(Arrays.asList(
+                new CancionDoc("Sweet Leaf"),
+                new CancionDoc("After Forever"),
+                new CancionDoc("Children of the Grave"),
+                new CancionDoc("Lord of This World"),
+                new CancionDoc("Into the Void")
+        ));
+        album60.setArtista(banda34); // Artista previamente creado para Black Sabbath
+
 // Banda: Megadeth
         IntegranteDoc integrante138 = new IntegranteDoc();
         integrante138.setEsActivo(true);
@@ -1918,6 +2712,32 @@ public class DatosDAO {
         banda35.setImagen("/artistas/Megadeth.jpg");
         banda35.setIntegrante(Arrays.asList(integrante138, integrante139, integrante140, integrante141));
         banda35.setNombre("Megadeth");
+
+        AlbumColeccion album61 = new AlbumColeccion();
+        album61.setNombre("Rust in Peace");
+        album61.setImagen("/albumes/RustInPeace.jpg");
+        album61.setFechaLanzamiento(LocalDate.of(1990, 9, 24));
+        album61.setCanciones(Arrays.asList(
+                new CancionDoc("Holy Wars... The Punishment Due"),
+                new CancionDoc("Hangar 18"),
+                new CancionDoc("Take No Prisoners"),
+                new CancionDoc("Five Magics"),
+                new CancionDoc("Poison Was the Cure")
+        ));
+        album61.setArtista(banda35); // Artista previamente creado para Megadeth
+
+        AlbumColeccion album62 = new AlbumColeccion();
+        album62.setNombre("Peace Sells... But Who's Buying?");
+        album62.setImagen("/albumes/PeaceSells.jpg");
+        album62.setFechaLanzamiento(LocalDate.of(1986, 9, 19));
+        album62.setCanciones(Arrays.asList(
+                new CancionDoc("Wake Up Dead"),
+                new CancionDoc("The Conjuring"),
+                new CancionDoc("Peace Sells"),
+                new CancionDoc("Devil's Island"),
+                new CancionDoc("Good Mourning/Black Friday")
+        ));
+        album62.setArtista(banda35); // Artista previamente creado para Megadeth
 
 // Banda: Wu-Tang Clan
         IntegranteDoc integrante142 = new IntegranteDoc();
@@ -1957,6 +2777,32 @@ public class DatosDAO {
         banda36.setIntegrante(Arrays.asList(integrante142, integrante143, integrante144, integrante145, integrante146));
         banda36.setNombre("Wu-Tang Clan");
 
+        AlbumColeccion album63 = new AlbumColeccion();
+        album63.setNombre("Enter the Wu-Tang (36 Chambers)");
+        album63.setImagen("/albumes/EnterTheWuTang.jpg");
+        album63.setFechaLanzamiento(LocalDate.of(1993, 11, 9));
+        album63.setCanciones(Arrays.asList(
+                new CancionDoc("Bring Da Ruckus"),
+                new CancionDoc("Shame on a Nigga"),
+                new CancionDoc("Clan in da Front"),
+                new CancionDoc("Wu-Tang: 7th Chamber"),
+                new CancionDoc("Can It Be All So Simple")
+        ));
+        album63.setArtista(banda36); // Artista previamente creado para Wu-Tang Clan
+
+        AlbumColeccion album64 = new AlbumColeccion();
+        album64.setNombre("Wu-Tang Forever");
+        album64.setImagen("/albumes/WuTangForever.jpg");
+        album64.setFechaLanzamiento(LocalDate.of(1997, 6, 3));
+        album64.setCanciones(Arrays.asList(
+                new CancionDoc("Reunited"),
+                new CancionDoc("For Heaven's Sake"),
+                new CancionDoc("Triumph"),
+                new CancionDoc("Impossible"),
+                new CancionDoc("Gravel Pit")
+        ));
+        album64.setArtista(banda36); // Artista previamente creado para Wu-Tang Clan
+
         // Integrantes Gang Starr
         IntegranteDoc integrante147 = new IntegranteDoc();
         integrante147.setEsActivo(false);
@@ -1976,6 +2822,32 @@ public class DatosDAO {
         banda37.setImagen("/artistas/GangStarr.jpg");
         banda37.setIntegrante(Arrays.asList(integrante147, integrante148));
         banda37.setNombre("Gang Starr");
+
+        AlbumColeccion album65 = new AlbumColeccion();
+        album65.setNombre("Moment of Truth");
+        album65.setImagen("/albumes/MomentOfTruth.jpg");
+        album65.setFechaLanzamiento(LocalDate.of(1998, 3, 31));
+        album65.setCanciones(Arrays.asList(
+                new CancionDoc("You Know My Steez"),
+                new CancionDoc("Royalty"),
+                new CancionDoc("Moment of Truth"),
+                new CancionDoc("Work"),
+                new CancionDoc("Betrayal")
+        ));
+        album65.setArtista(banda37); // Artista previamente creado para Gang Starr
+
+        AlbumColeccion album66 = new AlbumColeccion();
+        album66.setNombre("Daily Operation");
+        album66.setImagen("/albumes/DailyOperation.jpg");
+        album66.setFechaLanzamiento(LocalDate.of(1992, 3, 24));
+        album66.setCanciones(Arrays.asList(
+                new CancionDoc("You’re Everything"),
+                new CancionDoc("Code of the Streets"),
+                new CancionDoc("Ex Girl to Next Girl"),
+                new CancionDoc("DWYCK"),
+                new CancionDoc("Take It Personal")
+        ));
+        album66.setArtista(banda37); // Artista previamente creado para Gang Starr
 
 // Integrantes The Fugees
         IntegranteDoc integrante149 = new IntegranteDoc();
@@ -2003,6 +2875,32 @@ public class DatosDAO {
         banda38.setIntegrante(Arrays.asList(integrante149, integrante150, integrante151));
         banda38.setNombre("The Fugees");
 
+        AlbumColeccion album67 = new AlbumColeccion();
+        album67.setNombre("The Score");
+        album67.setImagen("/albumes/TheScore.jpg");
+        album67.setFechaLanzamiento(LocalDate.of(1996, 2, 13));
+        album67.setCanciones(Arrays.asList(
+                new CancionDoc("Ready or Not"),
+                new CancionDoc("Killing Me Softly"),
+                new CancionDoc("No Woman, No Cry"),
+                new CancionDoc("How Many Mics"),
+                new CancionDoc("The Beast")
+        ));
+        album67.setArtista(banda38); // Artista previamente creado para The Fugees
+
+        AlbumColeccion album68 = new AlbumColeccion();
+        album68.setNombre("Blunted on Reality");
+        album68.setImagen("/albumes/BluntedOnReality.jpg");
+        album68.setFechaLanzamiento(LocalDate.of(1994, 2, 1));
+        album68.setCanciones(Arrays.asList(
+                new CancionDoc("Nappy Heads"),
+                new CancionDoc("Vocab"),
+                new CancionDoc("Boof Baf"),
+                new CancionDoc("Doo Wop (That Thing)"),
+                new CancionDoc("The Masked and the Mellow")
+        ));
+        album68.setArtista(banda38); // Artista previamente creado para The Fugees
+
 // Integrantes Flowklorikos
         IntegranteDoc integrante152 = new IntegranteDoc();
         integrante152.setEsActivo(true);
@@ -2022,6 +2920,31 @@ public class DatosDAO {
         banda39.setImagen("/artistas/Flowklorikos.jpg");
         banda39.setIntegrante(Arrays.asList(integrante152, integrante153));
         banda39.setNombre("Flowklorikos");
+
+        AlbumColeccion album69 = new AlbumColeccion();
+        album69.setNombre("Donde Duele Inspira");
+        album69.setImagen("/albumes/DondeDueleInspira.jpg");
+        album69.setFechaLanzamiento(LocalDate.of(2012, 7, 23));
+        album69.setCanciones(Arrays.asList(
+                new CancionDoc("Donde Duele Inspira"),
+                new CancionDoc("Por Amor al Odio"),
+                new CancionDoc("Desde el Barro"),
+                new CancionDoc("El Artesano del Arte Insano"),
+                new CancionDoc("Cosquijazz")
+        ));
+        album69.setArtista(banda39); // Artista previamente creado para Flowklorikos
+
+        AlbumColeccion album70 = new AlbumColeccion();
+        album70.setNombre("Zerdos y Diamantes");
+        album70.setImagen("/albumes/ZerdosyDiamantes.jpg");
+        album70.setFechaLanzamiento(LocalDate.of(2014, 5, 30));
+        album70.setCanciones(Arrays.asList(
+                new CancionDoc("Cae de Trago"),
+                new CancionDoc("Volvi a Ser"),
+                new CancionDoc("Mensaje en una Botella"),
+                new CancionDoc("Dias Grises")
+        ));
+        album70.setArtista(banda39); // Artista previamente creado para Flowklorikos
 
 // Integrantes A Tribe Called Quest
         IntegranteDoc integrante154 = new IntegranteDoc();
@@ -2059,6 +2982,33 @@ public class DatosDAO {
         banda40.setIntegrante(Arrays.asList(integrante154, integrante155, integrante156, integrante157));
         banda40.setNombre("A Tribe Called Quest");
 
+        AlbumColeccion album71 = new AlbumColeccion();
+        album71.setNombre("People's Instinctive Travels and the Paths of Rhythm");
+        album71.setImagen("/albumes/PeoplesInstinctiveTravels.jpg");
+        album71.setFechaLanzamiento(LocalDate.of(1990, 4, 17));
+        album71.setCanciones(Arrays.asList(
+                new CancionDoc("Push It Along"),
+                new CancionDoc("Luck of Lucien"),
+                new CancionDoc("After Hours"),
+                new CancionDoc("Description of a Fool"),
+                new CancionDoc("Footprints")
+        ));
+        album71.setArtista(banda40);
+
+// Álbum 72: "The Low End Theory"
+        AlbumColeccion album72 = new AlbumColeccion();
+        album72.setNombre("The Low End Theory");
+        album72.setImagen("/albumes/TheLowEndTheory.jpg");
+        album72.setFechaLanzamiento(LocalDate.of(1991, 9, 24));
+        album72.setCanciones(Arrays.asList(
+                new CancionDoc("Excursions"),
+                new CancionDoc("Buggin' Out"),
+                new CancionDoc("Check the Rhime"),
+                new CancionDoc("Vibes and Stuff"),
+                new CancionDoc("Scenario")
+        ));
+        album72.setArtista(banda40);
+
         // Integrantes Beastie Boys
         IntegranteDoc integrante158 = new IntegranteDoc();
         integrante158.setEsActivo(false);
@@ -2094,6 +3044,35 @@ public class DatosDAO {
         banda41.setIntegrante(Arrays.asList(integrante158, integrante159, integrante160, integrante161));
         banda41.setNombre("Beastie Boys");
 
+        // Artista Beastie Boys
+// Álbum 73: "Licensed to Ill"
+        AlbumColeccion album73 = new AlbumColeccion();
+        album73.setNombre("Licensed to Ill");
+        album73.setImagen("/albumes/LicensedToIll.jpg");
+        album73.setFechaLanzamiento(LocalDate.of(1986, 11, 15));
+        album73.setCanciones(Arrays.asList(
+                new CancionDoc("Rhymin & Stealin"),
+                new CancionDoc("The New Style"),
+                new CancionDoc("She's Crafty"),
+                new CancionDoc("Fight For Your Right"),
+                new CancionDoc("No Sleep Till Brooklyn")
+        ));
+        album73.setArtista(banda41);
+
+// Álbum 74: "Check Your Head"
+        AlbumColeccion album74 = new AlbumColeccion();
+        album74.setNombre("Check Your Head");
+        album74.setImagen("/albumes/CheckYourHead.jpg");
+        album74.setFechaLanzamiento(LocalDate.of(1992, 4, 21));
+        album74.setCanciones(Arrays.asList(
+                new CancionDoc("Jimmy James"),
+                new CancionDoc("Pass the Mic"),
+                new CancionDoc("Gratitude"),
+                new CancionDoc("So What'cha Want"),
+                new CancionDoc("Alive")
+        ));
+        album74.setArtista(banda41);
+
 // Integrantes Vienna Philharmonic
         IntegranteDoc integrante162 = new IntegranteDoc();
         integrante162.setEsActivo(true);
@@ -2126,6 +3105,33 @@ public class DatosDAO {
         banda42.setImagen("/artistas/ViennaPhilharmonic.jpg");
         banda42.setIntegrante(Arrays.asList(integrante162, integrante163, integrante164, integrante165));
         banda42.setNombre("The Vienna Philharmonic");
+
+        AlbumColeccion album75 = new AlbumColeccion();
+        album75.setNombre("Beethoven: Symphony No. 9");
+        album75.setImagen("/albumes/BeethovenSymphony9.jpg");
+        album75.setFechaLanzamiento(LocalDate.of(2019, 1, 1));
+        album75.setCanciones(Arrays.asList(
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125: I. Allegro ma non troppo, un poco maestoso"),
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125: II. Molto vivace"),
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125: III. Adagio molto e cantabile"),
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125: IV. Presto")
+        ));
+        album75.setArtista(banda42);  // Asumiendo que ya se definió artista75, que es Vienna Philharmonic
+
+// Álbum 76: "The Four Seasons"
+        AlbumColeccion album76 = new AlbumColeccion();
+        album76.setNombre("The Four Seasons");
+        album76.setImagen("/albumes/TheFourSeasons.jpg");
+        album76.setFechaLanzamiento(LocalDate.of(2017, 3, 15));
+        album76.setCanciones(Arrays.asList(
+                new CancionDoc("Spring: I. Allegro"),
+                new CancionDoc("Spring: II. Largo"),
+                new CancionDoc("Spring: III. Allegro"),
+                new CancionDoc("Summer: I. Allegro non molto"),
+                new CancionDoc("Summer: II. Adagio")
+        ));
+        album76.setArtista(banda42);
+
         IntegranteDoc integrante174 = new IntegranteDoc();
         integrante174.setEsActivo(true);
         integrante174.setFechaIngreso(LocalDate.of(1999, 1, 1));
@@ -2157,6 +3163,33 @@ public class DatosDAO {
         banda45.setImagen("/artistas/LondonSymphonyOrchestra.jpg");
         banda45.setIntegrante(Arrays.asList(integrante174, integrante175, integrante176, integrante177));
         banda45.setNombre("The London Symphony Orchestra");
+
+        // Álbum 77: "Tchaikovsky: The Nutcracker"
+        AlbumColeccion album77 = new AlbumColeccion();
+        album77.setNombre("Tchaikovsky: The Nutcracker");
+        album77.setImagen("/albumes/TchaikovskyNutcracker.jpg");
+        album77.setFechaLanzamiento(LocalDate.of(2018, 12, 1));
+        album77.setCanciones(Arrays.asList(
+                new CancionDoc("The Nutcracker, Op. 71: I. Overture"),
+                new CancionDoc("The Nutcracker, Op. 71: II. March"),
+                new CancionDoc("The Nutcracker, Op. 71: III. Dance of the Sugar Plum Fairy"),
+                new CancionDoc("The Nutcracker, Op. 71: IV. Waltz of the Flowers")
+        ));
+        album77.setArtista(banda45);  // Asumiendo que ya se definió artista77, que es The London Symphony Orchestra
+
+// Álbum 78: "Holst: The Planets"
+        AlbumColeccion album78 = new AlbumColeccion();
+        album78.setNombre("Holst: The Planets");
+        album78.setImagen("/albumes/HolstThePlanets.jpg");
+        album78.setFechaLanzamiento(LocalDate.of(2019, 5, 20));
+        album78.setCanciones(Arrays.asList(
+                new CancionDoc("The Planets, Op. 32: I. Mars, the Bringer of War"),
+                new CancionDoc("The Planets, Op. 32: II. Venus, the Bringer of Peace"),
+                new CancionDoc("The Planets, Op. 32: III. Mercury, the Winged Messenger"),
+                new CancionDoc("The Planets, Op. 32: IV. Jupiter, the Bringer of Jollity"),
+                new CancionDoc("The Planets, Op. 32: V. Saturn, the Bringer of Old Age")
+        ));
+        album78.setArtista(banda45);  // Asumiendo que ya se definió artista77, que es The London Symphony Orchestra
 
 // Integrantes New York Philharmonic
         IntegranteDoc integrante178 = new IntegranteDoc();
@@ -2191,6 +3224,34 @@ public class DatosDAO {
         banda46.setIntegrante(Arrays.asList(integrante178, integrante179, integrante180, integrante181));
         banda46.setNombre("The New York Philharmonic");
 
+        // Álbum 79: "Beethoven: Symphonies Nos. 5 & 7"
+        AlbumColeccion album79 = new AlbumColeccion();
+        album79.setNombre("Beethoven: Symphonies Nos. 5 & 7");
+        album79.setImagen("/albumes/BeethovenSymphonies57.jpg");
+        album79.setFechaLanzamiento(LocalDate.of(2017, 4, 15));
+        album79.setCanciones(Arrays.asList(
+                new CancionDoc("Symphony No. 5 in C minor, Op. 67: I. Allegro con brio"),
+                new CancionDoc("Symphony No. 5 in C minor, Op. 67: II. Andante con moto"),
+                new CancionDoc("Symphony No. 5 in C minor, Op. 67: III. Allegro"),
+                new CancionDoc("Symphony No. 7 in A major, Op. 92: I. Poco sostenuto - Vivace"),
+                new CancionDoc("Symphony No. 7 in A major, Op. 92: II. Allegretto")
+        ));
+        album79.setArtista(banda46);  // Asumiendo que ya se definió artista79, que es The New York Philharmonic
+
+// Álbum 80: "Mahler: Symphony No. 2 'Resurrection'"
+        AlbumColeccion album80 = new AlbumColeccion();
+        album80.setNombre("Mahler: Symphony No. 2 'Resurrection'");
+        album80.setImagen("/albumes/MahlerSymphony2.jpg");
+        album80.setFechaLanzamiento(LocalDate.of(2019, 6, 30));
+        album80.setCanciones(Arrays.asList(
+                new CancionDoc("Symphony No. 2 in C minor, Op. 36: I. Allegro maestoso"),
+                new CancionDoc("Symphony No. 2 in C minor, Op. 36: II. Andante con moto"),
+                new CancionDoc("Symphony No. 2 in C minor, Op. 36: III. Scherzo"),
+                new CancionDoc("Symphony No. 2 in C minor, Op. 36: IV. Urlicht"),
+                new CancionDoc("Symphony No. 2 in C minor, Op. 36: V. Finale")
+        ));
+        album80.setArtista(banda46);  // Asumiendo que ya se definió artista79, que es The New York Philharmonic
+
 // Integrantes The Isley Brothers
         IntegranteDoc integrante182 = new IntegranteDoc();
         integrante182.setEsActivo(true);
@@ -2210,6 +3271,34 @@ public class DatosDAO {
         banda47.setImagen("/artistas/TheIsleyBrothers.jpg");
         banda47.setIntegrante(Arrays.asList(integrante182, integrante183));
         banda47.setNombre("The Isley Brothers");
+
+        // Álbum 81: "3 + 3"
+        AlbumColeccion album81 = new AlbumColeccion();
+        album81.setNombre("3 + 3");
+        album81.setImagen("/albumes/3plus3.jpg");
+        album81.setFechaLanzamiento(LocalDate.of(1973, 6, 1));
+        album81.setCanciones(Arrays.asList(
+                new CancionDoc("That Lady"),
+                new CancionDoc("What It Comes Down To"),
+                new CancionDoc("If You Were There"),
+                new CancionDoc("You Walk Your Way"),
+                new CancionDoc("Listen to the Music")
+        ));
+        album81.setArtista(banda47);  // Asumiendo que ya se definió artista81, que es The Isley Brothers
+
+// Álbum 82: "Between the Sheets"
+        AlbumColeccion album82 = new AlbumColeccion();
+        album82.setNombre("Between the Sheets");
+        album82.setImagen("/albumes/BetweenTheSheets.jpg");
+        album82.setFechaLanzamiento(LocalDate.of(1983, 2, 1));
+        album82.setCanciones(Arrays.asList(
+                new CancionDoc("Between the Sheets"),
+                new CancionDoc("Choosey Lover"),
+                new CancionDoc("Touch Me (Where Your Eyes Meet Mine)"),
+                new CancionDoc("Slow Down"),
+                new CancionDoc("Ain't No Love In the Heart of the City")
+        ));
+        album82.setArtista(banda47);  // Asumiendo que ya se definió artista81, que es The Isley Brothers
 
 // Integrantes The Supremes
         IntegranteDoc integrante185 = new IntegranteDoc();
@@ -2238,6 +3327,35 @@ public class DatosDAO {
         banda48.setImagen("/artistas/TheSupremes.jpg");
         banda48.setIntegrante(Arrays.asList(integrante185, integrante186, integrante187));
         banda48.setNombre("The Supremes");
+
+        // Álbum 83: "Where Did Our Love Go"
+        AlbumColeccion album83 = new AlbumColeccion();
+        album83.setNombre("Where Did Our Love Go");
+        album83.setImagen("/albumes/WhereDidOurLoveGo.jpg");
+        album83.setFechaLanzamiento(LocalDate.of(1964, 8, 31));
+        album83.setCanciones(Arrays.asList(
+                new CancionDoc("Where Did Our Love Go"),
+                new CancionDoc("Run, Run, Run"),
+                new CancionDoc("Baby Love"),
+                new CancionDoc("Come See About Me"),
+                new CancionDoc("When the Lovelight Starts Shining Through His Eyes")
+        ));
+        album83.setArtista(banda48);  // Asumiendo que ya se definió artista83, que es The Supremes
+
+// Álbum 84: "I Hear a Symphony"
+        AlbumColeccion album84 = new AlbumColeccion();
+        album84.setNombre("I Hear a Symphony");
+        album84.setImagen("/albumes/IHearASymphony.jpg");
+        album84.setFechaLanzamiento(LocalDate.of(1966, 10, 19));
+        album84.setCanciones(Arrays.asList(
+                new CancionDoc("I Hear a Symphony"),
+                new CancionDoc("Wonderful, Wonderful"),
+                new CancionDoc("My World Is Empty Without You"),
+                new CancionDoc("Some Things You Never Get Used To"),
+                new CancionDoc("Just a Little Misunderstanding")
+        ));
+        album84.setArtista(banda48);  // Asumiendo que ya se definió artista83, que es The Supremes
+
 // Integrantes
         // Integrantes The Cure
         IntegranteDoc integrante1870 = new IntegranteDoc();
@@ -2265,6 +3383,34 @@ public class DatosDAO {
         banda49.setIntegrante(Arrays.asList(integrante1870, integrante188, integrante189));
         banda49.setNombre("The Cure");
 
+        // Álbum 85: "Disintegration"
+        AlbumColeccion album85 = new AlbumColeccion();
+        album85.setNombre("Disintegration");
+        album85.setImagen("/albumes/Disintegration.jpg");
+        album85.setFechaLanzamiento(LocalDate.of(1989, 5, 2));
+        album85.setCanciones(Arrays.asList(
+                new CancionDoc("Plainsong"),
+                new CancionDoc("Pictures of You"),
+                new CancionDoc("Closedown"),
+                new CancionDoc("Love Song"),
+                new CancionDoc("Lullaby")
+        ));
+        album85.setArtista(banda49);  // Asumiendo que ya se definió artista85, que es The Cure
+
+// Álbum 86: "Kiss Me, Kiss Me, Kiss Me"
+        AlbumColeccion album86 = new AlbumColeccion();
+        album86.setNombre("Kiss Me, Kiss Me, Kiss Me");
+        album86.setImagen("/albumes/KissMeKissMeKissMe.jpg");
+        album86.setFechaLanzamiento(LocalDate.of(1987, 5, 25));
+        album86.setCanciones(Arrays.asList(
+                new CancionDoc("The Kiss"),
+                new CancionDoc("Catch"),
+                new CancionDoc("If Only Tonight We Could Sleep"),
+                new CancionDoc("Why Can't I Be You?"),
+                new CancionDoc("How Beautiful You Are!")
+        ));
+        album86.setArtista(banda49);  // Asumiendo que ya se definió artista85, que es The Cure
+
 // Integrantes Blondie
         IntegranteDoc integrante193 = new IntegranteDoc();
         integrante193.setEsActivo(true);
@@ -2290,6 +3436,34 @@ public class DatosDAO {
         banda50.setImagen("/artistas/Blondie.jpg");
         banda50.setIntegrante(Arrays.asList(integrante193, integrante194, integrante195));
         banda50.setNombre("Blondie");
+
+        // Álbum 87: "Parallel Lines"
+        AlbumColeccion album87 = new AlbumColeccion();
+        album87.setNombre("Parallel Lines");
+        album87.setImagen("/albumes/ParallelLines.jpg");
+        album87.setFechaLanzamiento(LocalDate.of(1978, 9, 23));
+        album87.setCanciones(Arrays.asList(
+                new CancionDoc("Heart of Glass"),
+                new CancionDoc("One Way or Another"),
+                new CancionDoc("Picture This"),
+                new CancionDoc("Sunday Girl"),
+                new CancionDoc("Hanging on the Telephone")
+        ));
+        album87.setArtista(banda50);  // Asumiendo que ya se definió artista87, que es Blondie
+
+// Álbum 88: "Autoamerican"
+        AlbumColeccion album88 = new AlbumColeccion();
+        album88.setNombre("Autoamerican");
+        album88.setImagen("/albumes/Autoamerican.jpg");
+        album88.setFechaLanzamiento(LocalDate.of(1980, 11, 13));
+        album88.setCanciones(Arrays.asList(
+                new CancionDoc("Rapture"),
+                new CancionDoc("The Tide Is High"),
+                new CancionDoc("Live It Up"),
+                new CancionDoc("Susie and Jeffrey"),
+                new CancionDoc("Shayla")
+        ));
+        album88.setArtista(banda50);  // Asumiendo que ya se definió artista87, que es Blondie
 
 // Integrantes Joy Division
         IntegranteDoc integrante196 = new IntegranteDoc();
@@ -2320,6 +3494,34 @@ public class DatosDAO {
         banda51.setIntegrante(Arrays.asList(integrante196, integrante197, integrante198));
         banda51.setNombre("Joy Division");
 
+        // Álbum 89: "Unknown Pleasures"
+        AlbumColeccion album89 = new AlbumColeccion();
+        album89.setNombre("Unknown Pleasures");
+        album89.setImagen("/albumes/UnknownPleasures.jpg");
+        album89.setFechaLanzamiento(LocalDate.of(1979, 6, 15));
+        album89.setCanciones(Arrays.asList(
+                new CancionDoc("Disorder"),
+                new CancionDoc("Day of the Lords"),
+                new CancionDoc("Candidate"),
+                new CancionDoc("Insight"),
+                new CancionDoc("New Dawn Fades")
+        ));
+        album89.setArtista(banda51);  // Asumiendo que ya se definió artista89, que es Joy Division
+
+// Álbum 90: "Closer"
+        AlbumColeccion album90 = new AlbumColeccion();
+        album90.setNombre("Closer");
+        album90.setImagen("/albumes/Closer.jpg");
+        album90.setFechaLanzamiento(LocalDate.of(1980, 7, 18));
+        album90.setCanciones(Arrays.asList(
+                new CancionDoc("Atrocity Exhibition"),
+                new CancionDoc("Isolation"),
+                new CancionDoc("Passover"),
+                new CancionDoc("Colony"),
+                new CancionDoc("A Means to an End")
+        ));
+        album90.setArtista(banda51);  // Asumiendo que ya se definió artista89, que es Joy Division
+
 // Integrantes Sex Pistols
         IntegranteDoc integrante199 = new IntegranteDoc();
         integrante199.setEsActivo(false);
@@ -2349,6 +3551,34 @@ public class DatosDAO {
         banda52.setIntegrante(Arrays.asList(integrante199, integrante200, integrante201));
         banda52.setNombre("Sex Pistols");
 
+        // Álbum 91: "Never Mind the Bollocks, Here's the Sex Pistols"
+        AlbumColeccion album91 = new AlbumColeccion();
+        album91.setNombre("Never Mind the Bollocks, Here's the Sex Pistols");
+        album91.setImagen("/albumes/NeverMindTheBollocks.jpg");
+        album91.setFechaLanzamiento(LocalDate.of(1977, 10, 28));
+        album91.setCanciones(Arrays.asList(
+                new CancionDoc("Holidays in the Sun"),
+                new CancionDoc("God Save the Queen"),
+                new CancionDoc("Pretty Vacant"),
+                new CancionDoc("Anarchy in the UK"),
+                new CancionDoc("No Feelings")
+        ));
+        album91.setArtista(banda52);  // Asumiendo que ya se definió artista91, que es Sex Pistols
+
+// Álbum 92: "The Great Rock 'n' Roll Swindle"
+        AlbumColeccion album92 = new AlbumColeccion();
+        album92.setNombre("The Great Rock 'n' Roll Swindle");
+        album92.setImagen("/albumes/TheGreatRockNRollSwindle.jpg");
+        album92.setFechaLanzamiento(LocalDate.of(1979, 2, 26));
+        album92.setCanciones(Arrays.asList(
+                new CancionDoc("The Great Rock 'n' Roll Swindle"),
+                new CancionDoc("Who Killed Bambi?"),
+                new CancionDoc("No Fun"),
+                new CancionDoc("My Way"),
+                new CancionDoc("C'mon Everybody")
+        ));
+        album92.setArtista(banda52);  // Asumiendo que ya se definió artista91, que es Sex Pistols
+
 // Integrantes The Clash
         IntegranteDoc integrante202 = new IntegranteDoc();
         integrante202.setEsActivo(true);
@@ -2374,6 +3604,34 @@ public class DatosDAO {
         banda53.setImagen("/artistas/TheClash.jpg");
         banda53.setIntegrante(Arrays.asList(integrante202, integrante203, integrante204));
         banda53.setNombre("The Clash");
+
+        // Álbum 93: "London Calling"
+        AlbumColeccion album93 = new AlbumColeccion();
+        album93.setNombre("London Calling");
+        album93.setImagen("/albumes/LondonCalling.jpg");
+        album93.setFechaLanzamiento(LocalDate.of(1979, 2, 14));
+        album93.setCanciones(Arrays.asList(
+                new CancionDoc("London Calling"),
+                new CancionDoc("Train in Vain"),
+                new CancionDoc("Clampdown"),
+                new CancionDoc("Spanish Bombs"),
+                new CancionDoc("The Guns of Brixton")
+        ));
+        album93.setArtista(banda53);  // Asumiendo que ya se definió artista93, que es The Clash
+
+// Álbum 94: "Combat Rock"
+        AlbumColeccion album94 = new AlbumColeccion();
+        album94.setNombre("Combat Rock");
+        album94.setImagen("/albumes/CombatRock.jpg");
+        album94.setFechaLanzamiento(LocalDate.of(1982, 5, 14));
+        album94.setCanciones(Arrays.asList(
+                new CancionDoc("Should I Stay or Should I Go"),
+                new CancionDoc("Rock the Casbah"),
+                new CancionDoc("Straight to Hell"),
+                new CancionDoc("Overpowered by Funk"),
+                new CancionDoc("Know Your Rights")
+        ));
+        album94.setArtista(banda53);  // Asumiendo que ya se definió artista93, que es The Clash
 
 // Integrantes Parliament
         IntegranteDoc integrante209 = new IntegranteDoc();
@@ -2401,6 +3659,34 @@ public class DatosDAO {
         banda54.setIntegrante(Arrays.asList(integrante209, integrante210, integrante211));
         banda54.setNombre("Parliament");
 
+        // Álbum 95: "Mothership Connection"
+        AlbumColeccion album95 = new AlbumColeccion();
+        album95.setNombre("Mothership Connection");
+        album95.setImagen("/albumes/MothershipConnection.jpg");
+        album95.setFechaLanzamiento(LocalDate.of(1975, 12, 15));
+        album95.setCanciones(Arrays.asList(
+                new CancionDoc("P. Funk (Wants to Get Funked Up)"),
+                new CancionDoc("Mothership Connection (Star Child)"),
+                new CancionDoc("Unfunky UFO"),
+                new CancionDoc("Supergroovalisticprosifunkstication"),
+                new CancionDoc("Handcuffs")
+        ));
+        album95.setArtista(banda54);  // Asumiendo que ya se definió artista95, que es Parliament
+
+// Álbum 96: "Funkentelechy Vs. the Placebo Syndrome"
+        AlbumColeccion album96 = new AlbumColeccion();
+        album96.setNombre("Funkentelechy Vs. the Placebo Syndrome");
+        album96.setImagen("/albumes/FunkentelechyVsThePlaceboSyndrome.jpg");
+        album96.setFechaLanzamiento(LocalDate.of(1977, 3, 7));
+        album96.setCanciones(Arrays.asList(
+                new CancionDoc("Bop Gun (Endangered Species)"),
+                new CancionDoc("Maggot Brain"),
+                new CancionDoc("Placebo Syndrome"),
+                new CancionDoc("Sir Nose's Piece"),
+                new CancionDoc("The Secret Life of Dr. Funkenstein")
+        ));
+        album96.setArtista(banda54);  // Asumiendo que ya se definió artista95, que es Parliament
+
 // Integrantes Funkadelic
         IntegranteDoc integrante212 = new IntegranteDoc();
         integrante212.setEsActivo(true);
@@ -2427,6 +3713,36 @@ public class DatosDAO {
         banda55.setIntegrante(Arrays.asList(integrante212, integrante213, integrante214));
         banda55.setNombre("Funkadelic");
 
+        // Álbum 97: "Maggot Brain"
+        AlbumColeccion album97 = new AlbumColeccion();
+        album97.setNombre("Maggot Brain");
+        album97.setImagen("/albumes/MaggotBrain.jpg");
+        album97.setFechaLanzamiento(LocalDate.of(1971, 7, 12));
+        album97.setCanciones(Arrays.asList(
+                new CancionDoc("Maggot Brain"),
+                new CancionDoc("Can You Get to That"),
+                new CancionDoc("Hit It and Quit It"),
+                new CancionDoc("You and Your Folks, Me and My Folks"),
+                new CancionDoc("Super Stupid"),
+                new CancionDoc("Back in Our Minds"),
+                new CancionDoc("Wars of Armageddon")
+        ));
+        album97.setArtista(banda55);  // Asumiendo que ya se definió artista97, que es Funkadelic
+
+// Álbum 98: "One Nation Under a Groove"
+        AlbumColeccion album98 = new AlbumColeccion();
+        album98.setNombre("One Nation Under a Groove");
+        album98.setImagen("/albumes/OneNationUnderAGroove.jpg");
+        album98.setFechaLanzamiento(LocalDate.of(1978, 9, 22));
+        album98.setCanciones(Arrays.asList(
+                new CancionDoc("One Nation Under a Groove"),
+                new CancionDoc("Grooveallegiance"),
+                new CancionDoc("Who Says a Funk Band Can't Play Rock?!"),
+                new CancionDoc("Promentalshitbackwashpsychosis Enema Squad (The Doo Doo Chasers)"),
+                new CancionDoc("Into You")
+        ));
+        album98.setArtista(banda55);  // Asumiendo que ya se definió artista97, que es Funkadelic
+
         // Ilya Kuryaki and the Valderramas
         IntegranteDoc integrante215 = new IntegranteDoc();
         integrante215.setEsActivo(true);
@@ -2446,6 +3762,38 @@ public class DatosDAO {
         banda57.setImagen("/artistas/IlyaKuryaki.jpg");
         banda57.setIntegrante(Arrays.asList(integrante215, integrante216));
         banda57.setNombre("Ilya Kuryaki and the Valderramas");
+
+        // Álbum 99: "Chaco"
+        AlbumColeccion album99 = new AlbumColeccion();
+        album99.setNombre("Chaco");
+        album99.setImagen("/albumes/Chaco.jpg");
+        album99.setFechaLanzamiento(LocalDate.of(2001, 6, 19));
+        album99.setCanciones(Arrays.asList(
+                new CancionDoc("Chaco"),
+                new CancionDoc("Abarajame (Remix)"),
+                new CancionDoc("Mariposa Tecknicolor"),
+                new CancionDoc("La Cumbia de los Aburridos (Remix)"),
+                new CancionDoc("Para Siempre"),
+                new CancionDoc("Amor y Paz"),
+                new CancionDoc("Polvo de Estrellas")
+        ));
+        album99.setArtista(banda57);  // Asumiendo que ya se definió artista99, que es Ilya Kuriaki
+
+// Álbum 100: "Versus"
+        AlbumColeccion album100 = new AlbumColeccion();
+        album100.setNombre("Versus");
+        album100.setImagen("/albumes/Versus.jpg");
+        album100.setFechaLanzamiento(LocalDate.of(2004, 4, 28));
+        album100.setCanciones(Arrays.asList(
+                new CancionDoc("La Noche"),
+                new CancionDoc("Verano"),
+                new CancionDoc("Duro de Domar"),
+                new CancionDoc("La Mujer"),
+                new CancionDoc("Te Lo Pido Por Favor"),
+                new CancionDoc("No Es Personal"),
+                new CancionDoc("Funky Futurista")
+        ));
+        album100.setArtista(banda57);  // Asumiendo que ya se definió artista99, que es Ilya Kuriaki
 
 // Buena Vista Social Club
         IntegranteDoc integrante219 = new IntegranteDoc();
