@@ -31,13 +31,28 @@ import org.bson.conversions.Bson;
  */
 public class AlbumDAO implements IAlbumDAO{
     
+    /**
+     * Declaracion de variable
+     */
     private final MongoCollection<AlbumColeccion> coleccion;
 
+    /**
+     * Constructor 
+     * @param conexionDB 
+     */
     public AlbumDAO(IConexionDB conexionDB) {
         MongoDatabase database = conexionDB.getDatabase();  // MongoDB o MySQL dependiendo de la implementación
         this.coleccion = database.getCollection("Albumes", AlbumColeccion.class);
     }
 
+    /**
+     * Método para obtener las canciones filtradas
+     * @param filtro condiciones de búsqueda
+     * @param restringidos géneros no deseados
+     * @return regresa las canciones obtenidas
+     * @throws PersistenciaException lanza excepción de tipo
+     * persistencia
+     */
     @Override
     public List<AlbumColeccion> obtenerCancionesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException{
         try{
@@ -80,6 +95,14 @@ public class AlbumDAO implements IAlbumDAO{
         }
     }
     
+    /**
+     * Método para obtener los álbumes filtrados
+     * @param filtro condiciones de búsqueda
+     * @param restringidos géneros no deseados
+     * @return regresa los álbumes
+     * @throws PersistenciaException lanza excepción tipo
+     * persistencia
+     */
     @Override
     public List<AlbumColeccion> obtenerAlbumesPorBusqueda(String filtro, List<GeneroColeccion> restringidos) throws PersistenciaException{
         try{

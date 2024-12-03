@@ -15,9 +15,24 @@ import java.util.List;
  */
 public interface IGeneroNegocio {
     
+    /**
+     * Métdos que buscan todos lo géneros
+     * @return regresa los géneros encontrados
+     * @throws NegocioException lanza una excepción de tipo negocio
+     */
     public List<GeneroDTO> buscarTodosGeneros() throws NegocioException;
     
+    /**
+     * Método para convertir GenerosDTO
+     * @param generos lista de géneros
+     * @return Regresa los géneros convertidos
+     */
     public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos);
     
+    /**
+     * Método para converitr los Géneros
+     * @param generos lista de generos
+     * @return regresa la nueva lista
+     */
     public List<GeneroDTO> convertirListaGenerosColeccion(List<GeneroColeccion> generos);
 }

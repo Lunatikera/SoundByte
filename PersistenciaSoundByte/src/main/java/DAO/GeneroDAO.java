@@ -28,6 +28,9 @@ import org.bson.conversions.Bson;
  */
 public class GeneroDAO implements IGeneroDAO {
 
+    /**
+     * Declaración de variables
+     */
     private final CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
     private final IConexionDB conexionDB;
 

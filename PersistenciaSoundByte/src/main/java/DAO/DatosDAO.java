@@ -27,10 +27,16 @@ import org.bson.types.ObjectId;
  */
 public class DatosDAO implements IDatosDAO{
 
+    /**
+     * Constructor por omisión
+     */
     public DatosDAO() {
 
     }
 
+    /**
+     * Método de inserción de géneros
+     */
     public void insertarGenerosS() {
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
         MongoDatabase database = conexionDB.getDatabase();
@@ -224,6 +230,9 @@ public class DatosDAO implements IDatosDAO{
 
     }
 
+    /**
+     * Método de inserción de géneros
+     */
     public void insertarGenerosC() {
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
         MongoDatabase database = conexionDB.getDatabase();
@@ -416,7 +425,10 @@ public class DatosDAO implements IDatosDAO{
         generoColeccion.insertMany(generos);
 
     }
-
+    
+    /**
+     * Método de inserción de géneros
+     */
     public void insertarGenerosO() {
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
         MongoDatabase database = conexionDB.getDatabase();
@@ -611,6 +623,9 @@ public class DatosDAO implements IDatosDAO{
 
     }
 
+    /**
+     * Método de inserción de artistas
+     */
     public void insertarArtistasSolo() {
 
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
@@ -665,6 +680,9 @@ public class DatosDAO implements IDatosDAO{
         System.out.println("45 artista insertados");
     }
 
+    /**
+     * Método de inserción de artistas
+     */
     public void insertarArtistasBanda() {
 
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
@@ -765,6 +783,9 @@ public class DatosDAO implements IDatosDAO{
         System.out.println("¡Se han insertado 45 bandas!");
     }
 
+    /**
+     * Método de inserción de álbumes artistas
+     */
     public void insertarAlbumesArtistas() {
 
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
@@ -3475,6 +3496,9 @@ public class DatosDAO implements IDatosDAO{
 
     }
 
+    /**
+     * Método de inserción de álbumes banda
+     */
     public void insertarAlbumesBanda() {
 
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");

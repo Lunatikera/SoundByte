@@ -13,9 +13,17 @@ import DTO.ArtistaDTO;
  */
 public class ArtistaNegocio {
 
+    /**
+     * Método por omisión
+     */
     public ArtistaNegocio() {
     }
     
+    /**
+     * Método para convertir artista a DTO
+     * @param artistaC artista de la Colección
+     * @return regresa el astrista DTO
+     */
     public ArtistaDTO convertirArtistaColeccion(ArtistaColeccion artistaC){
     
         ArtistaDTO artistaD = new ArtistaDTO();

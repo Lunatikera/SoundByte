@@ -25,12 +25,26 @@ import java.util.logging.Logger;
  */
 public class AlbumNegocio implements IAlbumNegocio{
     
+    /**
+     * Declaración de variable
+     */
     private final IAlbumDAO albumDAO;
 
+    /**
+     * Método constructor
+     * @param albumDAO valor a inicializar 
+     */
     public AlbumNegocio(IAlbumDAO albumDAO) {
         this.albumDAO = albumDAO;
     }
     
+    /**
+     * Método para obtener canciones 
+     * @param filtro condiciones de búsqueda
+     * @param restringidos géneros restringidos
+     * @return regresa las canciones
+     * @throws NegocioException lanza una excepción de negocio
+     */
     @Override
     public List<AlbumDTO> obtenerCancionesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException{
         
@@ -55,6 +69,13 @@ public class AlbumNegocio implements IAlbumNegocio{
         
     }
     
+    /**
+     * Obtiene los álbumes con filtros
+     * @param filtro condiciones de búsqueda
+     * @param restringidos géneros no deseados
+     * @return regresa los álbumes obtenidos
+     * @throws NegocioException lanza una excepción tipo negocio
+     */
     @Override
     public List<AlbumDTO> obtenerAlbumesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException{
         
@@ -77,6 +98,11 @@ public class AlbumNegocio implements IAlbumNegocio{
         
     }
     
+    /**
+     * Método qeu convierte a DTO
+     * @param albumC album de la colección
+     * @return regresa el AlbumDTO
+     */
     public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC){
     
         AlbumDTO albumD = new AlbumDTO();

@@ -15,7 +15,21 @@ import java.util.List;
  */
 public interface IAlbumNegocio {
     
+    /**
+     * Método para obtener las canciones
+     * @param filtro condiciones de la búsqueda
+     * @param restringidos generos restringidos
+     * @return regresa las cancione obtenidas
+     * @throws NegocioException lanza una excepción tipo negocio 
+     */
     public List<AlbumDTO> obtenerCancionesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
     
+    /**
+     * Método para obtener los álbumes de acuerdo a los filtros
+     * @param filtro condiciones de la búsqueda
+     * @param restringidos
+     * @return
+     * @throws NegocioException 
+     */
     public List<AlbumDTO> obtenerAlbumesPorBusqueda(String filtro, UsuarioDTO restringidos) throws NegocioException;
 }

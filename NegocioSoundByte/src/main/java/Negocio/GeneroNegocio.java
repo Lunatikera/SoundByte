@@ -19,12 +19,24 @@ import java.util.List;
  */
 public class GeneroNegocio implements IGeneroNegocio{
     
+    /**
+     * Declaración de variable
+     */
     private final IGeneroDAO generoDAO;
 
+    /**
+     * Método por omisión que inicializa el géneroDAO
+     * @param generoDAO variable a inicializar
+     */
     public GeneroNegocio(IGeneroDAO generoDAO) {
         this.generoDAO = generoDAO;
     }
 
+    /**
+     * Método para buscar a todos los géneros
+     * @return regresa los generos obtenidos
+     * @throws NegocioException lanza una excepcion tipo negocio
+     */
     @Override
     public List<GeneroDTO> buscarTodosGeneros() throws NegocioException {
     
@@ -46,6 +58,11 @@ public class GeneroNegocio implements IGeneroNegocio{
         
     } 
     
+    /**
+     * Método para convertir a DTO
+     * @param gen género de la colección
+     * @return regresa el generoDTO
+     */
     public GeneroDTO convertirAGeneroDTO(GeneroColeccion gen){
     
         GeneroDTO gDTO = new GeneroDTO();
@@ -59,6 +76,11 @@ public class GeneroNegocio implements IGeneroNegocio{
         
     }
     
+    /**
+     * Convertir DTO
+     * @param generos géneros a convertir
+     * @return regresa la lista de generos Colección convertidos
+     */
     @Override
     public List<GeneroColeccion> convertirListaGenerosDTO(List<GeneroDTO> generos){
     
@@ -81,6 +103,11 @@ public class GeneroNegocio implements IGeneroNegocio{
         
     }
     
+    /**
+     * Método para convertir los géneros 
+     * @param generos géneros a convertir
+     * @return regreas los DTOS
+     */
     @Override
     public List<GeneroDTO> convertirListaGenerosColeccion(List<GeneroColeccion> generos){
     
