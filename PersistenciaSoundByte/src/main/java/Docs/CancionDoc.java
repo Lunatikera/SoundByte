@@ -24,6 +24,11 @@ public class CancionDoc {
         this.nombre = nombre;
         this.rutaCancion = rutaCancion;
     }
+
+    public CancionDoc(String nombre) {
+        this.nombre = nombre;
+    }
+    
     
     public ObjectId getId() {
         return id;
