@@ -12,6 +12,9 @@ import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import excepciones.NegocioException;
 import frames.FrmPrincipal;
+import frames.PanelAlbum;
+import frames.PanelAlbumes;
+import frames.PanelArtista;
 import frames.PanelBusqueda;
 import frames.PanelCancion;
 import frames.PanelCanciones;
@@ -41,6 +44,8 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
     //Paneles
     PanelBusqueda pBusqueda;
     PanelCanciones pCanciones;
+    PanelAlbum pAlbum;
+    PanelArtista pArtista;
     
     boolean esFav = false;
     
@@ -81,6 +86,65 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
     public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelCanciones pCanciones, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
         
         this.pCanciones = pCanciones;
+        this.frmPrincipal = frmPrincipal;
+        this.cancion = cancion;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        
+        initComponents();
+       
+        this.setOpaque(false);
+
+        cargarComponentes();
+        checarSiEsFav();
+        
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    /**
+     * Creates new form PanelCancionDesplegada
+     */
+    public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelAlbum pAlbum, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
+        
+        this.pAlbum = pAlbum;
+        this.frmPrincipal = frmPrincipal;
+        this.cancion = cancion;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        
+        initComponents();
+       
+        this.setOpaque(false);
+
+        cargarComponentes();
+        checarSiEsFav();
+        
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelArtista pArtista, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
+        
+        this.pArtista = pArtista;
         this.frmPrincipal = frmPrincipal;
         this.cancion = cancion;
         this.album = album;
@@ -322,6 +386,10 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
             frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pBusqueda, album, cancion, loggedUser));
         if(pCanciones != null)
             frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pCanciones, album, cancion, loggedUser));
+        if(pAlbum != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pAlbum, album, cancion, loggedUser));
+        if(pArtista != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pArtista, album, cancion, loggedUser));
 
         
     }//GEN-LAST:event_lblNombreCancion1MouseClicked

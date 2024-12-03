@@ -1757,9 +1757,7 @@ public class PanelAlbumes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscadorActionPerformed
 
-public  JPanel getPanelBusqueda (){
-    return this.PanelBusquda;
-}
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelBusquda;
     private util.BotonMenu botonMenu4;
@@ -1921,4 +1919,6 @@ public  JPanel getPanelBusqueda (){
     private javax.swing.JLabel lblNombreAlbum37;
     private javax.swing.JLabel lblNombreAlbum38;
     // End of variables declaration//GEN-END:variables
+
+
 }

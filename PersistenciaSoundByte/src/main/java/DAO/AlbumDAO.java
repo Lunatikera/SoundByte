@@ -5,6 +5,7 @@
 package DAO;
 
 import Colecciones.AlbumColeccion;
+import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
 import InterfacesDAO.IAlbumDAO;
 import InterfacesDAO.IConexionDB;
@@ -307,6 +308,32 @@ public class AlbumDAO implements IAlbumDAO{
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar los albumes por filtro en la base de datos", e);
         } 
+    }
+    
+    @Override
+    public List<AlbumColeccion> obtenerAlbumesPorArtista(ArtistaColeccion artista) throws PersistenciaException{
+    
+        try{
+            
+        List<AlbumColeccion> albumes = new ArrayList<>();
+        
+        Bson filtroArtista = Filters.eq("artista._id", artista.getId());
+        
+        for(AlbumColeccion album : coleccion.find(filtroArtista)){
+
+            albumes.add(album);
+            
+        }
+
+        if(albumes.isEmpty())
+            return null;
+        
+        return albumes;
+        
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar los albumes por filtro en la base de datos", e);
+        } 
+        
     }
     
 }

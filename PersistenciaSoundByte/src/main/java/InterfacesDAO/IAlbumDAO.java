@@ -5,6 +5,7 @@
 package InterfacesDAO;
 
 import Colecciones.AlbumColeccion;
+import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
 import Docs.CancionDoc;
 import excepciones.PersistenciaException;
@@ -32,4 +33,7 @@ public interface IAlbumDAO {
     
     public List<AlbumColeccion> obtenerAlbumesPorFecha(int anio, List<GeneroColeccion> restringidos) throws PersistenciaException;
     
+    public List<AlbumColeccion> obtenerAlbumesPorArtista(ArtistaColeccion artista) throws PersistenciaException;
+
+                
 }

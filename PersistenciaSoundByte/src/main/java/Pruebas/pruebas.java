@@ -4,10 +4,14 @@
  */
 package Pruebas;
 
+import Colecciones.ArtistaColeccion;
 import Conexion.ConexionDB;
 import DAO.AlbumDAO;
+import DAO.ArtistaDAO;
 import DAO.GeneroDAO;
 import DAO.UsuarioDAO;
+import InterfacesDAO.IAlbumDAO;
+import InterfacesDAO.IArtistaDAO;
 import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
@@ -31,12 +35,15 @@ public class pruebas {
             IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
             IUsuarioDAO usuarioDAO = new UsuarioDAO(conexionDB);
             IGeneroDAO generoDAO = new GeneroDAO(conexionDB);
-            AlbumDAO albumDAO = new AlbumDAO(conexionDB);
+            IAlbumDAO albumDAO = new AlbumDAO(conexionDB);
+            IArtistaDAO artistaDAO = new ArtistaDAO(conexionDB);
             
             generoDAO.buscarGeneroPorNombre("Prog");
 
 //            System.out.println(albumDAO.obtenerCancionesPorBusqueda("p",  generoDAO.buscarGeneroPorNombre("pock")));
-
+            ArtistaColeccion artista = artistaDAO.obtenerArtistasPorBusquedaGeneros("Geordie", generoDAO.buscarTodosGeneros()).get(0);
+            
+            System.out.println(albumDAO.obtenerAlbumesPorArtista(artista).toString());
 
         } catch (PersistenciaException ex) {
             Logger.getLogger(pruebas.class.getName()).log(Level.SEVERE, null, ex);

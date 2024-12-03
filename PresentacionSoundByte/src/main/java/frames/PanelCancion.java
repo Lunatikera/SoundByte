@@ -48,6 +48,9 @@ public class PanelCancion extends javax.swing.JPanel {
     //Paneles
     PanelCanciones pCanciones;
     PanelBusqueda pBusqueda;
+    PanelAlbum pAlbum;
+    PanelArtista pArtista;
+
     
     //Favorito
     boolean esFav = false;
@@ -72,10 +75,42 @@ public class PanelCancion extends javax.swing.JPanel {
 
     }
     
+    public PanelCancion(FrmPrincipal frmPrincipal,PanelAlbum pAlbum, AlbumDTO album, CancionDoc cancion, UsuarioDTO loggedUser) {
+        
+        initComponents();
+        this.pAlbum = pAlbum;
+        this.cancion = cancion;
+        this.album = album;
+        this.frmPrincipal = frmPrincipal;
+        this.loggedUser = loggedUser;
+        
+        btnAtras.setOpaque(false);
+        
+        listGeneros.setModel(todosGeneros);
+        inicializar();
+
+    }
+    
     public PanelCancion(FrmPrincipal frmPrincipal,PanelCanciones pCanciones, AlbumDTO album, CancionDoc cancion, UsuarioDTO loggedUser) {
         
         initComponents();
         this.pCanciones = pCanciones;
+        this.cancion = cancion;
+        this.album = album;
+        this.frmPrincipal = frmPrincipal;
+        this.loggedUser = loggedUser;
+        
+        btnAtras.setOpaque(false);
+        
+        listGeneros.setModel(todosGeneros);
+        inicializar();
+
+    }
+    
+    public PanelCancion(FrmPrincipal frmPrincipal,PanelArtista pArtista, AlbumDTO album, CancionDoc cancion, UsuarioDTO loggedUser) {
+        
+        initComponents();
+        this.pArtista = pArtista;
         this.cancion = cancion;
         this.album = album;
         this.frmPrincipal = frmPrincipal;
@@ -368,9 +403,9 @@ public class PanelCancion extends javax.swing.JPanel {
                 .addGap(103, 103, 103))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                    .addContainerGap(248, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(40, Short.MAX_VALUE)))
+                    .addContainerGap(176, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(148, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,9 +429,9 @@ public class PanelCancion extends javax.swing.JPanel {
                 .addGap(134, 134, 134))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                    .addContainerGap(523, Short.MAX_VALUE)
+                    .addContainerGap(554, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(492, Short.MAX_VALUE)))
+                    .addContainerGap(523, Short.MAX_VALUE)))
         );
 
         lblNombreAlbum.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -623,6 +658,13 @@ public class PanelCancion extends javax.swing.JPanel {
         
         if(pCanciones != null)
             frmPrincipal.pintarPanelPrincipal(pCanciones);
+        
+        if(pAlbum != null)
+            frmPrincipal.pintarPanelPrincipal(pAlbum);
+        
+        if(pArtista != null)
+            frmPrincipal.pintarPanelPrincipal(pArtista);
+        
     }//GEN-LAST:event_btnAtrasActionPerformed
 
 

@@ -15,6 +15,9 @@ import InterfacesNegocio.IArtistaNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import excepciones.NegocioException;
 import frames.FrmPrincipal;
+import frames.PanelArtista;
+import frames.PanelArtistas;
+import frames.PanelBusqueda;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
@@ -40,14 +43,47 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
     
     FrmPrincipal frmPrincipal;
     
+    //paneles
+    PanelBusqueda pBusqueda;
+    PanelArtistas pArtistas;
+    
     boolean esFav = false;
     
     /**
      * Creates new form PanelCancionDesplegada
      */
-    public PanelArtistaDesplegado(FrmPrincipal frmPrincipal, ArtistaDTO artista, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IArtistaNegocio artistaNegocio) {
+    public PanelArtistaDesplegado(FrmPrincipal frmPrincipal,PanelBusqueda pBusqueda, ArtistaDTO artista, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IArtistaNegocio artistaNegocio) {
         
         this.frmPrincipal = frmPrincipal;
+        this.pBusqueda = pBusqueda;
+        this.artista = artista;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        this.artistaNegocio = artistaNegocio;
+        
+        initComponents();
+       
+        this.setOpaque(false);
+
+        cargarComponentes();
+        checarSiEsFav();
+        
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    public PanelArtistaDesplegado(FrmPrincipal frmPrincipal,PanelArtistas pArtistas, ArtistaDTO artista, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IArtistaNegocio artistaNegocio) {
+        
+        this.frmPrincipal = frmPrincipal;
+        this.pArtistas = pArtistas;
         this.artista = artista;
         this.loggedUser = loggedUser;
         this.usuarioNegocio = usuarioNegocio;
@@ -131,6 +167,12 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
         lblNombreArtista.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblNombreArtista.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreArtista.setText("PEPERINA");
+        lblNombreArtista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblNombreArtista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNombreArtistaMouseClicked(evt);
+            }
+        });
 
         imagenCancion3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
         imagenCancion3.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -244,6 +286,14 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
 
         this.repaint();
     }//GEN-LAST:event_btnFavCancion1ActionPerformed
+
+    private void lblNombreArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreArtistaMouseClicked
+        // TODO add your handling code here:
+        
+        if(pBusqueda != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelArtista(frmPrincipal, pBusqueda, artista, loggedUser));
+        
+    }//GEN-LAST:event_lblNombreArtistaMouseClicked
     
     public void setNombreArtista(){
     

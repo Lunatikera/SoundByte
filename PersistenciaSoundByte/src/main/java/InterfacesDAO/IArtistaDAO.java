@@ -20,4 +20,5 @@ public interface IArtistaDAO {
     public List<ArtistaColeccion> obtenerArtistasPorBusquedaGeneros(String filtro, List<GeneroColeccion> especificados) throws PersistenciaException;
 
     
+    
 }

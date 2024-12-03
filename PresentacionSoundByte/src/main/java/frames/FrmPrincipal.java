@@ -438,7 +438,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuBuscarActionPerformed
 
     private void btnMenuGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuGenerosActionPerformed
-        this.pintarPanelPrincipal(new PanelArtista(this));
+        
     }//GEN-LAST:event_btnMenuGenerosActionPerformed
 
     private void btnMenuArtistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuArtistasActionPerformed

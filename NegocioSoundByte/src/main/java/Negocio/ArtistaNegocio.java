@@ -25,7 +25,7 @@ import java.util.List;
 public class ArtistaNegocio implements IArtistaNegocio{
 
     private final IArtistaDAO artistaDAO;
-    
+
     public ArtistaNegocio(IArtistaDAO artistaDAO) {
         
         this.artistaDAO = artistaDAO;
@@ -127,8 +127,8 @@ public class ArtistaNegocio implements IArtistaNegocio{
 
         artD.setNombre(artistaC.getNombre());
         artD.setImagen(artistaC.getImagen());
-//        artD.setRedesSociales(albumC.getRedesSociales());
-//        artD.setEsBanda(albumC.getArtista().getEsBanda());
+        artD.setRedesSociales(artistaC.getRedesSociales());
+        artD.setEsBanda(artistaC.getEsBanda());
 
         if(artistaC.getIntegrante() != null){
 
@@ -142,7 +142,8 @@ public class ArtistaNegocio implements IArtistaNegocio{
         
         return artD;
         
-    }    
+    }
+    
     @Override
     public ArtistaColeccion convertirArtistaColeccion(ArtistaDTO artistaDTO){
     
@@ -173,8 +174,8 @@ public class ArtistaNegocio implements IArtistaNegocio{
 
         artColeccion.setNombre(artistaDTO.getNombre());
         artColeccion.setImagen(artistaDTO.getImagen());
-//        artD.setRedesSociales(albumC.getRedesSociales());
-//        artD.setEsBanda(albumC.getArtista().getEsBanda());
+        artColeccion.setRedesSociales(artistaDTO.getRedesSociales());
+        artColeccion.setEsBanda(artistaDTO.getEsBanda());
 
         if(artistaDTO.getIntegrante() != null){
 

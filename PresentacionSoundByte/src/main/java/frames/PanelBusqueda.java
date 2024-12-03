@@ -713,7 +713,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
             //Iteramos por cada album que nos regresa
             for(AlbumDTO album : albumes){
                 
-                    PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
+                    PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, this, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
                     
                     //Si ya están desplegadas más de 6 albumes terminamos la ejecución, ya que ya no hay espacio para mostrar
                     if(counter >= 6)
@@ -764,7 +764,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
             //Iteramos por cada album que nos regresa
             for(ArtistaDTO artista : artistas){
                 
-                    PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal, artista, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
+                    PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal,this, artista, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
                     
                     //Si ya están desplegadas más de 6 albumes terminamos la ejecución, ya que ya no hay espacio para mostrar
                     if(counter >= 6)

@@ -332,6 +332,29 @@ public class AlbumNegocio implements IAlbumNegocio{
         
     }
     
+    @Override
+    public List<AlbumDTO> obtenerAlbumesPorArtista(ArtistaDTO artistaC) throws NegocioException{
+    
+        try{
+            
+            ArtistaColeccion artista = convertirArtistaColeccion(artistaC);
+            List<AlbumDTO> albumes = new ArrayList<>();
+            
+            System.out.println(artista.toString());
+            
+            
+            if(albumDAO.obtenerAlbumesPorArtista(artista) == null)
+                return null;
+            
+            for(AlbumColeccion album : albumDAO.obtenerAlbumesPorArtista(artista))
+                albumes.add(convertirAlbumDTO(album));
+            
+            return albumes;
+            
+            } catch (PersistenciaException ex) {
+            throw new NegocioException("Error en negocio al buscar albumes por artista en la base de datos", ex);
+        }
+    }
     
     
     @Override
@@ -397,7 +420,7 @@ public class AlbumNegocio implements IAlbumNegocio{
         
         return albumD;
     }
-    
+
     @Override
     public AlbumColeccion convertirAlbumColeccion(AlbumDTO albumDTO){
 
@@ -463,5 +486,98 @@ public class AlbumNegocio implements IAlbumNegocio{
             return albumColeccion;
         }
     
+    public ArtistaDTO convertirArtistaDTO(ArtistaColeccion artistaC){
+    
+        ArtistaDTO artD = new ArtistaDTO();
+            
+        artD.setId(artistaC.getId());
+
+        if (artistaC.getGeneros() != null){
+
+            List<GeneroDTO> generos = new ArrayList<>();
+
+            for(GeneroColeccion genero : artistaC.getGeneros()){
+
+                GeneroDTO generoD = new GeneroDTO();
+
+                generoD.setId(genero.getId());
+                generoD.setImagenGenero(genero.getImagenGenero());
+                generoD.setNombre(genero.getNombre());
+                generoD.setDescripcion(genero.getDescrpicion());
+
+                generos.add(generoD);
+
+            }
+
+            artD.setGeneros(generos);
+
+        } else
+            artD.setGeneros(null);
+
+        artD.setNombre(artistaC.getNombre());
+        artD.setImagen(artistaC.getImagen());
+        artD.setRedesSociales(artistaC.getRedesSociales());
+        artD.setEsBanda(artistaC.getEsBanda());
+
+        if(artistaC.getIntegrante() != null){
+
+            artD.setIntegrante(artistaC.getIntegrante());
+
+        } else{
+
+            artD.setIntegrante(null);
+
+        }
+        
+        return artD;
+        
+    }
+    
+    public ArtistaColeccion convertirArtistaColeccion(ArtistaDTO artistaDTO){
+    
+        ArtistaColeccion artColeccion = new ArtistaColeccion();
+            
+        artColeccion.setId(artistaDTO.getId());
+
+        if (artistaDTO.getGeneros() != null){
+
+            List<GeneroColeccion> generos = new ArrayList<>();
+
+            for(GeneroDTO genero : artistaDTO.getGeneros()){
+
+                GeneroColeccion generoD = new GeneroColeccion();
+
+                generoD.setId(genero.getId());
+                generoD.setImagenGenero(genero.getImagenGenero());
+                generoD.setNombre(genero.getNombre());
+                generoD.setDescrpicion(genero.getDescripcion());
+
+                generos.add(generoD);
+
+            }
+
+            artColeccion.setGeneros(generos);
+
+        } else
+            artColeccion.setGeneros(null);
+
+        artColeccion.setNombre(artistaDTO.getNombre());
+        artColeccion.setImagen(artistaDTO.getImagen());
+        artColeccion.setRedesSociales(artistaDTO.getRedesSociales());
+        artColeccion.setEsBanda(artistaDTO.getEsBanda());
+        
+        if(artistaDTO.getIntegrante() != null){
+
+            artColeccion.setIntegrante(artistaDTO.getIntegrante());
+
+        } else{
+
+            artColeccion.setIntegrante(null);
+
+        }
+        
+        return artColeccion;
+        
+    }
     
 }

@@ -12,6 +12,10 @@ import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import excepciones.NegocioException;
 import frames.FrmPrincipal;
+import frames.PanelAlbum;
+import frames.PanelAlbumes;
+import frames.PanelArtista;
+import frames.PanelBusqueda;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
@@ -40,13 +44,77 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
 
     boolean esFav = false;
 
+    //Paneles
+    PanelBusqueda pBusqueda;
+    PanelAlbumes pAlbumes;
+    PanelArtista pArtista;
+    
     /**
      * Creates new form PanelAlbumDesplegado
      * @param panelPadre
      */
-    public PanelAlbumDesplegado(FrmPrincipal frmPrincipal, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+    public PanelAlbumDesplegado(FrmPrincipal frmPrincipal, PanelBusqueda pBusqueda, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
         
         this.frmPrincipal = frmPrincipal;
+        this.pBusqueda = pBusqueda;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        this.albumNegocio = albumNegocio;
+        
+        initComponents();
+        
+        this.setOpaque(false);
+        
+        
+        cargarComponentes();
+        checarSiEsFav();
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    
+    public PanelAlbumDesplegado(FrmPrincipal frmPrincipal, PanelAlbumes pAlbumes, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+        
+        this.frmPrincipal = frmPrincipal;
+        this.pAlbumes = pAlbumes;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        this.albumNegocio = albumNegocio;
+        
+        initComponents();
+        
+        this.setOpaque(false);
+        
+        
+        cargarComponentes();
+        checarSiEsFav();
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    
+    public PanelAlbumDesplegado(FrmPrincipal frmPrincipal, PanelArtista pArtista, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+        
+        this.frmPrincipal = frmPrincipal;
+        this.pArtista = pArtista;
         this.album = album;
         this.loggedUser = loggedUser;
         this.usuarioNegocio = usuarioNegocio;
@@ -140,6 +208,12 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
         lblNombreAlbum.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreAlbum.setText("Peperina");
         lblNombreAlbum.setToolTipText("");
+        lblNombreAlbum.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblNombreAlbum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNombreAlbumMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -255,6 +329,20 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
             this.repaint();
         
     }//GEN-LAST:event_btnAgregarAFavActionPerformed
+
+    private void lblNombreAlbumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreAlbumMouseClicked
+        // TODO add your handling code here:
+        
+        if(pBusqueda != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelAlbum(frmPrincipal, pBusqueda, album, loggedUser));
+
+        if(pAlbumes != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelAlbum(frmPrincipal, pAlbumes, album, loggedUser));
+
+        if(pArtista != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelAlbum(frmPrincipal, pArtista, album, loggedUser));
+        
+    }//GEN-LAST:event_lblNombreAlbumMouseClicked
 
     public void setNombreAlbum(){
     

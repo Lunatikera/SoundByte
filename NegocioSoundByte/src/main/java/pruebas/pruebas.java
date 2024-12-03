@@ -6,12 +6,25 @@ package pruebas;
 
 import Colecciones.UsuarioColeccion;
 import Conexion.ConexionDB;
+import DAO.AlbumDAO;
+import DAO.ArtistaDAO;
+import DAO.GeneroDAO;
 import DAO.UsuarioDAO;
+import DTO.ArtistaDTO;
 import DTO.UsuarioDTO;
+import InterfacesDAO.IAlbumDAO;
+import InterfacesDAO.IArtistaDAO;
 
 import InterfacesDAO.IConexionDB;
+import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
+import InterfacesNegocio.IAlbumNegocio;
+import InterfacesNegocio.IArtistaNegocio;
+import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
+import Negocio.AlbumNegocio;
+import Negocio.ArtistaNegocio;
+import Negocio.GeneroNegocio;
 
 import Negocio.UsuarioNegocio;
 import com.mongodb.client.MongoDatabase;
@@ -39,11 +52,27 @@ public class pruebas {
 
         UsuarioDTO dto = new UsuarioDTO();
         
-        dto.setUsername("chavirez");
-        dto.setCorreoElectronico("santiagosanchezch@gmail.com");
-        dto.setContraseña("12345");
-
-        System.out.println(usuarioNegocio.obtenerUsuarioPorCredenciales(dto));
+        IGeneroDAO gDAO = new GeneroDAO(conexionDB);
+        IGeneroNegocio gN = new GeneroNegocio(gDAO);
+        
+        IArtistaDAO aDAO = new ArtistaDAO(conexionDB);
+        IArtistaNegocio aN = new ArtistaNegocio(aDAO);
+        
+        IAlbumDAO alDAO = new AlbumDAO(conexionDB);
+        IAlbumNegocio alN = new AlbumNegocio(alDAO);
+        
+        ArtistaDTO a = aN.obtenerArtistasPorBusquedaGeneros("s", gN.buscarTodosGeneros()).get(0);
+        
+//        System.out.println(a.toString());
+        
+        System.out.println(alN.obtenerAlbumesPorArtista(a));
+        
+        
+//        dto.setUsername("chavirez");
+//        dto.setCorreoElectronico("santiagosanchezch@gmail.com");
+//        dto.setContraseña("12345");
+//
+//        System.out.println(usuarioNegocio.obtenerUsuarioPorCredenciales(dto));
     
 
 //        List<UsuarioDTO> b = usuarioNegocio.obtenerTodosLosUsuarios();
