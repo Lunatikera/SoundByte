@@ -2,6 +2,7 @@ util\ImagenPerfil.class
 util\BotonMenu.class
 frames\PanelArtista.class
 frames\DialogFiltros$3.class
+util\PanelCancionDesplegada$2.class
 main\Main.class
 frames\PanelBusqueda$5.class
 frames\PanelCuenta$8.class
@@ -25,7 +26,9 @@ frames\FrmPrincipal$4.class
 frames\FrmRegistro$8.class
 util\ImagenAlbum.class
 frames\FrmLogIn$6.class
+frames\PanelCancion$1.class
 frames\PanelArtistas.class
+frames\PanelCancion$4.class
 frames\PanelHome.class
 util\CustomSliderUI.class
 frames\FrmLogIn$7.class
@@ -35,11 +38,14 @@ frames\PanelCanciones.class
 frames\FrmRegistro$4.class
 frames\PanelCuenta$3.class
 frames\PanelCuenta$9.class
+util\PanelCancionDesplegada$3.class
 DatosDePrueba\Generos.class
 frames\FrmPrincipal$6.class
+frames\PanelCancion$5.class
 util\BotonToggle.class
 util\PanelArtistaDesplegado.class
 frames\FrmRegistro$3.class
+frames\PanelBusqueda$6.class
 frames\PanelFavoritos.class
 frames\PanelArtista$2.class
 util\PanelArtistaDesplegado$1.class
@@ -62,6 +68,7 @@ frames\PanelCancion.class
 frames\PanelCanciones$2.class
 frames\DialogFiltros.class
 frames\FrmLogIn$5.class
+frames\PanelCanciones$5.class
 util\EventSwitchSelected.class
 frames\PanelBusqueda$4.class
 util\ModernScrollBarUI$InvisibleScrollBarButton.class
@@ -86,10 +93,12 @@ frames\FrmPrincipal$7.class
 frames\PanelFavoritos$1.class
 frames\PanelCanciones$3.class
 frames\FrmRegistro.class
+frames\PanelCancion$2.class
 util\SwitchButton$1.class
 frames\FrmRegistro$7.class
 frames\FrmPrincipal$3.class
 DatosDePrueba\PresentacionSoundByte.class
+frames\PanelCancion$3.class
 frames\PanelAlbum.class
 frames\PanelCuenta$6.class
 frames\PanelRestricciones.class
@@ -102,6 +111,7 @@ frames\PanelCuenta$10.class
 DatosDePrueba\Artistas.class
 util\PanelCancionDesplegada$1.class
 util\SwitchButton$2.class
+frames\PanelCanciones$4.class
 frames\FrmPrincipal$8.class
 util\PanelAlbumDesplegado.class
 frames\FrmPrincipal$2.class

@@ -336,7 +336,7 @@ public class AlbumNegocio implements IAlbumNegocio{
     
     @Override
     public AlbumDTO convertirAlbumDTO(AlbumColeccion albumC){
-    
+        
         AlbumDTO albumD = new AlbumDTO();
         
         albumD.setId(albumC.getId());
@@ -370,7 +370,7 @@ public class AlbumNegocio implements IAlbumNegocio{
             
             artD.setNombre(albumC.getArtista().getNombre());
             artD.setImagen(albumC.getArtista().getImagen());
-//            artD.setRedesSociales(albumC.getRedesSociales());
+            artD.setRedesSociales(albumC.getRedesSociales());
             artD.setEsBanda(albumC.getArtista().getEsBanda());
             
             if(albumC.getArtista().getEsBanda()){
@@ -435,7 +435,7 @@ public class AlbumNegocio implements IAlbumNegocio{
                 artColeccion.setNombre(albumDTO.getArtista().getNombre());
                 artColeccion.setImagen(albumDTO.getArtista().getImagen());
                 artColeccion.setId(albumDTO.getArtista().getId());
-    //            artD.setRedesSociales(albumC.getRedesSociales());
+                artColeccion.setRedesSociales(albumDTO.getRedesSociales());
                 artColeccion.setEsBanda(albumDTO.getArtista().getEsBanda());
 
                 if(albumDTO.getArtista().getEsBanda()){

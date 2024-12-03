@@ -136,8 +136,8 @@ public class PanelBusqueda extends javax.swing.JPanel {
         panelCanciones = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         panelArtistas = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        lblArtistas = new javax.swing.JLabel();
+        lblCanciones = new javax.swing.JLabel();
         jPanel43 = new javax.swing.JPanel();
         jPanel44 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
@@ -343,13 +343,25 @@ public class PanelBusqueda extends javax.swing.JPanel {
         panelArtistas.setPreferredSize(new java.awt.Dimension(750, 850));
         jPanel3.add(panelArtistas);
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Artistas");
+        lblArtistas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblArtistas.setForeground(new java.awt.Color(255, 255, 255));
+        lblArtistas.setText("Artistas");
+        lblArtistas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblArtistas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblArtistasMouseClicked(evt);
+            }
+        });
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Canciones");
+        lblCanciones.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblCanciones.setForeground(new java.awt.Color(255, 255, 255));
+        lblCanciones.setText("Canciones");
+        lblCanciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblCanciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCancionesMouseClicked(evt);
+            }
+        });
 
         jPanel43.setBackground(new java.awt.Color(27, 26, 26));
         jPanel43.setPreferredSize(new java.awt.Dimension(1275, 100));
@@ -517,9 +529,9 @@ public class PanelBusqueda extends javax.swing.JPanel {
                 .addGap(252, 252, 252))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
-                .addComponent(jLabel23)
+                .addComponent(lblCanciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel22)
+                .addComponent(lblArtistas)
                 .addGap(442, 442, 442))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -537,8 +549,8 @@ public class PanelBusqueda extends javax.swing.JPanel {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23))
+                    .addComponent(lblArtistas)
+                    .addComponent(lblCanciones))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -639,7 +651,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
                 //Iteramos por cada canción dentro del album
                 for(CancionDoc cancion : album.getCanciones()){
                     
-                    PanelCancionDesplegada panel = new PanelCancionDesplegada(cancion, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
+                    PanelCancionDesplegada panel = new PanelCancionDesplegada(frmPrincipal,this, cancion, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
                     //Si ya están desplegadas más de 9 canciones terminamos la ejecución, ya que ya no hay espacio para mostrar
                     if(counter >= 9)
                         return;
@@ -701,7 +713,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
             //Iteramos por cada album que nos regresa
             for(AlbumDTO album : albumes){
                 
-                    PanelAlbumDesplegado panel = new PanelAlbumDesplegado(album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
+                    PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
                     
                     //Si ya están desplegadas más de 6 albumes terminamos la ejecución, ya que ya no hay espacio para mostrar
                     if(counter >= 6)
@@ -752,7 +764,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
             //Iteramos por cada album que nos regresa
             for(ArtistaDTO artista : artistas){
                 
-                    PanelArtistaDesplegado panel = new PanelArtistaDesplegado(artista, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
+                    PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal, artista, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
                     
                     //Si ya están desplegadas más de 6 albumes terminamos la ejecución, ya que ya no hay espacio para mostrar
                     if(counter >= 6)
@@ -844,6 +856,16 @@ public class PanelBusqueda extends javax.swing.JPanel {
         
     }//GEN-LAST:event_checkFechaLanzamientoActionPerformed
 
+    private void lblCancionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancionesMouseClicked
+        // TODO add your handling code here:
+        frmPrincipal.pintarPanelPrincipal(new PanelCanciones(frmPrincipal, buscador.getText(), filtroMusica, checkFechaLanzamiento.isSelected()));
+    }//GEN-LAST:event_lblCancionesMouseClicked
+
+    private void lblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblArtistasMouseClicked
+        // TODO add your handling code here:
+//        frmPrincipal.pintarPanelPrincipal(new PanelArtistas(frmPrincipal, buscador.getText(), filtroMusica, checkFechaLanzamiento.isSelected()));
+    }//GEN-LAST:event_lblArtistasMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -863,8 +885,6 @@ public class PanelBusqueda extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -888,6 +908,8 @@ public class PanelBusqueda extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel48;
     private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lblArtistas;
+    private javax.swing.JLabel lblCanciones;
     private javax.swing.JPanel panelAlbumes;
     private javax.swing.JPanel panelArtistas;
     private javax.swing.JPanel panelCanciones;

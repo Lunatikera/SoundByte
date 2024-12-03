@@ -11,6 +11,10 @@ import Docs.FavoritoDoc;
 import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import excepciones.NegocioException;
+import frames.FrmPrincipal;
+import frames.PanelBusqueda;
+import frames.PanelCancion;
+import frames.PanelCanciones;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
@@ -32,14 +36,52 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
     UsuarioDTO loggedUser = new UsuarioDTO();
     private final IUsuarioNegocio usuarioNegocio;
     ImageIcon iconoActivo;
+    FrmPrincipal frmPrincipal;
+    
+    //Paneles
+    PanelBusqueda pBusqueda;
+    PanelCanciones pCanciones;
     
     boolean esFav = false;
     
     /**
      * Creates new form PanelCancionDesplegada
      */
-    public PanelCancionDesplegada(CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
+    public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelBusqueda pBusqueda, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
         
+        this.pBusqueda = pBusqueda;
+        this.frmPrincipal = frmPrincipal;
+        this.cancion = cancion;
+        this.album = album;
+        this.loggedUser = loggedUser;
+        this.usuarioNegocio = usuarioNegocio;
+        
+        initComponents();
+       
+        this.setOpaque(false);
+
+        cargarComponentes();
+        checarSiEsFav();
+        
+        
+        if(esFav){
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/starClick.png"));
+            iconoActivo = icon;
+        }
+        else{
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/star.png"));
+            iconoActivo = icon;
+        }
+        this.repaint();
+    
+    }
+    /**
+     * Creates new form PanelCancionDesplegada
+     */
+    public PanelCancionDesplegada(FrmPrincipal frmPrincipal, PanelCanciones pCanciones, CancionDoc cancion, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio) {
+        
+        this.pCanciones = pCanciones;
+        this.frmPrincipal = frmPrincipal;
         this.cancion = cancion;
         this.album = album;
         this.loggedUser = loggedUser;
@@ -122,9 +164,22 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
         btnPlay1 = new util.BotonToggle();
         btnFavCancion1 = new util.BotonToggle();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
         lblNombreCancion1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreCancion1.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreCancion1.setText("Peperina");
+        lblNombreCancion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblNombreCancion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNombreCancion1MouseClicked(evt);
+            }
+        });
 
         lblNombreArtistaCancion1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNombreArtistaCancion1.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,6 +308,23 @@ public class PanelCancionDesplegada extends javax.swing.JPanel {
 
         this.repaint();
     }//GEN-LAST:event_btnFavCancion1ActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_formMouseClicked
+
+    private void lblNombreCancion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCancion1MouseClicked
+        // TODO add your handling code here:
+        
+        if(pBusqueda != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pBusqueda, album, cancion, loggedUser));
+        if(pCanciones != null)
+            frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal, pCanciones, album, cancion, loggedUser));
+
+        
+    }//GEN-LAST:event_lblNombreCancion1MouseClicked
 
 
     public void setNombreAlbum(){

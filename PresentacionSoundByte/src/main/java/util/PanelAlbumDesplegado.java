@@ -11,6 +11,7 @@ import Docs.FavoritoDoc;
 import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import excepciones.NegocioException;
+import frames.FrmPrincipal;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
@@ -35,6 +36,7 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
     private final IUsuarioNegocio usuarioNegocio;
     private final IAlbumNegocio albumNegocio;
     ImageIcon iconoActivo;
+    FrmPrincipal frmPrincipal;
 
     boolean esFav = false;
 
@@ -42,9 +44,9 @@ public class PanelAlbumDesplegado extends javax.swing.JPanel {
      * Creates new form PanelAlbumDesplegado
      * @param panelPadre
      */
-    public PanelAlbumDesplegado(AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
+    public PanelAlbumDesplegado(FrmPrincipal frmPrincipal, AlbumDTO album, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio) {
         
-        
+        this.frmPrincipal = frmPrincipal;
         this.album = album;
         this.loggedUser = loggedUser;
         this.usuarioNegocio = usuarioNegocio;

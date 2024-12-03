@@ -13,6 +13,7 @@ import InterfacesDAO.IGeneroDAO;
 import InterfacesNegocio.IGeneroNegocio;
 import Negocio.GeneroNegocio;
 import excepciones.NegocioException;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -99,10 +100,8 @@ public class DialogFiltros extends javax.swing.JDialog {
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
         }
-
-
-
     }
+    
     public DialogFiltros(PanelAlbumes panelAlbumes, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
         
  
@@ -207,22 +206,29 @@ public class DialogFiltros extends javax.swing.JDialog {
         llenarListGeneros(generos);
 
     }
-    public DialogFiltros(PanelCanciones panelCanciones, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
+    
+    public DialogFiltros(FrmPrincipal frmPrincipal, PanelCanciones panelCanciones, IGeneroNegocio generoNegocio, UsuarioDTO loggedUser, FiltroMusicaDTO filtros) {
         
  
         initComponents();
 
         this.setTitle("Filtros");
 
+        this.frmPrincipal = frmPrincipal;
+        this.pCanciones = panelCanciones;
         this.filtros = filtros;
         
         inicializaFiltros(filtros);
         
-        switchAlbumes.setSelected(false);
-        switchAlbumes.disable();
+        switchAlbumes.setVisible(false);
+        switchCanciones.setVisible(false);
+        switchArtistas.setVisible(false);
         
-        switchArtistas.setSelected(false);
-        switchArtistas.disable();
+        lblAlbumes.setVisible(false);
+        lblCanciones.setVisible(false);
+        lblArtistas.setVisible(false);
+        
+        this.setLayout(new GridLayout(1,1));
         
         this.jScrollPane4.setVerticalScrollBar(new ScrollBar());
         this.jScrollPane5.setVerticalScrollBar(new ScrollBar());
@@ -237,11 +243,20 @@ public class DialogFiltros extends javax.swing.JDialog {
             
             for(int i = 0; i<=loggedUser.getRestringidos().getGeneros().size()-1; i++)
                 mapIds.put(i, loggedUser.getRestringidos().getGeneros().get(i).getId());
+
+            if(filtros != null){
                 
-            
-            
-            for(int i = loggedUser.getRestringidos().getGeneros().size(); i<=generosAFiltrar.size()-1+loggedUser.getRestringidos().getGeneros().size(); i++)
-                mapIds.put(i, generosAFiltrar.get(i).getId());
+                generosAFiltrar = filtros.getGeneros();
+                
+                for(int i = 0; i<=filtros.getGeneros().size()-1;i++){
+                    
+                    int size = i + loggedUser.getRestringidos().getGeneros().size();
+                    
+                    mapIds.put(size, filtros.getGeneros().get(i).getId());
+                    
+                    
+                }
+            }
             
             for(GeneroDTO generoAux : generoNegocio.buscarTodosGeneros()){
             
@@ -250,14 +265,12 @@ public class DialogFiltros extends javax.swing.JDialog {
                 
             }
 
-            
+        llenarListGeneros(generos);
+        llenarListGenerosYaRestringidos();
 
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al llenar ListGeneros = " + ex);
         }
-
-        llenarListGeneros(generos);
-
     }
 
     public FiltroMusicaDTO getFiltros() {
@@ -301,11 +314,11 @@ public class DialogFiltros extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        lblCanciones = new javax.swing.JLabel();
         switchCanciones = new util.SwitchButton();
         switchAlbumes = new util.SwitchButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblAlbumes = new javax.swing.JLabel();
+        lblArtistas = new javax.swing.JLabel();
         switchArtistas = new util.SwitchButton();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -338,17 +351,17 @@ public class DialogFiltros extends javax.swing.JDialog {
 
         jPanel5.setBackground(new java.awt.Color(48, 48, 48));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Canciones");
+        lblCanciones.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblCanciones.setForeground(new java.awt.Color(255, 255, 255));
+        lblCanciones.setText("Canciones");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Albumes");
+        lblAlbumes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblAlbumes.setForeground(new java.awt.Color(255, 255, 255));
+        lblAlbumes.setText("Albumes");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Artistas");
+        lblArtistas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblArtistas.setForeground(new java.awt.Color(255, 255, 255));
+        lblArtistas.setText("Artistas");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -358,13 +371,13 @@ public class DialogFiltros extends javax.swing.JDialog {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(lblArtistas)
                         .addGap(47, 47, 47)
                         .addComponent(switchArtistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
+                            .addComponent(lblCanciones)
+                            .addComponent(lblAlbumes))
                         .addGap(47, 47, 47)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(switchAlbumes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,14 +390,14 @@ public class DialogFiltros extends javax.swing.JDialog {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(switchCanciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(lblCanciones))
                 .addGap(49, 49, 49)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(switchAlbumes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(lblAlbumes))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
+                    .addComponent(lblArtistas)
                     .addComponent(switchArtistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
@@ -642,9 +655,12 @@ public class DialogFiltros extends javax.swing.JDialog {
             
         }
         
-        if(pCanciones != null)
-            pCanciones.filtro = filtros;
-        
+        if(pCanciones != null){
+            
+            pCanciones.setFiltroMusica(filtros);
+            frmPrincipal.pintarPanelPrincipal(pCanciones);
+            
+        }
         this.dispose();
 
     }//GEN-LAST:event_btnGuardarFiltrosActionPerformed
@@ -692,9 +708,6 @@ public class DialogFiltros extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -706,6 +719,9 @@ public class DialogFiltros extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblAlbumes;
+    private javax.swing.JLabel lblArtistas;
+    private javax.swing.JLabel lblCanciones;
     private javax.swing.JList<String> listGeneros;
     private javax.swing.JList<String> listGenerosFiltrados;
     private util.SwitchButton switchAlbumes;

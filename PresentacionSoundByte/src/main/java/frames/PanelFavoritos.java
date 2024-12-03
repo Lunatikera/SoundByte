@@ -134,7 +134,7 @@ public class PanelFavoritos extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        frmPrincipal.pintarPanelPrincipal(new PanelCancion(frmPrincipal));
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
 

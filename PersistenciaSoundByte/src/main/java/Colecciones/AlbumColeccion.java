@@ -21,6 +21,7 @@ public class AlbumColeccion {
     private String imagen;
     private ArtistaColeccion artista;
     private List<CancionDoc> canciones;
+    private List<String> redesSociales;
 
     public AlbumColeccion() {
     }
@@ -73,9 +74,17 @@ public class AlbumColeccion {
         this.imagen = imagen;
     }
 
+    public List<String> getRedesSociales() {
+        return redesSociales;
+    }
+
+    public void setRedesSociales(List<String> redesSociales) {
+        this.redesSociales = redesSociales;
+    }
+
     @Override
     public String toString() {
-        return "AlbumColeccion{" + "id=" + id + ", nombre=" + nombre + ", fechaLanzamiento=" + fechaLanzamiento + ", imagen=" + imagen + ", artista=" + artista + ", canciones=" + canciones + '}';
+        return "AlbumColeccion{" + "id=" + id + ", nombre=" + nombre + ", fechaLanzamiento=" + fechaLanzamiento + ", imagen=" + imagen + ", artista=" + artista + ", canciones=" + canciones + ", redesSociales=" + redesSociales + '}';
     }
 
 

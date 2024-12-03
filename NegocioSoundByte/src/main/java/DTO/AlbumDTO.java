@@ -21,6 +21,7 @@ public class AlbumDTO {
     private String imagen;
     private ArtistaDTO artista;
     private List<CancionDoc> canciones;
+    private List<String> redesSociales;
 
     public AlbumDTO() {
     }
@@ -73,12 +74,17 @@ public class AlbumDTO {
         this.imagen = imagen;
     }
 
-    @Override
-    public String toString() {
-        return "AlbumDTO{" + "id=" + id + ", nombre=" + nombre + ", fechaLanzamiento=" + fechaLanzamiento + ", imagen=" + imagen + ", artista=" + artista + ", canciones=" + canciones + '}';
+    public List<String> getRedesSociales() {
+        return redesSociales;
     }
 
+    public void setRedesSociales(List<String> redesSociales) {
+        this.redesSociales = redesSociales;
+    }
 
-
+    @Override
+    public String toString() {
+        return "AlbumDTO{" + "id=" + id + ", nombre=" + nombre + ", fechaLanzamiento=" + fechaLanzamiento + ", imagen=" + imagen + ", artista=" + artista + ", canciones=" + canciones + ", redesSociales=" + redesSociales + '}';
+    }
     
 }

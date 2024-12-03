@@ -14,6 +14,7 @@ import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IArtistaNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import excepciones.NegocioException;
+import frames.FrmPrincipal;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.format.DateTimeFormatter;
@@ -37,13 +38,16 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
     private final IUsuarioNegocio usuarioNegocio;
     ImageIcon iconoActivo;
     
+    FrmPrincipal frmPrincipal;
+    
     boolean esFav = false;
     
     /**
      * Creates new form PanelCancionDesplegada
      */
-    public PanelArtistaDesplegado(ArtistaDTO artista, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IArtistaNegocio artistaNegocio) {
+    public PanelArtistaDesplegado(FrmPrincipal frmPrincipal, ArtistaDTO artista, UsuarioDTO loggedUser, IUsuarioNegocio usuarioNegocio, IArtistaNegocio artistaNegocio) {
         
+        this.frmPrincipal = frmPrincipal;
         this.artista = artista;
         this.loggedUser = loggedUser;
         this.usuarioNegocio = usuarioNegocio;

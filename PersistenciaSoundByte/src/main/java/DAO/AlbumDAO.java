@@ -47,6 +47,7 @@ public class AlbumDAO implements IAlbumDAO{
         
         Bson filtroProyeccion = project(fields(
                 computed("artista", "$artista"), 
+                computed("fechaLanzamiento", "$fechaLanzamiento"), 
                 computed("canciones", new Document("$filter", new Document()
                         .append("input", "$canciones")
                         .append("as", "cancion") 
@@ -88,6 +89,7 @@ public class AlbumDAO implements IAlbumDAO{
         
         Bson filtroProyeccion = project(fields(
                 computed("artista", "$artista"), 
+                computed("fechaLanzamiento", "$fechaLanzamiento"), 
                 computed("canciones", new Document("$filter", new Document()
                         .append("input", "$canciones")
                         .append("as", "cancion") 
