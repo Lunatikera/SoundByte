@@ -47,7 +47,7 @@ public class PanelRestricciones extends javax.swing.JPanel {
         this.generoNegocio= generoNegocio;
         this.usuarioNegocio=usuarioNegocio;
    
-        if(frmPrincipal.getLoggedUser().getRestringidos() != null)
+        if(frmPrincipal.getLoggedUser().getRestringidos().getGeneros() != null)
             generosARestringir = generoNegocio.convertirListaGenerosColeccion(frmPrincipal.getLoggedUser().getRestringidos().getGeneros());
         
         listGeneros.setModel(listModel1);

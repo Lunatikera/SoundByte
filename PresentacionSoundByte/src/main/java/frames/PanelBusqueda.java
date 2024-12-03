@@ -773,7 +773,7 @@ public class PanelBusqueda extends javax.swing.JPanel {
                     PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal,this, artista, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
                     
                     //Si ya están desplegadas más de 6 albumes terminamos la ejecución, ya que ya no hay espacio para mostrar
-                    if(counter >= 6)
+                    if(counter >= 4)
                         return;
               
                     //Agregamos el album desplegado en la lista de albumes
