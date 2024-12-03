@@ -79,8 +79,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnMenuBuscar = new util.BotonMenu();
-        jPanel6 = new javax.swing.JPanel();
-        btnMenuGeneros = new util.BotonMenu();
         jPanel7 = new javax.swing.JPanel();
         btnMenuArtistas = new util.BotonMenu();
         jPanel8 = new javax.swing.JPanel();
@@ -173,30 +171,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
 
         menuBar.add(jPanel5);
-
-        jPanel6.setBackground(new java.awt.Color(16, 15, 15));
-        jPanel6.setPreferredSize(new java.awt.Dimension(270, 55));
-
-        btnMenuGeneros.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/generosSelected.png"))); // NOI18N
-        btnMenuGeneros.setSimpleIcon(new javax.swing.ImageIcon(getClass().getResource("/images/genre.png"))); // NOI18N
-        btnMenuGeneros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuGenerosActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMenuGeneros, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMenuGeneros, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-        );
-
-        menuBar.add(jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(16, 15, 15));
         jPanel7.setPreferredSize(new java.awt.Dimension(270, 55));
@@ -391,9 +365,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(btnMenuRestringidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         menuBar.add(jPanel14);
@@ -436,10 +409,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnMenuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuBuscarActionPerformed
         this.pintarPanelPrincipal(new PanelBusqueda(this));
     }//GEN-LAST:event_btnMenuBuscarActionPerformed
-
-    private void btnMenuGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuGenerosActionPerformed
-        
-    }//GEN-LAST:event_btnMenuGenerosActionPerformed
 
     private void btnMenuArtistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuArtistasActionPerformed
         this.pintarPanelPrincipal(new PanelArtistas(this));
@@ -500,7 +469,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private util.BotonMenu btnMenuCanciones;
     private util.BotonMenu btnMenuCuenta;
     private util.BotonMenu btnMenuFavoritos;
-    private util.BotonMenu btnMenuGeneros;
     private util.BotonMenu btnMenuHome;
     private util.BotonMenu btnMenuRestringidos;
     private javax.swing.JLabel jLabel1;
@@ -519,7 +487,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;

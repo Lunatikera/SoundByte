@@ -16,6 +16,7 @@ import excepciones.PersistenciaException;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -62,12 +63,14 @@ public class ArtistaDAO implements IArtistaDAO{
         try{
         List<ArtistaColeccion> artistas = new ArrayList<>();
 
-        Bson filtroArtista1 = Filters.in("generos", especificados);
+//        Bson filtroArtista1 = Filters.in("generos", especificados);
         Bson filtroArtista2 = Filters.regex("nombre", "^" +filtro, "i");
         
-        Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
+//        Bson filtrosCombinados = Filters.and(filtroArtista1,filtroArtista2);
         
-        for(ArtistaColeccion artista : coleccion.find(filtrosCombinados)){
+            System.out.println(coleccion.find());
+
+        for(ArtistaColeccion artista : coleccion.find(filtroArtista2)){
 
             artistas.add(artista);
             

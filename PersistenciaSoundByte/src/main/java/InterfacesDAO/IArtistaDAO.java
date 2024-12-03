@@ -8,6 +8,7 @@ import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
 import excepciones.PersistenciaException;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *

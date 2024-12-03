@@ -6,6 +6,7 @@ package DAO;
 
 import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
+import Docs.IntegranteDoc;
 import InterfacesDAO.IConexionDB;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -34,6 +35,7 @@ public class DatosDAO {
         MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
 
         GeneroColeccion genero1 = new GeneroColeccion();
+        genero1.setId(new ObjectId());
         genero1.setNombre("Rock");
         genero1.setImagenGenero("resources/generos/rock.jpg");
         genero1.setDescrpicion("El Rock es un género musical que surgió en la década de 1950 y se caracteriza por el uso predominante de guitarras eléctricas, bajo y batería.");
@@ -137,7 +139,6 @@ public class DatosDAO {
         generos.add(genero11);
         generos.add(genero12);
         generos.add(genero13);
-        generos.add(genero13);
         generos.add(genero14);
         generos.add(genero15);
         generos.add(genero16);
@@ -146,573 +147,577 @@ public class DatosDAO {
 
         generoColeccion.insertMany(generos);
 
-        HashMap<String, ObjectId> generoMap = new HashMap<>();
+        HashMap<String, Integer> generoMap = new HashMap<>();
+        int counter = 0;
         for (GeneroColeccion genero : generos) {
             // Obtener el ObjectId del género después de la inserción
             if (genero.getId() != null) {
-                generoMap.put(genero.getNombre(), genero.getId());
+                generoMap.put(genero.getNombre(), counter);
+                counter++;
             }
         }
-        MongoCollection<Document> artistaColeccion = database.getCollection("artistas");
+        MongoCollection<ArtistaColeccion> artistaColeccion = database.getCollection("Artistas", ArtistaColeccion.class);
 
+        ArtistaColeccion artista1 = new ArtistaColeccion();
+        artista1.setEsBanda(false);
+        artista1.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock"))));
+        artista1.setImagen("/artistas/Elvis.jpg");
+        artista1.setNombre("Elvis Presley");
+
+        ArtistaColeccion artista2 = new ArtistaColeccion();
+        artista2.setEsBanda(false);
+        artista2.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock"))));
+        artista2.setImagen("/artistas/Hendrix.jpg");
+        artista2.setNombre("Jimmy Hendrix");
         // Rock
-        Document artista1 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock")))
-                .append("imagen", "/artistas/Elvis.jpg")
-                .append("nombre", "Elvis Presley");
+        ArtistaColeccion artista3 = new ArtistaColeccion();
+        artista3.setEsBanda(false);
+        artista3.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock"))));
+        artista3.setImagen("/artistas/Spinetta.jpg");
+        artista3.setNombre("Luis Alberto Spinetta");
 
-        Document artista2 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock")))
-                .append("imagen", "/artistas/Hendrix.jpg")
-                .append("nombre", "Jimmy Hendrix");
+        ArtistaColeccion artista4 = new ArtistaColeccion();
+        artista4.setEsBanda(false);
+        artista4.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock"))));
+        artista4.setImagen("/artistas/JohnnyCash.jpg");
+        artista4.setNombre("Johnny Cash");
 
-        Document artista3 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock")))
-                .append("imagen", "/artistas/Spinetta.jpg")
-                .append("nombre", "Luis Alberto Spinetta");
+        ArtistaColeccion artista5 = new ArtistaColeccion();
+        artista5.setEsBanda(false);
+        artista5.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock"))));
+        artista5.setImagen("/artistas/Bowie.jpg");
+        artista5.setNombre("David Bowie");
 
-        Document artista4 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock")))
-                .append("imagen", "/artistas/JohnnyCash.jpg")
-                .append("nombre", "Johnny Cash");
-
-        Document artista5 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock")))
-                .append("imagen", "/artistas/Bowie.jpg")
-                .append("nombre", "David Bowie");
         // Jazz
+        ArtistaColeccion artista6 = new ArtistaColeccion();
+        artista6.setEsBanda(false);
+        artista6.setGeneros(Arrays.asList(generos.get(generoMap.get("Jazz"))));
+        artista6.setImagen("/artistas/LouisArmstrong.jpg");
+        artista6.setNombre("Louis Armstrong");
 
-        Document artista6 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Jazz")))
-                .append("imagen", "/artistas/LouisArmstrong.jpg")
-                .append("nombre", "Louis Armstrong");
+        ArtistaColeccion artista7 = new ArtistaColeccion();
+        artista7.setEsBanda(false);
+        artista7.setGeneros(Arrays.asList(generos.get(generoMap.get("Jazz"))));
+        artista7.setImagen("/artistas/JohnColtrane.jpg");
+        artista7.setNombre("John Coltrane");
 
-        Document artista7 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Jazz")))
-                .append("imagen", "/artistas/JohnColtrane.jpg")
-                .append("nombre", "John Coltrane");
+        ArtistaColeccion artista8 = new ArtistaColeccion();
+        artista8.setEsBanda(false);
+        artista8.setGeneros(Arrays.asList(generos.get(generoMap.get("Jazz"))));
+        artista8.setImagen("/artistas/BillieHoliday.jpg");
+        artista8.setNombre("Billie Holiday");
 
-        Document artista8 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Jazz")))
-                .append("imagen", "/artistas/BillieHoliday.jpg")
-                .append("nombre", "Billie Holiday");
+        ArtistaColeccion artista9 = new ArtistaColeccion();
+        artista9.setEsBanda(false);
+        artista9.setGeneros(Arrays.asList(generos.get(generoMap.get("Jazz"))));
+        artista9.setImagen("/artistas/DizzyGillespie.jpg");
+        artista9.setNombre("Dizzy Gillespie");
 
-        Document artista9 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Jazz")))
-                .append("imagen", "/artistas/DizzyGillespie.jpg")
-                .append("nombre", "Dizzy Gillespie");
+        ArtistaColeccion artista10 = new ArtistaColeccion();
+        artista10.setEsBanda(false);
+        artista10.setGeneros(Arrays.asList(generos.get(generoMap.get("Jazz"))));
+        artista10.setImagen("/artistas/EllaFitzgerald.jpg");
+        artista10.setNombre("Ella Fitzgerald");
 
-        Document artista10 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Jazz")))
-                .append("imagen", "/artistas/EllaFitzgerald.jpg")
-                .append("nombre", "Ella Fitzgerald");
-        // Pop
-        Document artista11 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Pop")))
-                .append("imagen", "/artistas/MichaelJackson.jpg")
-                .append("nombre", "Michael Jackson");
+                // Pop
+        ArtistaColeccion artista11 = new ArtistaColeccion();
+        artista11.setEsBanda(false);
+        artista11.setGeneros(Arrays.asList(generos.get(generoMap.get("Pop"))));
+        artista11.setImagen("/artistas/MichaelJackson.jpg");
+        artista11.setNombre("Michael Jackson");
 
-        Document artista12 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Pop")))
-                .append("imagen", "/artistas/Madonna.jpg")
-                .append("nombre", "Madonna");
+        ArtistaColeccion artista12 = new ArtistaColeccion();
+        artista12.setEsBanda(false);
+        artista12.setGeneros(Arrays.asList(generos.get(generoMap.get("Pop"))));
+        artista12.setImagen("/artistas/Madonna.jpg");
+        artista12.setNombre("Madonna");
 
-        Document artista13 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Pop")))
-                .append("imagen", "/artistas/EdSheeran.jpg")
-                .append("nombre", "Ed Sheeran");
+        ArtistaColeccion artista13 = new ArtistaColeccion();
+        artista13.setEsBanda(false);
+        artista13.setGeneros(Arrays.asList(generos.get(generoMap.get("Pop"))));
+        artista13.setImagen("/artistas/EdSheeran.jpg");
+        artista13.setNombre("Ed Sheeran");
 
-        Document artista14 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Pop")))
-                .append("imagen", "/artistas/Beyonce.jpg")
-                .append("nombre", "Beyoncé");
+        ArtistaColeccion artista14 = new ArtistaColeccion();
+        artista14.setEsBanda(false);
+        artista14.setGeneros(Arrays.asList(generos.get(generoMap.get("Pop"))));
+        artista14.setImagen("/artistas/Beyonce.jpg");
+        artista14.setNombre("Beyoncé");
 
-        Document artista15 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Pop")))
-                .append("imagen", "/artistas/Rihanna.jpg")
-                .append("nombre", "Rihanna");
+        ArtistaColeccion artista15 = new ArtistaColeccion();
+        artista15.setEsBanda(false);
+        artista15.setGeneros(Arrays.asList(generos.get(generoMap.get("Pop"))));
+        artista15.setImagen("/artistas/Rihanna.jpg");
+        artista15.setNombre("Rihanna");
 
         // Reggae
-        Document artista16 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Reggae")))
-                .append("imagen", "/artistas/BobMarley.jpg")
-                .append("nombre", "Bob Marley");
+        ArtistaColeccion artista16 = new ArtistaColeccion();
+        artista16.setEsBanda(false);
+        artista16.setGeneros(Arrays.asList(generos.get(generoMap.get("Reggae"))));
+        artista16.setImagen("/artistas/BobMarley.jpg");
+        artista16.setNombre("Bob Marley");
 
-        Document artista17 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Reggae")))
-                .append("imagen", "/artistas/PeterTosh.jpg")
-                .append("nombre", "Peter Tosh");
+        ArtistaColeccion artista17 = new ArtistaColeccion();
+        artista17.setEsBanda(false);
+        artista17.setGeneros(Arrays.asList(generos.get(generoMap.get("Reggae"))));
+        artista17.setImagen("/artistas/PeterTosh.jpg");
+        artista17.setNombre("Peter Tosh");
 
-        Document artista18 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Reggae")))
-                .append("imagen", "/artistas/JimmyCliff.jpg")
-                .append("nombre", "Jimmy Cliff");
+        ArtistaColeccion artista18 = new ArtistaColeccion();
+        artista18.setEsBanda(false);
+        artista18.setGeneros(Arrays.asList(generos.get(generoMap.get("Reggae"))));
+        artista18.setImagen("/artistas/JimmyCliff.jpg");
+        artista18.setNombre("Jimmy Cliff");
 
-        Document artista19 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Reggae")))
-                .append("imagen", "/artistas/GregoryIsaacs.jpg")
-                .append("nombre", "Gregory Isaacs");
+        ArtistaColeccion artista19 = new ArtistaColeccion();
+        artista19.setEsBanda(false);
+        artista19.setGeneros(Arrays.asList(generos.get(generoMap.get("Reggae"))));
+        artista19.setImagen("/artistas/GregoryIsaacs.jpg");
+        artista19.setNombre("Gregory Isaacs");
 
-        Document artista20 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Reggae")))
-                .append("imagen", "/artistas/TootsHibbert.jpg")
-                .append("nombre", "Toots Hibbert");
+        ArtistaColeccion artista20 = new ArtistaColeccion();
+        artista20.setEsBanda(false);
+        artista20.setGeneros(Arrays.asList(generos.get(generoMap.get("Reggae"))));
+        artista20.setImagen("/artistas/TootsHibbert.jpg");
+        artista20.setNombre("Toots Hibbert");
 
-// BluesX
-        Document artista21 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Blues")))
-                .append("imagen", "/artistas/BBKing.jpg")
-                .append("nombre", "B.B. King");
+        // Blues
+        ArtistaColeccion artista21 = new ArtistaColeccion();
+        artista21.setEsBanda(false);
+        artista21.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista21.setImagen("/artistas/BBKing.jpg");
+        artista21.setNombre("B.B. King");
 
-        Document artista22 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Blues")))
-                .append("imagen", "/artistas/MuddyWaters.jpg")
-                .append("nombre", "Muddy Waters");
+        ArtistaColeccion artista22 = new ArtistaColeccion();
+        artista22.setEsBanda(false);
+        artista22.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista22.setImagen("/artistas/MuddyWaters.jpg");
+        artista22.setNombre("Muddy Waters");
 
-        Document artista23 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Blues")))
-                .append("imagen", "/artistas/RobertJohnson.jpg")
-                .append("nombre", "Robert Johnson");
+        ArtistaColeccion artista23 = new ArtistaColeccion();
+        artista23.setEsBanda(false);
+        artista23.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista23.setImagen("/artistas/RobertJohnson.jpg");
+        artista23.setNombre("Robert Johnson");
 
-        Document artista24 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Blues")))
-                .append("imagen", "/artistas/JohnLeeHooker.jpg")
-                .append("nombre", "John Lee Hooker");
+        ArtistaColeccion artista24 = new ArtistaColeccion();
+        artista24.setEsBanda(false);
+        artista24.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista24.setImagen("/artistas/JohnLeeHooker.jpg");
+        artista24.setNombre("John Lee Hooker");
 
-        Document artista25 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Blues")))
-                .append("imagen", "/artistas/EricClapton.jpg")
-                .append("nombre", "Eric Clapton");
+        ArtistaColeccion artista25 = new ArtistaColeccion();
+        artista25.setEsBanda(false);
+        artista25.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista25.setImagen("/artistas/EricClapton.jpg");
+        artista25.setNombre("Eric Clapton");
 
-// Country
-        Document artista26 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Country")))
-                .append("imagen", "/artistas/HankWilliams.jpg")
-                .append("nombre", "Hank Williams");
+        // Country
+        ArtistaColeccion artista26 = new ArtistaColeccion();
+        artista26.setEsBanda(false);
+        artista26.setGeneros(Arrays.asList(generos.get(generoMap.get("Country"))));
+        artista26.setImagen("/artistas/HankWilliams.jpg");
+        artista26.setNombre("Hank Williams");
 
-        Document artista27 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Country")))
-                .append("imagen", "/artistas/DollyParton.jpg")
-                .append("nombre", "Dolly Parton");
+        ArtistaColeccion artista27 = new ArtistaColeccion();
+        artista27.setEsBanda(false);
+        artista27.setGeneros(Arrays.asList(generos.get(generoMap.get("Country"))));
+        artista27.setImagen("/artistas/DollyParton.jpg");
+        artista27.setNombre("Dolly Parton");
 
-        Document artista28 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Country")))
-                .append("imagen", "/artistas/WillieNelson.jpg")
-                .append("nombre", "Willie Nelson");
+        ArtistaColeccion artista28 = new ArtistaColeccion();
+        artista28.setEsBanda(false);
+        artista28.setGeneros(Arrays.asList(generos.get(generoMap.get("Country"))));
+        artista28.setImagen("/artistas/WillieNelson.jpg");
+        artista28.setNombre("Willie Nelson");
 
-        Document artista29 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Country")))
-                .append("imagen", "/artistas/EmmylouHarris.jpg")
-                .append("nombre", "Emmylou Harris");
+        ArtistaColeccion artista29 = new ArtistaColeccion();
+        artista29.setEsBanda(false);
+        artista29.setGeneros(Arrays.asList(generos.get(generoMap.get("Country"))));
+        artista29.setImagen("/artistas/EmmylouHarris.jpg");
+        artista29.setNombre("Emmylou Harris");
 
-        Document artista30 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Country")))
-                .append("imagen", "/artistas/LorettaLynn.jpg")
-                .append("nombre", "Loretta Lynn");
+        ArtistaColeccion artista30 = new ArtistaColeccion();
+        artista30.setEsBanda(false);
+        artista30.setGeneros(Arrays.asList(generos.get(generoMap.get("Country"))));
+        artista30.setImagen("/artistas/LorettaLynn.jpg");
+        artista30.setNombre("Loretta Lynn");
 
-// Metal
-        Document artista31 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Metal")))
-                .append("imagen", "/artistas/OzzyOsbourne.jpg")
-                .append("nombre", "Ozzy Osbourne");
+        // Metal
+        ArtistaColeccion artista31 = new ArtistaColeccion();
+        artista31.setEsBanda(false);
+        artista31.setGeneros(Arrays.asList(generos.get(generoMap.get("Metal"))));
+        artista31.setImagen("/artistas/OzzyOsbourne.jpg");
+        artista31.setNombre("Ozzy Osbourne");
 
-        Document artista32 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Metal")))
-                .append("imagen", "/artistas/RobHalford.jpg")
-                .append("nombre", "Rob Halford");
+        ArtistaColeccion artista32 = new ArtistaColeccion();
+        artista32.setEsBanda(false);
+        artista32.setGeneros(Arrays.asList(generos.get(generoMap.get("Metal"))));
+        artista32.setImagen("/artistas/RobHalford.jpg");
+        artista32.setNombre("Rob Halford");
 
-        Document artista33 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Metal")))
-                .append("imagen", "/artistas/KingDiamond.jpg")
-                .append("nombre", "King Diamond");
+        ArtistaColeccion artista33 = new ArtistaColeccion();
+        artista33.setEsBanda(false);
+        artista33.setGeneros(Arrays.asList(generos.get(generoMap.get("Metal"))));
+        artista33.setImagen("/artistas/KingDiamond.jpg");
+        artista33.setNombre("King Diamond");
 
-        Document artista34 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Metal")))
-                .append("imagen", "/artistas/Dio.jpg")
-                .append("nombre", "Ronnie James Dio");
+        ArtistaColeccion artista34 = new ArtistaColeccion();
+        artista34.setEsBanda(false);
+        artista34.setGeneros(Arrays.asList(generos.get(generoMap.get("Metal"))));
+        artista34.setImagen("/artistas/Dio.jpg");
+        artista34.setNombre("Ronnie James Dio");
 
-        Document artista35 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Metal")))
-                .append("imagen", "/artistas/LemmyKilmister.jpg")
-                .append("nombre", "Lemmy Kilmister");
+        ArtistaColeccion artista35 = new ArtistaColeccion();
+        artista35.setEsBanda(false);
+        artista35.setGeneros(Arrays.asList(generos.get(generoMap.get("Metal"))));
+        artista35.setImagen("/artistas/LemmyKilmister.jpg");
+        artista35.setNombre("Lemmy Kilmister");
 
-// Hip-Hop
-        Document artista36 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Hip-Hop")))
-                .append("imagen", "/artistas/MosDef.jpg")
-                .append("nombre", "Mos Def");
+        // Hip-Hop
+        ArtistaColeccion artista36 = new ArtistaColeccion();
+        artista36.setEsBanda(false);
+        artista36.setGeneros(Arrays.asList(generos.get(generoMap.get("Hip-Hop"))));
+        artista36.setImagen("/artistas/MosDef.jpg");
+        artista36.setNombre("Mos Def");
 
-        Document artista37 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Hip-Hop")))
-                .append("imagen", "/artistas/MFDOOM.jpg")
-                .append("nombre", "MF DOOM");
+        ArtistaColeccion artista37 = new ArtistaColeccion();
+        artista37.setEsBanda(false);
+        artista37.setGeneros(Arrays.asList(generos.get(generoMap.get("Hip-Hop"))));
+        artista37.setImagen("/artistas/MFDOOM.jpg");
+        artista37.setNombre("MF DOOM");
 
-        Document artista38 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Hip-Hop")))
-                .append("imagen", "/artistas/Nas.jpg")
-                .append("nombre", "Nas");
+        ArtistaColeccion artista38 = new ArtistaColeccion();
+        artista38.setEsBanda(false);
+        artista38.setGeneros(Arrays.asList(generos.get(generoMap.get("Hip-Hop"))));
+        artista38.setImagen("/artistas/Nas.jpg");
+        artista38.setNombre("Nas");
 
-        Document artista39 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Hip-Hop")))
-                .append("imagen", "/artistas/JCole.jpg")
-                .append("nombre", "J. Cole");
+        ArtistaColeccion artista39 = new ArtistaColeccion();
+        artista39.setEsBanda(false);
+        artista39.setGeneros(Arrays.asList(generos.get(generoMap.get("Hip-Hop"))));
+        artista39.setImagen("/artistas/JCole.jpg");
+        artista39.setNombre("J. Cole");
 
-        Document artista40 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Hip-Hop")))
-                .append("imagen", "/artistas/LilWayne.jpg")
-                .append("nombre", "Lil Wayne");
+        ArtistaColeccion artista40 = new ArtistaColeccion();
+        artista40.setEsBanda(false);
+        artista40.setGeneros(Arrays.asList(generos.get(generoMap.get("Hip-Hop"))));
+        artista40.setImagen("/artistas/LilWayne.jpg");
+        artista40.setNombre("Lil Wayne");
 
         // Clásica
-        Document artista41 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Clásica")))
-                .append("imagen", "/artistas/LudwigVanBeethoven.jpg")
-                .append("nombre", "Ludwig van Beethoven");
+        ArtistaColeccion artista41 = new ArtistaColeccion();
+        artista41.setEsBanda(false);
+        artista41.setGeneros(Arrays.asList(generos.get(generoMap.get("Clásica"))));
+        artista41.setImagen("/artistas/LudwigVanBeethoven.jpg");
+        artista41.setNombre("Ludwig van Beethoven");
 
-        Document artista42 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Clásica")))
-                .append("imagen", "/artistas/WolfgangAmadeusMozart.jpg")
-                .append("nombre", "Wolfgang Amadeus Mozart");
+        ArtistaColeccion artista42 = new ArtistaColeccion();
+        artista42.setEsBanda(false);
+        artista42.setGeneros(Arrays.asList(generos.get(generoMap.get("Clásica"))));
+        artista42.setImagen("/artistas/WolfgangAmadeusMozart.jpg");
+        artista42.setNombre("Wolfgang Amadeus Mozart");
 
-        Document artista43 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Clásica")))
-                .append("imagen", "/artistas/JohannSebastianBach.jpg")
-                .append("nombre", "Johann Sebastian Bach");
+        ArtistaColeccion artista43 = new ArtistaColeccion();
+        artista43.setEsBanda(false);
+        artista43.setGeneros(Arrays.asList(generos.get(generoMap.get("Clásica"))));
+        artista43.setImagen("/artistas/JohannSebastianBach.jpg");
+        artista43.setNombre("Johann Sebastian Bach");
 
-        Document artista44 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Clásica")))
-                .append("imagen", "/artistas/FredericChopin.jpg")
-                .append("nombre", "Frédéric Chopin");
+        ArtistaColeccion artista44 = new ArtistaColeccion();
+        artista44.setEsBanda(false);
+        artista44.setGeneros(Arrays.asList(generos.get(generoMap.get("Clásica"))));
+        artista44.setImagen("/artistas/FredericChopin.jpg");
+        artista44.setNombre("Frédéric Chopin");
 
-        Document artista45 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Clásica")))
-                .append("imagen", "/artistas/PabloCasals.jpg")
-                .append("nombre", "Pablo Casals");
+        ArtistaColeccion artista45 = new ArtistaColeccion();
+        artista45.setEsBanda(false);
+        artista45.setGeneros(Arrays.asList(generos.get(generoMap.get("Clásica"))));
+        artista45.setImagen("/artistas/PabloCasals.jpg");
+        artista45.setNombre("Pablo Casals");
 
-// Soul
-        Document artista46 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Soul")))
-                .append("imagen", "/artistas/ArethaFranklin.jpg")
-                .append("nombre", "Aretha Franklin");
+        // Soul
+        ArtistaColeccion artista46 = new ArtistaColeccion();
+        artista46.setEsBanda(false);
+        artista46.setGeneros(Arrays.asList(generos.get(generoMap.get("Soul"))));
+        artista46.setImagen("/artistas/ArethaFranklin.jpg");
+        artista46.setNombre("Aretha Franklin");
 
-        Document artista47 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Soul")))
-                .append("imagen", "/artistas/MarvinGaye.jpg")
-                .append("nombre", "Marvin Gaye");
+        ArtistaColeccion artista47 = new ArtistaColeccion();
+        artista47.setEsBanda(false);
+        artista47.setGeneros(Arrays.asList(generos.get(generoMap.get("Soul"))));
+        artista47.setImagen("/artistas/MarvinGaye.jpg");
+        artista47.setNombre("Marvin Gaye");
 
-        Document artista48 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Soul")))
-                .append("imagen", "/artistas/NinaSimone.jpg")
-                .append("nombre", "Nina Simone");
+        ArtistaColeccion artista48 = new ArtistaColeccion();
+        artista48.setEsBanda(false);
+        artista48.setGeneros(Arrays.asList(generos.get(generoMap.get("Soul"))));
+        artista48.setImagen("/artistas/NinaSimone.jpg");
+        artista48.setNombre("Nina Simone");
 
-        Document artista49 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Soul")))
-                .append("imagen", "/artistas/IsaacHayes.jpg")
-                .append("nombre", "Isaac Hayes");
+        ArtistaColeccion artista49 = new ArtistaColeccion();
+        artista49.setEsBanda(false);
+        artista49.setGeneros(Arrays.asList(generos.get(generoMap.get("Soul"))));
+        artista49.setImagen("/artistas/IsaacHayes.jpg");
+        artista49.setNombre("Isaac Hayes");
 
-        Document artista50 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Soul")))
-                .append("imagen", "/artistas/StevieWonder.jpg")
-                .append("nombre", "Stevie Wonder");
+        ArtistaColeccion artista50 = new ArtistaColeccion();
+        artista50.setEsBanda(false);
+        artista50.setGeneros(Arrays.asList(generos.get(generoMap.get("Soul"))));
+        artista50.setImagen("/artistas/StevieWonder.jpg");
+        artista50.setNombre("Stevie Wonder");
 
-// Punk
-        Document artista51 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Punk")))
-                .append("imagen", "/artistas/IggyPop.jpg")
-                .append("nombre", "Iggy Pop");
+        // Punk
+        ArtistaColeccion artista51 = new ArtistaColeccion();
+        artista51.setEsBanda(false);
+        artista51.setGeneros(Arrays.asList(generos.get(generoMap.get("Punk"))));
+        artista51.setImagen("/artistas/IggyPop.jpg");
+        artista51.setNombre("Iggy Pop");
 
-        Document artista52 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Punk")))
-                .append("imagen", "/artistas/JoanJett.jpg")
-                .append("nombre", "Joan Jett");
+        ArtistaColeccion artista52 = new ArtistaColeccion();
+        artista52.setEsBanda(false);
+        artista52.setGeneros(Arrays.asList(generos.get(generoMap.get("Punk"))));
+        artista52.setImagen("/artistas/JoeStrummer.jpg");
+        artista52.setNombre("Joe Strummer");
 
-        Document artista53 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Punk")))
-                .append("imagen", "/artistas/SidVicious.jpg")
-                .append("nombre", "Sid Vicious");
+        ArtistaColeccion artista53 = new ArtistaColeccion();
+        artista53.setEsBanda(false);
+        artista53.setGeneros(Arrays.asList(generos.get(generoMap.get("Punk"))));
+        artista53.setImagen("/artistas/JohnnyRotten.jpg");
+        artista53.setNombre("Johnny Rotten");
 
-        Document artista54 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Punk")))
-                .append("imagen", "/artistas/PattiSmith.jpg")
-                .append("nombre", "Patti Smith");
+        ArtistaColeccion artista54 = new ArtistaColeccion();
+        artista54.setEsBanda(false);
+        artista54.setGeneros(Arrays.asList(generos.get(generoMap.get("Punk"))));
+        artista54.setImagen("/artistas/JelloBiafra.jpg");
+        artista54.setNombre("Jello Biafra");
 
-        Document artista55 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Punk")))
-                .append("imagen", "/artistas/BillyIdol.jpg")
-                .append("nombre", "Billy Idol");
+        ArtistaColeccion artista55 = new ArtistaColeccion();
+        artista55.setEsBanda(false);
+        artista55.setGeneros(Arrays.asList(generos.get(generoMap.get("Punk"))));
+        artista55.setImagen("/artistas/JoeyRamone.jpg");
+        artista55.setNombre("Joey Ramone");
 
-// Funk
-        Document artista56 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Funk")))
-                .append("imagen", "/artistas/JamesBrown.jpg")
-                .append("nombre", "James Brown");
+        // Blues
+        ArtistaColeccion artista56 = new ArtistaColeccion();
+        artista56.setEsBanda(false);
+        artista56.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista56.setImagen("/artistas/BuddyGuy.jpg");
+        artista56.setNombre("Buddy Guy");
 
-        Document artista57 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Funk")))
-                .append("imagen", "/artistas/GeorgeClinton.jpg")
-                .append("nombre", "George Clinton");
+        ArtistaColeccion artista57 = new ArtistaColeccion();
+        artista57.setEsBanda(false);
+        artista57.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista57.setImagen("/artistas/MuddyWaters.jpg");
+        artista57.setNombre("Muddy Waters");
 
-        Document artista58 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Funk")))
-                .append("imagen", "/artistas/Jamiroquai.jpg")
-                .append("nombre", "Jamiroquai");
+        ArtistaColeccion artista58 = new ArtistaColeccion();
+        artista58.setEsBanda(false);
+        artista58.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista58.setImagen("/artistas/JohnLeeHooker.jpg");
+        artista58.setNombre("John Lee Hooker");
 
-        Document artista59 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Funk")))
-                .append("imagen", "/artistas/Prince.jpg")
-                .append("nombre", "Prince");
+        ArtistaColeccion artista59 = new ArtistaColeccion();
+        artista59.setEsBanda(false);
+        artista59.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista59.setImagen("/artistas/HowlinWolf.jpg");
+        artista59.setNombre("Howlin' Wolf");
 
-        Document artista60 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Funk")))
-                .append("imagen", "/artistas/RickJames.jpg")
-                .append("nombre", "Rick James");
+        ArtistaColeccion artista60 = new ArtistaColeccion();
+        artista60.setEsBanda(false);
+        artista60.setGeneros(Arrays.asList(generos.get(generoMap.get("Blues"))));
+        artista60.setImagen("/artistas/RobertJohnson.jpg");
+        artista60.setNombre("Robert Johnson");
 
-// Música Latina
-        Document artista61 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Música Latina")))
-                .append("imagen", "/artistas/Shakira.jpg")
-                .append("nombre", "Shakira");
+        // Electrónica
+        ArtistaColeccion artista61 = new ArtistaColeccion();
+        artista61.setEsBanda(false);
+        artista61.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista61.setImagen("/artistas/Deadmau5.jpg");
+        artista61.setNombre("Deadmau5");
 
-        Document artista62 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Música Latina")))
-                .append("imagen", "/artistas/CarlosVives.jpg")
-                .append("nombre", "Carlos Vives");
+        ArtistaColeccion artista62 = new ArtistaColeccion();
+        artista62.setEsBanda(false);
+        artista62.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista62.setImagen("/artistas/AmonTobin.jpg");
+        artista62.setNombre("Amon Tobin");
 
-        Document artista63 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Música Latina")))
-                .append("imagen", "/artistas/Juanes.jpg")
-                .append("nombre", "Juanes");
+        ArtistaColeccion artista63 = new ArtistaColeccion();
+        artista63.setEsBanda(false);
+        artista63.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista63.setImagen("/artistas/Skrillex.jpg");
+        artista63.setNombre("Skrillex");
 
-        Document artista64 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Música Latina")))
-                .append("imagen", "/artistas/MarcAnthony.jpg")
-                .append("nombre", "Marc Anthony");
+        ArtistaColeccion artista64 = new ArtistaColeccion();
+        artista64.setEsBanda(false);
+        artista64.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista64.setImagen("/artistas/AphexTwin.jpg");
+        artista64.setNombre("Aphex Twin");
 
-        Document artista65 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Música Latina")))
-                .append("imagen", "/artistas/GloriaEstefan.jpg")
-                .append("nombre", "Gloria Estefan");
+        ArtistaColeccion artista65 = new ArtistaColeccion();
+        artista65.setEsBanda(false);
+        artista65.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista65.setImagen("/artistas/DaftPunk.jpg");
+        artista65.setNombre("Daft Punk");
 
-// R&B
-        Document artista66 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("R&B")))
-                .append("imagen", "/artistas/Usher.jpg")
-                .append("nombre", "Usher");
+        // R&B
+        ArtistaColeccion artista66 = new ArtistaColeccion();
+        artista66.setEsBanda(false);
+        artista66.setGeneros(Arrays.asList(generos.get(generoMap.get("R&B"))));
+        artista66.setImagen("/artistas/Usher.jpg");
+        artista66.setNombre("Usher");
 
-        Document artista67 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("R&B")))
-                .append("imagen", "/artistas/AliciaKeys.jpg")
-                .append("nombre", "Alicia Keys");
+        ArtistaColeccion artista67 = new ArtistaColeccion();
+        artista67.setEsBanda(false);
+        artista67.setGeneros(Arrays.asList(generos.get(generoMap.get("R&B"))));
+        artista67.setImagen("/artistas/AliciaKeys.jpg");
+        artista67.setNombre("Alicia Keys");
 
-        Document artista68 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("R&B")))
-                .append("imagen", "/artistas/Beyonce.jpg")
-                .append("nombre", "Beyoncé");
+        ArtistaColeccion artista68 = new ArtistaColeccion();
+        artista68.setEsBanda(false);
+        artista68.setGeneros(Arrays.asList(generos.get(generoMap.get("R&B"))));
+        artista68.setImagen("/artistas/Beyonce.jpg");
+        artista68.setNombre("Beyoncé");
 
-        Document artista69 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("R&B")))
-                .append("imagen", "/artistas/TheWeeknd.jpg")
-                .append("nombre", "The Weeknd");
+        ArtistaColeccion artista69 = new ArtistaColeccion();
+        artista69.setEsBanda(false);
+        artista69.setGeneros(Arrays.asList(generos.get(generoMap.get("R&B"))));
+        artista69.setImagen("/artistas/TheWeeknd.jpg");
+        artista69.setNombre("The Weeknd");
 
-        Document artista70 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("R&B")))
-                .append("imagen", "/artistas/BrunoMars.jpg")
-                .append("nombre", "Bruno Mars");
+        ArtistaColeccion artista70 = new ArtistaColeccion();
+        artista70.setEsBanda(false);
+        artista70.setGeneros(Arrays.asList(generos.get(generoMap.get("R&B"))));
+        artista70.setImagen("/artistas/BrunoMars.jpg");
+        artista70.setNombre("Bruno Mars");
 
         // Trap
-        Document artista71 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Trap")))
-                .append("imagen", "/artistas/Future.jpg")
-                .append("nombre", "Future");
+        ArtistaColeccion artista71 = new ArtistaColeccion();
+        artista71.setEsBanda(false);
+        artista71.setGeneros(Arrays.asList(generos.get(generoMap.get("Trap"))));
+        artista71.setImagen("/artistas/Future.jpg");
+        artista71.setNombre("Future");
 
-        Document artista72 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Trap")))
-                .append("imagen", "/artistas/TravisScott.jpg")
-                .append("nombre", "Travis Scott");
+        ArtistaColeccion artista72 = new ArtistaColeccion();
+        artista72.setEsBanda(false);
+        artista72.setGeneros(Arrays.asList(generos.get(generoMap.get("Trap"))));
+        artista72.setImagen("/artistas/TravisScott.jpg");
+        artista72.setNombre("Travis Scott");
 
-        Document artista73 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Trap")))
-                .append("imagen", "/artistas/PostMalone.jpg")
-                .append("nombre", "Post Malone");
+        ArtistaColeccion artista73 = new ArtistaColeccion();
+        artista73.setEsBanda(false);
+        artista73.setGeneros(Arrays.asList(generos.get(generoMap.get("Trap"))));
+        artista73.setImagen("/artistas/PostMalone.jpg");
+        artista73.setNombre("Post Malone");
 
-        Document artista74 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Trap")))
-                .append("imagen", "/artistas/LilSkies.jpg")
-                .append("nombre", "Lil Skies");
+        ArtistaColeccion artista74 = new ArtistaColeccion();
+        artista74.setEsBanda(false);
+        artista74.setGeneros(Arrays.asList(generos.get(generoMap.get("Trap"))));
+        artista74.setImagen("/artistas/LilSkies.jpg");
+        artista74.setNombre("Lil Skies");
 
-        Document artista75 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Trap")))
-                .append("imagen", "/artistas/Dillom.jpg")
-                .append("nombre", "Dillom");
+        ArtistaColeccion artista75 = new ArtistaColeccion();
+        artista75.setEsBanda(false);
+        artista75.setGeneros(Arrays.asList(generos.get(generoMap.get("Trap"))));
+        artista75.setImagen("/artistas/Dillom.jpg");
+        artista75.setNombre("Dillom");
 
-// Electrónica
-        Document artista76 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Electrónica")))
-                .append("imagen", "/artistas/CalvinHarris.jpg")
-                .append("nombre", "Calvin Harris");
+        // Electrónica
+        ArtistaColeccion artista76 = new ArtistaColeccion();
+        artista76.setEsBanda(false);
+        artista76.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista76.setImagen("/artistas/CalvinHarris.jpg");
+        artista76.setNombre("Calvin Harris");
 
-        Document artista77 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Electrónica")))
-                .append("imagen", "/artistas/DavidGuetta.jpg")
-                .append("nombre", "David Guetta");
+        ArtistaColeccion artista77 = new ArtistaColeccion();
+        artista77.setEsBanda(false);
+        artista77.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista77.setImagen("/artistas/DavidGuetta.jpg");
+        artista77.setNombre("David Guetta");
 
-        Document artista78 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Electrónica")))
-                .append("imagen", "/artistas/Deadmau5.jpg")
-                .append("nombre", "Deadmau5");
+        ArtistaColeccion artista78 = new ArtistaColeccion();
+        artista78.setEsBanda(false);
+        artista78.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista78.setImagen("/artistas/Deadmau5.jpg");
+        artista78.setNombre("Deadmau5");
 
-        Document artista79 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Electrónica")))
-                .append("imagen", "/artistas/Avicii.jpg")
-                .append("nombre", "Avicii");
+        ArtistaColeccion artista79 = new ArtistaColeccion();
+        artista79.setEsBanda(false);
+        artista79.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista79.setImagen("/artistas/Avicii.jpg");
+        artista79.setNombre("Avicii");
 
-        Document artista80 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Electrónica")))
-                .append("imagen", "/artistas/Skrillex.jpg")
-                .append("nombre", "Skrillex");
+        ArtistaColeccion artista80 = new ArtistaColeccion();
+        artista80.setEsBanda(false);
+        artista80.setGeneros(Arrays.asList(generos.get(generoMap.get("Electrónica"))));
+        artista80.setImagen("/artistas/Skrillex.jpg");
+        artista80.setNombre("Skrillex");
 
-// Rock Progresivo
-        Document artista81 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock Progresivo")))
-                .append("imagen", "/artistas/StevenWilson.jpg")
-                .append("nombre", "Steven Wilson");
+        // Rock Progresivo
+        ArtistaColeccion artista81 = new ArtistaColeccion();
+        artista81.setEsBanda(false);
+        artista81.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock Progresivo"))));
+        artista81.setImagen("/artistas/StevenWilson.jpg");
+        artista81.setNombre("Steven Wilson");
 
-        Document artista82 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock Progresivo")))
-                .append("imagen", "/artistas/RickWakeman.jpg")
-                .append("nombre", "Rick Wakeman");
+        ArtistaColeccion artista82 = new ArtistaColeccion();
+        artista82.setEsBanda(false);
+        artista82.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock Progresivo"))));
+        artista82.setImagen("/artistas/RickWakeman.jpg");
+        artista82.setNombre("Rick Wakeman");
 
-        Document artista83 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock Progresivo")))
-                .append("imagen", "/artistas/PeterGabriel.jpg")
-                .append("nombre", "Peter Gabriel");
+        ArtistaColeccion artista83 = new ArtistaColeccion();
+        artista83.setEsBanda(false);
+        artista83.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock Progresivo"))));
+        artista83.setImagen("/artistas/PeterGabriel.jpg");
+        artista83.setNombre("Peter Gabriel");
 
-        Document artista84 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock Progresivo")))
-                .append("imagen", "/artistas/JonAnderson.jpg")
-                .append("nombre", "Jon Anderson");
+        ArtistaColeccion artista84 = new ArtistaColeccion();
+        artista84.setEsBanda(false);
+        artista84.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock Progresivo"))));
+        artista84.setImagen("/artistas/JonAnderson.jpg");
+        artista84.setNombre("Jon Anderson");
 
-        Document artista85 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Rock Progresivo")))
-                .append("imagen", "/artistas/KeithEmerson.jpg")
-                .append("nombre", "Keith Emerson");
+        ArtistaColeccion artista85 = new ArtistaColeccion();
+        artista85.setEsBanda(false);
+        artista85.setGeneros(Arrays.asList(generos.get(generoMap.get("Rock Progresivo"))));
+        artista85.setImagen("/artistas/KeithEmerson.jpg");
+        artista85.setNombre("Keith Emerson");
 
-// Alternativo
-        Document artista86 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Alternativo")))
-                .append("imagen", "/artistas/Beck.jpg")
-                .append("nombre", "Beck");
+        // Alternativo
+        ArtistaColeccion artista86 = new ArtistaColeccion();
+        artista86.setEsBanda(false);
+        artista86.setGeneros(Arrays.asList(generos.get(generoMap.get("Alternativo"))));
+        artista86.setImagen("/artistas/Beck.jpg");
+        artista86.setNombre("Beck");
 
-        Document artista87 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Alternativo")))
-                .append("imagen", "/artistas/PJHarvey.jpg")
-                .append("nombre", "PJ Harvey");
+        ArtistaColeccion artista87 = new ArtistaColeccion();
+        artista87.setEsBanda(false);
+        artista87.setGeneros(Arrays.asList(generos.get(generoMap.get("Alternativo"))));
+        artista87.setImagen("/artistas/PJHarvey.jpg");
+        artista87.setNombre("PJ Harvey");
 
-        Document artista88 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Alternativo")))
-                .append("imagen", "/artistas/ToriAmos.jpg")
-                .append("nombre", "Tori Amos");
+        ArtistaColeccion artista88 = new ArtistaColeccion();
+        artista88.setEsBanda(false);
+        artista88.setGeneros(Arrays.asList(generos.get(generoMap.get("Alternativo"))));
+        artista88.setImagen("/artistas/ToriAmos.jpg");
+        artista88.setNombre("Tori Amos");
 
-        Document artista89 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Alternativo")))
-                .append("imagen", "/artistas/Bjork.jpg")
-                .append("nombre", "Bjork");
+        ArtistaColeccion artista89 = new ArtistaColeccion();
+        artista89.setEsBanda(false);
+        artista89.setGeneros(Arrays.asList(generos.get(generoMap.get("Alternativo"))));
+        artista89.setImagen("/artistas/Bjork.jpg");
+        artista89.setNombre("Bjork");
 
-        Document artista90 = new Document()
-                .append("esBanda", false)
-                .append("generos", Arrays.asList(generoMap.get("Alternativo")))
-                .append("imagen", "/artistas/TameImpala.jpg")
-                .append("nombre", "Tame Impala");
+        ArtistaColeccion artista90 = new ArtistaColeccion();
+        artista90.setEsBanda(false);
+        artista90.setGeneros(Arrays.asList(generos.get(generoMap.get("Alternativo"))));
+        artista90.setImagen("/artistas/TameImpala.jpg");
+        artista90.setNombre("Tame Impala");
 
-        List<Document> artistas = new ArrayList<>();
+
+
+        List<ArtistaColeccion> artistas = new ArrayList<>();
         artistas.add(artista1);
         artistas.add(artista2);
         artistas.add(artista3);
@@ -805,12 +810,13 @@ public class DatosDAO {
         artistas.add(artista90);
 
         artistaColeccion.insertMany(artistas);
-
-        Document integrante1 = new Document("esActivo", false)
-                .append("fechaIngreso", "1960-01-01T00:00:00.000+00:00")
-                .append("fechaRetiro", "1980-12-08T00:00:00.000+00:00")
-                .append("instrumento", "Guitarra y voz")
-                .append("nombre", "John Lennon");
+//
+//        IntegranteDoc integrante1 = new IntegranteDoc();
+//        integrante1.setEsActivo(false);
+//        integrante1.setFechaIngreso(LocalDate);
+//                .append("fechaRetiro", "1980-12-08T00:00:00.000+00:00")
+//                .append("instrumento", "Guitarra y voz")
+//                .append("nombre", "John Lennon");
 
         Document integrante2 = new Document("esActivo", false)
                 .append("fechaIngreso", "1960-01-01T00:00:00.000+00:00")
@@ -830,13 +836,13 @@ public class DatosDAO {
                 .append("instrumento", "Guitarra")
                 .append("nombre", "George Harrison");
 
-// BEATLES
-        Document banda1 = new Document()
-                .append("esBanda", true)
-                .append("generos", Arrays.asList(generoMap.get("Rock"), generoMap.get("Pop")))
-                .append("imagen", "/artistas/TheBeatles.jpg")
-                .append("integrante", Arrays.asList(integrante1, integrante2, integrante3, integrante4))
-                .append("nombre", "The Beatles");
+//// BEATLES
+//        Document banda1 = new Document()
+//                .append("esBanda", true)
+//                .append("generos", Arrays.asList(generoMap.get("Rock"), generoMap.get("Pop")))
+//                .append("imagen", "/artistas/TheBeatles.jpg")
+//                .append("integrante", Arrays.asList(integrante1, integrante2, integrante3, integrante4))
+//                .append("nombre", "The Beatles");
 
         Document integrante5 = new Document("esActivo", false)
                 .append("fechaIngreso", "1968-01-01T00:00:00.000+00:00")
@@ -2818,87 +2824,87 @@ public class DatosDAO {
                 .append("nombre", "The Killers");
 
 // Insertar bandas
-        artistaColeccion.insertMany(Arrays.asList(banda79, banda80, banda81, banda82, banda83));
-
-        List<Document> bandas = new ArrayList<>();
-        artistas.add(banda1);
-        artistas.add(banda2);
-        artistas.add(banda3);
-        artistas.add(banda4);
-        artistas.add(banda5);
-        artistas.add(banda6);
-        artistas.add(banda8);
-        artistas.add(banda9);
-        artistas.add(banda10);
-        artistas.add(banda11);
-        artistas.add(banda12);
-        artistas.add(banda13);
-        artistas.add(banda14);
-        artistas.add(banda15);
-        artistas.add(banda16);
-        artistas.add(banda17);
-        artistas.add(banda18);
-        artistas.add(banda19);
-        artistas.add(banda20);
-        artistas.add(banda21);
-        artistas.add(banda24);
-        artistas.add(banda25);
-        artistas.add(banda26);
-        artistas.add(banda27);
-        artistas.add(banda28);
-        artistas.add(banda29);
-        artistas.add(banda30);
-        artistas.add(banda31);
-        artistas.add(banda32);
-        artistas.add(banda33);
-        artistas.add(banda34);
-        artistas.add(banda35);
-        artistas.add(banda36);
-        artistas.add(banda37);
-        artistas.add(banda38);
-        artistas.add(banda39);
-        artistas.add(banda40);
-        artistas.add(banda41);
-        artistas.add(banda42);
-        artistas.add(banda45);
-        artistas.add(banda46);
-        artistas.add(banda47);
-        artistas.add(banda48);
-        artistas.add(banda49);
-        artistas.add(banda50);
-        artistas.add(banda51);
-        artistas.add(banda52);
-        artistas.add(banda53);
-        artistas.add(banda54);
-        artistas.add(banda55);
-        artistas.add(banda57);
-        artistas.add(banda58);
-        artistas.add(banda59);
-        artistas.add(banda60);
-        artistas.add(banda61);
-        artistas.add(banda62);
-        artistas.add(banda63);
-        artistas.add(banda64);
-        artistas.add(banda65);
-        artistas.add(banda66);
-        artistas.add(banda67);
-        artistas.add(banda68);
-        artistas.add(banda69);
-        artistas.add(banda70);
-        artistas.add(banda71);
-        artistas.add(banda72);
-        artistas.add(banda73);
-        artistas.add(banda74);
-        artistas.add(banda75);
-        artistas.add(banda76);
-        artistas.add(banda77);
-        artistas.add(banda79);
-        artistas.add(banda80);
-        artistas.add(banda81);
-        artistas.add(banda82);
-        artistas.add(banda83);
-
-        artistaColeccion.insertMany(artistas);
+//        artistaColeccion.insertMany(Arrays.asList(banda79, banda80, banda81, banda82, banda83));
+//
+//        List<Document> bandas = new ArrayList<>();
+//        artistas.add(banda1);
+//        artistas.add(banda2);
+//        artistas.add(banda3);
+//        artistas.add(banda4);
+//        artistas.add(banda5);
+//        artistas.add(banda6);
+//        artistas.add(banda8);
+//        artistas.add(banda9);
+//        artistas.add(banda10);
+//        artistas.add(banda11);
+//        artistas.add(banda12);
+//        artistas.add(banda13);
+//        artistas.add(banda14);
+//        artistas.add(banda15);
+//        artistas.add(banda16);
+//        artistas.add(banda17);
+//        artistas.add(banda18);
+//        artistas.add(banda19);
+//        artistas.add(banda20);
+//        artistas.add(banda21);
+//        artistas.add(banda24);
+//        artistas.add(banda25);
+//        artistas.add(banda26);
+//        artistas.add(banda27);
+//        artistas.add(banda28);
+//        artistas.add(banda29);
+//        artistas.add(banda30);
+//        artistas.add(banda31);
+//        artistas.add(banda32);
+//        artistas.add(banda33);
+//        artistas.add(banda34);
+//        artistas.add(banda35);
+//        artistas.add(banda36);
+//        artistas.add(banda37);
+//        artistas.add(banda38);
+//        artistas.add(banda39);
+//        artistas.add(banda40);
+//        artistas.add(banda41);
+//        artistas.add(banda42);
+//        artistas.add(banda45);
+//        artistas.add(banda46);
+//        artistas.add(banda47);
+//        artistas.add(banda48);
+//        artistas.add(banda49);
+//        artistas.add(banda50);
+//        artistas.add(banda51);
+//        artistas.add(banda52);
+//        artistas.add(banda53);
+//        artistas.add(banda54);
+//        artistas.add(banda55);
+//        artistas.add(banda57);
+//        artistas.add(banda58);
+//        artistas.add(banda59);
+//        artistas.add(banda60);
+//        artistas.add(banda61);
+//        artistas.add(banda62);
+//        artistas.add(banda63);
+//        artistas.add(banda64);
+//        artistas.add(banda65);
+//        artistas.add(banda66);
+//        artistas.add(banda67);
+//        artistas.add(banda68);
+//        artistas.add(banda69);
+//        artistas.add(banda70);
+//        artistas.add(banda71);
+//        artistas.add(banda72);
+//        artistas.add(banda73);
+//        artistas.add(banda74);
+//        artistas.add(banda75);
+//        artistas.add(banda76);
+//        artistas.add(banda77);
+//        artistas.add(banda79);
+//        artistas.add(banda80);
+//        artistas.add(banda81);
+//        artistas.add(banda82);
+//        artistas.add(banda83);
+//
+//        artistaColeccion.insertMany(artistas);
 
     }
 

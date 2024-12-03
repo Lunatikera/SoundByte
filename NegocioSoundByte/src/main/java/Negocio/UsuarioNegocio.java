@@ -9,6 +9,8 @@ import Colecciones.UsuarioColeccion;
 import DAO.UsuarioDAO;
 import DTO.GeneroDTO;
 import DTO.UsuarioDTO;
+import Docs.FavoritoDoc;
+import Docs.RestriccionDoc;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IUsuarioNegocio;
 import at.favre.lib.crypto.bcrypt.BCrypt;
@@ -33,6 +35,10 @@ public class UsuarioNegocio implements IUsuarioNegocio {
     public void crearUsuario(UsuarioDTO usuario) throws NegocioException {
         try
         {
+            
+            usuario.setRestringidos(new RestriccionDoc());
+            usuario.setFavoritos(new FavoritoDoc());
+            
             UsuarioColeccion usuarioColeccion = this.convertirUsuarioDTO(usuario);
             usuarioColeccion.setContraseña(Encriptacion.encriptarPassword(usuarioColeccion.getContraseña()));
             usuarioDAO.crearUsuario(usuarioColeccion);

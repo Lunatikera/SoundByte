@@ -38,10 +38,10 @@ public class PanelAlbumes extends javax.swing.JPanel {
     
     int cantidadAlbumes = 0;
 
-    List<AlbumDTO> albumesDesplegados = new ArrayList<>();
+    List<AlbumDTO> albumesTotal = new ArrayList<>();
     
     private int pagina=1;
-    private int LIMITE=0;
+    private int LIMITE=15;
 
     /**
      * Creates new form Prueba1
@@ -425,6 +425,7 @@ public class PanelAlbumes extends javax.swing.JPanel {
 
     private void btnFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrosActionPerformed
 
+        cantidadAlbumes = 0;
         panelAlbumesDesplegados.removeAll();
         
         DialogFiltros popup = new DialogFiltros(frmPrincipal,this, frmPrincipal.generoNegocio, frmPrincipal.getLoggedUser(), filtroMusica);
@@ -439,10 +440,13 @@ public class PanelAlbumes extends javax.swing.JPanel {
     }//GEN-LAST:event_buscadorActionPerformed
     public void buscarAlbumes(String filtro){
     
-        
+        LIMITE = 15;
+        pagina = 1;
+        lblPagina.setText("Página " + pagina);
+        cantidadAlbumes = 0;
         //Eliminamos las canciones previamente desplegadas si existen        
-        if(!albumesDesplegados.isEmpty())
-            albumesDesplegados.clear();
+        if(!albumesTotal.isEmpty())
+            albumesTotal.clear();
         
         //Eliminamos las canciones que se estén mostrando en pantalla
         panelAlbumesDesplegados.removeAll();
@@ -475,19 +479,20 @@ public class PanelAlbumes extends javax.swing.JPanel {
             if(albumes == null)
                 return;
             
+            albumesTotal = albumes;
+            
             for(AlbumDTO album : albumes)
                 cantidadAlbumes++;
             
             //Iteramos por cada album que nos regresa
             for(AlbumDTO album : albumes){
-                
-                    if(counter < LIMITE)
-                        continue;
-                    
-                    if(counter <= LIMITE + 15){
+
+                    if(counter > LIMITE){
+                        return;
+                    }
 
                     //Agregamos la canción desplegada en la lista de canciones
-                    albumesDesplegados.add(album);
+
                     
                     PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, this, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
                     
@@ -496,14 +501,59 @@ public class PanelAlbumes extends javax.swing.JPanel {
                     counter++;
                     }
 
-                }
+                
                 
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al buscar los albumes" + ex);
         }
         
+
+    }
+    
+    public void paginacionAdelante(int contador){
+    
+        panelAlbumesDesplegados.removeAll();
+        //Iteramos por cada album que nos regresa
+        for(int i = contador; i < LIMITE; i++){
+
+
+                PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, this, albumesTotal.get(i), frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
+
+                panelAlbumesDesplegados.add(panel);
+
+
+                
+
+            }
+        
+        this.revalidate();
+        this.repaint();
+        
         
     }
+    
+    public void paginacionAtras(int contador){
+    
+        panelAlbumesDesplegados.removeAll();
+        //Iteramos por cada album que nos regresa
+        for(int i = contador; i < LIMITE; i++){
+
+
+                PanelAlbumDesplegado panel = new PanelAlbumDesplegado(frmPrincipal, this, albumesTotal.get(i), frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.albumNegocio);
+
+                panelAlbumesDesplegados.add(panel);
+
+
+                
+
+            }
+        
+        this.revalidate();
+        this.repaint();
+        
+        
+    }
+    
     
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
         
@@ -525,7 +575,7 @@ public class PanelAlbumes extends javax.swing.JPanel {
             
             this.revalidate();
             this.repaint();
-            return;
+
             
         }
 
@@ -550,7 +600,7 @@ public class PanelAlbumes extends javax.swing.JPanel {
 
     private void btnPaginaMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMenosActionPerformed
 
-        if(LIMITE < 15){
+        if(LIMITE <= 15){
             JOptionPane.showMessageDialog(this, "No hay más páginas para atrás");
             return;
         }
@@ -558,7 +608,9 @@ public class PanelAlbumes extends javax.swing.JPanel {
         pagina--;
         lblPagina.setText("Página " + pagina);
         
+        int contador = LIMITE-30;
         LIMITE = LIMITE - 15;
+        paginacionAtras(contador);
         
     }//GEN-LAST:event_btnPaginaMenosActionPerformed
 
@@ -571,8 +623,10 @@ public class PanelAlbumes extends javax.swing.JPanel {
         
         pagina++;
         lblPagina.setText("Página " + pagina);
-        
+        int contador = LIMITE;
         LIMITE = LIMITE + 15;
+        
+        paginacionAdelante(contador);
         
     }//GEN-LAST:event_btnPaginaMasActionPerformed
 

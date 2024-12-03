@@ -174,7 +174,7 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
             }
         });
 
-        imagenCancion3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/albums/Peperina.jpg"))); // NOI18N
+        imagenCancion3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/images/fotoDefaultPerfil.png"))); // NOI18N
         imagenCancion3.setPreferredSize(new java.awt.Dimension(50, 50));
 
         btnFavCancion1.setNormalIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
@@ -318,10 +318,12 @@ public class PanelArtistaDesplegado extends javax.swing.JPanel {
     
     public void setImagenAlbum(){
                     
-        //Le ponemos la imagen del album correspondiente
+        try{//Le ponemos la imagen del album correspondiente
         ImageIcon imagen = new ImageIcon(getClass().getResource(artista.getImagen()));
         imagenCancion3.setImagen(imagen);
-
+        } catch(NullPointerException ex){
+            
+        }
     }
     
     public void cargarComponentes(){

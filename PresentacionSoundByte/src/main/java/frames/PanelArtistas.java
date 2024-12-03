@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -39,11 +40,11 @@ public class PanelArtistas extends javax.swing.JPanel {
     FiltroMusicaDTO filtroMusica = null;
     
     int cantidadArtistas = 0;
-
-    List<ArtistaDTO> artistasDesplegados = new ArrayList<>();
+    
+    List<ArtistaDTO> artistasTotal = new ArrayList<>();
     
     private int pagina=1;
-    private int LIMITE=0;
+    private int LIMITE=15;
 
     /**
      * Creates new form Prueba1
@@ -290,7 +291,7 @@ public class PanelArtistas extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Albumes");
+        jLabel3.setText("Artistas");
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
 
@@ -375,8 +376,8 @@ public class PanelArtistas extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(PanelBusquda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(panelArtistasDesplegados, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(panelArtistasDesplegados, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -402,12 +403,13 @@ public class PanelArtistas extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrosActionPerformed
 
+        cantidadArtistas = 0;
         panelArtistasDesplegados.removeAll();
         
         DialogFiltros popup = new DialogFiltros(frmPrincipal,this, frmPrincipal.generoNegocio, frmPrincipal.getLoggedUser(), filtroMusica);
@@ -422,10 +424,13 @@ public class PanelArtistas extends javax.swing.JPanel {
     }//GEN-LAST:event_buscadorActionPerformed
     public void buscarArtistas(String filtro){
     
-        
+        LIMITE = 15;
+        pagina = 1;
+        lblPagina.setText("Página " + pagina);
+        cantidadArtistas = 0;
         //Eliminamos las canciones previamente desplegadas si existen        
-        if(!artistasDesplegados.isEmpty())
-            artistasDesplegados.clear();
+        if(!artistasTotal.isEmpty())
+            artistasTotal.clear();
         
         //Eliminamos las canciones que se estén mostrando en pantalla
         panelArtistasDesplegados.removeAll();
@@ -435,6 +440,7 @@ public class PanelArtistas extends javax.swing.JPanel {
         //Buscamos las canciones con el filtro especificado
         try {
             
+            
             List<ArtistaDTO> artistas;
             
             if(filtroMusica == null)
@@ -442,46 +448,88 @@ public class PanelArtistas extends javax.swing.JPanel {
             
             else
                 artistas = frmPrincipal.artistaNegocio.obtenerArtistasPorBusquedaGeneros(filtro, filtroMusica.getGeneros());
-            
             //Si nos regresa datos vacíos, terminamos ejecución
             
             if(artistas == null)
                 return;
+            
+            artistasTotal = artistas;
             
             for(ArtistaDTO artista : artistas)
                 cantidadArtistas++;
             
             //Iteramos por cada album que nos regresa
             for(ArtistaDTO artista : artistas){
-                
-                    if(counter < LIMITE)
-                        continue;
-                    
-                    if(counter <= LIMITE + 15){
 
-                    //Agregamos la canción desplegada en la lista de canciones
-                    artistasDesplegados.add(artista);
-                    
+                    if(counter > LIMITE){
+                        return;
+                    }
+
                     PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal, this, artista, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
                     
                     panelArtistasDesplegados.add(panel);
                     
                     counter++;
-                    }
+                    
 
                 }
                 
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(this, "Error al buscar los artistas" + ex);
         }
+    }
+    
+    public void paginacionAdelante(int contador){
+    
+        panelArtistasDesplegados.removeAll();
+        //Iteramos por cada album que nos regresa
+        for(int i = contador; i < LIMITE; i++){
+
+
+                PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal, this, artistasTotal.get(i), frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
+
+                panelArtistasDesplegados.add(panel);
+
+
+                
+
+            }
+        
+        this.revalidate();
+        this.repaint();
         
         
     }
+    
+    public void paginacionAtras(int contador){
+    
+        panelArtistasDesplegados.removeAll();
+        //Iteramos por cada album que nos regresa
+        for(int i = contador; i < LIMITE ; i++){
+
+
+                PanelArtistaDesplegado panel = new PanelArtistaDesplegado(frmPrincipal, this, artistasTotal.get(i), frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio, frmPrincipal.artistaNegocio);
+
+                panelArtistasDesplegados.add(panel);
+
+  
+                
+
+            }
+    
+        this.revalidate();
+        this.repaint();
+
+        
+    }
+    
+    
     
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
         
         if(buscador.getText().equals("")){
 
+            cantidadArtistas = 0;
             panelArtistasDesplegados.removeAll();
 
             
@@ -518,7 +566,7 @@ public class PanelArtistas extends javax.swing.JPanel {
 
     private void btnPaginaMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMenosActionPerformed
 
-        if(LIMITE < 15){
+        if(LIMITE <= 15){
             JOptionPane.showMessageDialog(this, "No hay más páginas para atrás");
             return;
         }
@@ -526,7 +574,10 @@ public class PanelArtistas extends javax.swing.JPanel {
         pagina--;
         lblPagina.setText("Página " + pagina);
         
+        int contador = LIMITE-30;
         LIMITE = LIMITE - 15;
+        paginacionAtras(contador);
+
         
     }//GEN-LAST:event_btnPaginaMenosActionPerformed
 
@@ -539,8 +590,10 @@ public class PanelArtistas extends javax.swing.JPanel {
         
         pagina++;
         lblPagina.setText("Página " + pagina);
-        
+        int contador = LIMITE;
         LIMITE = LIMITE + 15;
+        
+        paginacionAdelante(contador);
         
     }//GEN-LAST:event_btnPaginaMasActionPerformed
 

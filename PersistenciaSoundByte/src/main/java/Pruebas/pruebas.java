@@ -5,9 +5,11 @@
 package Pruebas;
 
 import Colecciones.ArtistaColeccion;
+import Colecciones.GeneroColeccion;
 import Conexion.ConexionDB;
 import DAO.AlbumDAO;
 import DAO.ArtistaDAO;
+import DAO.DatosDAO;
 import DAO.GeneroDAO;
 import DAO.UsuarioDAO;
 import InterfacesDAO.IAlbumDAO;
@@ -16,8 +18,11 @@ import InterfacesDAO.IConexionDB;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
 import excepciones.PersistenciaException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -38,12 +43,25 @@ public class pruebas {
             IAlbumDAO albumDAO = new AlbumDAO(conexionDB);
             IArtistaDAO artistaDAO = new ArtistaDAO(conexionDB);
             
+            DatosDAO datos = new DatosDAO(conexionDB);
+            
             generoDAO.buscarGeneroPorNombre("Prog");
 
 //            System.out.println(albumDAO.obtenerCancionesPorBusqueda("p",  generoDAO.buscarGeneroPorNombre("pock")));
-            ArtistaColeccion artista = artistaDAO.obtenerArtistasPorBusquedaGeneros("Geordie", generoDAO.buscarTodosGeneros()).get(0);
+//            ArtistaColeccion artista = artistaDAO.obtenerArtistasPorBusquedaGeneros("Geordie", generoDAO.buscarTodosGeneros()).get(0);
             
-            System.out.println(albumDAO.obtenerAlbumesPorArtista(artista).toString());
+//            System.out.println(generoDAO.buscarGeneroPorNombre("Rock").toString());
+
+//            List<ObjectId> ids = new ArrayList<>();
+//            for(GeneroColeccion genero : generoDAO.buscarTodosGeneros()){
+//            
+//                ids.add(genero.getId());
+//            }
+//
+            System.out.println(artistaDAO.obtenerArtistasPorBusquedaGeneros("Luis", generoDAO.buscarTodosGeneros()));
+
+            datos.insercionMasiva();
+//            System.out.println(albumDAO.obtenerAlbumesPorArtista(artista).toString());
 
         } catch (PersistenciaException ex) {
             Logger.getLogger(pruebas.class.getName()).log(Level.SEVERE, null, ex);
