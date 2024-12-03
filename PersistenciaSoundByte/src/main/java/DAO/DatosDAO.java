@@ -7,6 +7,7 @@ package DAO;
 import Colecciones.AlbumColeccion;
 import Colecciones.ArtistaColeccion;
 import Colecciones.GeneroColeccion;
+import Docs.CancionDoc;
 import Docs.IntegranteDoc;
 import InterfacesDAO.IConexionDB;
 import com.mongodb.client.MongoCollection;
@@ -849,6 +850,33 @@ public class DatosDAO {
         banda1.setImagen("/artistas/TheBeatles.jpg");
         banda1.setIntegrante(Arrays.asList(integrante1, integrante2, integrante3, integrante4));
         banda1.setNombre("The Beatles");
+
+        AlbumColeccion album1 = new AlbumColeccion();
+        album1.setNombre("Abbey Road");
+        album1.setImagen("/albumes/AbbeyRoad.jpg");
+        album1.setFechaLanzamiento(LocalDate.of(1969, 9, 26));
+        album1.setCanciones(Arrays.asList(
+                new CancionDoc("Come Together"),
+                new CancionDoc("Something"),
+                new CancionDoc("Here Comes the Sun"),
+                new CancionDoc("Octopus's Garden"),
+                new CancionDoc("I Want You (She's So Heavy)")
+        ));
+        album1.setArtista(banda1);
+
+        // Álbum de The Beatles
+        AlbumColeccion album2 = new AlbumColeccion();
+        album2.setNombre("Sgt. Pepper's Lonely Hearts Club Band");
+        album2.setImagen("/albumes/SgtPeppers.jpg");
+        album2.setFechaLanzamiento(LocalDate.of(1967, 6, 1));
+        album2.setCanciones(Arrays.asList(
+                new CancionDoc("Sgt. Pepper's Lonely Hearts Club Band"),
+                new CancionDoc("With a Little Help from My Friends"),
+                new CancionDoc("Lucy in the Sky with Diamonds"),
+                new CancionDoc("Fixing a Hole"),
+                new CancionDoc("A Day in the Life")
+        ));
+        album2.setArtista(banda1);
 
         // Led Zeppelin
         IntegranteDoc integrante5 = new IntegranteDoc();
@@ -3063,7 +3091,7 @@ public class DatosDAO {
 // Banda The Killers
         ArtistaColeccion banda83 = new ArtistaColeccion();
         banda83.setEsBanda(true);
-        banda83.setGeneros(Arrays.asList(alternativo,rock));
+        banda83.setGeneros(Arrays.asList(alternativo, rock));
         banda83.setImagen("/artistas/TheKillers.jpg");
         banda83.setIntegrante(Arrays.asList(integrante2580, integrante2590, integrante2600, integrante2610));
         banda83.setNombre("The Killers");
@@ -3151,12 +3179,6 @@ public class DatosDAO {
 
         MongoCollection<AlbumColeccion> albumCollection = database.getCollection("Albumes", AlbumColeccion.class);
 
-//        AlbumColeccion album1 = new AlbumColeccion();
-//        album1.setNombre(nombre);
-//        album1.setImagen(imagen);
-//        album1.setFechaLanzamiento(LocalDate.MIN);
-//        album1.setCanciones(LocalDate.MIN);
-//        album1.setArtista(artista);
     }
 
 }
