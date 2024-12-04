@@ -166,8 +166,10 @@ public class PanelCancion extends javax.swing.JPanel {
         //Album
         lblNombreAlbum.setText(album.getNombre());
         
+        try{
         Icon imagenAlbumIcon = new ImageIcon(getClass().getResource(album.getImagen()));
         imagenAlbum.setImage(imagenAlbumIcon);
+        }catch(NullPointerException ex){}
         
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy");
         String anio = album.getFechaLanzamiento().format(formato);
@@ -177,8 +179,12 @@ public class PanelCancion extends javax.swing.JPanel {
         
         lblNombreArtista.setText(album.getArtista().getNombre());
         
+        try{
         Icon imagenArtistaIcon = new ImageIcon(getClass().getResource(album.getArtista().getImagen()));
         imagenArtista.setImagen(imagenArtistaIcon);
+            
+        }catch(NullPointerException ex){}
+       
         
         llenarListGeneros(album.getArtista().getGeneros());
         

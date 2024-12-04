@@ -158,13 +158,14 @@ public class PanelAlbum extends javax.swing.JPanel {
     
         //Album
         lblNombreAlbum.setText(album.getNombre());
-        
+        try{
         Icon imagenAlbumIcon = new ImageIcon(getClass().getResource(album.getImagen()));
         imagenAlbum.setImagen(imagenAlbumIcon);
+        }catch(NullPointerException ex){}
         
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy");
         String anio = album.getFechaLanzamiento().format(formato);
-
+        
         
         //Artista
         

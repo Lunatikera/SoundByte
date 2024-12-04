@@ -148,8 +148,10 @@ public class PanelArtista extends javax.swing.JPanel {
         
         lblNombreArtista.setText(artista.getNombre());
         
+        try{
         Icon imagenArtistaIcon = new ImageIcon(getClass().getResource(artista.getImagen()));
         imagenArtista.setImagen(imagenArtistaIcon);
+        }catch(NullPointerException ex){}
         
         String informacion = new String();
         
