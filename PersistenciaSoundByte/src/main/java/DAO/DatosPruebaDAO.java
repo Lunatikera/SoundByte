@@ -214,7 +214,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista8.setGeneros(Arrays.asList(jazz));
         artista8.setImagen("/artistas/DizzyGillespie.jpg");
         artista8.setNombre("Dizzy Gillespie");
-
+ 
         ArtistaColeccion artista9 = new ArtistaColeccion();
         artista9.setEsBanda(false);
         artista9.setGeneros(Arrays.asList(jazz));
@@ -234,6 +234,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista11.setImagen("/artistas/Madonna.jpg");
         artista11.setNombre("Madonna");
 
+        
         ArtistaColeccion artista12 = new ArtistaColeccion();
         artista12.setEsBanda(false);
         artista12.setGeneros(Arrays.asList(pop));
@@ -278,6 +279,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista18.setImagen("/artistas/GregoryIsaacs.jpg");
         artista18.setNombre("Gregory Isaacs");
 
+        
         ArtistaColeccion artista19 = new ArtistaColeccion();
         artista19.setEsBanda(false);
         artista19.setGeneros(Arrays.asList(reggae));
@@ -297,6 +299,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista21.setImagen("/artistas/MuddyWaters.jpg");
         artista21.setNombre("Muddy Waters");
 
+        
         ArtistaColeccion artista22 = new ArtistaColeccion();
         artista22.setEsBanda(false);
         artista22.setGeneros(Arrays.asList(blues));
@@ -410,6 +413,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista39.setNombre("Lil Wayne");
 
 // Clásica
+
         ArtistaColeccion artista40 = new ArtistaColeccion();
         artista40.setEsBanda(false);
         artista40.setGeneros(Arrays.asList(clasica));
@@ -428,6 +432,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista42.setImagen("/artistas/JohannSebastianBach.jpg");
         artista42.setNombre("Johann Sebastian Bach");
 
+        
         ArtistaColeccion artista43 = new ArtistaColeccion();
         artista43.setEsBanda(false);
         artista43.setGeneros(Arrays.asList(clasica));
@@ -578,11 +583,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista66.setImagen("/artistas/AliciaKeys.jpg");
         artista66.setNombre("Alicia Keys");
 
-        ArtistaColeccion artista67 = new ArtistaColeccion();
-        artista67.setEsBanda(false);
-        artista67.setGeneros(Arrays.asList(rnb));
-        artista67.setImagen("/artistas/Beyonce.jpg");
-        artista67.setNombre("Beyoncé");
+    
 
         ArtistaColeccion artista68 = new ArtistaColeccion();
         artista68.setEsBanda(false);
@@ -691,6 +692,7 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artista84.setNombre("Keith Emerson");
 
 // Alternativo
+
         ArtistaColeccion artista85 = new ArtistaColeccion();
         artista85.setEsBanda(false);
         artista85.setGeneros(Arrays.asList(alternativo));
@@ -789,7 +791,6 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         artistas.add(artista64);
         artistas.add(artista65);
         artistas.add(artista66);
-        artistas.add(artista67);
         artistas.add(artista68);
         artistas.add(artista69);
         artistas.add(artista70);
