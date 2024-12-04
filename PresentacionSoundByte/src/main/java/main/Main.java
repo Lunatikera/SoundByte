@@ -7,19 +7,23 @@ package main;
 import Conexion.ConexionDB;
 import DAO.AlbumDAO;
 import DAO.ArtistaDAO;
+import DAO.DatosPruebaDAO;
 import DAO.GeneroDAO;
 import DAO.UsuarioDAO;
 import InterfacesDAO.IAlbumDAO;
 import InterfacesDAO.IArtistaDAO;
 import InterfacesDAO.IConexionDB;
+import InterfacesDAO.IDatosPruebaDAO;
 import InterfacesDAO.IGeneroDAO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IArtistaNegocio;
+import InterfacesNegocio.IDatosPruebaNegocio;
 import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.AlbumNegocio;
 import Negocio.ArtistaNegocio;
+import Negocio.DatosPruebaNegocio;
 import Negocio.GeneroNegocio;
 import Negocio.UsuarioNegocio;
 import frames.FrmLogIn;
@@ -49,7 +53,10 @@ public class Main {
         IGeneroDAO generoDAO = new GeneroDAO(conexionDB);
         IGeneroNegocio generoNegocio = new GeneroNegocio(generoDAO);
         
-        FrmLogIn logIn = new FrmLogIn(usuarioNegocio, albumNegocio, generoNegocio, artistaNegocio);
+        IDatosPruebaDAO datosPruebaDAO= new DatosPruebaDAO(conexionDB);
+        IDatosPruebaNegocio datosPruebaNegocio= new DatosPruebaNegocio(datosPruebaDAO);
+        
+        FrmLogIn logIn = new FrmLogIn(usuarioNegocio, albumNegocio, generoNegocio, artistaNegocio, datosPruebaNegocio);
         logIn.setVisible(true);
 
     }

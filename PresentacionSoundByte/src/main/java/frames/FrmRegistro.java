@@ -9,6 +9,7 @@ import DTO.UsuarioDTO;
 import InterfacesDAO.IUsuarioDAO;
 import InterfacesNegocio.IAlbumNegocio;
 import InterfacesNegocio.IArtistaNegocio;
+import InterfacesNegocio.IDatosPruebaNegocio;
 import InterfacesNegocio.IGeneroNegocio;
 import InterfacesNegocio.IUsuarioNegocio;
 import Negocio.UsuarioNegocio;
@@ -50,16 +51,18 @@ public class FrmRegistro extends javax.swing.JFrame {
     IAlbumNegocio albumNegocio;
     IGeneroNegocio generoNegocio;
     IArtistaNegocio artistaNegocio;
-    
+    IDatosPruebaNegocio datosNegocio;
+
     byte[] imagenPerfilNueva;
 
-    public FrmRegistro(IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio, IGeneroNegocio generoNegocio, IArtistaNegocio artistaNegocio) {
+    public FrmRegistro(IUsuarioNegocio usuarioNegocio, IAlbumNegocio albumNegocio, IGeneroNegocio generoNegocio, IArtistaNegocio artistaNegocio, IDatosPruebaNegocio datosNegocio) {
         initComponents();
         this.usuarioNegocio = usuarioNegocio;
         this.albumNegocio = albumNegocio;
         this.generoNegocio = generoNegocio;
         this.artistaNegocio = artistaNegocio;
-        
+        this.datosNegocio = datosNegocio;
+
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Registrate");
         this.jLabel1.setFocusable(true);
@@ -492,7 +495,8 @@ public class FrmRegistro extends javax.swing.JFrame {
         try {
             this.usuarioNegocio.crearUsuario(usuarioNuevo);
             JOptionPane.showMessageDialog(this, "Usuario creado con éxito");
-            FrmLogIn login = new FrmLogIn(usuarioNegocio, albumNegocio, generoNegocio, artistaNegocio);
+
+            FrmLogIn login = new FrmLogIn(usuarioNegocio, albumNegocio, generoNegocio, artistaNegocio, datosNegocio);
             login.setVisible(true);
             this.dispose();
         } catch (NegocioException ex) {
@@ -525,7 +529,7 @@ public class FrmRegistro extends javax.swing.JFrame {
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // Mostrar el selector de archivos
         JFileChooser fileChooser = new JFileChooser();
-        
+
         fileChooser.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File file) {
@@ -533,17 +537,17 @@ public class FrmRegistro extends javax.swing.JFrame {
                     return true; // Allow navigation
                 }
                 String fileName = file.getName().toLowerCase();
-                return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") ||
-                       fileName.endsWith(".png") || fileName.endsWith(".gif") ||
-                       fileName.endsWith(".bmp");
+                return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")
+                        || fileName.endsWith(".png") || fileName.endsWith(".gif")
+                        || fileName.endsWith(".bmp");
             }
 
             @Override
             public String getDescription() {
                 return "Image Files (*.jpg, *.jpeg, *.png, *.gif, *.bmp)";
             }
-            });
-        
+        });
+
         int result = fileChooser.showOpenDialog(this);
 
         // Verificar si se seleccionó un archivo
@@ -573,7 +577,6 @@ public class FrmRegistro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarImagen;

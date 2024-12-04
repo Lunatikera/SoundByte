@@ -10,6 +10,7 @@ import Colecciones.GeneroColeccion;
 import Docs.CancionDoc;
 import Docs.IntegranteDoc;
 import InterfacesDAO.IConexionDB;
+import InterfacesDAO.IDatosPruebaDAO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -26,11 +27,11 @@ import org.bson.types.ObjectId;
  *
  * @author carli
  */
-public class DatosDAO {
+public class DatosPruebaDAO implements IDatosPruebaDAO {
 
     private final MongoDatabase database;
 
-    public DatosDAO(IConexionDB conexionDB) {
+    public DatosPruebaDAO(IConexionDB conexionDB) {
         this.database = conexionDB.getDatabase();
     }
 
@@ -140,7 +141,6 @@ public class DatosDAO {
         generos.add(soul);
         generos.add(punk);
         generos.add(funk);
-        generos.add(musicaLatina);
         generos.add(musicaLatina);
         generos.add(rnb);
         generos.add(trap);
@@ -4445,7 +4445,7 @@ public class DatosDAO {
         banda83.setNombre("The Killers");
 
 // Insertar bandas
-        List<Document> bandas = new ArrayList<>();
+        artistas.clear();
         artistas.add(banda1);
         artistas.add(banda2);
         artistas.add(banda3);
@@ -4527,6 +4527,12 @@ public class DatosDAO {
 
         MongoCollection<AlbumColeccion> albumCollection = database.getCollection("Albumes", AlbumColeccion.class);
 
+    }
+
+    @Override
+    public boolean verificarExixstenciaDatos() {
+        MongoCollection<AlbumColeccion> albumCollection = database.getCollection("Albumes", AlbumColeccion.class);
+        return albumCollection.find().iterator().hasNext();
     }
 
 }
