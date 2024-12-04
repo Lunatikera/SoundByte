@@ -22,7 +22,7 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Clase Datos
  * @author stae
  */
 public class DatosDAO implements IDatosDAO{

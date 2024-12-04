@@ -5,7 +5,7 @@
 package excepciones;
 
 /**
- *
+ * clase expciones
  * @author SantiagoSanchez
  */
 public class PersistenciaException extends Exception {

@@ -9,7 +9,7 @@ import excepciones.PersistenciaException;
 import java.util.List;
 
 /**
- *
+ * interfaz ed género
  * @author santi
  */
 public interface IGeneroDAO {

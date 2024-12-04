@@ -17,15 +17,22 @@ import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 /**
- *
+ * Clase conexión
  * @author SantiagoSanchez
  */
 public class ConexionDB implements IConexionDB {
 
+    /**
+     * Declaración de variables
+     */
     private MongoClient mongoClient;
     private MongoDatabase database;
 
-    // Constructor que recibe parámetros de conexión
+    /**
+     * Constructor que recibe parámetros de conexión
+     * @param connectionString conexión 
+     * @param databaseName nombre de la base de datos
+     */
     public ConexionDB(String connectionString, String databaseName) {
         // Configurar el CodecRegistry para POJOs
         CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
@@ -41,11 +48,18 @@ public class ConexionDB implements IConexionDB {
         this.database = mongoClient.getDatabase(databaseName); // Obtener base de datos
     }
 
+    /**
+     * Método para obtener la base de datos
+     * @return regresa la base de datos
+     */
     @Override
     public MongoDatabase getDatabase() {
         return this.database;
     }
 
+    /**
+     * Método para cerrar la conexión
+     */
     @Override
     public void close() {
         if (mongoClient != null) {

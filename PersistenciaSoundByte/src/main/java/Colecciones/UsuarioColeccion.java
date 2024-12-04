@@ -10,7 +10,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Clase usuario
  * @author SantiagoSanchez
  */
 public class UsuarioColeccion {
@@ -70,8 +70,8 @@ public class UsuarioColeccion {
     }
 
     /**
-     * 
-     * @return 
+     * Método para obtener correo
+     * @return regresa el correo
      */
     public String getCorreoElectronico() {
         return correoElectronico;

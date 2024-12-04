@@ -7,12 +7,19 @@ package InterfacesDAO;
 import com.mongodb.client.MongoDatabase;
 
 /**
- *
+ * interfaz de conexion
  * @author SantiagoSanchez
  */
 public interface IConexionDB {
 
+    /**
+     * obtiene la bd
+     * @return la bd
+     */
     public MongoDatabase getDatabase();
 
+    /**
+     * cierra la conexion
+     */
     public void close();
 }

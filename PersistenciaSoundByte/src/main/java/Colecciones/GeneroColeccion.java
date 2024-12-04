@@ -7,7 +7,7 @@ package Colecciones;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * Clase genero
  * @author santi
  */
 public class GeneroColeccion {

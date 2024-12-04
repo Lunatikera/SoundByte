@@ -26,7 +26,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 /**
- *
+ * CLase Album DOA
  * @author santi
  */
 public class AlbumDAO implements IAlbumDAO{
@@ -38,7 +38,7 @@ public class AlbumDAO implements IAlbumDAO{
 
     /**
      * Constructor 
-     * @param conexionDB 
+     * @param conexionDB conexionDB
      */
     public AlbumDAO(IConexionDB conexionDB) {
         MongoDatabase database = conexionDB.getDatabase();  // MongoDB o MySQL dependiendo de la implementación

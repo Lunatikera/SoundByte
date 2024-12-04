@@ -5,23 +5,44 @@
 package InterfacesDAO;
 
 /**
- *
+ * interfaces datos
  * @author stae
  */
 public interface IDatosDAO {
     
+    /**
+     * Método de inserción
+     */
     public void insertarGenerosS();
     
+    /**
+     * Método de inserción
+     */
     public void insertarGenerosC();
     
+    /**
+     * Método de inserción
+     */
     public void insertarGenerosO();
     
+    /**
+     * Método de inserción
+     */
     public void insertarArtistasSolo();
     
+    /**
+     * Método de inserción
+     */
     public void insertarArtistasBanda();
     
+    /**
+     * Método de inserción
+     */
     public void insertarAlbumesArtistas();
     
+    /**
+     * Método de inserción
+     */
     public void insertarAlbumesBanda();
     
 }

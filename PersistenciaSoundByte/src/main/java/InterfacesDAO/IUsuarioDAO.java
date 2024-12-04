@@ -10,7 +10,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- *
+ * interfaz usuario
  * @author SantiagoSanchez
  */
 public interface IUsuarioDAO {
@@ -18,7 +18,7 @@ public interface IUsuarioDAO {
     /**
      * Método para crear usuario en la coleccion
      * @param usuario usuario a crear
-     * @throws PersistenciaException 
+     * @throws PersistenciaException excepcion
      */
     public void crearUsuario(UsuarioColeccion usuario) throws PersistenciaException;
     

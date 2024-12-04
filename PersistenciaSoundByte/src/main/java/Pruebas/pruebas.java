@@ -16,12 +16,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * clase pruebas
  * @author santi
  */
 public class pruebas {
 
     /**
+     * Método de constructo
      * @param args the command line arguments
      */
     public static void main(String[] args) {

@@ -23,7 +23,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
 
 /**
- *
+ * Clase Genero
  * @author santi
  */
 public class GeneroDAO implements IGeneroDAO {
@@ -33,16 +33,24 @@ public class GeneroDAO implements IGeneroDAO {
      */
     private final CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
     private final IConexionDB conexionDB;
-
     private final MongoCollection<GeneroColeccion> coleccion;
 
-    // Constructor con inyección de dependencia para la conexión
+    
+    /**
+     * Constructor con inyección de dependencia para la conexión
+     * @param conexionDB conexion
+     */
     public GeneroDAO(IConexionDB conexionDB) {
         this.conexionDB = conexionDB;
         MongoDatabase database = conexionDB.getDatabase();  // MongoDB o MySQL dependiendo de la implementación
         this.coleccion = database.getCollection("Generos", GeneroColeccion.class);
     }
 
+    /**
+     * Método para obtener los géneros
+     * @return regresa los géneros
+     * @throws PersistenciaException lanza excepción
+     */
     @Override
     public List<GeneroColeccion> buscarTodosGeneros() throws PersistenciaException {
         try {
@@ -56,7 +64,13 @@ public class GeneroDAO implements IGeneroDAO {
         }
     }
 
-    // Ejemplo de método adicional para búsqueda por nombre
+    
+    /**
+     * Ejemplo de método adicional para búsqueda por nombre
+     * @param nombre nombre del gpenero
+     * @return regresa el género
+     * @throws PersistenciaException lanza excepción
+     */
     @Override
     public List<GeneroColeccion> buscarGeneroPorNombre(String nombre) throws PersistenciaException {
         try {

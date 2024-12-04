@@ -14,7 +14,7 @@ import excepciones.PersistenciaException;
 import org.bson.conversions.Bson;
 
 /**
- *
+ * Clase usuarioDAO
  * @author SantiagoSanchez
  */
 
