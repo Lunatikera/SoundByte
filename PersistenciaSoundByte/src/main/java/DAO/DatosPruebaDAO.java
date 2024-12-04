@@ -4311,7 +4311,6 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         banda79.setIntegrante(Arrays.asList(integrante2410, integrante2420, integrante2430, integrante2440, integrante2450));
         banda79.setNombre("The Strokes");
 
-// Continuar de manera similar para el resto de las bandas...
 // Integrantes de Interpol
         IntegranteDoc integrante2460 = new IntegranteDoc();
         integrante2460.setEsActivo(true);
