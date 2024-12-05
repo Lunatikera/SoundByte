@@ -4527,6 +4527,3374 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
 
         MongoCollection<AlbumColeccion> albumCollection = database.getCollection("Albumes", AlbumColeccion.class);
 
+        // Álbum 101: "Buena Vista Social Club"
+        AlbumColeccion album101 = new AlbumColeccion();
+        album101.setNombre("Buena Vista Social Club");
+        album101.setImagen("/albumes/BuenaVistaSocialClub.jpg");
+        album101.setFechaLanzamiento(LocalDate.of(1997, 6, 23));
+        album101.setCanciones(Arrays.asList(
+                new CancionDoc("Chan Chan"),
+                new CancionDoc("De Camino a la Vereda"),
+                new CancionDoc("El Cuarto de Tula"),
+                new CancionDoc("Dos Gardenias"),
+                new CancionDoc("¿Y Tú Qué Has Hecho?"),
+                new CancionDoc("Veinte Años"),
+                new CancionDoc("Orgullecida")
+        ));
+        album101.setArtista(banda58); // Asumiendo que ya se definió artista101 para Buena Vista Social Club
+
+// Álbum 102: "Lost and Found"
+        AlbumColeccion album102 = new AlbumColeccion();
+        album102.setNombre("Lost and Found");
+        album102.setImagen("/albumes/LostAndFound.jpg");
+        album102.setFechaLanzamiento(LocalDate.of(2015, 3, 23));
+        album102.setCanciones(Arrays.asList(
+                new CancionDoc("Bruca Maniguá"),
+                new CancionDoc("Macusa"),
+                new CancionDoc("Tiene Sabor"),
+                new CancionDoc("Guajira en F"),
+                new CancionDoc("Como Fue"),
+                new CancionDoc("Quizás, Quizás, Quizás"),
+                new CancionDoc("Lágrimas Negras")
+        ));
+        album102.setArtista(banda58); // Asumiendo que ya se definió artista101 para Buena Vista Social Club
+
+        // Álbum 103: "Cómo Te Voy a Olvidar"
+        AlbumColeccion album103 = new AlbumColeccion();
+        album103.setNombre("Cómo Te Voy a Olvidar");
+        album103.setImagen("/albumes/ComoTeVoyAOlvidar.jpg");
+        album103.setFechaLanzamiento(LocalDate.of(1996, 3, 15));
+        album103.setCanciones(Arrays.asList(
+                new CancionDoc("Cómo Te Voy a Olvidar"),
+                new CancionDoc("El Listón de Tu Pelo"),
+                new CancionDoc("Entrega de Amor"),
+                new CancionDoc("Mis Sentimientos"),
+                new CancionDoc("Toma Que Toma")
+        ));
+        album103.setArtista(banda59); // Asumiendo que ya se definió artista103 para Los Ángeles Azules
+
+// Álbum 104: "De Plaza en Plaza"
+        AlbumColeccion album104 = new AlbumColeccion();
+        album104.setNombre("De Plaza en Plaza");
+        album104.setImagen("/albumes/DePlazaEnPlaza.jpg");
+        album104.setFechaLanzamiento(LocalDate.of(2016, 9, 30));
+        album104.setCanciones(Arrays.asList(
+                new CancionDoc("17 Años (feat. Saúl Hernández)"),
+                new CancionDoc("Entrega de Amor (feat. Ha*Ash)"),
+                new CancionDoc("Cómo Te Voy a Olvidar (feat. Kinky)"),
+                new CancionDoc("Mis Sentimientos (feat. Ximena Sariñana)"),
+                new CancionDoc("Nunca Es Suficiente (feat. Natalia Lafourcade)")
+        ));
+        album104.setArtista(banda59); // Asumiendo que ya se definió artista103 para Los Ángeles Azules
+
+        // Álbum 105: "Into"
+        AlbumColeccion album105 = new AlbumColeccion();
+        album105.setNombre("Into");
+        album105.setImagen("/albumes/Into.jpg");
+        album105.setFechaLanzamiento(LocalDate.of(2017, 2, 7));
+        album105.setCanciones(Arrays.asList(
+                new CancionDoc("Feel"),
+                new CancionDoc("Too Fast"),
+                new CancionDoc("Lovely"),
+                new CancionDoc("Baldwin Park"),
+                new CancionDoc("Searchin"),
+                new CancionDoc("Care")
+        ));
+        album105.setArtista(banda60); // Asumiendo que ya se definió artista105 para Sonder
+
+// Álbum 106: "Nobody Knows"
+        AlbumColeccion album106 = new AlbumColeccion();
+        album106.setNombre("Nobody Knows");
+        album106.setImagen("/albumes/NobodyKnows.jpg");
+        album106.setFechaLanzamiento(LocalDate.of(2021, 11, 19));
+        album106.setCanciones(Arrays.asList(
+                new CancionDoc("What You Heard"),
+                new CancionDoc("Nobody But You"),
+                new CancionDoc("Look Like"),
+                new CancionDoc("Mad Riches"),
+                new CancionDoc("Tape Loop"),
+                new CancionDoc("Heartstrings")
+        ));
+        album106.setArtista(banda60); // Asumiendo que ya se definió artista105 para Sonder
+
+        // Álbum 107: "Ego Death"
+        AlbumColeccion album107 = new AlbumColeccion();
+        album107.setNombre("Ego Death");
+        album107.setImagen("/albumes/EgoDeath.jpg");
+        album107.setFechaLanzamiento(LocalDate.of(2015, 6, 26));
+        album107.setCanciones(Arrays.asList(
+                new CancionDoc("Get Away"),
+                new CancionDoc("Gabby"),
+                new CancionDoc("Under Control"),
+                new CancionDoc("Go With It"),
+                new CancionDoc("Just Sayin/I Tried"),
+                new CancionDoc("For the World"),
+                new CancionDoc("Girl")
+        ));
+        album107.setArtista(banda61); // Asumiendo que ya se definió artista107 para The Internet
+
+// Álbum 108: "Hive Mind"
+        AlbumColeccion album108 = new AlbumColeccion();
+        album108.setNombre("Hive Mind");
+        album108.setImagen("/albumes/HiveMind.jpg");
+        album108.setFechaLanzamiento(LocalDate.of(2018, 7, 20));
+        album108.setCanciones(Arrays.asList(
+                new CancionDoc("Come Together"),
+                new CancionDoc("Roll (Burbank Funk)"),
+                new CancionDoc("Come Over"),
+                new CancionDoc("Stay the Night"),
+                new CancionDoc("Mood"),
+                new CancionDoc("La Di Da"),
+                new CancionDoc("It Gets Better (With Time)")
+        ));
+        album108.setArtista(banda61); // Asumiendo que ya se definió artista107 para The Internet
+
+// Álbum 109: "Saturation"
+        AlbumColeccion album109 = new AlbumColeccion();
+        album109.setNombre("Saturation");
+        album109.setImagen("/albumes/Saturation.jpg");
+        album109.setFechaLanzamiento(LocalDate.of(2017, 6, 9));
+        album109.setCanciones(Arrays.asList(
+                new CancionDoc("HEAT"),
+                new CancionDoc("GOLD"),
+                new CancionDoc("STAR"),
+                new CancionDoc("BOYS"),
+                new CancionDoc("CASH"),
+                new CancionDoc("MILK"),
+                new CancionDoc("FACE")
+        ));
+        album109.setArtista(banda62); // Asumiendo que ya se definió artista109 para Brockhampton
+
+// Álbum 110: "Iridescence"
+        AlbumColeccion album110 = new AlbumColeccion();
+        album110.setNombre("Iridescence");
+        album110.setImagen("/albumes/Iridescence.jpg");
+        album110.setFechaLanzamiento(LocalDate.of(2018, 9, 21));
+        album110.setCanciones(Arrays.asList(
+                new CancionDoc("NEW ORLEANS"),
+                new CancionDoc("THUG LIFE"),
+                new CancionDoc("BERLIN"),
+                new CancionDoc("SOMETHING ABOUT HIM"),
+                new CancionDoc("WEIGHT"),
+                new CancionDoc("DISTRICT"),
+                new CancionDoc("SAN MARCOS")
+        ));
+        album110.setArtista(banda62); // Asumiendo que ya se definió artista109 para Brockhampton
+
+// Álbum 111: "Culture"
+        AlbumColeccion album111 = new AlbumColeccion();
+        album111.setNombre("Culture");
+        album111.setImagen("/albumes/Culture.jpg");
+        album111.setFechaLanzamiento(LocalDate.of(2017, 1, 27));
+        album111.setCanciones(Arrays.asList(
+                new CancionDoc("T-Shirt"),
+                new CancionDoc("Bad and Boujee"),
+                new CancionDoc("Slippery"),
+                new CancionDoc("Get Right Witcha"),
+                new CancionDoc("Kelly Price"),
+                new CancionDoc("What the Price"),
+                new CancionDoc("Deadz")
+        ));
+        album111.setArtista(banda63); // Asumiendo que ya se definió artista111 para Migos
+
+// Álbum 112: "Culture II"
+        AlbumColeccion album112 = new AlbumColeccion();
+        album112.setNombre("Culture II");
+        album112.setImagen("/albumes/CultureII.jpg");
+        album112.setFechaLanzamiento(LocalDate.of(2018, 1, 26));
+        album112.setCanciones(Arrays.asList(
+                new CancionDoc("Walk It Talk It"),
+                new CancionDoc("Stir Fry"),
+                new CancionDoc("Narcos"),
+                new CancionDoc("Motorsport"),
+                new CancionDoc("Made Men"),
+                new CancionDoc("Notice Me"),
+                new CancionDoc("Top Down on Da NAWF")
+        ));
+        album112.setArtista(banda63); // Asumiendo que ya se definió artista111 para Migos
+
+// Álbum 113: "JACKBOYS"
+        AlbumColeccion album113 = new AlbumColeccion();
+        album113.setNombre("JACKBOYS");
+        album113.setImagen("/albumes/JACKBOYS.jpg");
+        album113.setFechaLanzamiento(LocalDate.of(2019, 12, 27));
+        album113.setCanciones(Arrays.asList(
+                new CancionDoc("HIGHEST IN THE ROOM (Remix)"),
+                new CancionDoc("JACKBOYS"),
+                new CancionDoc("GANG GANG"),
+                new CancionDoc("HAD ENOUGH"),
+                new CancionDoc("OUT WEST"),
+                new CancionDoc("WHAT TO DO?"),
+                new CancionDoc("GATTI")
+        ));
+        album113.setArtista(banda64); // Asumiendo que ya se definió artista113 para JACKBOYS
+
+// Álbum 114: "Utopia Pack"
+        AlbumColeccion album114 = new AlbumColeccion();
+        album114.setNombre("Utopia Pack");
+        album114.setImagen("/albumes/UtopiaPack.jpg");
+        album114.setFechaLanzamiento(LocalDate.of(2023, 8, 4)); // Ejemplo de fecha
+        album114.setCanciones(Arrays.asList(
+                new CancionDoc("ESCAPE PLAN"),
+                new CancionDoc("Mafia"),
+                new CancionDoc("FE!N"),
+                new CancionDoc("LOST FOREVER"),
+                new CancionDoc("TOPIA TWINS"),
+                new CancionDoc("MODERN JAM"),
+                new CancionDoc("K-POP")
+        ));
+        album114.setArtista(banda64); // Asumiendo que ya se definió artista113 para JACKBOYS
+
+// Álbum 115: "Party Pack"
+        AlbumColeccion album115 = new AlbumColeccion();
+        album115.setNombre("Party Pack");
+        album115.setImagen("/albumes/PartyPack.jpg");
+        album115.setFechaLanzamiento(LocalDate.of(2018, 8, 3));
+        album115.setCanciones(Arrays.asList(
+                new CancionDoc("Musty"),
+                new CancionDoc("Nun Major"),
+                new CancionDoc("Whuss the Deal"),
+                new CancionDoc("Hella Juiced"),
+                new CancionDoc("Trap Niggaz"),
+                new CancionDoc("Spaceship"),
+                new CancionDoc("Foreign")
+        ));
+        album115.setArtista(banda65); // Asumiendo que ya se definió artista115 para Shoreline Mafia
+
+// Álbum 116: "Mafia Bidness"
+        AlbumColeccion album116 = new AlbumColeccion();
+        album116.setNombre("Mafia Bidness");
+        album116.setImagen("/albumes/MafiaBidness.jpg");
+        album116.setFechaLanzamiento(LocalDate.of(2020, 7, 31));
+        album116.setCanciones(Arrays.asList(
+                new CancionDoc("Change Ya Life"),
+                new CancionDoc("Hoe Shit"),
+                new CancionDoc("Gangstas & Sippas"),
+                new CancionDoc("Ride Out"),
+                new CancionDoc("Perc Popper"),
+                new CancionDoc("How We Do It"),
+                new CancionDoc("All the Time")
+        ));
+        album116.setArtista(banda65); // Asumiendo que ya se definió artista115 para Shoreline Mafia
+
+// Álbum 117: "SremmLife"
+        AlbumColeccion album117 = new AlbumColeccion();
+        album117.setNombre("SremmLife");
+        album117.setImagen("/albumes/SremmLife.jpg");
+        album117.setFechaLanzamiento(LocalDate.of(2015, 1, 6));
+        album117.setCanciones(Arrays.asList(
+                new CancionDoc("No Flex Zone"),
+                new CancionDoc("No Type"),
+                new CancionDoc("Throw Sum Mo"),
+                new CancionDoc("Up Like Trump"),
+                new CancionDoc("This Could Be Us")
+        ));
+        album117.setArtista(banda66); // Rae Sremmurd
+
+// Álbum 118: "SremmLife 2"
+        AlbumColeccion album118 = new AlbumColeccion();
+        album118.setNombre("SremmLife 2");
+        album118.setImagen("/albumes/SremmLife2.jpg");
+        album118.setFechaLanzamiento(LocalDate.of(2016, 8, 12));
+        album118.setCanciones(Arrays.asList(
+                new CancionDoc("Black Beatles"),
+                new CancionDoc("Swang"),
+                new CancionDoc("Look Alive"),
+                new CancionDoc("Do Yoga"),
+                new CancionDoc("Real Chill")
+        ));
+        album118.setArtista(banda66); // Rae Sremmurd
+
+// Álbum 119: "Period"
+        AlbumColeccion album119 = new AlbumColeccion();
+        album119.setNombre("Period");
+        album119.setImagen("/albumes/Period.jpg");
+        album119.setFechaLanzamiento(LocalDate.of(2018, 5, 11));
+        album119.setCanciones(Arrays.asList(
+                new CancionDoc("Period (We Live)"),
+                new CancionDoc("Where the Bag At"),
+                new CancionDoc("Tighten Up"),
+                new CancionDoc("Not Ya Main"),
+                new CancionDoc("Millionaire Dick")
+        ));
+        album119.setArtista(banda67); // City Girls
+
+// Álbum 120: "Girl Code"
+        AlbumColeccion album120 = new AlbumColeccion();
+        album120.setNombre("Girl Code");
+        album120.setImagen("/albumes/GirlCode.jpg");
+        album120.setFechaLanzamiento(LocalDate.of(2018, 11, 16));
+        album120.setCanciones(Arrays.asList(
+                new CancionDoc("Act Up"),
+                new CancionDoc("Twerk (feat. Cardi B)"),
+                new CancionDoc("Clout Chasin"),
+                new CancionDoc("Season"),
+                new CancionDoc("Broke Boy")
+        ));
+        album120.setArtista(banda67); // City Girls
+
+// Álbum 121: "Discovery"
+        AlbumColeccion album121 = new AlbumColeccion();
+        album121.setNombre("Discovery");
+        album121.setImagen("/albumes/Discovery.jpg");
+        album121.setFechaLanzamiento(LocalDate.of(2001, 3, 12));
+        album121.setCanciones(Arrays.asList(
+                new CancionDoc("One More Time"),
+                new CancionDoc("Digital Love"),
+                new CancionDoc("Harder, Better, Faster, Stronger"),
+                new CancionDoc("Aerodynamic"),
+                new CancionDoc("Veridis Quo")
+        ));
+        album121.setArtista(banda68); // Daft Punk
+
+// Álbum 122: "Random Access Memories"
+        AlbumColeccion album122 = new AlbumColeccion();
+        album122.setNombre("Random Access Memories");
+        album122.setImagen("/albumes/RandomAccessMemories.jpg");
+        album122.setFechaLanzamiento(LocalDate.of(2013, 5, 17));
+        album122.setCanciones(Arrays.asList(
+                new CancionDoc("Get Lucky (feat. Pharrell Williams)"),
+                new CancionDoc("Instant Crush (feat. Julian Casablancas)"),
+                new CancionDoc("Lose Yourself to Dance"),
+                new CancionDoc("Touch"),
+                new CancionDoc("Doin' It Right (feat. Panda Bear)")
+        ));
+        album122.setArtista(banda68); // Daft Punk
+
+// Álbum 123: "Dig Your Own Hole"
+        AlbumColeccion album123 = new AlbumColeccion();
+        album123.setNombre("Dig Your Own Hole");
+        album123.setImagen("/albumes/DigYourOwnHole.jpg");
+        album123.setFechaLanzamiento(LocalDate.of(1997, 4, 7));
+        album123.setCanciones(Arrays.asList(
+                new CancionDoc("Block Rockin' Beats"),
+                new CancionDoc("The Private Psychedelic Reel"),
+                new CancionDoc("Dig Your Own Hole"),
+                new CancionDoc("Elektrobank"),
+                new CancionDoc("It Began in Afrika")
+        ));
+        album123.setArtista(banda69); // The Chemical Brothers
+
+// Álbum 124: "Surrender"
+        AlbumColeccion album124 = new AlbumColeccion();
+        album124.setNombre("Surrender");
+        album124.setImagen("/albumes/Surrender.jpg");
+        album124.setFechaLanzamiento(LocalDate.of(1999, 7, 19));
+        album124.setCanciones(Arrays.asList(
+                new CancionDoc("Hey Boy Hey Girl"),
+                new CancionDoc("Let Forever Be"),
+                new CancionDoc("The Sunshine Underground"),
+                new CancionDoc("Out of Control"),
+                new CancionDoc("Music: Response")
+        ));
+        album124.setArtista(banda69); // The Chemical Brothers
+
+// Álbum 125: "Autobahn"
+        AlbumColeccion album125 = new AlbumColeccion();
+        album125.setNombre("Autobahn");
+        album125.setImagen("/albumes/Autobahn.jpg");
+        album125.setFechaLanzamiento(LocalDate.of(1974, 11, 1));
+        album125.setCanciones(Arrays.asList(
+                new CancionDoc("Autobahn"),
+                new CancionDoc("Kometenmelodie 1"),
+                new CancionDoc("Kometenmelodie 2"),
+                new CancionDoc("Mitternacht"),
+                new CancionDoc("Morgenspaziergang")
+        ));
+        album125.setArtista(banda70); // Kraftwerk
+
+// Álbum 126: "The Man-Machine"
+        AlbumColeccion album126 = new AlbumColeccion();
+        album126.setNombre("The Man-Machine");
+        album126.setImagen("/albumes/TheManMachine.jpg");
+        album126.setFechaLanzamiento(LocalDate.of(1978, 5, 1));
+        album126.setCanciones(Arrays.asList(
+                new CancionDoc("The Robots"),
+                new CancionDoc("Computer World"),
+                new CancionDoc("The Model"),
+                new CancionDoc("Neon Lights"),
+                new CancionDoc("The Man-Machine")
+        ));
+        album126.setArtista(banda70); // Kraftwerk
+
+// Álbum 127: "†" (Cross)
+        AlbumColeccion album127 = new AlbumColeccion();
+        album127.setNombre("† (Cross)");
+        album127.setImagen("/albumes/Cross.jpg");
+        album127.setFechaLanzamiento(LocalDate.of(2007, 6, 11));
+        album127.setCanciones(Arrays.asList(
+                new CancionDoc("Genesis"),
+                new CancionDoc("Let There Be Light"),
+                new CancionDoc("D.A.N.C.E."),
+                new CancionDoc("Newjack"),
+                new CancionDoc("Phantom")
+        ));
+        album127.setArtista(banda71); // Justice
+
+// Álbum 128: "Audio, Video, Disco"
+        AlbumColeccion album128 = new AlbumColeccion();
+        album128.setNombre("Audio, Video, Disco");
+        album128.setImagen("/albumes/AudioVideoDisco.jpg");
+        album128.setFechaLanzamiento(LocalDate.of(2011, 10, 25));
+        album128.setCanciones(Arrays.asList(
+                new CancionDoc("Horsepower"),
+                new CancionDoc("Civilization"),
+                new CancionDoc("Audio, Video, Disco"),
+                new CancionDoc("On'n'On"),
+                new CancionDoc("Canon")
+        ));
+        album128.setArtista(banda71); // Justice
+
+// Álbum 129: "MSTRKRFT"
+        AlbumColeccion album129 = new AlbumColeccion();
+        album129.setNombre("MSTRKRFT");
+        album129.setImagen("/albumes/MSTRKRFT.jpg");
+        album129.setFechaLanzamiento(LocalDate.of(2006, 3, 7));
+        album129.setCanciones(Arrays.asList(
+                new CancionDoc("Work On You"),
+                new CancionDoc("MSTRKRFT"),
+                new CancionDoc("Street Justice"),
+                new CancionDoc("La Musica")
+        ));
+        album129.setArtista(banda72); // MSTRKRFT
+
+// Álbum 130: "Fist of God"
+        AlbumColeccion album130 = new AlbumColeccion();
+        album130.setNombre("Fist of God");
+        album130.setImagen("/albumes/FistOfGod.jpg");
+        album130.setFechaLanzamiento(LocalDate.of(2009, 3, 17));
+        album130.setCanciones(Arrays.asList(
+                new CancionDoc("Bounce"),
+                new CancionDoc("Beard Lives"),
+                new CancionDoc("The Looks"),
+                new CancionDoc("Fist of God")
+        ));
+        album130.setArtista(banda72); // MSTRKRFT
+
+// Álbum 131: "The Dark Side of the Moon"
+        AlbumColeccion album131 = new AlbumColeccion();
+        album131.setNombre("The Dark Side of the Moon");
+        album131.setImagen("/albumes/DarkSideOfTheMoon.jpg");
+        album131.setFechaLanzamiento(LocalDate.of(1973, 3, 1));
+        album131.setCanciones(Arrays.asList(
+                new CancionDoc("Speak to Me"),
+                new CancionDoc("Breathe"),
+                new CancionDoc("Time"),
+                new CancionDoc("Money"),
+                new CancionDoc("Us and Them")
+        ));
+        album131.setArtista(banda73); // Pink Floyd
+
+// Álbum 132: "The Wall"
+        AlbumColeccion album132 = new AlbumColeccion();
+        album132.setNombre("The Wall");
+        album132.setImagen("/albumes/TheWall.jpg");
+        album132.setFechaLanzamiento(LocalDate.of(1979, 11, 30));
+        album132.setCanciones(Arrays.asList(
+                new CancionDoc("In the Flesh?"),
+                new CancionDoc("The Thin Ice"),
+                new CancionDoc("Another Brick in the Wall, Part 1"),
+                new CancionDoc("Mother"),
+                new CancionDoc("Comfortably Numb")
+        ));
+        album132.setArtista(banda73); // Pink Floyd
+
+// Álbum 133: "Peperina"
+        AlbumColeccion album133 = new AlbumColeccion();
+        album133.setNombre("Peperina");
+        album133.setImagen("/albumes/Peperina.jpg");
+        album133.setFechaLanzamiento(LocalDate.of(1981, 1, 1));
+        album133.setCanciones(Arrays.asList(
+                new CancionDoc("La Grasa de las Capitales"),
+                new CancionDoc("Peperina"),
+                new CancionDoc("El Anillo del Capitán Beto"),
+                new CancionDoc("San Francisco y el Loco")
+        ));
+        album133.setArtista(banda74); // Serú Girán
+
+// Álbum 134: "Serú Girán"
+        AlbumColeccion album134 = new AlbumColeccion();
+        album134.setNombre("Serú Girán");
+        album134.setImagen("/albumes/SeruGiran.jpg");
+        album134.setFechaLanzamiento(LocalDate.of(1978, 1, 1));
+        album134.setCanciones(Arrays.asList(
+                new CancionDoc("Los Libros de la Buena Memoria"),
+                new CancionDoc("El Anillo del Capitán Beto"),
+                new CancionDoc("Semilla de Dios"),
+                new CancionDoc("Eiti Leda")
+        ));
+        album134.setArtista(banda74); // Serú Girán
+
+// Álbum 135: "Fragile"
+        AlbumColeccion album135 = new AlbumColeccion();
+        album135.setNombre("Fragile");
+        album135.setImagen("/albumes/Fragile.jpg");
+        album135.setFechaLanzamiento(LocalDate.of(1971, 12, 1));
+        album135.setCanciones(Arrays.asList(
+                new CancionDoc("Roundabout"),
+                new CancionDoc("Cans and Brahms"),
+                new CancionDoc("We Have Heaven"),
+                new CancionDoc("Mood for a Day")
+        ));
+        album135.setArtista(banda75); // Yes
+
+// Álbum 136: "Close to the Edge"
+        AlbumColeccion album136 = new AlbumColeccion();
+        album136.setNombre("Close to the Edge");
+        album136.setImagen("/albumes/CloseToTheEdge.jpg");
+        album136.setFechaLanzamiento(LocalDate.of(1972, 9, 13));
+        album136.setCanciones(Arrays.asList(
+                new CancionDoc("Close to the Edge"),
+                new CancionDoc("And You and I"),
+                new CancionDoc("Total Mass Retain")
+        ));
+        album136.setArtista(banda75); // Yes
+
+// Álbum 137: "The Lamb Lies Down on Broadway"
+        AlbumColeccion album137 = new AlbumColeccion();
+        album137.setNombre("The Lamb Lies Down on Broadway");
+        album137.setImagen("/albumes/TheLambLiesDownOnBroadway.jpg");
+        album137.setFechaLanzamiento(LocalDate.of(1974, 11, 29));
+        album137.setCanciones(Arrays.asList(
+                new CancionDoc("The Lamb Lies Down on Broadway"),
+                new CancionDoc("Fly on a Windshield"),
+                new CancionDoc("In the Cage"),
+                new CancionDoc("Back in N.Y.C.")
+        ));
+        album137.setArtista(banda76); // Genesis
+
+// Álbum 138: "Selling England by the Pound"
+        AlbumColeccion album138 = new AlbumColeccion();
+        album138.setNombre("Selling England by the Pound");
+        album138.setImagen("/albumes/SellingEnglandByThePound.jpg");
+        album138.setFechaLanzamiento(LocalDate.of(1973, 10, 13));
+        album138.setCanciones(Arrays.asList(
+                new CancionDoc("Dancing with the Moonlit Knight"),
+                new CancionDoc("I Know What I Like (In Your Wardrobe)"),
+                new CancionDoc("Firth of Fifth"),
+                new CancionDoc("The Cinema Show")
+        ));
+        album138.setArtista(banda76); // Genesis
+
+// Álbum 139: "In the Court of the Crimson King"
+        AlbumColeccion album139 = new AlbumColeccion();
+        album139.setNombre("In the Court of the Crimson King");
+        album139.setImagen("/albumes/InTheCourtOfTheCrimsonKing.jpg");
+        album139.setFechaLanzamiento(LocalDate.of(1969, 10, 10));
+        album139.setCanciones(Arrays.asList(
+                new CancionDoc("21st Century Schizoid Man"),
+                new CancionDoc("I Talk to the Wind"),
+                new CancionDoc("Epitaph"),
+                new CancionDoc("In the Court of the Crimson King")
+        ));
+        album139.setArtista(banda77); // King Crimson
+
+// Álbum 140: "Red"
+        AlbumColeccion album140 = new AlbumColeccion();
+        album140.setNombre("Red");
+        album140.setImagen("/albumes/Red.jpg");
+        album140.setFechaLanzamiento(LocalDate.of(1974, 10, 6));
+        album140.setCanciones(Arrays.asList(
+                new CancionDoc("Red"),
+                new CancionDoc("Fallen Angel"),
+                new CancionDoc("One More Red Nightmare"),
+                new CancionDoc("Starless")
+        ));
+        album140.setArtista(banda77); // King Crimson
+
+// Álbum 141: "Is This It"
+        AlbumColeccion album141 = new AlbumColeccion();
+        album141.setNombre("Is This It");
+        album141.setImagen("/albumes/IsThisIt.jpg");
+        album141.setFechaLanzamiento(LocalDate.of(2001, 7, 30));
+        album141.setCanciones(Arrays.asList(
+                new CancionDoc("Is This It"),
+                new CancionDoc("The Modern Age"),
+                new CancionDoc("Soma"),
+                new CancionDoc("Barely Legal")
+        ));
+        album141.setArtista(banda79); // The Strokes
+
+// Álbum 142: "Room on Fire"
+        AlbumColeccion album142 = new AlbumColeccion();
+        album142.setNombre("Room on Fire");
+        album142.setImagen("/albumes/RoomOnFire.jpg");
+        album142.setFechaLanzamiento(LocalDate.of(2003, 10, 28));
+        album142.setCanciones(Arrays.asList(
+                new CancionDoc("What Ever Happened?"),
+                new CancionDoc("Reptilia"),
+                new CancionDoc("Automatic Stop"),
+                new CancionDoc("12:51")
+        ));
+        album142.setArtista(banda79); // The Strokes
+
+// Álbum 143: "Turn on the Bright Lights"
+        AlbumColeccion album143 = new AlbumColeccion();
+        album143.setNombre("Turn on the Bright Lights");
+        album143.setImagen("/albumes/TurnOnTheBrightLights.jpg");
+        album143.setFechaLanzamiento(LocalDate.of(2002, 8, 20));
+        album143.setCanciones(Arrays.asList(
+                new CancionDoc("Pioneer to the Falls"),
+                new CancionDoc("Slow Hands"),
+                new CancionDoc("Obstacle 1"),
+                new CancionDoc("Leif Erikson")
+        ));
+        album143.setArtista(banda80); // Interpol
+
+// Álbum 144: "Antics"
+        AlbumColeccion album144 = new AlbumColeccion();
+        album144.setNombre("Antics");
+        album144.setImagen("/albumes/Antics.jpg");
+        album144.setFechaLanzamiento(LocalDate.of(2004, 9, 28));
+        album144.setCanciones(Arrays.asList(
+                new CancionDoc("Next Exit"),
+                new CancionDoc("Evil"),
+                new CancionDoc("Slow Hands"),
+                new CancionDoc("The Heinrich Maneuver")
+        ));
+        album144.setArtista(banda80); // Interpol
+
+// Álbum 145: "OK Computer"
+        AlbumColeccion album145 = new AlbumColeccion();
+        album145.setNombre("OK Computer");
+        album145.setImagen("/albumes/OKComputer.jpg");
+        album145.setFechaLanzamiento(LocalDate.of(1997, 5, 21));
+        album145.setCanciones(Arrays.asList(
+                new CancionDoc("Airbag"),
+                new CancionDoc("Paranoid Android"),
+                new CancionDoc("Subterranean Homesick Alien"),
+                new CancionDoc("Exit Music (For a Film)")
+        ));
+        album145.setArtista(banda81); // Radiohead
+
+// Álbum 146: "Kid A"
+        AlbumColeccion album146 = new AlbumColeccion();
+        album146.setNombre("Kid A");
+        album146.setImagen("/albumes/KidA.jpg");
+        album146.setFechaLanzamiento(LocalDate.of(2000, 10, 2));
+        album146.setCanciones(Arrays.asList(
+                new CancionDoc("Everything In Its Right Place"),
+                new CancionDoc("Kid A"),
+                new CancionDoc("The National Anthem"),
+                new CancionDoc("How to Disappear Completely")
+        ));
+        album146.setArtista(banda81); // Radiohead
+
+// Álbum 147: "Whatever People Say I Am, That's What I'm Not"
+        AlbumColeccion album147 = new AlbumColeccion();
+        album147.setNombre("Whatever People Say I Am, That's What I'm Not");
+        album147.setImagen("/albumes/WhateverPeopleSayIAm.jpg");
+        album147.setFechaLanzamiento(LocalDate.of(2006, 1, 23));
+        album147.setCanciones(Arrays.asList(
+                new CancionDoc("The View from the Afternoon"),
+                new CancionDoc("I Bet You Look Good on the Dancefloor"),
+                new CancionDoc("Fake Tales of San Francisco"),
+                new CancionDoc("Dancing Shoes")
+        ));
+        album147.setArtista(banda82); // Arctic Monkeys
+
+// Álbum 148: "AM"
+        AlbumColeccion album148 = new AlbumColeccion();
+        album148.setNombre("AM");
+        album148.setImagen("/albumes/AM.jpg");
+        album148.setFechaLanzamiento(LocalDate.of(2013, 9, 9));
+        album148.setCanciones(Arrays.asList(
+                new CancionDoc("Do I Wanna Know?"),
+                new CancionDoc("R U Mine?"),
+                new CancionDoc("Why'd You Only Call Me When You're High?"),
+                new CancionDoc("Arabella")
+        ));
+        album148.setArtista(banda82); // Arctic Monkeys
+
+// Álbum 149: "Hot Fuss"
+        AlbumColeccion album149 = new AlbumColeccion();
+        album149.setNombre("Hot Fuss");
+        album149.setImagen("/albumes/HotFuss.jpg");
+        album149.setFechaLanzamiento(LocalDate.of(2004, 6, 7));
+        album149.setCanciones(Arrays.asList(
+                new CancionDoc("Mr. Brightside"),
+                new CancionDoc("Somebody Told Me"),
+                new CancionDoc("Smile Like You Mean It"),
+                new CancionDoc("All These Things That I've Done")
+        ));
+        album149.setArtista(banda83); // The Killers
+
+// Álbum 150: "Sam's Town"
+        AlbumColeccion album150 = new AlbumColeccion();
+        album150.setNombre("Sam's Town");
+        album150.setImagen("/albumes/SamsTown.jpg");
+        album150.setFechaLanzamiento(LocalDate.of(2006, 9, 27));
+        album150.setCanciones(Arrays.asList(
+                new CancionDoc("When You Were Young"),
+                new CancionDoc("Bones"),
+                new CancionDoc("Read My Mind"),
+                new CancionDoc("Sam's Town (Abbey Road version)")
+        ));
+        album150.setArtista(banda83); // The Killers
+
+        // Álbum 151: "Elvis Presley"
+        AlbumColeccion album151 = new AlbumColeccion();
+        album151.setNombre("Elvis Presley");
+        album151.setImagen("/albumes/ElvisPresley.jpg");
+        album151.setFechaLanzamiento(LocalDate.of(1956, 1, 1));
+        album151.setCanciones(Arrays.asList(
+                new CancionDoc("Blue Suede Shoes"),
+                new CancionDoc("I Got a Woman"),
+                new CancionDoc("Money Honey"),
+                new CancionDoc("Heartbreak Hotel")
+        ));
+        album151.setArtista(artista); // Elvis Presley
+
+// Álbum 152: "Elvis: 30 #1 Hits"
+        AlbumColeccion album152 = new AlbumColeccion();
+        album152.setNombre("Elvis: 30 #1 Hits");
+        album152.setImagen("/albumes/Elvis30Hits.jpg");
+        album152.setFechaLanzamiento(LocalDate.of(2002, 1, 1));
+        album152.setCanciones(Arrays.asList(
+                new CancionDoc("Hound Dog"),
+                new CancionDoc("Can't Help Falling in Love"),
+                new CancionDoc("Suspicious Minds"),
+                new CancionDoc("Jailhouse Rock")
+        ));
+        album152.setArtista(artista); // Elvis Presley
+
+// Álbum 153: "Are You Experienced"
+        AlbumColeccion album153 = new AlbumColeccion();
+        album153.setNombre("Are You Experienced");
+        album153.setImagen("/albumes/AreYouExperienced.jpg");
+        album153.setFechaLanzamiento(LocalDate.of(1967, 5, 12));
+        album153.setCanciones(Arrays.asList(
+                new CancionDoc("Purple Haze"),
+                new CancionDoc("Hey Joe"),
+                new CancionDoc("The Wind Cries Mary"),
+                new CancionDoc("Foxy Lady")
+        ));
+        album153.setArtista(artista1); // Jimi Hendrix
+
+// Álbum 154: "Electric Ladyland"
+        AlbumColeccion album154 = new AlbumColeccion();
+        album154.setNombre("Electric Ladyland");
+        album154.setImagen("/albumes/ElectricLadyland.jpg");
+        album154.setFechaLanzamiento(LocalDate.of(1968, 10, 25));
+        album154.setCanciones(Arrays.asList(
+                new CancionDoc("All Along the Watchtower"),
+                new CancionDoc("Voodoo Child (Slight Return)"),
+                new CancionDoc("Crosstown Traffic"),
+                new CancionDoc("Little Miss Strange")
+        ));
+        album154.setArtista(artista1); // Jimi Hendrix
+
+// Álbum 155: "Artaud"
+        AlbumColeccion album155 = new AlbumColeccion();
+        album155.setNombre("Artaud");
+        album155.setImagen("/albumes/Artaud.jpg");
+        album155.setFechaLanzamiento(LocalDate.of(1973, 3, 1));
+        album155.setCanciones(Arrays.asList(
+                new CancionDoc("Bajo el sol de la tarde"),
+                new CancionDoc("El anillo del Capitán Beto"),
+                new CancionDoc("La colina de la vida"),
+                new CancionDoc("Cementerio Club")
+        ));
+        album155.setArtista(artista2); // Luis Alberto Spinetta
+
+// Álbum 156: "Spinetta Jade - Los Libros de la Buena Memoria"
+        AlbumColeccion album156 = new AlbumColeccion();
+        album156.setNombre("Los Libros de la Buena Memoria");
+        album156.setImagen("/albumes/LosLibrosDeLaBuenaMemoria.jpg");
+        album156.setFechaLanzamiento(LocalDate.of(1983, 5, 1));
+        album156.setCanciones(Arrays.asList(
+                new CancionDoc("Seguir Viviendo Sin Tu Amor"),
+                new CancionDoc("La libertad es una palabra"),
+                new CancionDoc("Los libros de la buena memoria"),
+                new CancionDoc("No hay tiempo")
+        ));
+        album156.setArtista(artista2); // Luis Alberto Spinetta
+
+// Álbum 157: "At Folsom Prison"
+        AlbumColeccion album157 = new AlbumColeccion();
+        album157.setNombre("At Folsom Prison");
+        album157.setImagen("/albumes/AtFolsomPrison.jpg");
+        album157.setFechaLanzamiento(LocalDate.of(1968, 5, 6));
+        album157.setCanciones(Arrays.asList(
+                new CancionDoc("Folsom Prison Blues"),
+                new CancionDoc("I Still Miss Someone"),
+                new CancionDoc("Cocaine Blues"),
+                new CancionDoc("25 Minutes to Go")
+        ));
+        album157.setArtista(artista3); // Johnny Cash
+
+// Álbum 158: "Johnny Cash at San Quentin"
+        AlbumColeccion album158 = new AlbumColeccion();
+        album158.setNombre("Johnny Cash at San Quentin");
+        album158.setImagen("/albumes/AtSanQuentin.jpg");
+        album158.setFechaLanzamiento(LocalDate.of(1969, 6, 16));
+        album158.setCanciones(Arrays.asList(
+                new CancionDoc("A Boy Named Sue"),
+                new CancionDoc("San Quentin"),
+                new CancionDoc("I Walk the Line"),
+                new CancionDoc("Folsom Prison Blues")
+        ));
+        album158.setArtista(artista3); // Johnny Cash
+
+// Álbum 159: "The Rise and Fall of Ziggy Stardust and the Spiders from Mars"
+        AlbumColeccion album159 = new AlbumColeccion();
+        album159.setNombre("The Rise and Fall of Ziggy Stardust and the Spiders from Mars");
+        album159.setImagen("/albumes/ZiggyStardust.jpg");
+        album159.setFechaLanzamiento(LocalDate.of(1972, 6, 16));
+        album159.setCanciones(Arrays.asList(
+                new CancionDoc("Starman"),
+                new CancionDoc("Suffragette City"),
+                new CancionDoc("Ziggy Stardust"),
+                new CancionDoc("Rock 'n' Roll Suicide")
+        ));
+        album159.setArtista(artista4); // David Bowie
+
+// Álbum 160: "Heroes"
+        AlbumColeccion album160 = new AlbumColeccion();
+        album160.setNombre("Heroes");
+        album160.setImagen("/albumes/Heroes.jpg");
+        album160.setFechaLanzamiento(LocalDate.of(1977, 10, 14));
+        album160.setCanciones(Arrays.asList(
+                new CancionDoc("Heroes"),
+                new CancionDoc("Beauty and the Beast"),
+                new CancionDoc("Warzawa"),
+                new CancionDoc("The Secret Life of Arabia")
+        ));
+        album160.setArtista(artista4); // David Bowie
+
+// Álbum 161: "What a Wonderful World"
+        AlbumColeccion album161 = new AlbumColeccion();
+        album161.setNombre("What a Wonderful World");
+        album161.setImagen("/albumes/WhatAWonderfulWorld.jpg");
+        album161.setFechaLanzamiento(LocalDate.of(1967, 10, 1));
+        album161.setCanciones(Arrays.asList(
+                new CancionDoc("What a Wonderful World"),
+                new CancionDoc("A Kiss to Build a Dream On"),
+                new CancionDoc("Mack the Knife"),
+                new CancionDoc("La Vie En Rose")
+        ));
+        album161.setArtista(artista5); // Louis Armstrong
+
+// Álbum 162: "Louis Armstrong Plays W.C. Handy"
+        AlbumColeccion album162 = new AlbumColeccion();
+        album162.setNombre("Louis Armstrong Plays W.C. Handy");
+        album162.setImagen("/albumes/PlaysWCHandy.jpg");
+        album162.setFechaLanzamiento(LocalDate.of(1954, 10, 1));
+        album162.setCanciones(Arrays.asList(
+                new CancionDoc("St. Louis Blues"),
+                new CancionDoc("Beale Street Blues"),
+                new CancionDoc("Memphis Blues"),
+                new CancionDoc("The Hesitating Blues")
+        ));
+        album162.setArtista(artista5); // Louis Armstrong
+
+// Álbum 163: "A Love Supreme"
+        AlbumColeccion album163 = new AlbumColeccion();
+        album163.setNombre("A Love Supreme");
+        album163.setImagen("/albumes/ALoveSupreme.jpg");
+        album163.setFechaLanzamiento(LocalDate.of(1965, 2, 23));
+        album163.setCanciones(Arrays.asList(
+                new CancionDoc("Acknowledgement"),
+                new CancionDoc("Resolution"),
+                new CancionDoc("Pursuance"),
+                new CancionDoc("Psalm")
+        ));
+        album163.setArtista(artista6); // John Coltrane
+
+// Álbum 164: "Giant Steps"
+        AlbumColeccion album164 = new AlbumColeccion();
+        album164.setNombre("Giant Steps");
+        album164.setImagen("/albumes/GiantSteps.jpg");
+        album164.setFechaLanzamiento(LocalDate.of(1960, 1, 1));
+        album164.setCanciones(Arrays.asList(
+                new CancionDoc("Giant Steps"),
+                new CancionDoc("Cousin Mary"),
+                new CancionDoc("Countdown"),
+                new CancionDoc("Spiral")
+        ));
+        album164.setArtista(artista6); // John Coltrane
+
+// Álbum 165: "Lady in Satin"
+        AlbumColeccion album165 = new AlbumColeccion();
+        album165.setNombre("Lady in Satin");
+        album165.setImagen("/albumes/LadyInSatin.jpg");
+        album165.setFechaLanzamiento(LocalDate.of(1958, 4, 14));
+        album165.setCanciones(Arrays.asList(
+                new CancionDoc("I'm a Fool to Want You"),
+                new CancionDoc("For All We Know"),
+                new CancionDoc("You've Changed"),
+                new CancionDoc("Violets for Your Furs")
+        ));
+        album165.setArtista(artista7); // Billie Holiday
+
+// Álbum 166: "Billie Holiday Sings"
+        AlbumColeccion album166 = new AlbumColeccion();
+        album166.setNombre("Billie Holiday Sings");
+        album166.setImagen("/albumes/BillieHolidaySings.jpg");
+        album166.setFechaLanzamiento(LocalDate.of(1952, 11, 1));
+        album166.setCanciones(Arrays.asList(
+                new CancionDoc("God Bless the Child"),
+                new CancionDoc("Strange Fruit"),
+                new CancionDoc("Don't Explain"),
+                new CancionDoc("Lover Man")
+        ));
+        album166.setArtista(artista7); // Billie Holiday
+
+// Álbum 167: "Bird and Diz"
+        AlbumColeccion album167 = new AlbumColeccion();
+        album167.setNombre("Bird and Diz");
+        album167.setImagen("/albumes/BirdAndDiz.jpg");
+        album167.setFechaLanzamiento(LocalDate.of(1952, 5, 1));
+        album167.setCanciones(Arrays.asList(
+                new CancionDoc("Groovin' High"),
+                new CancionDoc("Salt Peanuts"),
+                new CancionDoc("Shaw 'Nuff"),
+                new CancionDoc("All the Things You Are")
+        ));
+        album167.setArtista(artista8); // Dizzy Gillespie
+
+// Álbum 168: "Dizzy Gillespie at Newport"
+        AlbumColeccion album168 = new AlbumColeccion();
+        album168.setNombre("Dizzy Gillespie at Newport");
+        album168.setImagen("/albumes/DizzyGillespieAtNewport.jpg");
+        album168.setFechaLanzamiento(LocalDate.of(1956, 8, 1));
+        album168.setCanciones(Arrays.asList(
+                new CancionDoc("A Night in Tunisia"),
+                new CancionDoc("I'm Be Bop")
+        ));
+        album168.setArtista(artista8); // Dizzy Gillespie
+
+// Álbum 169: "Ella Fitzgerald Sings the Cole Porter Song Book"
+        AlbumColeccion album169 = new AlbumColeccion();
+        album169.setNombre("Ella Fitzgerald Sings the Cole Porter Song Book");
+        album169.setImagen("/albumes/EllaColePorter.jpg");
+        album169.setFechaLanzamiento(LocalDate.of(1956, 5, 1));
+        album169.setCanciones(Arrays.asList(
+                new CancionDoc("I Get a Kick Out of You"),
+                new CancionDoc("Night and Day"),
+                new CancionDoc("Easy to Love"),
+                new CancionDoc("Let's Do It (Let's Fall in Love)")
+        ));
+        album169.setArtista(artista9); // Ella Fitzgerald
+
+// Álbum 170: "Ella and Louis"
+        AlbumColeccion album170 = new AlbumColeccion();
+        album170.setNombre("Ella and Louis");
+        album170.setImagen("/albumes/EllaAndLouis.jpg");
+        album170.setFechaLanzamiento(LocalDate.of(1956, 2, 1));
+        album170.setCanciones(Arrays.asList(
+                new CancionDoc("Can't We Be Friends?"),
+                new CancionDoc("Cheek to Cheek"),
+                new CancionDoc("Isn't This a Lovely Day"),
+                new CancionDoc("Summertime")
+        ));
+        album170.setArtista(artista9); // Ella Fitzgerald
+
+// Álbum 171: "Thriller"
+        AlbumColeccion album171 = new AlbumColeccion();
+        album171.setNombre("Thriller");
+        album171.setImagen("/albumes/Thriller.jpg");
+        album171.setFechaLanzamiento(LocalDate.of(1982, 11, 30));
+        album171.setCanciones(Arrays.asList(
+                new CancionDoc("Wanna Be Startin' Somethin'"),
+                new CancionDoc("Thriller"),
+                new CancionDoc("Billie Jean"),
+                new CancionDoc("Beat It")
+        ));
+        album171.setArtista(artista10); // Michael Jackson
+
+// Álbum 172: "Bad"
+        AlbumColeccion album172 = new AlbumColeccion();
+        album172.setNombre("Bad");
+        album172.setImagen("/albumes/Bad.jpg");
+        album172.setFechaLanzamiento(LocalDate.of(1987, 8, 31));
+        album172.setCanciones(Arrays.asList(
+                new CancionDoc("Bad"),
+                new CancionDoc("The Way You Make Me Feel"),
+                new CancionDoc("Man in the Mirror"),
+                new CancionDoc("Dirty Diana")
+        ));
+        album172.setArtista(artista10); // Michael Jackson
+
+// Álbum 173: "Like a Prayer"
+        AlbumColeccion album173 = new AlbumColeccion();
+        album173.setNombre("Like a Prayer");
+        album173.setImagen("/albumes/LikeAPrayer.jpg");
+        album173.setFechaLanzamiento(LocalDate.of(1989, 3, 21));
+        album173.setCanciones(Arrays.asList(
+                new CancionDoc("Like a Prayer"),
+                new CancionDoc("Express Yourself"),
+                new CancionDoc("Cherish"),
+                new CancionDoc("Dear Jessie")
+        ));
+        album173.setArtista(artista11); // Madonna
+
+// Álbum 174: "True Blue"
+        AlbumColeccion album174 = new AlbumColeccion();
+        album174.setNombre("True Blue");
+        album174.setImagen("/albumes/TrueBlue.jpg");
+        album174.setFechaLanzamiento(LocalDate.of(1986, 6, 30));
+        album174.setCanciones(Arrays.asList(
+                new CancionDoc("Papa Don't Preach"),
+                new CancionDoc("Open Your Heart"),
+                new CancionDoc("La Isla Bonita"),
+                new CancionDoc("True Blue")
+        ));
+        album174.setArtista(artista11); // Madonna
+
+// Álbum 175: "Plus"
+        AlbumColeccion album175 = new AlbumColeccion();
+        album175.setNombre("Plus");
+        album175.setImagen("/albumes/Plus.jpg");
+        album175.setFechaLanzamiento(LocalDate.of(2011, 9, 9));
+        album175.setCanciones(Arrays.asList(
+                new CancionDoc("The A Team"),
+                new CancionDoc("Lego House"),
+                new CancionDoc("Drunk"),
+                new CancionDoc("You Need Me, I Don't Need You")
+        ));
+        album175.setArtista(artista12); // Ed Sheeran
+
+// Álbum 176: "Multiply"
+        AlbumColeccion album176 = new AlbumColeccion();
+        album176.setNombre("Multiply");
+        album176.setImagen("/albumes/Multiply.jpg");
+        album176.setFechaLanzamiento(LocalDate.of(2014, 6, 23));
+        album176.setCanciones(Arrays.asList(
+                new CancionDoc("Sing"),
+                new CancionDoc("Don't"),
+                new CancionDoc("Bloodstream"),
+                new CancionDoc("Tenerife Sea")
+        ));
+        album176.setArtista(artista12); // Ed Sheeran
+
+// Álbum 177: "Lemonade"
+        AlbumColeccion album177 = new AlbumColeccion();
+        album177.setNombre("Lemonade");
+        album177.setImagen("/albumes/Lemonade.jpg");
+        album177.setFechaLanzamiento(LocalDate.of(2016, 4, 23));
+        album177.setCanciones(Arrays.asList(
+                new CancionDoc("Formation"),
+                new CancionDoc("Sorry"),
+                new CancionDoc("Hold Up"),
+                new CancionDoc("Freedom")
+        ));
+        album177.setArtista(artista13); // Beyoncé
+
+// Álbum 178: "Beyoncé"
+        AlbumColeccion album178 = new AlbumColeccion();
+        album178.setNombre("Beyoncé");
+        album178.setImagen("/albumes/Beyonce.jpg");
+        album178.setFechaLanzamiento(LocalDate.of(2013, 12, 13));
+        album178.setCanciones(Arrays.asList(
+                new CancionDoc("Drunk in Love"),
+                new CancionDoc("Partition"),
+                new CancionDoc("XO"),
+                new CancionDoc("Flawless")
+        ));
+        album178.setArtista(artista13); // Beyoncé
+
+// Álbum 179: "Anti"
+        AlbumColeccion album179 = new AlbumColeccion();
+        album179.setNombre("ANTI");
+        album179.setImagen("/albumes/Anti.jpg");
+        album179.setFechaLanzamiento(LocalDate.of(2016, 1, 28));
+        album179.setCanciones(Arrays.asList(
+                new CancionDoc("Work"),
+                new CancionDoc("Needed Me"),
+                new CancionDoc("Love on the Brain"),
+                new CancionDoc("Kiss It Better")
+        ));
+        album179.setArtista(artista14); // Rihanna
+
+// Álbum 180: "Loud"
+        AlbumColeccion album180 = new AlbumColeccion();
+        album180.setNombre("Loud");
+        album180.setImagen("/albumes/Loud.jpg");
+        album180.setFechaLanzamiento(LocalDate.of(2010, 11, 12));
+        album180.setCanciones(Arrays.asList(
+                new CancionDoc("Only Girl (In the World)"),
+                new CancionDoc("What's My Name?"),
+                new CancionDoc("S&M"),
+                new CancionDoc("Rude Boy")
+        ));
+        album180.setArtista(artista14); // Rihanna
+
+// Álbum 181: "Legend"
+        AlbumColeccion album181 = new AlbumColeccion();
+        album181.setNombre("Legend");
+        album181.setImagen("/albumes/Legend21.jpg");
+        album181.setFechaLanzamiento(LocalDate.of(1984, 5, 8));
+        album181.setCanciones(Arrays.asList(
+                new CancionDoc("Is This Love"),
+                new CancionDoc("No Woman, No Cry"),
+                new CancionDoc("Buffalo Soldier"),
+                new CancionDoc("Redemption Song")
+        ));
+        album181.setArtista(artista15); // Bob Marley
+
+// Álbum 182: "Exodus"
+        AlbumColeccion album182 = new AlbumColeccion();
+        album182.setNombre("Exodus");
+        album182.setImagen("/albumes/Exodus.jpg");
+        album182.setFechaLanzamiento(LocalDate.of(1977, 6, 3));
+        album182.setCanciones(Arrays.asList(
+                new CancionDoc("One Love"),
+                new CancionDoc("Jamming"),
+                new CancionDoc("Three Little Birds"),
+                new CancionDoc("Exodus")
+        ));
+        album182.setArtista(artista15); // Bob Marley
+
+// Álbum 329: "Legalize It"
+        AlbumColeccion album329 = new AlbumColeccion();
+        album329.setNombre("Legalize It");
+        album329.setImagen("/albumes/LegalizeIt.jpg");
+        album329.setFechaLanzamiento(LocalDate.of(1976, 4, 19));
+        album329.setCanciones(Arrays.asList(
+                new CancionDoc("Legalize It"),
+                new CancionDoc("Maga Dog"),
+                new CancionDoc("Burial")
+        ));
+        album329.setArtista(artista16); // Peter Tosh
+
+// Álbum 330: "Equal Rights"
+        AlbumColeccion album330 = new AlbumColeccion();
+        album330.setNombre("Equal Rights");
+        album330.setImagen("/albumes/EqualRights.jpg");
+        album330.setFechaLanzamiento(LocalDate.of(1977, 10, 31));
+        album330.setCanciones(Arrays.asList(
+                new CancionDoc("Get Up, Stand Up"),
+                new CancionDoc("Equal Rights"),
+                new CancionDoc("Downpresser Man"),
+                new CancionDoc("Maga Dog")
+        ));
+        album330.setArtista(artista16); // Peter Tosh
+
+// Álbum 183: "The Harder They Come"
+        AlbumColeccion album183 = new AlbumColeccion();
+        album183.setNombre("The Harder They Come");
+        album183.setImagen("/albumes/TheHarderTheyCome.jpg");
+        album183.setFechaLanzamiento(LocalDate.of(1972, 5, 28));
+        album183.setCanciones(Arrays.asList(
+                new CancionDoc("You Can Get It If You Really Want"),
+                new CancionDoc("The Harder They Come"),
+                new CancionDoc("Many Rivers to Cross"),
+                new CancionDoc("Sitting Here in Limbo")
+        ));
+        album183.setArtista(artista17); // Jimmy Cliff
+
+// Álbum 184: "Cliff Hanger"
+        AlbumColeccion album184 = new AlbumColeccion();
+        album184.setNombre("Cliff Hanger");
+        album184.setImagen("/albumes/CliffHanger.jpg");
+        album184.setFechaLanzamiento(LocalDate.of(1985, 4, 9));
+        album184.setCanciones(Arrays.asList(
+                new CancionDoc("Reggae Night"),
+                new CancionDoc("We All Are One"),
+                new CancionDoc("Sanctuary"),
+                new CancionDoc("Love Is All")
+        ));
+        album184.setArtista(artista17); // Jimmy Cliff
+
+// Álbum 185: "Night Nurse"
+        AlbumColeccion album185 = new AlbumColeccion();
+        album185.setNombre("Night Nurse");
+        album185.setImagen("/albumes/NightNurse.jpg");
+        album185.setFechaLanzamiento(LocalDate.of(1982, 6, 1));
+        album185.setCanciones(Arrays.asList(
+                new CancionDoc("Night Nurse"),
+                new CancionDoc("If I Don't Have You"),
+                new CancionDoc("Hot Stepper"),
+                new CancionDoc("Red Rose")
+        ));
+        album185.setArtista(artista18); // Gregory Isaacs
+
+// Álbum 186: "Cool Ruler"
+        AlbumColeccion album186 = new AlbumColeccion();
+        album186.setNombre("Cool Ruler");
+        album186.setImagen("/albumes/CoolRuler.jpg");
+        album186.setFechaLanzamiento(LocalDate.of(1978, 1, 1));
+        album186.setCanciones(Arrays.asList(
+                new CancionDoc("Set the Captives Free"),
+                new CancionDoc("The Border"),
+                new CancionDoc("If I Don't Have You"),
+                new CancionDoc("Soon Forward")
+        ));
+        album186.setArtista(artista18); // Gregory Isaacs
+
+// Álbum 187: "Funky Kingston"
+        AlbumColeccion album187 = new AlbumColeccion();
+        album187.setNombre("Funky Kingston");
+        album187.setImagen("/albumes/FunkyKingston21.jpg");
+        album187.setFechaLanzamiento(LocalDate.of(1973, 10, 12));
+        album187.setCanciones(Arrays.asList(
+                new CancionDoc("Time Tough"),
+                new CancionDoc("Funky Kingston"),
+                new CancionDoc("Pressure Drop"),
+                new CancionDoc("Monkey Man")
+        ));
+        album187.setArtista(artista19); // Toots Hibbert
+
+// Álbum 188: "Toots in Memphis"
+        AlbumColeccion album188 = new AlbumColeccion();
+        album188.setNombre("Toots in Memphis");
+        album188.setImagen("/albumes/TootsInMemphis21.jpg");
+        album188.setFechaLanzamiento(LocalDate.of(1988, 5, 25));
+        album188.setCanciones(Arrays.asList(
+                new CancionDoc("Reggae Got Soul"),
+                new CancionDoc("Take Me Home, Country Roads"),
+                new CancionDoc("Soul Power"),
+                new CancionDoc("Oh Lord")
+        ));
+        album188.setArtista(artista19); // Toots Hibbert
+
+// Álbum 189: "Live at the Regal"
+        AlbumColeccion album189 = new AlbumColeccion();
+        album189.setNombre("Live at the Regal");
+        album189.setImagen("/albumes/LiveAtTheRegal21.jpg");
+        album189.setFechaLanzamiento(LocalDate.of(1965, 11, 1));
+        album189.setCanciones(Arrays.asList(
+                new CancionDoc("Every Day I Have the Blues"),
+                new CancionDoc("Sweet Little Angel"),
+                new CancionDoc("It's My Own Fault"),
+                new CancionDoc("How Blue Can You Get?")
+        ));
+        album189.setArtista(artista20); // B.B. King
+
+// Álbum 190: "The Thrill Is Gone"
+        AlbumColeccion album190 = new AlbumColeccion();
+        album190.setNombre("The Thrill Is Gone");
+        album190.setImagen("/albumes/TheThrillIsGone21.jpg");
+        album190.setFechaLanzamiento(LocalDate.of(1969, 3, 17));
+        album190.setCanciones(Arrays.asList(
+                new CancionDoc("The Thrill Is Gone"),
+                new CancionDoc("Just Like a Woman"),
+                new CancionDoc("I Can't Quit You Baby"),
+                new CancionDoc("How Blue Can You Get?")
+        ));
+        album190.setArtista(artista20); // B.B. King
+
+// Álbum 191: "The Best of Muddy Waters"
+        AlbumColeccion album191 = new AlbumColeccion();
+        album191.setNombre("The Best of Muddy Waters");
+        album191.setImagen("/albumes/TheBestOfMuddyWaters21.jpg");
+        album191.setFechaLanzamiento(LocalDate.of(1958, 10, 1));
+        album191.setCanciones(Arrays.asList(
+                new CancionDoc("Hoochie Coochie Man"),
+                new CancionDoc("Mannish Boy"),
+                new CancionDoc("I Just Want to Make Love to You"),
+                new CancionDoc("Rollin' Stone")
+        ));
+        album191.setArtista(artista21); // Muddy Waters
+
+// Álbum 192: "Electric Mud"
+        AlbumColeccion album192 = new AlbumColeccion();
+        album192.setNombre("Electric Mud");
+        album192.setImagen("/albumes/ElectricMud.jpg");
+        album192.setFechaLanzamiento(LocalDate.of(1968, 10, 1));
+        album192.setCanciones(Arrays.asList(
+                new CancionDoc("I Just Want to Make Love to You"),
+                new CancionDoc("I'm Your Hoochie Coochie Man"),
+                new CancionDoc("She's 19 Years Old"),
+                new CancionDoc("Tom Cat")
+        ));
+        album192.setArtista(artista21); // Muddy Waters
+
+// Álbum 193: "King of the Delta Blues Singers"
+        AlbumColeccion album193 = new AlbumColeccion();
+        album193.setNombre("King of the Delta Blues Singers");
+        album193.setImagen("/albumes/KingOfTheDeltaBluesSingers.jpg");
+        album193.setFechaLanzamiento(LocalDate.of(1961, 10, 10));
+        album193.setCanciones(Arrays.asList(
+                new CancionDoc("Cross Road Blues"),
+                new CancionDoc("Love in Vain"),
+                new CancionDoc("Hellhound on My Trail"),
+                new CancionDoc("Sweet Home Chicago")
+        ));
+        album193.setArtista(artista22); // Robert Johnson
+
+// Álbum 194: "The Complete Recordings"
+        AlbumColeccion album194 = new AlbumColeccion();
+        album194.setNombre("The Complete Recordings");
+        album194.setImagen("/albumes/TheCompleteRecordings.jpg");
+        album194.setFechaLanzamiento(LocalDate.of(1990, 1, 1));
+        album194.setCanciones(Arrays.asList(
+                new CancionDoc("Cross Road Blues"),
+                new CancionDoc("I Believe I'll Dust My Broom"),
+                new CancionDoc("Stop Breakin' Down Blues"),
+                new CancionDoc("Terraplane Blues")
+        ));
+        album194.setArtista(artista22); // Robert Johnson
+
+// Álbum 195: "The Best of John Lee Hooker"
+        AlbumColeccion album195 = new AlbumColeccion();
+        album195.setNombre("The Best of John Lee Hooker");
+        album195.setImagen("/albumes/TheBestOfJohnLeeHooker.jpg");
+        album195.setFechaLanzamiento(LocalDate.of(1966, 1, 1));
+        album195.setCanciones(Arrays.asList(
+                new CancionDoc("Boom Boom"),
+                new CancionDoc("I'm in the Mood"),
+                new CancionDoc("Crawling King Snake"),
+                new CancionDoc("House Rent Boogie")
+        ));
+        album195.setArtista(artista23); // John Lee Hooker
+
+// Álbum 196: "Live at Cafe Au Go Go"
+        AlbumColeccion album196 = new AlbumColeccion();
+        album196.setNombre("Live at Cafe Au Go Go");
+        album196.setImagen("/albumes/LiveAtCafeAuGoGo.jpg");
+        album196.setFechaLanzamiento(LocalDate.of(1966, 10, 1));
+        album196.setCanciones(Arrays.asList(
+                new CancionDoc("Boom Boom"),
+                new CancionDoc("I Can't Quit You Baby"),
+                new CancionDoc("Whiskey and Wimmen"),
+                new CancionDoc("Dust My Broom")
+        ));
+        album196.setArtista(artista23); // John Lee Hooker
+
+// Álbum 197: "Unplugged"
+        AlbumColeccion album197 = new AlbumColeccion();
+        album197.setNombre("Unplugged");
+        album197.setImagen("/albumes/Unplugged.jpg");
+        album197.setFechaLanzamiento(LocalDate.of(1992, 8, 25));
+        album197.setCanciones(Arrays.asList(
+                new CancionDoc("Tears in Heaven"),
+                new CancionDoc("Layla"),
+                new CancionDoc("Layla (Unplugged)"),
+                new CancionDoc("Before You Accuse Me")
+        ));
+        album197.setArtista(artista24); // Eric Clapton
+
+// Álbum 198: "461 Ocean Boulevard"
+        AlbumColeccion album198 = new AlbumColeccion();
+        album198.setNombre("461 Ocean Boulevard");
+        album198.setImagen("/albumes/461OceanBoulevard.jpg");
+        album198.setFechaLanzamiento(LocalDate.of(1974, 7, 21));
+        album198.setCanciones(Arrays.asList(
+                new CancionDoc("I Shot the Sheriff"),
+                new CancionDoc("Let It Grow"),
+                new CancionDoc("Motherless Children"),
+                new CancionDoc("Willie and the Hand Jive")
+        ));
+        album198.setArtista(artista24); // Eric Clapton
+
+// Álbum 199: "The Complete Hank Williams"
+        AlbumColeccion album199 = new AlbumColeccion();
+        album199.setNombre("The Complete Hank Williams");
+        album199.setImagen("/albumes/TheCompleteHankWilliams.jpg");
+        album199.setFechaLanzamiento(LocalDate.of(1988, 1, 1));
+        album199.setCanciones(Arrays.asList(
+                new CancionDoc("Your Cheatin' Heart"),
+                new CancionDoc("I'm So Lonesome I Could Cry"),
+                new CancionDoc("Hey, Good Lookin'"),
+                new CancionDoc("Jambalaya (On the Bayou)")
+        ));
+        album199.setArtista(artista25); // Hank Williams
+
+// Álbum 200: "Hank Williams: 40 Greatest Hits"
+        AlbumColeccion album200 = new AlbumColeccion();
+        album200.setNombre("Hank Williams: 40 Greatest Hits");
+        album200.setImagen("/albumes/HankWilliams40GreatestHits.jpg");
+        album200.setFechaLanzamiento(LocalDate.of(1978, 6, 1));
+        album200.setCanciones(Arrays.asList(
+                new CancionDoc("Cold, Cold Heart"),
+                new CancionDoc("Lovesick Blues"),
+                new CancionDoc("I Can't Help It (If I'm Still in Love with You)"),
+                new CancionDoc("I'll Never Get Out of This World Alive")
+        ));
+        album200.setArtista(artista25); // Hank Williams
+
+// Álbum 201: "Jolene"
+        AlbumColeccion album201 = new AlbumColeccion();
+        album201.setNombre("Jolene");
+        album201.setImagen("/albumes/Jolene.jpg");
+        album201.setFechaLanzamiento(LocalDate.of(1973, 2, 4));
+        album201.setCanciones(Arrays.asList(
+                new CancionDoc("Jolene"),
+                new CancionDoc("I Will Always Love You"),
+                new CancionDoc("Coat of Many Colors"),
+                new CancionDoc("Love Is Like a Butterfly")
+        ));
+        album201.setArtista(artista26); // Dolly Parton
+
+// Álbum 202: "9 to 5 and Odd Jobs"
+        AlbumColeccion album202 = new AlbumColeccion();
+        album202.setNombre("9 to 5 and Odd Jobs");
+        album202.setImagen("/albumes/9to5AndOddJobs.jpg");
+        album202.setFechaLanzamiento(LocalDate.of(1980, 11, 1));
+        album202.setCanciones(Arrays.asList(
+                new CancionDoc("9 to 5"),
+                new CancionDoc("But You Know I Love You"),
+                new CancionDoc("Happiness"),
+                new CancionDoc("The House of the Rising Sun")
+        ));
+        album202.setArtista(artista26); // Dolly Parton
+
+// Álbum 203: "Red Headed Stranger"
+        AlbumColeccion album203 = new AlbumColeccion();
+        album203.setNombre("Red Headed Stranger");
+        album203.setImagen("/albumes/RedHeadedStranger.jpg");
+        album203.setFechaLanzamiento(LocalDate.of(1975, 4, 27));
+        album203.setCanciones(Arrays.asList(
+                new CancionDoc("Blue Eyes Crying in the Rain"),
+                new CancionDoc("Red Headed Stranger"),
+                new CancionDoc("Remember Me"),
+                new CancionDoc("Time of the Preacher")
+        ));
+        album203.setArtista(artista27); // Willie Nelson
+
+// Álbum 204: "Stardust"
+        AlbumColeccion album204 = new AlbumColeccion();
+        album204.setNombre("Stardust");
+        album204.setImagen("/albumes/Stardust.jpg");
+        album204.setFechaLanzamiento(LocalDate.of(1978, 4, 10));
+        album204.setCanciones(Arrays.asList(
+                new CancionDoc("Georgia on My Mind"),
+                new CancionDoc("Blue Skies"),
+                new CancionDoc("All of Me"),
+                new CancionDoc("Unchained Melody")
+        ));
+        album204.setArtista(artista27); // Willie Nelson
+
+// Álbum 205: "Luxury Liner"
+        AlbumColeccion album205 = new AlbumColeccion();
+        album205.setNombre("Luxury Liner");
+        album205.setImagen("/albumes/LuxuryLiner.jpg");
+        album205.setFechaLanzamiento(LocalDate.of(1977, 3, 1));
+        album205.setCanciones(Arrays.asList(
+                new CancionDoc("Pancho and Lefty"),
+                new CancionDoc("Luxury Liner"),
+                new CancionDoc("The Price You Pay"),
+                new CancionDoc("One of These Days")
+        ));
+        album205.setArtista(artista28); // Emmylou Harris
+
+// Álbum 206: "Wrecking Ball"
+        AlbumColeccion album206 = new AlbumColeccion();
+        album206.setNombre("Wrecking Ball");
+        album206.setImagen("/albumes/WreckingBall.jpg");
+        album206.setFechaLanzamiento(LocalDate.of(1995, 9, 26));
+        album206.setCanciones(Arrays.asList(
+                new CancionDoc("Wrecking Ball"),
+                new CancionDoc("Goodbye"),
+                new CancionDoc("All My Tears"),
+                new CancionDoc("Sweet Old World")
+        ));
+        album206.setArtista(artista28); // Emmylou Harris
+
+// Álbum 207: "Coal Miner's Daughter"
+        AlbumColeccion album207 = new AlbumColeccion();
+        album207.setNombre("Coal Miner’s Daughter");
+        album207.setImagen("/albumes/Coalmine'sDaughter.jpg");
+        album207.setFechaLanzamiento(LocalDate.of(1970, 8, 17));
+        album207.setCanciones(Arrays.asList(
+                new CancionDoc("Coal Miner’s Daughter"),
+                new CancionDoc("The Pill"),
+                new CancionDoc("One’s on the Way"),
+                new CancionDoc("Hey Loretta")
+        ));
+        album207.setArtista(artista29); // Loretta Lynn
+
+// Álbum 208: "Van Lear Rose"
+        AlbumColeccion album208 = new AlbumColeccion();
+        album208.setNombre("Van Lear Rose");
+        album208.setImagen("/albumes/VanLearRose.jpg");
+        album208.setFechaLanzamiento(LocalDate.of(2004, 4, 27));
+        album208.setCanciones(Arrays.asList(
+                new CancionDoc("Van Lear Rose"),
+                new CancionDoc("Miss Being Mrs."),
+                new CancionDoc("Trouble on the Line"),
+                new CancionDoc("Family Tree")
+        ));
+        album208.setArtista(artista29); // Loretta Lynn
+
+// Álbum 209: "Blizzard of Ozz"
+        AlbumColeccion album209 = new AlbumColeccion();
+        album209.setNombre("Blizzard of Ozz");
+        album209.setImagen("/albumes/BlizzardOfOzz.jpg");
+        album209.setFechaLanzamiento(LocalDate.of(1980, 9, 20));
+        album209.setCanciones(Arrays.asList(
+                new CancionDoc("Crazy Train"),
+                new CancionDoc("Mr. Crowley"),
+                new CancionDoc("I Don't Know"),
+                new CancionDoc("Revelation (Mother Earth)")
+        ));
+        album209.setArtista(artista30); // Ozzy Osbourne
+
+// Álbum 210: "No More Tears"
+        AlbumColeccion album2100 = new AlbumColeccion();
+        album2100.setNombre("No More Tears");
+        album2100.setImagen("/albumes/NoMoreTears.jpg");
+        album2100.setFechaLanzamiento(LocalDate.of(1991, 9, 17));
+        album2100.setCanciones(Arrays.asList(
+                new CancionDoc("Mama, I'm Coming Home"),
+                new CancionDoc("No More Tears"),
+                new CancionDoc("I Don't Want to Change the World"),
+                new CancionDoc("Road to Nowhere")
+        ));
+        album2100.setArtista(artista30); // Ozzy Osbourne
+
+// Álbum 211: "Resurrection"
+        AlbumColeccion album211 = new AlbumColeccion();
+        album211.setNombre("Resurrection");
+        album211.setImagen("/albumes/Resurrection.jpg");
+        album211.setFechaLanzamiento(LocalDate.of(2000, 5, 23));
+        album211.setCanciones(Arrays.asList(
+                new CancionDoc("Resurrection"),
+                new CancionDoc("Made in Hell"),
+                new CancionDoc("One on One"),
+                new CancionDoc("Silent Screams")
+        ));
+        album211.setArtista(artista31); // Rob Halford
+
+// Álbum 212: "Halford III: Winter Songs"
+        AlbumColeccion album212 = new AlbumColeccion();
+        album212.setNombre("Halford III: Winter Songs");
+        album212.setImagen("/albumes/WinterSongs.jpg");
+        album212.setFechaLanzamiento(LocalDate.of(2009, 10, 27));
+        album212.setCanciones(Arrays.asList(
+                new CancionDoc("Winter Song"),
+                new CancionDoc("Get Into the Spirit"),
+                new CancionDoc("Oh Come, Oh Come, Emmanuel"),
+                new CancionDoc("We Three Kings")
+        ));
+        album212.setArtista(artista31); // Rob Halford
+
+// Álbum 213: "Abigail"
+        AlbumColeccion album213 = new AlbumColeccion();
+        album213.setNombre("Abigail");
+        album213.setImagen("/albumes/Abigail.jpg");
+        album213.setFechaLanzamiento(LocalDate.of(1987, 3, 17));
+        album213.setCanciones(Arrays.asList(
+                new CancionDoc("A Mansion in Darkness"),
+                new CancionDoc("The Family Ghost"),
+                new CancionDoc("Abigail"),
+                new CancionDoc("Black Horsemen")
+        ));
+        album213.setArtista(artista32); // King Diamond
+
+// Álbum 214: "Conspiracy"
+        AlbumColeccion album214 = new AlbumColeccion();
+        album214.setNombre("Conspiracy");
+        album214.setImagen("/albumes/Conspiracy.jpg");
+        album214.setFechaLanzamiento(LocalDate.of(2003, 5, 13));
+        album214.setCanciones(Arrays.asList(
+                new CancionDoc("The Invisible Guests"),
+                new CancionDoc("Sleepless Nights"),
+                new CancionDoc("The Conspiracy"),
+                new CancionDoc("At the Graves")
+        ));
+        album214.setArtista(artista32); // King Diamond
+
+// Álbum 215: "Holy Diver"
+        AlbumColeccion album215 = new AlbumColeccion();
+        album215.setNombre("Holy Diver");
+        album215.setImagen("/albumes/HolyDiver.jpg");
+        album215.setFechaLanzamiento(LocalDate.of(1983, 5, 25));
+        album215.setCanciones(Arrays.asList(
+                new CancionDoc("Holy Diver"),
+                new CancionDoc("Rainbow in the Dark"),
+                new CancionDoc("Stand Up and Shout"),
+                new CancionDoc("Don't Talk to Strangers")
+        ));
+        album215.setArtista(artista33); // Ronnie James Dio
+
+// Álbum 216: "The Last in Line"
+        AlbumColeccion album216 = new AlbumColeccion();
+        album216.setNombre("The Last in Line");
+        album216.setImagen("/albumes/TheLastInLine.jpg");
+        album216.setFechaLanzamiento(LocalDate.of(1984, 7, 2));
+        album216.setCanciones(Arrays.asList(
+                new CancionDoc("We Rock"),
+                new CancionDoc("The Last in Line"),
+                new CancionDoc("Breathless"),
+                new CancionDoc("Mystery")
+        ));
+        album216.setArtista(artista33); // Ronnie James Dio
+
+// Álbum 217: "Bad Magic"
+        AlbumColeccion album217 = new AlbumColeccion();
+        album217.setNombre("Bad Magic");
+        album217.setImagen("/albumes/BadMagic.jpg");
+        album217.setFechaLanzamiento(LocalDate.of(2015, 8, 28));
+        album217.setCanciones(Arrays.asList(
+                new CancionDoc("Victory or Die"),
+                new CancionDoc("Thunder & Lightning"),
+                new CancionDoc("Fire Storm Hotel"),
+                new CancionDoc("Shoot Out All of Your Lights")
+        ));
+        album217.setArtista(artista34); // Lemmy Kilmister
+
+// Álbum 218: "Inferno"
+        AlbumColeccion album218 = new AlbumColeccion();
+        album218.setNombre("Inferno");
+        album218.setImagen("/albumes/Inferno.jpg");
+        album218.setFechaLanzamiento(LocalDate.of(2004, 6, 22));
+        album218.setCanciones(Arrays.asList(
+                new CancionDoc("Terminal Show"),
+                new CancionDoc("In the Name of Tragedy"),
+                new CancionDoc("Suicide"),
+                new CancionDoc("In the Black")
+        ));
+        album218.setArtista(artista34); // Lemmy Kilmister
+
+// Álbum 219: "Black on Both Sides"
+        AlbumColeccion album219 = new AlbumColeccion();
+        album219.setNombre("Black on Both Sides");
+        album219.setImagen("/albumes/BlackOnBothSides.jpg");
+        album219.setFechaLanzamiento(LocalDate.of(1999, 10, 12));
+        album219.setCanciones(Arrays.asList(
+                new CancionDoc("Mathematics"),
+                new CancionDoc("Ms. Fat Booty"),
+                new CancionDoc("Umi Says"),
+                new CancionDoc("Brooklyn")
+        ));
+        album219.setArtista(artista35); // Mos Def
+
+// Álbum 220: "The Ecstatic"
+        AlbumColeccion album2200 = new AlbumColeccion();
+        album2200.setNombre("The Ecstatic");
+        album2200.setImagen("/albumes/TheEcstatic.jpg");
+        album2200.setFechaLanzamiento(LocalDate.of(2009, 6, 9));
+        album2200.setCanciones(Arrays.asList(
+                new CancionDoc("Supermagic"),
+                new CancionDoc("Casa Bey"),
+                new CancionDoc("Auditorium"),
+                new CancionDoc("The Embassy")
+        ));
+        album2200.setArtista(artista35); // Mos Def
+
+// Álbum 221: "Madvillainy" (con Madlib)
+        AlbumColeccion album221 = new AlbumColeccion();
+        album221.setNombre("Madvillainy");
+        album221.setImagen("/albumes/Madvillainy.jpg");
+        album221.setFechaLanzamiento(LocalDate.of(2004, 3, 23));
+        album221.setCanciones(Arrays.asList(
+                new CancionDoc("All Caps"),
+                new CancionDoc("Accordion"),
+                new CancionDoc("Meat Grinder"),
+                new CancionDoc("Rhinestone Cowboy")
+        ));
+        album221.setArtista(artista36); // MF DOOM (con Madlib)
+
+// Álbum 222: "MM..Food"
+        AlbumColeccion album222 = new AlbumColeccion();
+        album222.setNombre("MM..Food");
+        album222.setImagen("/albumes/MMFood.jpg");
+        album222.setFechaLanzamiento(LocalDate.of(2004, 11, 16));
+        album222.setCanciones(Arrays.asList(
+                new CancionDoc("Beef Rapp"),
+                new CancionDoc("Hoe Cakes"),
+                new CancionDoc("Potholderz"),
+                new CancionDoc("Deep Fried Frenz")
+        ));
+        album222.setArtista(artista36); // MF DOOM
+
+// Álbum 223: "Illmatic"
+        AlbumColeccion album223 = new AlbumColeccion();
+        album223.setNombre("Illmatic");
+        album223.setImagen("/albumes/Illmatic.jpg");
+        album223.setFechaLanzamiento(LocalDate.of(1994, 4, 19));
+        album223.setCanciones(Arrays.asList(
+                new CancionDoc("N.Y. State of Mind"),
+                new CancionDoc("The World Is Yours"),
+                new CancionDoc("Life's a Bitch"),
+                new CancionDoc("It Ain't Hard to Tell")
+        ));
+        album223.setArtista(artista37); // Nas
+
+// Álbum 224: "Stillmatic"
+        AlbumColeccion album224 = new AlbumColeccion();
+        album224.setNombre("Stillmatic");
+        album224.setImagen("/albumes/Stillmatic.jpg");
+        album224.setFechaLanzamiento(LocalDate.of(2001, 12, 18));
+        album224.setCanciones(Arrays.asList(
+                new CancionDoc("Ether"),
+                new CancionDoc("Got Ur Self A..."),
+                new CancionDoc("One Mic"),
+                new CancionDoc("2nd Childhood")
+        ));
+        album224.setArtista(artista37); // Nas
+
+// Álbum 225: "2014 Forest Hills Drive"
+        AlbumColeccion album225 = new AlbumColeccion();
+        album225.setNombre("2014 Forest Hills Drive");
+        album225.setImagen("/albumes/2014ForestHillsDrive.jpg");
+        album225.setFechaLanzamiento(LocalDate.of(2014, 12, 9));
+        album225.setCanciones(Arrays.asList(
+                new CancionDoc("Wet Dreamz"),
+                new CancionDoc("No Role Modelz"),
+                new CancionDoc("G.O.M.D."),
+                new CancionDoc("Love Yourz")
+        ));
+        album225.setArtista(artista38); // J. Cole
+
+// Álbum 226: "KOD"
+        AlbumColeccion album226 = new AlbumColeccion();
+        album226.setNombre("KOD");
+        album226.setImagen("/albumes/KOD.jpg");
+        album226.setFechaLanzamiento(LocalDate.of(2018, 4, 20));
+        album226.setCanciones(Arrays.asList(
+                new CancionDoc("KOD"),
+                new CancionDoc("ATM"),
+                new CancionDoc("Photograph"),
+                new CancionDoc("Friends")
+        ));
+        album226.setArtista(artista38); // J. Cole
+
+// Álbum 227: "Tha Carter III"
+        AlbumColeccion album227 = new AlbumColeccion();
+        album227.setNombre("Tha Carter III");
+        album227.setImagen("/albumes/ThaCarterIII.jpg");
+        album227.setFechaLanzamiento(LocalDate.of(2008, 6, 10));
+        album227.setCanciones(Arrays.asList(
+                new CancionDoc("A Milli"),
+                new CancionDoc("Lollipop"),
+                new CancionDoc("Got Money"),
+                new CancionDoc("Mrs. Officer")
+        ));
+        album227.setArtista(artista39); // Lil Wayne
+
+// Álbum 228: "I Am Not a Human Being"
+        AlbumColeccion album228 = new AlbumColeccion();
+        album228.setNombre("I Am Not a Human Being");
+        album228.setImagen("/albumes/IAmNotAHumanBeing.jpg");
+        album228.setFechaLanzamiento(LocalDate.of(2010, 9, 27));
+        album228.setCanciones(Arrays.asList(
+                new CancionDoc("Gonorrhea"),
+                new CancionDoc("Right Above It"),
+                new CancionDoc("With You"),
+                new CancionDoc("I Am Not a Human Being")
+        ));
+        album228.setArtista(artista39); // Lil Wayne
+
+// Álbum 229: "Symphony No. 9"
+        AlbumColeccion album229 = new AlbumColeccion();
+        album229.setNombre("Symphony No. 9");
+        album229.setImagen("/albumes/SymphonyNo9.jpg");
+        album229.setFechaLanzamiento(LocalDate.of(1824, 5, 7));
+        album229.setCanciones(Arrays.asList(
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125 - Allegro ma non troppo, un poco maestoso"),
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125 - Molto vivace"),
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125 - Adagio molto e cantabile"),
+                new CancionDoc("Symphony No. 9 in D minor, Op. 125 - Finale: Presto")
+        ));
+        album229.setArtista(artista40); // Beethoven
+
+// Álbum 230: "Piano Sonata No. 14 'Moonlight'"
+        AlbumColeccion album230 = new AlbumColeccion();
+        album230.setNombre("Piano Sonata No. 14 'Moonlight'");
+        album230.setImagen("/albumes/MoonlightSonata.jpg");
+        album230.setFechaLanzamiento(LocalDate.of(1801, 4, 9));
+        album230.setCanciones(Arrays.asList(
+                new CancionDoc("Piano Sonata No. 14 in C-sharp minor, Op. 27, No. 2 - Adagio sostenuto"),
+                new CancionDoc("Piano Sonata No. 14 in C-sharp minor, Op. 27, No. 2 - Allegretto"),
+                new CancionDoc("Piano Sonata No. 14 in C-sharp minor, Op. 27, No. 2 - Presto agitato")
+        ));
+        album230.setArtista(artista40); // Beethoven
+
+// Álbum 231: "Requiem in D minor"
+        AlbumColeccion album231 = new AlbumColeccion();
+        album231.setNombre("Requiem in D minor");
+        album231.setImagen("/albumes/RequiemMozart.jpg");
+        album231.setFechaLanzamiento(LocalDate.of(1791, 12, 5));
+        album231.setCanciones(Arrays.asList(
+                new CancionDoc("Requiem in D minor, K. 626 - Introitus: Requiem aeternam"),
+                new CancionDoc("Requiem in D minor, K. 626 - Kyrie eleison"),
+                new CancionDoc("Requiem in D minor, K. 626 - Dies irae"),
+                new CancionDoc("Requiem in D minor, K. 626 - Lacrimosa")
+        ));
+        album231.setArtista(artista41); // Mozart
+
+// Álbum 232: "The Magic Flute"
+        AlbumColeccion album232 = new AlbumColeccion();
+        album232.setNombre("The Magic Flute");
+        album232.setImagen("/albumes/TheMagicFlute.jpg");
+        album232.setFechaLanzamiento(LocalDate.of(1791, 9, 30));
+        album232.setCanciones(Arrays.asList(
+                new CancionDoc("The Magic Flute, K. 620 - Overture"),
+                new CancionDoc("The Magic Flute, K. 620 - Der Hölle Rache kocht in meinem Herzen"),
+                new CancionDoc("The Magic Flute, K. 620 - Ach, ich fühl's"),
+                new CancionDoc("The Magic Flute, K. 620 - Pa-Pa-Pa-Pa-Pa-Pa")
+        ));
+        album232.setArtista(artista41); // Mozart
+
+// Álbum 233: "Brandenburg Concertos"
+        AlbumColeccion album233 = new AlbumColeccion();
+        album233.setNombre("Brandenburg Concertos");
+        album233.setImagen("/albumes/BrandenburgConcertos.jpg");
+        album233.setFechaLanzamiento(LocalDate.of(1721, 3, 24));
+        album233.setCanciones(Arrays.asList(
+                new CancionDoc("Brandenburg Concerto No. 1 in F major, BWV 1046 - I. Allegro"),
+                new CancionDoc("Brandenburg Concerto No. 2 in F major, BWV 1047 - I. Allegro"),
+                new CancionDoc("Brandenburg Concerto No. 3 in G major, BWV 1048 - I. Allegro"),
+                new CancionDoc("Brandenburg Concerto No. 5 in D major, BWV 1050 - I. Allegro")
+        ));
+        album233.setArtista(artista42); // Bach
+
+// Álbum 234: "Mass in B minor"
+        AlbumColeccion album234 = new AlbumColeccion();
+        album234.setNombre("Mass in B minor");
+        album234.setImagen("/albumes/MassInBMinor.jpg");
+        album234.setFechaLanzamiento(LocalDate.of(1749, 12, 20));
+        album234.setCanciones(Arrays.asList(
+                new CancionDoc("Mass in B minor, BWV 232 - Kyrie"),
+                new CancionDoc("Mass in B minor, BWV 232 - Gloria"),
+                new CancionDoc("Mass in B minor, BWV 232 - Credo"),
+                new CancionDoc("Mass in B minor, BWV 232 - Sanctus")
+        ));
+        album234.setArtista(artista42); // Bach
+
+// Álbum 149: "Nocturnes, Op. 9"
+        AlbumColeccion album235 = new AlbumColeccion();
+        album235.setNombre("Nocturnes, Op. 9");
+        album235.setImagen("/albumes/NocturnesOp9.jpg");
+        album235.setFechaLanzamiento(LocalDate.of(1830, 1, 1));
+        album235.setCanciones(Arrays.asList(
+                new CancionDoc("Nocturne in B-flat minor, Op. 9 No. 1"),
+                new CancionDoc("Nocturne in E-flat major, Op. 9 No. 2"),
+                new CancionDoc("Nocturne in B major, Op. 9 No. 3")
+        ));
+        album235.setArtista(artista43); // Chopin
+
+// Álbum 150: "Piano Concerto No. 1 in E minor, Op. 11"
+        AlbumColeccion album236 = new AlbumColeccion();
+        album236.setNombre("Piano Concerto No. 1 in E minor, Op. 11");
+        album236.setImagen("/albumes/PianoConcertoOp11.jpg");
+        album236.setFechaLanzamiento(LocalDate.of(1830, 2, 11));
+        album236.setCanciones(Arrays.asList(
+                new CancionDoc("Piano Concerto No. 1 in E minor, Op. 11 - I. Allegro maestoso"),
+                new CancionDoc("Piano Concerto No. 1 in E minor, Op. 11 - II. Romance: Larghetto"),
+                new CancionDoc("Piano Concerto No. 1 in E minor, Op. 11 - III. Rondo: Vivace")
+        ));
+        album236.setArtista(artista43); // Chopin
+
+// Álbum 151: "Cello Suites"
+        AlbumColeccion album237 = new AlbumColeccion();
+        album237.setNombre("Cello Suites");
+        album237.setImagen("/albumes/CelloSuites.jpg");
+        album237.setFechaLanzamiento(LocalDate.of(1936, 1, 1));
+        album237.setCanciones(Arrays.asList(
+                new CancionDoc("Cello Suite No. 1 in G major, BWV 1007 - Prélude"),
+                new CancionDoc("Cello Suite No. 2 in D minor, BWV 1008 - Allemande"),
+                new CancionDoc("Cello Suite No. 3 in C major, BWV 1009 - Gigue"),
+                new CancionDoc("Cello Suite No. 6 in D major, BWV 1012 - Gigue")
+        ));
+        album237.setArtista(artista44); // Pablo Casals
+
+// Álbum 152: "El Cello de Casals"
+        AlbumColeccion album238 = new AlbumColeccion();
+        album238.setNombre("El Cello de Casals");
+        album238.setImagen("/albumes/ElCelloDeCasals.jpg");
+        album238.setFechaLanzamiento(LocalDate.of(1947, 1, 1));
+        album238.setCanciones(Arrays.asList(
+                new CancionDoc("El Cello de Casals - Suite para Cello Solo"),
+                new CancionDoc("El Cello de Casals - Adagio de Albinoni"),
+                new CancionDoc("El Cello de Casals - Variaciones sobre un tema de Paganini")
+        ));
+        album238.setArtista(artista44); // Pablo Casals
+
+// Álbum 153: "I Never Loved a Man the Way I Love You"
+        AlbumColeccion album239 = new AlbumColeccion();
+        album239.setNombre("I Never Loved a Man the Way I Love You");
+        album239.setImagen("/albumes/INeverLoved.jpg");
+        album239.setFechaLanzamiento(LocalDate.of(1967, 3, 10));
+        album239.setCanciones(Arrays.asList(
+                new CancionDoc("Respect"),
+                new CancionDoc("I Never Loved a Man (The Way I Love You)"),
+                new CancionDoc("Do Right Woman, Do Right Man"),
+                new CancionDoc("Baby, Baby, Baby")
+        ));
+        album239.setArtista(artista45); // Aretha Franklin
+
+// Álbum 154: "Amazing Grace"
+        AlbumColeccion album240 = new AlbumColeccion();
+        album240.setNombre("Amazing Grace");
+        album240.setImagen("/albumes/AmazingGrace.jpg");
+        album240.setFechaLanzamiento(LocalDate.of(1972, 6, 1));
+        album240.setCanciones(Arrays.asList(
+                new CancionDoc("Amazing Grace"),
+                new CancionDoc("How I Got Over"),
+                new CancionDoc("Precious Lord, Take My Hand"),
+                new CancionDoc("You'll Never Walk Alone")
+        ));
+        album240.setArtista(artista45); // Aretha Franklin
+
+// Álbum 155: "What's Going On"
+        AlbumColeccion album241 = new AlbumColeccion();
+        album241.setNombre("What's Going On");
+        album241.setImagen("/albumes/WhatsGoingOn.jpg");
+        album241.setFechaLanzamiento(LocalDate.of(1971, 5, 21));
+        album241.setCanciones(Arrays.asList(
+                new CancionDoc("What's Going On"),
+                new CancionDoc("Mercy Mercy Me (The Ecology)"),
+                new CancionDoc("Inner City Blues (Make Me Wanna Holler)"),
+                new CancionDoc("Save the Children")
+        ));
+        album241.setArtista(artista46); // Marvin Gaye
+
+// Álbum 156: "Let's Get It On"
+        AlbumColeccion album242 = new AlbumColeccion();
+        album242.setNombre("Let's Get It On");
+        album242.setImagen("/albumes/LetsGetItOn.jpg");
+        album242.setFechaLanzamiento(LocalDate.of(1973, 8, 28));
+        album242.setCanciones(Arrays.asList(
+                new CancionDoc("Let's Get It On"),
+                new CancionDoc("Come Get to This"),
+                new CancionDoc("Let's Get It On (Reprise)"),
+                new CancionDoc("You Sure Love to Ball")
+        ));
+        album242.setArtista(artista46); // Marvin Gaye
+
+// Álbum 157: "I Put a Spell on You"
+        AlbumColeccion album243 = new AlbumColeccion();
+        album243.setNombre("I Put a Spell on You");
+        album243.setImagen("/albumes/IPutASpellOnYou.jpg");
+        album243.setFechaLanzamiento(LocalDate.of(1965, 9, 1));
+        album243.setCanciones(Arrays.asList(
+                new CancionDoc("I Put a Spell on You"),
+                new CancionDoc("Feeling Good"),
+                new CancionDoc("Don't Let Me Be Misunderstood"),
+                new CancionDoc("Sinner Man")
+        ));
+        album243.setArtista(artista47); // Nina Simone
+
+// Álbum 158: "Pastel Blues"
+        AlbumColeccion album244 = new AlbumColeccion();
+        album244.setNombre("Pastel Blues");
+        album244.setImagen("/albumes/PastelBlues.jpg");
+        album244.setFechaLanzamiento(LocalDate.of(1959, 9, 1));
+        album244.setCanciones(Arrays.asList(
+                new CancionDoc("Mood Indigo"),
+                new CancionDoc("Good Bait"),
+                new CancionDoc("Don't Explain"),
+                new CancionDoc("Little Girl Blue")
+        ));
+        album244.setArtista(artista47); // Nina Simone
+
+// Álbum 159: "Hot Buttered Soul"
+        AlbumColeccion album245 = new AlbumColeccion();
+        album245.setNombre("Hot Buttered Soul");
+        album245.setImagen("/albumes/HotButteredSoul.jpg");
+        album245.setFechaLanzamiento(LocalDate.of(1969, 9, 23));
+        album245.setCanciones(Arrays.asList(
+                new CancionDoc("Walk On By"),
+                new CancionDoc("Hyperbolicsyllabicsesquedalymistic"),
+                new CancionDoc("By the Time I Get to Phoenix")
+        ));
+        album245.setArtista(artista48); // Isaac Hayes
+
+// Álbum 160: "Shaft"
+        AlbumColeccion album246 = new AlbumColeccion();
+        album246.setNombre("Shaft");
+        album246.setImagen("/albumes/Shaft.jpg");
+        album246.setFechaLanzamiento(LocalDate.of(1971, 7, 16));
+        album246.setCanciones(Arrays.asList(
+                new CancionDoc("Theme from Shaft"),
+                new CancionDoc("Shaft's Theme"),
+                new CancionDoc("Cafe Regio's")
+        ));
+        album246.setArtista(artista48); // Isaac Hayes
+
+// Álbum 161: "Songs in the Key of Life"
+        AlbumColeccion album247 = new AlbumColeccion();
+        album247.setNombre("Songs in the Key of Life");
+        album247.setImagen("/albumes/SongsInTheKeyOfLife.jpg");
+        album247.setFechaLanzamiento(LocalDate.of(1976, 9, 28));
+        album247.setCanciones(Arrays.asList(
+                new CancionDoc("Sir Duke"),
+                new CancionDoc("Isn't She Lovely"),
+                new CancionDoc("Pastime Paradise"),
+                new CancionDoc("I Wish")
+        ));
+        album247.setArtista(artista49); // Stevie Wonder
+
+// Álbum 162: "Innervisions"
+        AlbumColeccion album248 = new AlbumColeccion();
+        album248.setNombre("Innervisions");
+        album248.setImagen("/albumes/Innervisions.jpg");
+        album248.setFechaLanzamiento(LocalDate.of(1973, 8, 3));
+        album248.setCanciones(Arrays.asList(
+                new CancionDoc("Higher Ground"),
+                new CancionDoc("Living for the City"),
+                new CancionDoc("Don't You Worry 'Bout a Thing"),
+                new CancionDoc("Too High")
+        ));
+        album248.setArtista(artista49); // Stevie Wonder
+
+// Álbum 163: "The Idiot"
+        AlbumColeccion album249 = new AlbumColeccion();
+        album249.setNombre("The Idiot");
+        album249.setImagen("/albumes/TheIdiot.jpg");
+        album249.setFechaLanzamiento(LocalDate.of(1977, 3, 18));
+        album249.setCanciones(Arrays.asList(
+                new CancionDoc("Lust for Life"),
+                new CancionDoc("Nightclubbing"),
+                new CancionDoc("China Girl"),
+                new CancionDoc("Dum Dum Boys")
+        ));
+        album249.setArtista(artista50); // Iggy Pop
+
+// Álbum 164: "Lust for Life"
+        AlbumColeccion album250 = new AlbumColeccion();
+        album250.setNombre("Lust for Life");
+        album250.setImagen("/albumes/LustForLife.jpg");
+        album250.setFechaLanzamiento(LocalDate.of(1977, 8, 29));
+        album250.setCanciones(Arrays.asList(
+                new CancionDoc("Lust for Life"),
+                new CancionDoc("The Passenger"),
+                new CancionDoc("Success"),
+                new CancionDoc("Tonight")
+        ));
+        album250.setArtista(artista50); // Iggy Pop
+
+// Álbum 165: "Bad Reputation"
+        AlbumColeccion album251 = new AlbumColeccion();
+        album251.setNombre("Bad Reputation");
+        album251.setImagen("/albumes/BadReputation.jpg");
+        album251.setFechaLanzamiento(LocalDate.of(1981, 9, 28));
+        album251.setCanciones(Arrays.asList(
+                new CancionDoc("Bad Reputation"),
+                new CancionDoc("Make Believe"),
+                new CancionDoc("You Don't Own Me"),
+                new CancionDoc("Crimson and Clover")
+        ));
+        album251.setArtista(artista51); // Joan Jett
+
+// Álbum 166: "I Love Rock 'n' Roll"
+        AlbumColeccion album252 = new AlbumColeccion();
+        album252.setNombre("I Love Rock 'n' Roll");
+        album252.setImagen("/albumes/ILoveRocknRoll.jpg");
+        album252.setFechaLanzamiento(LocalDate.of(1981, 6, 20));
+        album252.setCanciones(Arrays.asList(
+                new CancionDoc("I Love Rock 'n' Roll"),
+                new CancionDoc("Crimson and Clover"),
+                new CancionDoc("Little Drummer Boy"),
+                new CancionDoc("Love Is Pain")
+        ));
+        album252.setArtista(artista51); // Joan Jett
+
+// Álbum 167: "Sid Sings"
+        AlbumColeccion album253 = new AlbumColeccion();
+        album253.setNombre("Sid Sings");
+        album253.setImagen("/albumes/SidSings.jpg");
+        album253.setFechaLanzamiento(LocalDate.of(1979, 12, 1));
+        album253.setCanciones(Arrays.asList(
+                new CancionDoc("My Way"),
+                new CancionDoc("Belsen Was a Gas"),
+                new CancionDoc("I Did It My Way"),
+                new CancionDoc("Something Else")
+        ));
+        album253.setArtista(artista52); // Sid Vicious
+
+// Álbum 168: "The Great Rock 'n' Roll Swindle"
+        AlbumColeccion album254 = new AlbumColeccion();
+        album254.setNombre("The Great Rock 'n' Roll Swindle");
+        album254.setImagen("/albumes/TheGreatRocknRollSwindle.jpg");
+        album254.setFechaLanzamiento(LocalDate.of(1979, 4, 10));
+        album254.setCanciones(Arrays.asList(
+                new CancionDoc("The Great Rock 'n' Roll Swindle"),
+                new CancionDoc("Anarchy in the UK"),
+                new CancionDoc("God Save the Queen"),
+                new CancionDoc("No One Is Innocent")
+        ));
+        album254.setArtista(artista52); // Sid Vicious
+
+// Álbum 169: "Horses"
+        AlbumColeccion album255 = new AlbumColeccion();
+        album255.setNombre("Horses");
+        album255.setImagen("/albumes/Horses.jpg");
+        album255.setFechaLanzamiento(LocalDate.of(1975, 11, 10));
+        album255.setCanciones(Arrays.asList(
+                new CancionDoc("Gloria"),
+                new CancionDoc("Birdland"),
+                new CancionDoc("Break It Up"),
+                new CancionDoc("Kimberly")
+        ));
+        album255.setArtista(artista53); // Patti Smith
+
+// Álbum 170: "Easter"
+        AlbumColeccion album256 = new AlbumColeccion();
+        album256.setNombre("Easter");
+        album256.setImagen("/albumes/Easter.jpg");
+        album256.setFechaLanzamiento(LocalDate.of(1978, 3, 3));
+        album256.setCanciones(Arrays.asList(
+                new CancionDoc("Because the Night"),
+                new CancionDoc("Easter"),
+                new CancionDoc("Rock 'n' Roll Nigger"),
+                new CancionDoc("Space Monkey")
+        ));
+        album256.setArtista(artista53); // Patti Smith
+
+// Álbum 171: "Billy Idol"
+        AlbumColeccion album257 = new AlbumColeccion();
+        album257.setNombre("Billy Idol");
+        album257.setImagen("/albumes/BillyIdol.jpg");
+        album257.setFechaLanzamiento(LocalDate.of(1982, 7, 16));
+        album257.setCanciones(Arrays.asList(
+                new CancionDoc("White Wedding"),
+                new CancionDoc("Dancing with Myself"),
+                new CancionDoc("Hot in the City"),
+                new CancionDoc("Come On, Come On")
+        ));
+        album257.setArtista(artista54); // Billy Idol
+
+// Álbum 172: "Rebel Yell"
+        AlbumColeccion album258 = new AlbumColeccion();
+        album258.setNombre("Rebel Yell");
+        album258.setImagen("/albumes/RebelYell.jpg");
+        album258.setFechaLanzamiento(LocalDate.of(1983, 11, 10));
+        album258.setCanciones(Arrays.asList(
+                new CancionDoc("Rebel Yell"),
+                new CancionDoc("Eyes Without a Face"),
+                new CancionDoc("Flesh for Fantasy"),
+                new CancionDoc("Catch My Fall")
+        ));
+        album258.setArtista(artista54); // Billy Idol
+
+// Álbum 173: "Live at the Apollo"
+        AlbumColeccion album259 = new AlbumColeccion();
+        album259.setNombre("Live at the Apollo");
+        album259.setImagen("/albumes/LiveAtTheApollo.jpg");
+        album259.setFechaLanzamiento(LocalDate.of(1963, 10, 24));
+        album259.setCanciones(Arrays.asList(
+                new CancionDoc("I'll Go Crazy"),
+                new CancionDoc("Night Train"),
+                new CancionDoc("Please, Please, Please"),
+                new CancionDoc("Shout and Shimmy")
+        ));
+        album259.setArtista(artista55); // James Brown
+
+// Álbum 174: "Sex Machine"
+        AlbumColeccion album260 = new AlbumColeccion();
+        album260.setNombre("Sex Machine");
+        album260.setImagen("/albumes/SexMachine.jpg");
+        album260.setFechaLanzamiento(LocalDate.of(1970, 4, 7));
+        album174.setCanciones(Arrays.asList(
+                new CancionDoc("Get Up (I Feel Like Being a) Sex Machine"),
+                new CancionDoc("Brother Rapp"),
+                new CancionDoc("I Got the Feelin'"),
+                new CancionDoc("Mother Popcorn")
+        ));
+        album260.setArtista(artista55); // James Brown
+
+// Álbum 175: "Mothership Connection"
+        AlbumColeccion album261 = new AlbumColeccion();
+        album261.setNombre("Mothership Connection");
+        album261.setImagen("/albumes/MothershipConnection.jpg");
+        album261.setFechaLanzamiento(LocalDate.of(1975, 12, 15));
+        album261.setCanciones(Arrays.asList(
+                new CancionDoc("Give Up the Funk (Tear the Roof off the Sucker)"),
+                new CancionDoc("Mothership Connection (Star Child)"),
+                new CancionDoc("Supergroovalisticprosifunkstication"),
+                new CancionDoc("Unfunky UFO")
+        ));
+        album175.setArtista(artista56); // George Clinton
+
+// Álbum 176: "Funkentelechy Vs. the Placebo Syndrome"
+        AlbumColeccion album262 = new AlbumColeccion();
+        album262.setNombre("Funkentelechy Vs. the Placebo Syndrome");
+        album262.setImagen("/albumes/Funkentelechy.jpg");
+        album262.setFechaLanzamiento(LocalDate.of(1977, 3, 1));
+        album262.setCanciones(Arrays.asList(
+                new CancionDoc("Funkentelechy"),
+                new CancionDoc("Placebo Syndrome"),
+                new CancionDoc("The Goose That Laid the Golden Egg"),
+                new CancionDoc("Sir Nose On the Tracks of the World")
+        ));
+        album262.setArtista(artista56); // George Clinton
+
+// Álbum 177: "Travelling Without Moving"
+        AlbumColeccion album263 = new AlbumColeccion();
+        album263.setNombre("Travelling Without Moving");
+        album263.setImagen("/albumes/TravellingWithoutMoving.jpg");
+        album263.setFechaLanzamiento(LocalDate.of(1996, 9, 9));
+        album263.setCanciones(Arrays.asList(
+                new CancionDoc("Virtual Insanity"),
+                new CancionDoc("Cosmic Girl"),
+                new CancionDoc("Travelling Without Moving"),
+                new CancionDoc("Alright")
+        ));
+        album263.setArtista(artista57); // Jamiroquai
+
+// Álbum 178: "A Funk Odyssey"
+        AlbumColeccion album264 = new AlbumColeccion();
+        album264.setNombre("A Funk Odyssey");
+        album264.setImagen("/albumes/FunkOdyssey.jpg");
+        album264.setFechaLanzamiento(LocalDate.of(2001, 9, 17));
+        album264.setCanciones(Arrays.asList(
+                new CancionDoc("Little L"),
+                new CancionDoc("You Give Me Something"),
+                new CancionDoc("Love Foolosophy"),
+                new CancionDoc("Supersonic")
+        ));
+        album264.setArtista(artista57); // Jamiroquai
+
+// Álbum 179: "Purple Rain"
+        AlbumColeccion album265 = new AlbumColeccion();
+        album265.setNombre("Purple Rain");
+        album265.setImagen("/albumes/PurpleRain.jpg");
+        album265.setFechaLanzamiento(LocalDate.of(1984, 6, 25));
+        album265.setCanciones(Arrays.asList(
+                new CancionDoc("Let's Go Crazy"),
+                new CancionDoc("When Doves Cry"),
+                new CancionDoc("Purple Rain"),
+                new CancionDoc("I Would Die 4 U")
+        ));
+        album265.setArtista(artista58); // Prince
+
+// Álbum 180: "1999"
+        AlbumColeccion album266 = new AlbumColeccion();
+        album266.setNombre("1999");
+        album266.setImagen("/albumes/1999.jpg");
+        album266.setFechaLanzamiento(LocalDate.of(1982, 10, 27));
+        album266.setCanciones(Arrays.asList(
+                new CancionDoc("1999"),
+                new CancionDoc("Little Red Corvette"),
+                new CancionDoc("Delirious"),
+                new CancionDoc("DMSR")
+        ));
+        album266.setArtista(artista58); // Prince
+
+// Álbum 181: "Street Songs"
+        AlbumColeccion album267 = new AlbumColeccion();
+        album267.setNombre("Street Songs");
+        album267.setImagen("/albumes/StreetSongs.jpg");
+        album267.setFechaLanzamiento(LocalDate.of(1981, 4, 16));
+        album267.setCanciones(Arrays.asList(
+                new CancionDoc("Super Freak"),
+                new CancionDoc("Give It to Me Baby"),
+                new CancionDoc("Ghetto Life"),
+                new CancionDoc("Mary Jane")
+        ));
+        album267.setArtista(artista59); // Rick James
+
+// Álbum 182: "Fire It Up"
+        AlbumColeccion album268 = new AlbumColeccion();
+        album268.setNombre("Fire It Up");
+        album268.setImagen("/albumes/FireItUp.jpg");
+        album268.setFechaLanzamiento(LocalDate.of(1982, 5, 4));
+        album268.setCanciones(Arrays.asList(
+                new CancionDoc("Fire It Up"),
+                new CancionDoc("You and I"),
+                new CancionDoc("Cold Blooded"),
+                new CancionDoc("Big Time")
+        ));
+        album268.setArtista(artista59); // Rick James
+
+// Álbum 183: "Laundry Service"
+        AlbumColeccion album269 = new AlbumColeccion();
+        album269.setNombre("Laundry Service");
+        album269.setImagen("/albumes/LaundryService.jpg");
+        album269.setFechaLanzamiento(LocalDate.of(2001, 11, 13));
+        album269.setCanciones(Arrays.asList(
+                new CancionDoc("Whenever, Wherever"),
+                new CancionDoc("Underneath Your Clothes"),
+                new CancionDoc("Te Dejo Madrid"),
+                new CancionDoc("La Tortura")
+        ));
+        album269.setArtista(artista60); // Shakira
+
+// Álbum 184: "Oral Fixation, Vol. 2"
+        AlbumColeccion album270 = new AlbumColeccion();
+        album270.setNombre("Oral Fixation, Vol. 2");
+        album270.setImagen("/albumes/OralFixationVol2.jpg");
+        album270.setFechaLanzamiento(LocalDate.of(2005, 11, 29));
+        album270.setCanciones(Arrays.asList(
+                new CancionDoc("Hips Don't Lie"),
+                new CancionDoc("Illegal"),
+                new CancionDoc("La Pared"),
+                new CancionDoc("Animal City")
+        ));
+        album270.setArtista(artista60); // Shakira
+
+// Álbum 271: "Clásicos de la Provincia"
+        AlbumColeccion album271 = new AlbumColeccion();
+        album271.setNombre("Clásicos de la Provincia");
+        album271.setImagen("/albumes/ClasicosDeLaProvincia.jpg");
+        album271.setFechaLanzamiento(LocalDate.of(1993, 9, 24));
+        album271.setCanciones(Arrays.asList(
+                new CancionDoc("La Tierra del Olvido"),
+                new CancionDoc("Fruta Fresca"),
+                new CancionDoc("Volví a Nacer"),
+                new CancionDoc("Pa' Mayté")
+        ));
+        album271.setArtista(artista61); // Carlos Vives
+
+// Álbum 272: "Vives"
+        AlbumColeccion album272 = new AlbumColeccion();
+        album272.setNombre("Vives");
+        album272.setImagen("/albumes/Vives.jpg");
+        album272.setFechaLanzamiento(LocalDate.of(2017, 9, 29));
+        album272.setCanciones(Arrays.asList(
+                new CancionDoc("La Bicicleta"),
+                new CancionDoc("El Mar de sus Ojos"),
+                new CancionDoc("Al Filo de tu Amor"),
+                new CancionDoc("Robarte un Beso")
+        ));
+        album272.setArtista(artista61); // Carlos Vives
+
+// Álbum 273: "Fíjate Bien"
+        AlbumColeccion album273 = new AlbumColeccion();
+        album273.setNombre("Fíjate Bien");
+        album273.setImagen("/albumes/FijateBien.jpg");
+        album273.setFechaLanzamiento(LocalDate.of(2000, 2, 1));
+        album273.setCanciones(Arrays.asList(
+                new CancionDoc("Fíjate Bien"),
+                new CancionDoc("Mala Gente"),
+                new CancionDoc("Es Por Ti"),
+                new CancionDoc("A Dios le Pido")
+        ));
+        album273.setArtista(artista62); // Juanes
+
+// Álbum 274: "La Vida... Es un Ratico"
+        AlbumColeccion album274 = new AlbumColeccion();
+        album274.setNombre("La Vida... Es un Ratico");
+        album274.setImagen("/albumes/LaVidaEsUnRatico.jpg");
+        album274.setFechaLanzamiento(LocalDate.of(2007, 10, 23));
+        album274.setCanciones(Arrays.asList(
+                new CancionDoc("Me Enamora"),
+                new CancionDoc("La Camisa Negra"),
+                new CancionDoc("Para tu Amor"),
+                new CancionDoc("Lo Que Me Gusta a Mí")
+        ));
+        album274.setArtista(artista62); // Juanes
+
+// Álbum 275: "Marc Anthony"
+        AlbumColeccion album275 = new AlbumColeccion();
+        album275.setNombre("Marc Anthony");
+        album275.setImagen("/albumes/MarcAnthony.jpg");
+        album275.setFechaLanzamiento(LocalDate.of(1999, 9, 21));
+        album275.setCanciones(Arrays.asList(
+                new CancionDoc("Vivir lo Nuestro"),
+                new CancionDoc("Que Precio Tiene el Cielo"),
+                new CancionDoc("Te Conozco Bien"),
+                new CancionDoc("Y Hubo Alguien")
+        ));
+        album275.setArtista(artista63); // Marc Anthony
+
+// Álbum 276: "Triunfo"
+        AlbumColeccion album276 = new AlbumColeccion();
+        album276.setNombre("Triunfo");
+        album276.setImagen("/albumes/Triunfo.jpg");
+        album276.setFechaLanzamiento(LocalDate.of(2004, 2, 10));
+        album276.setCanciones(Arrays.asList(
+                new CancionDoc("Y Ahora Quien"),
+                new CancionDoc("Celos"),
+                new CancionDoc("Mi Gente"),
+                new CancionDoc("Que Manera de Quererte")
+        ));
+        album276.setArtista(artista63); // Marc Anthony
+
+// Álbum 277: "Mi Tierra"
+        AlbumColeccion album277 = new AlbumColeccion();
+        album277.setNombre("Mi Tierra");
+        album277.setImagen("/albumes/MiTierra.jpg");
+        album277.setFechaLanzamiento(LocalDate.of(1993, 6, 2));
+        album277.setCanciones(Arrays.asList(
+                new CancionDoc("Mi Tierra"),
+                new CancionDoc("Con los Años Que Me Quedan"),
+                new CancionDoc("Santo Santo"),
+                new CancionDoc("No Te Olvides")
+        ));
+        album277.setArtista(artista64); // Gloria Estefan
+
+// Álbum 278: "Into the Light"
+        AlbumColeccion album278 = new AlbumColeccion();
+        album278.setNombre("Into the Light");
+        album278.setImagen("/albumes/IntoTheLight.jpg");
+        album278.setFechaLanzamiento(LocalDate.of(1997, 4, 8));
+        album278.setCanciones(Arrays.asList(
+                new CancionDoc("Heaven's What I Feel"),
+                new CancionDoc("The Rhythm Is Gonna Get You"),
+                new CancionDoc("Oye")
+        ));
+        album278.setArtista(artista64); // Gloria Estefan
+
+// Álbum 279: "Confessions"
+        AlbumColeccion album279 = new AlbumColeccion();
+        album279.setNombre("Confessions");
+        album279.setImagen("/albumes/Confessions.jpg");
+        album279.setFechaLanzamiento(LocalDate.of(2004, 3, 23));
+        album279.setCanciones(Arrays.asList(
+                new CancionDoc("Yeah!"),
+                new CancionDoc("Burn"),
+                new CancionDoc("Confessions Part II"),
+                new CancionDoc("U Got It Bad")
+        ));
+        album279.setArtista(artista65); // Usher
+
+// Álbum 280: "8701"
+        AlbumColeccion album280 = new AlbumColeccion();
+        album280.setNombre("8701");
+        album280.setImagen("/albumes/8701.jpg");
+        album280.setFechaLanzamiento(LocalDate.of(2001, 8, 7));
+        album280.setCanciones(Arrays.asList(
+                new CancionDoc("U Got It Bad"),
+                new CancionDoc("U Remind Me"),
+                new CancionDoc("Can U Handle It"),
+                new CancionDoc("Nice & Slow")
+        ));
+        album280.setArtista(artista65); // Usher
+
+// Álbum 281: "Songs in A Minor"
+        AlbumColeccion album281 = new AlbumColeccion();
+        album281.setNombre("Songs in A Minor");
+        album281.setImagen("/albumes/SongsInAMinor.jpg");
+        album281.setFechaLanzamiento(LocalDate.of(2001, 6, 5));
+        album281.setCanciones(Arrays.asList(
+                new CancionDoc("Fallin'"),
+                new CancionDoc("A Woman's Worth"),
+                new CancionDoc("How Come You Don't Call Me"),
+                new CancionDoc("Truth Is")
+        ));
+        album281.setArtista(artista66); // Alicia Keys
+
+// Álbum 282: "The Diary of Alicia Keys"
+        AlbumColeccion album282 = new AlbumColeccion();
+        album282.setNombre("The Diary of Alicia Keys");
+        album282.setImagen("/albumes/TheDiaryOfAliciaKeys.jpg");
+        album282.setFechaLanzamiento(LocalDate.of(2003, 12, 2));
+        album282.setCanciones(Arrays.asList(
+                new CancionDoc("You Don't Know My Name"),
+                new CancionDoc("If I Ain't Got You"),
+                new CancionDoc("Diary"),
+                new CancionDoc("Karma")
+        ));
+        album282.setArtista(artista66); // Alicia Keys
+
+// Álbum 283: "Dangerously In Love"
+        AlbumColeccion album283 = new AlbumColeccion();
+        album283.setNombre("Dangerously In Love");
+        album283.setImagen("/albumes/DangerouslyInLove.jpg");
+        album283.setFechaLanzamiento(LocalDate.of(2003, 6, 24));
+        album283.setCanciones(Arrays.asList(
+                new CancionDoc("Crazy In Love"),
+                new CancionDoc("Baby Boy"),
+                new CancionDoc("Me, Myself and I"),
+                new CancionDoc("Naughty Girl")
+        ));
+        album283.setArtista(artista67); // Beyoncé
+
+// Álbum 284: "B'Day"
+        AlbumColeccion album284 = new AlbumColeccion();
+        album284.setNombre("B'Day");
+        album284.setImagen("/albumes/BDay.jpg");
+        album284.setFechaLanzamiento(LocalDate.of(2006, 9, 4));
+        album284.setCanciones(Arrays.asList(
+                new CancionDoc("Irreplaceable"),
+                new CancionDoc("Deja Vu"),
+                new CancionDoc("Get Me Bodied"),
+                new CancionDoc("Ring the Alarm")
+        ));
+        album284.setArtista(artista67); // Beyoncé
+
+// Álbum 285: "Starboy"
+        AlbumColeccion album285 = new AlbumColeccion();
+        album285.setNombre("Starboy");
+        album285.setImagen("/albumes/Starboy.jpg");
+        album285.setFechaLanzamiento(LocalDate.of(2016, 11, 25));
+        album285.setCanciones(Arrays.asList(
+                new CancionDoc("Starboy"),
+                new CancionDoc("I Feel It Coming"),
+                new CancionDoc("Party Monster"),
+                new CancionDoc("Reminder")
+        ));
+        album285.setArtista(artista68); // The Weeknd
+
+// Álbum 286: "After Hours"
+        AlbumColeccion album286 = new AlbumColeccion();
+        album286.setNombre("After Hours");
+        album286.setImagen("/albumes/AfterHours.jpg");
+        album286.setFechaLanzamiento(LocalDate.of(2020, 3, 20));
+        album286.setCanciones(Arrays.asList(
+                new CancionDoc("Blinding Lights"),
+                new CancionDoc("Heartless"),
+                new CancionDoc("Save Your Tears"),
+                new CancionDoc("In Your Eyes")
+        ));
+        album286.setArtista(artista68); // The Weeknd
+
+// Álbum 287: "Doo-Wops & Hooligans"
+        AlbumColeccion album287 = new AlbumColeccion();
+        album287.setNombre("Doo-Wops & Hooligans");
+        album287.setImagen("/albumes/DooWopsAndHooligans.jpg");
+        album287.setFechaLanzamiento(LocalDate.of(2010, 10, 5));
+        album287.setCanciones(Arrays.asList(
+                new CancionDoc("Just the Way You Are"),
+                new CancionDoc("Grenade"),
+                new CancionDoc("The Lazy Song"),
+                new CancionDoc("Count On Me")
+        ));
+        album287.setArtista(artista69); // Bruno Mars
+
+// Álbum 288: "Unorthodox Jukebox"
+        AlbumColeccion album288 = new AlbumColeccion();
+        album288.setNombre("Unorthodox Jukebox");
+        album288.setImagen("/albumes/UnorthodoxJukebox.jpg");
+        album288.setFechaLanzamiento(LocalDate.of(2012, 12, 11));
+        album288.setCanciones(Arrays.asList(
+                new CancionDoc("Locked Out of Heaven"),
+                new CancionDoc("When I Was Your Man"),
+                new CancionDoc("Treasure"),
+                new CancionDoc("Gorilla")
+        ));
+        album288.setArtista(artista69); // Bruno Mars
+
+// Álbum 289: "DS2" (Dirty Sprite 2)
+        AlbumColeccion album289 = new AlbumColeccion();
+        album289.setNombre("DS2 (Dirty Sprite 2)");
+        album289.setImagen("/albumes/DS2.jpg");
+        album289.setFechaLanzamiento(LocalDate.of(2015, 7, 17));
+        album289.setCanciones(Arrays.asList(
+                new CancionDoc("Where Ya At"),
+                new CancionDoc("Stick Talk"),
+                new CancionDoc("Thought It Was a Drought"),
+                new CancionDoc("F*ck Up Some Commas")
+        ));
+        album289.setArtista(artista70); // Future
+
+// Álbum 290: "What a Time to Be Alive"
+        AlbumColeccion album290 = new AlbumColeccion();
+        album290.setNombre("What a Time to Be Alive");
+        album290.setImagen("/albumes/WhatATimeToBeAlive.jpg");
+        album290.setFechaLanzamiento(LocalDate.of(2015, 9, 20));
+        album290.setCanciones(Arrays.asList(
+                new CancionDoc("Jumpman"),
+                new CancionDoc("Big Rings"),
+                new CancionDoc("Diamonds Dancing"),
+                new CancionDoc("Live from the Gutter")
+        ));
+        album290.setArtista(artista70); // Future
+
+// Álbum 291: "Astroworld"
+        AlbumColeccion album291 = new AlbumColeccion();
+        album291.setNombre("Astroworld");
+        album291.setImagen("/albumes/Astroworld.jpg");
+        album291.setFechaLanzamiento(LocalDate.of(2018, 8, 3));
+        album291.setCanciones(Arrays.asList(
+                new CancionDoc("SICKO MODE"),
+                new CancionDoc("STARGAZING"),
+                new CancionDoc("STOP TRYING TO BE GOD"),
+                new CancionDoc("NO BYSTANDERS")
+        ));
+        album291.setArtista(artista71); // Travis Scott
+
+// Álbum 292: "Rodeo"
+        AlbumColeccion album292 = new AlbumColeccion();
+        album292.setNombre("Rodeo");
+        album292.setImagen("/albumes/Rodeo.jpg");
+        album292.setFechaLanzamiento(LocalDate.of(2015, 9, 4));
+        album292.setCanciones(Arrays.asList(
+                new CancionDoc("3500"),
+                new CancionDoc("Antidote"),
+                new CancionDoc("Apple Pie"),
+                new CancionDoc("Mamacita")
+        ));
+        album292.setArtista(artista71); // Travis Scott
+
+// Álbum 293: "Stoney"
+        AlbumColeccion album293 = new AlbumColeccion();
+        album293.setNombre("Stoney");
+        album293.setImagen("/albumes/Stoney.jpg");
+        album293.setFechaLanzamiento(LocalDate.of(2016, 12, 9));
+        album293.setCanciones(Arrays.asList(
+                new CancionDoc("White Iverson"),
+                new CancionDoc("Congratulations"),
+                new CancionDoc("Go Flex"),
+                new CancionDoc("Deja Vu")
+        ));
+        album293.setArtista(artista72); // Post Malone
+
+// Álbum 294: "Beer Bongs & Bentleys"
+        AlbumColeccion album294 = new AlbumColeccion();
+        album294.setNombre("Beer Bongs & Bentleys");
+        album294.setImagen("/albumes/BeerBongsAndBentleys.jpg");
+        album294.setFechaLanzamiento(LocalDate.of(2018, 4, 27));
+        album294.setCanciones(Arrays.asList(
+                new CancionDoc("Rockstar"),
+                new CancionDoc("Psycho"),
+                new CancionDoc("Better Now"),
+                new CancionDoc("Wow.")
+        ));
+        album294.setArtista(artista72); // Post Malone
+
+// Álbum 295: "Life of a Dark Rose"
+        AlbumColeccion album295 = new AlbumColeccion();
+        album295.setNombre("Life of a Dark Rose");
+        album295.setImagen("/albumes/LifeOfADarkRose.jpg");
+        album295.setFechaLanzamiento(LocalDate.of(2018, 1, 19));
+        album295.setCanciones(Arrays.asList(
+                new CancionDoc("Red Roses"),
+                new CancionDoc("Nowadays"),
+                new CancionDoc("I Know You"),
+                new CancionDoc("Cloudy Eyes")
+        ));
+        album295.setArtista(artista73); // Lil Skies
+
+// Álbum 296: "Unbothered"
+        AlbumColeccion album296 = new AlbumColeccion();
+        album296.setNombre("Unbothered");
+        album296.setImagen("/albumes/Unbothered.jpg");
+        album296.setFechaLanzamiento(LocalDate.of(2019, 3, 1));
+        album296.setCanciones(Arrays.asList(
+                new CancionDoc("Rude"),
+                new CancionDoc("I Don't Miss"),
+                new CancionDoc("Famous"),
+                new CancionDoc("Do It All")
+        ));
+        album296.setArtista(artista74); // Lil Skies
+
+// Álbum 297: "M10"
+        AlbumColeccion album297 = new AlbumColeccion();
+        album297.setNombre("M10");
+        album297.setImagen("/albumes/M10.jpg");
+        album297.setFechaLanzamiento(LocalDate.of(2020, 6, 10));
+        album297.setCanciones(Arrays.asList(
+                new CancionDoc("No Me Conocen"),
+                new CancionDoc("Me Mentiste"),
+                new CancionDoc("La Melodía de Mi Cabeza"),
+                new CancionDoc("Dosis")
+        ));
+        album297.setArtista(artista74); // Dillom
+
+// Álbum 298: "Haciendo Historia"
+        AlbumColeccion album298 = new AlbumColeccion();
+        album298.setNombre("Haciendo Historia");
+        album298.setImagen("/albumes/HaciendoHistoria.jpg");
+        album298.setFechaLanzamiento(LocalDate.of(2021, 11, 19));
+        album298.setCanciones(Arrays.asList(
+                new CancionDoc("Solo No"),
+                new CancionDoc("Fase Oscura"),
+                new CancionDoc("Fluir"),
+                new CancionDoc("Tus Lentes")
+        ));
+        album298.setArtista(artista74); // Dillom
+
+// Álbum 299: "18 Months"
+        AlbumColeccion album299 = new AlbumColeccion();
+        album299.setNombre("18 Months");
+        album299.setImagen("/albumes/18Months.jpg");
+        album299.setFechaLanzamiento(LocalDate.of(2012, 10, 29));
+        album299.setCanciones(Arrays.asList(
+                new CancionDoc("We Found Love"),
+                new CancionDoc("Feel So Close"),
+                new CancionDoc("Let's Go"),
+                new CancionDoc("Sweet Nothing")
+        ));
+        album299.setArtista(artista75); // Calvin Harris
+
+// Álbum 300: "Funk Wav Bounces Vol. 1"
+        AlbumColeccion album300 = new AlbumColeccion();
+        album300.setNombre("Funk Wav Bounces Vol. 1");
+        album300.setImagen("/albumes/FunkWavBouncesVol1.jpg");
+        album300.setFechaLanzamiento(LocalDate.of(2017, 6, 30));
+        album300.setCanciones(Arrays.asList(
+                new CancionDoc("Slide"),
+                new CancionDoc("Rollin'"),
+                new CancionDoc("Feels"),
+                new CancionDoc("Cash Out")
+        ));
+        album300.setArtista(artista75); // Calvin Harris
+
+// Álbum 301: "One Love"
+        AlbumColeccion album301 = new AlbumColeccion();
+        album301.setNombre("One Love");
+        album301.setImagen("/albumes/OneLove.jpg");
+        album301.setFechaLanzamiento(LocalDate.of(2009, 8, 24));
+        album301.setCanciones(Arrays.asList(
+                new CancionDoc("When Love Takes Over"),
+                new CancionDoc("Sexy Bitch"),
+                new CancionDoc("Memories"),
+                new CancionDoc("I Gotta Feeling")
+        ));
+        album301.setArtista(artista76); // David Guetta
+
+// Álbum 302: "Nothing But the Beat"
+        AlbumColeccion album302 = new AlbumColeccion();
+        album302.setNombre("Nothing But the Beat");
+        album302.setImagen("/albumes/NothingButTheBeat.jpg");
+        album302.setFechaLanzamiento(LocalDate.of(2011, 8, 26));
+        album302.setCanciones(Arrays.asList(
+                new CancionDoc("Where Them Girls At"),
+                new CancionDoc("Titanium"),
+                new CancionDoc("Without You"),
+                new CancionDoc("Play Hard")
+        ));
+        album302.setArtista(artista76); // David Guetta
+
+// Álbum 303: "4x4=12"
+        AlbumColeccion album303 = new AlbumColeccion();
+        album303.setNombre("4x4=12");
+        album303.setImagen("/albumes/4x4=12.jpg");
+        album303.setFechaLanzamiento(LocalDate.of(2010, 12, 7));
+        album303.setCanciones(Arrays.asList(
+                new CancionDoc("Some Chords"),
+                new CancionDoc("Animal Rights"),
+                new CancionDoc("Not Exactly"),
+                new CancionDoc("Sofi Needs a Ladder")
+        ));
+        album303.setArtista(artista77); // Deadmau5
+
+// Álbum 304: "While(1<2)"
+        AlbumColeccion album304 = new AlbumColeccion();
+        album304.setNombre("While(1<2)");
+        album304.setImagen("/albumes/While1<2.jpg");
+        album304.setFechaLanzamiento(LocalDate.of(2014, 6, 17));
+        album304.setCanciones(Arrays.asList(
+                new CancionDoc("The Veldt"),
+                new CancionDoc("Seeya"),
+                new CancionDoc("Aural Psynapse"),
+                new CancionDoc("Infra Turbo Pigcart Racer")
+        ));
+        album304.setArtista(artista77); // Deadmau5
+
+// Álbum 305: "True"
+        AlbumColeccion album305 = new AlbumColeccion();
+        album305.setNombre("True");
+        album305.setImagen("/albumes/True.jpg");
+        album305.setFechaLanzamiento(LocalDate.of(2013, 9, 13));
+        album305.setCanciones(Arrays.asList(
+                new CancionDoc("Wake Me Up"),
+                new CancionDoc("Hey Brother"),
+                new CancionDoc("Addicted to You"),
+                new CancionDoc("Dear Boy")
+        ));
+        album305.setArtista(artista78); // Avicii
+
+// Álbum 306: "Stories"
+        AlbumColeccion album306 = new AlbumColeccion();
+        album306.setNombre("Stories");
+        album306.setImagen("/albumes/Stories.jpg");
+        album306.setFechaLanzamiento(LocalDate.of(2015, 10, 2));
+        album306.setCanciones(Arrays.asList(
+                new CancionDoc("Waiting for Love"),
+                new CancionDoc("For a Better Day"),
+                new CancionDoc("Pure Grinding"),
+                new CancionDoc("Broken Arrows")
+        ));
+        album306.setArtista(artista78); // Avicii
+
+// Álbum 307: "Scary Monsters and Nice Sprites"
+        AlbumColeccion album307 = new AlbumColeccion();
+        album307.setNombre("Scary Monsters and Nice Sprites");
+        album307.setImagen("/albumes/ScaryMonstersAndNiceSprites.jpg");
+        album307.setFechaLanzamiento(LocalDate.of(2010, 10, 22));
+        album307.setCanciones(Arrays.asList(
+                new CancionDoc("Scary Monsters and Nice Sprites"),
+                new CancionDoc("Rock n' Roll (Will Take You to the Mountain)"),
+                new CancionDoc("With You, Friends"),
+                new CancionDoc("Kill Everybody")
+        ));
+        album307.setArtista(artista79); // Skrillex
+
+// Álbum 308: "Recess"
+        AlbumColeccion album308 = new AlbumColeccion();
+        album308.setNombre("Recess");
+        album308.setImagen("/albumes/Recess.jpg");
+        album308.setFechaLanzamiento(LocalDate.of(2014, 3, 18));
+        album308.setCanciones(Arrays.asList(
+                new CancionDoc("Recess"),
+                new CancionDoc("Ragga Bomb"),
+                new CancionDoc("Stranger"),
+                new CancionDoc("Ease My Mind")
+        ));
+        album308.setArtista(artista79); // Skrillex
+
+// Álbum 309: "Hand. Cannot. Erase."
+        AlbumColeccion album309 = new AlbumColeccion();
+        album309.setNombre("Hand. Cannot. Erase.");
+        album309.setImagen("/albumes/HandCannotErase.jpg");
+        album309.setFechaLanzamiento(LocalDate.of(2015, 2, 27));
+        album309.setCanciones(Arrays.asList(
+                new CancionDoc("First Regret"),
+                new CancionDoc("3 Years Older"),
+                new CancionDoc("Perfect Life"),
+                new CancionDoc("Hand. Cannot. Erase.")
+        ));
+        album309.setArtista(artista80); // Steven Wilson
+
+// Álbum 310: "The Raven That Refused to Sing"
+        AlbumColeccion album310 = new AlbumColeccion();
+        album310.setNombre("The Raven That Refused to Sing");
+        album310.setImagen("/albumes/TheRavenThatRefusedToSing.jpg");
+        album310.setFechaLanzamiento(LocalDate.of(2013, 2, 25));
+        album310.setCanciones(Arrays.asList(
+                new CancionDoc("Luminol"),
+                new CancionDoc("Drive Home"),
+                new CancionDoc("The Raven That Refused to Sing"),
+                new CancionDoc("The Watchmaker")
+        ));
+        album310.setArtista(artista80); // Steven Wilson
+
+// Álbum 311: "The Six Wives of Henry VIII"
+        AlbumColeccion album311 = new AlbumColeccion();
+        album311.setNombre("The Six Wives of Henry VIII");
+        album311.setImagen("/albumes/TheSixWivesOfHenryVIII.jpg");
+        album311.setFechaLanzamiento(LocalDate.of(1973, 1, 1));
+        album311.setCanciones(Arrays.asList(
+                new CancionDoc("Catherine of Aragon"),
+                new CancionDoc("Anne of Cleves"),
+                new CancionDoc("Catherine Howard"),
+                new CancionDoc("Jane Seymour")
+        ));
+        album311.setArtista(artista81); // Rick Wakeman
+
+// Álbum 312: "Journey to the Centre of the Earth"
+        AlbumColeccion album312 = new AlbumColeccion();
+        album312.setNombre("Journey to the Centre of the Earth");
+        album312.setImagen("/albumes/JourneyToTheCentreOfTheEarth.jpg");
+        album312.setFechaLanzamiento(LocalDate.of(1974, 5, 1));
+        album312.setCanciones(Arrays.asList(
+                new CancionDoc("The Journey"),
+                new CancionDoc("The Battle"),
+                new CancionDoc("The Forest"),
+                new CancionDoc("The Arrival")
+        ));
+        album312.setArtista(artista81); // Rick Wakeman
+
+// Álbum 313: "So"
+        AlbumColeccion album313 = new AlbumColeccion();
+        album313.setNombre("So");
+        album313.setImagen("/albumes/So.jpg");
+        album313.setFechaLanzamiento(LocalDate.of(1986, 5, 19));
+        album313.setCanciones(Arrays.asList(
+                new CancionDoc("Sledgehammer"),
+                new CancionDoc("Big Time"),
+                new CancionDoc("Don't Give Up"),
+                new CancionDoc("In Your Eyes")
+        ));
+        album313.setArtista(artista82); // Peter Gabriel
+
+// Álbum 314: "Security"
+        AlbumColeccion album314 = new AlbumColeccion();
+        album314.setNombre("Security");
+        album314.setImagen("/albumes/Security.jpg");
+        album314.setFechaLanzamiento(LocalDate.of(1982, 9, 12));
+        album314.setCanciones(Arrays.asList(
+                new CancionDoc("The Rhythm of the Heat"),
+                new CancionDoc("San Jacinto"),
+                new CancionDoc("I Have the Touch"),
+                new CancionDoc("Shock the Monkey")
+        ));
+        album314.setArtista(artista82); // Peter Gabriel
+
+// Álbum 315: "Olias of Sunhillow"
+        AlbumColeccion album315 = new AlbumColeccion();
+        album315.setNombre("Olias of Sunhillow");
+        album315.setImagen("/albumes/OliasOfSunhillow.jpg");
+        album315.setFechaLanzamiento(LocalDate.of(1976, 8, 25));
+        album315.setCanciones(Arrays.asList(
+                new CancionDoc("Ocean Song"),
+                new CancionDoc("Sound Out the Galleon"),
+                new CancionDoc("Don't Take No for an Answer"),
+                new CancionDoc("Let Go")
+        ));
+        album315.setArtista(artista83); // Jon Anderson
+
+// Álbum 316: "The 3rd Eye"
+        AlbumColeccion album316 = new AlbumColeccion();
+        album316.setNombre("The 3rd Eye");
+        album316.setImagen("/albumes/The3rdEye.jpg");
+        album316.setFechaLanzamiento(LocalDate.of(1997, 10, 21));
+        album316.setCanciones(Arrays.asList(
+                new CancionDoc("The 3rd Eye"),
+                new CancionDoc("Angel's Share"),
+                new CancionDoc("Light of the Seven Worlds"),
+                new CancionDoc("Morning Star")
+        ));
+        album316.setArtista(artista83); // Jon Anderson
+
+// Álbum 317: "Emerson, Lake & Palmer"
+        AlbumColeccion album317 = new AlbumColeccion();
+        album317.setNombre("Emerson, Lake & Palmer");
+        album317.setImagen("/albumes/EmersonLakeAndPalmer.jpg");
+        album317.setFechaLanzamiento(LocalDate.of(1970, 11, 20));
+        album317.setCanciones(Arrays.asList(
+                new CancionDoc("The Barbarian"),
+                new CancionDoc("Knife-Edge"),
+                new CancionDoc("Tank"),
+                new CancionDoc("Lucky Man")
+        ));
+        album317.setArtista(artista84); // Keith Emerson
+
+// Álbum 318: "Tarkus"
+        AlbumColeccion album318 = new AlbumColeccion();
+        album318.setNombre("Tarkus");
+        album318.setImagen("/albumes/Tarkus.jpg");
+        album318.setFechaLanzamiento(LocalDate.of(1971, 6, 4));
+        album318.setCanciones(Arrays.asList(
+                new CancionDoc("Tarkus"),
+                new CancionDoc("Jeremy Bender"),
+                new CancionDoc("Bitches Crystal"),
+                new CancionDoc("The Only Way")
+        ));
+        album318.setArtista(artista84); // Keith Emerson
+
+// Álbum 319: "Odelay"
+        AlbumColeccion album319 = new AlbumColeccion();
+        album319.setNombre("Odelay");
+        album319.setImagen("/albumes/Odelay.jpg");
+        album319.setFechaLanzamiento(LocalDate.of(1996, 6, 18));
+        album319.setCanciones(Arrays.asList(
+                new CancionDoc("Where It's At"),
+                new CancionDoc("Devils Haircut"),
+                new CancionDoc("The New Pollution"),
+                new CancionDoc("Jack-Ass")
+        ));
+        album319.setArtista(artista85); // Beck
+
+// Álbum 320: "Sea Change"
+        AlbumColeccion album320 = new AlbumColeccion();
+        album320.setNombre("Sea Change");
+        album320.setImagen("/albumes/SeaChange.jpg");
+        album320.setFechaLanzamiento(LocalDate.of(2002, 9, 24));
+        album320.setCanciones(Arrays.asList(
+                new CancionDoc("The Golden Age"),
+                new CancionDoc("Lost Cause"),
+                new CancionDoc("Guess I'm Doing Fine"),
+                new CancionDoc("Lonesome Tears")
+        ));
+        album320.setArtista(artista85); // Beck
+
+// Álbum 321: "To Bring You My Love"
+        AlbumColeccion album321 = new AlbumColeccion();
+        album321.setNombre("To Bring You My Love");
+        album321.setImagen("/albumes/ToBringYouMyLove.jpg");
+        album321.setFechaLanzamiento(LocalDate.of(1995, 2, 27));
+        album321.setCanciones(Arrays.asList(
+                new CancionDoc("Down by the Water"),
+                new CancionDoc("C'mon Billy"),
+                new CancionDoc("Send His Love to Me"),
+                new CancionDoc("The Dancer")
+        ));
+        album321.setArtista(artista86); // PJ Harvey
+
+// Álbum 322: "Let England Shake"
+        AlbumColeccion album322 = new AlbumColeccion();
+        album322.setNombre("Let England Shake");
+        album322.setImagen("/albumes/LetEnglandShake.jpg");
+        album322.setFechaLanzamiento(LocalDate.of(2011, 2, 14));
+        album322.setCanciones(Arrays.asList(
+                new CancionDoc("The Last Living Rose"),
+                new CancionDoc("Written on the Forehead"),
+                new CancionDoc("The Glorious Land"),
+                new CancionDoc("The Words That Maketh Murder")
+        ));
+        album322.setArtista(artista86); // PJ Harvey
+
+// Álbum 323: "Little Earthquakes"
+        AlbumColeccion album323 = new AlbumColeccion();
+        album323.setNombre("Little Earthquakes");
+        album323.setImagen("/albumes/LittleEarthquakes.jpg");
+        album323.setFechaLanzamiento(LocalDate.of(1992, 1, 13));
+        album323.setCanciones(Arrays.asList(
+                new CancionDoc("Crucify"),
+                new CancionDoc("Silent All These Years"),
+                new CancionDoc("Winter"),
+                new CancionDoc("Tear in Your Hand")
+        ));
+        album323.setArtista(artista87); // Tori Amos
+
+// Álbum 324: "Under the Pink"
+        AlbumColeccion album324 = new AlbumColeccion();
+        album324.setNombre("Under the Pink");
+        album324.setImagen("/albumes/UnderThePink.jpg");
+        album324.setFechaLanzamiento(LocalDate.of(1994, 1, 31));
+        album324.setCanciones(Arrays.asList(
+                new CancionDoc("Pretty Good Year"),
+                new CancionDoc("God"),
+                new CancionDoc("Cornflake Girl"),
+                new CancionDoc("The Waitress")
+        ));
+        album324.setArtista(artista87); // Tori Amos
+
+// Álbum 325: "Post"
+        AlbumColeccion album325 = new AlbumColeccion();
+        album325.setNombre("Post");
+        album325.setImagen("/albumes/Post.jpg");
+        album325.setFechaLanzamiento(LocalDate.of(1995, 6, 13));
+        album325.setCanciones(Arrays.asList(
+                new CancionDoc("Army of Me"),
+                new CancionDoc("Hyperballad"),
+                new CancionDoc("It's Oh So Quiet"),
+                new CancionDoc("Isobel")
+        ));
+        album325.setArtista(artista88); // Björk
+
+// Álbum 326: "Homogenic"
+        AlbumColeccion album326 = new AlbumColeccion();
+        album326.setNombre("Homogenic");
+        album326.setImagen("/albumes/Homogenic.jpg");
+        album326.setFechaLanzamiento(LocalDate.of(1997, 9, 22));
+        album326.setCanciones(Arrays.asList(
+                new CancionDoc("Hunter"),
+                new CancionDoc("Bachelorette"),
+                new CancionDoc("All is Full of Love"),
+                new CancionDoc("Joga")
+        ));
+        album326.setArtista(artista88); // Björk
+
+// Álbum 327: "Lonerism"
+        AlbumColeccion album327 = new AlbumColeccion();
+        album327.setNombre("Lonerism");
+        album327.setImagen("/albumes/Lonerism.jpg");
+        album327.setFechaLanzamiento(LocalDate.of(2012, 10, 5));
+        album327.setCanciones(Arrays.asList(
+                new CancionDoc("Feels Like We Only Go Backwards"),
+                new CancionDoc("Mind Mischief"),
+                new CancionDoc("Why Won't They Talk to Me?"),
+                new CancionDoc("Elephant")
+        ));
+        album327.setArtista(artista89); // Tame Impala
+
+// Álbum 328: "Currents"
+        AlbumColeccion album328 = new AlbumColeccion();
+        album328.setNombre("Currents");
+        album328.setImagen("/albumes/Currents.jpg");
+        album328.setFechaLanzamiento(LocalDate.of(2015, 7, 17));
+        album328.setCanciones(Arrays.asList(
+                new CancionDoc("Let It Happen"),
+                new CancionDoc("The Less I Know the Better"),
+                new CancionDoc("Cause I'm a Man"),
+                new CancionDoc("Eventually")
+        ));
+        album328.setArtista(artista89); // Tame Impala
+
+        List<AlbumColeccion> albumes = new ArrayList<>();
+
+        albumes.add(album1);
+        albumes.add(album2);
+        albumes.add(album3);
+        albumes.add(album4);
+        albumes.add(album5);
+        albumes.add(album6);
+        albumes.add(album7);
+        albumes.add(album8);
+        albumes.add(album9);
+        albumes.add(album10);
+        albumes.add(album11);
+        albumes.add(album12);
+        albumes.add(album13);
+        albumes.add(album14);
+        albumes.add(album15);
+        albumes.add(album16);
+        albumes.add(album17);
+        albumes.add(album18);
+        albumes.add(album19);
+        albumes.add(album20);
+        albumes.add(album21);
+        albumes.add(album22);
+        albumes.add(album23);
+        albumes.add(album24);
+        albumes.add(album25);
+        albumes.add(album26);
+        albumes.add(album27);
+        albumes.add(album28);
+        albumes.add(album29);
+        albumes.add(album30);
+        albumes.add(album31);
+        albumes.add(album32);
+        albumes.add(album33);
+        albumes.add(album34);
+        albumes.add(album35);
+        albumes.add(album36);
+        albumes.add(album37);
+        albumes.add(album38);
+        albumes.add(album39);
+        albumes.add(album40);
+        albumes.add(album41);
+        albumes.add(album42);
+        albumes.add(album43);
+        albumes.add(album44);
+        albumes.add(album45);
+        albumes.add(album46);
+        albumes.add(album47);
+        albumes.add(album48);
+        albumes.add(album49);
+        albumes.add(album50);
+        albumes.add(album51);
+        albumes.add(album52);
+        albumes.add(album53);
+        albumes.add(album54);
+        albumes.add(album55);
+        albumes.add(album56);
+        albumes.add(album57);
+        albumes.add(album58);
+        albumes.add(album59);
+        albumes.add(album60);
+        albumes.add(album61);
+        albumes.add(album62);
+        albumes.add(album63);
+        albumes.add(album64);
+        albumes.add(album65);
+        albumes.add(album66);
+        albumes.add(album67);
+        albumes.add(album68);
+        albumes.add(album69);
+        albumes.add(album70);
+        albumes.add(album71);
+        albumes.add(album72);
+        albumes.add(album73);
+        albumes.add(album74);
+        albumes.add(album75);
+        albumes.add(album76);
+        albumes.add(album77);
+        albumes.add(album78);
+        albumes.add(album79);
+        albumes.add(album80);
+        albumes.add(album81);
+        albumes.add(album82);
+        albumes.add(album83);
+        albumes.add(album84);
+        albumes.add(album85);
+        albumes.add(album86);
+        albumes.add(album87);
+        albumes.add(album88);
+        albumes.add(album89);
+        albumes.add(album90);
+        albumes.add(album91);
+        albumes.add(album92);
+        albumes.add(album93);
+        albumes.add(album94);
+        albumes.add(album95);
+        albumes.add(album96);
+        albumes.add(album97);
+        albumes.add(album98);
+        albumes.add(album99);
+        albumes.add(album100);
+        albumes.add(album101);
+        albumes.add(album102);
+        albumes.add(album103);
+        albumes.add(album104);
+        albumes.add(album105);
+        albumes.add(album106);
+        albumes.add(album107);
+        albumes.add(album108);
+        albumes.add(album109);
+        albumes.add(album110);
+        albumes.add(album111);
+        albumes.add(album112);
+        albumes.add(album113);
+        albumes.add(album114);
+        albumes.add(album115);
+        albumes.add(album116);
+        albumes.add(album117);
+        albumes.add(album118);
+        albumes.add(album119);
+        albumes.add(album120);
+        albumes.add(album121);
+        albumes.add(album122);
+        albumes.add(album123);
+        albumes.add(album124);
+        albumes.add(album125);
+        albumes.add(album126);
+        albumes.add(album127);
+        albumes.add(album128);
+        albumes.add(album129);
+        albumes.add(album130);
+        albumes.add(album131);
+        albumes.add(album132);
+        albumes.add(album133);
+        albumes.add(album134);
+        albumes.add(album135);
+        albumes.add(album136);
+        albumes.add(album137);
+        albumes.add(album138);
+        albumes.add(album139);
+        albumes.add(album140);
+        albumes.add(album141);
+        albumes.add(album142);
+        albumes.add(album143);
+        albumes.add(album144);
+        albumes.add(album145);
+        albumes.add(album146);
+        albumes.add(album147);
+        albumes.add(album148);
+        albumes.add(album149);
+        albumes.add(album150);
+        albumes.add(album151);
+        albumes.add(album152);
+        albumes.add(album153);
+        albumes.add(album154);
+        albumes.add(album155);
+        albumes.add(album156);
+        albumes.add(album157);
+        albumes.add(album158);
+        albumes.add(album159);
+        albumes.add(album160);
+        albumes.add(album161);
+        albumes.add(album162);
+        albumes.add(album163);
+        albumes.add(album164);
+        albumes.add(album165);
+        albumes.add(album166);
+        albumes.add(album167);
+        albumes.add(album168);
+        albumes.add(album169);
+        albumes.add(album170);
+        albumes.add(album171);
+        albumes.add(album172);
+        albumes.add(album173);
+        albumes.add(album174);
+        albumes.add(album175);
+        albumes.add(album176);
+        albumes.add(album177);
+        albumes.add(album178);
+        albumes.add(album179);
+        albumes.add(album180);
+        albumes.add(album181);
+        albumes.add(album182);
+        albumes.add(album183);
+        albumes.add(album184);
+        albumes.add(album185);
+        albumes.add(album186);
+        albumes.add(album187);
+        albumes.add(album188);
+        albumes.add(album189);
+        albumes.add(album190);
+        albumes.add(album191);
+        albumes.add(album192);
+        albumes.add(album193);
+        albumes.add(album194);
+        albumes.add(album195);
+        albumes.add(album196);
+        albumes.add(album197);
+        albumes.add(album198);
+        albumes.add(album199);
+        albumes.add(album200);
+        albumes.add(album201);
+        albumes.add(album202);
+        albumes.add(album203);
+        albumes.add(album204);
+        albumes.add(album205);
+        albumes.add(album206);
+        albumes.add(album207);
+        albumes.add(album208);
+        albumes.add(album209);
+        albumes.add(album2100);
+        albumes.add(album211);
+        albumes.add(album212);
+        albumes.add(album213);
+        albumes.add(album214);
+        albumes.add(album215);
+        albumes.add(album216);
+        albumes.add(album217);
+        albumes.add(album218);
+        albumes.add(album219);
+        albumes.add(album2200);
+        albumes.add(album221);
+        albumes.add(album222);
+        albumes.add(album223);
+        albumes.add(album224);
+        albumes.add(album225);
+        albumes.add(album226);
+        albumes.add(album227);
+        albumes.add(album228);
+        albumes.add(album229);
+        albumes.add(album230);
+        albumes.add(album231);
+        albumes.add(album232);
+        albumes.add(album233);
+        albumes.add(album234);
+        albumes.add(album235);
+        albumes.add(album236);
+        albumes.add(album237);
+        albumes.add(album238);
+        albumes.add(album239);
+        albumes.add(album240);
+        albumes.add(album241);
+        albumes.add(album242);
+        albumes.add(album243);
+        albumes.add(album244);
+        albumes.add(album245);
+        albumes.add(album246);
+        albumes.add(album247);
+        albumes.add(album248);
+        albumes.add(album249);
+        albumes.add(album250);
+        albumes.add(album251);
+        albumes.add(album252);
+        albumes.add(album253);
+        albumes.add(album254);
+        albumes.add(album255);
+        albumes.add(album256);
+        albumes.add(album257);
+        albumes.add(album258);
+        albumes.add(album259);
+        albumes.add(album260);
+        albumes.add(album261);
+        albumes.add(album262);
+        albumes.add(album263);
+        albumes.add(album264);
+        albumes.add(album265);
+        albumes.add(album266);
+        albumes.add(album267);
+        albumes.add(album268);
+        albumes.add(album269);
+        albumes.add(album270);
+        albumes.add(album271);
+        albumes.add(album272);
+        albumes.add(album273);
+        albumes.add(album274);
+        albumes.add(album275);
+        albumes.add(album276);
+        albumes.add(album277);
+        albumes.add(album278);
+        albumes.add(album279);
+        albumes.add(album280);
+        albumes.add(album281);
+        albumes.add(album282);
+        albumes.add(album283);
+        albumes.add(album284);
+        albumes.add(album285);
+        albumes.add(album286);
+        albumes.add(album287);
+        albumes.add(album288);
+        albumes.add(album289);
+        albumes.add(album290);
+        albumes.add(album291);
+        albumes.add(album292);
+        albumes.add(album293);
+        albumes.add(album294);
+        albumes.add(album295);
+        albumes.add(album296);
+        albumes.add(album297);
+        albumes.add(album298);
+        albumes.add(album299);
+        albumes.add(album300);
+        albumes.add(album301);
+        albumes.add(album302);
+        albumes.add(album303);
+        albumes.add(album304);
+        albumes.add(album305);
+        albumes.add(album306);
+        albumes.add(album307);
+        albumes.add(album308);
+        albumes.add(album309);
+        albumes.add(album310);
+        albumes.add(album311);
+        albumes.add(album312);
+        albumes.add(album313);
+        albumes.add(album314);
+        albumes.add(album315);
+        albumes.add(album316);
+        albumes.add(album317);
+        albumes.add(album318);
+        albumes.add(album319);
+        albumes.add(album320);
+        albumes.add(album321);
+        albumes.add(album322);
+        albumes.add(album323);
+        albumes.add(album324);
+        albumes.add(album325);
+        albumes.add(album326);
+        albumes.add(album327);
+        albumes.add(album328);
+
+        albumCollection.insertMany(albumes);
+
     }
 
     @Override
