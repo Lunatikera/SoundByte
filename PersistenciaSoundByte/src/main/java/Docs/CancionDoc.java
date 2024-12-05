@@ -26,7 +26,9 @@ public class CancionDoc {
     }
 
     public CancionDoc(String nombre) {
+        this.id = new ObjectId();
         this.nombre = nombre;
+        this.rutaCancion = "";
     }
     
     

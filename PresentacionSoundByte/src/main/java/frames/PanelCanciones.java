@@ -500,7 +500,8 @@ public class PanelCanciones extends javax.swing.JPanel {
             albumesDesplegados = albumes;
             
             
-            for(AlbumDTO album : albumes){
+            for(AlbumDTO album : albumes)
+                if(album.getCanciones() != null){
 
                 for(CancionDoc cancion : album.getCanciones()){
                     
@@ -521,26 +522,17 @@ public class PanelCanciones extends javax.swing.JPanel {
                     
                     PanelCancionDesplegada panel = new PanelCancionDesplegada(frmPrincipal, this, cancion, album, frmPrincipal.getLoggedUser(), frmPrincipal.usuarioNegocio);
 
-                    if(counter <= LIMITE+11){
+              
 
-                    //Agregamos la canción desplegada en la lista de canciones
-                    cancionesDesplegadas.add(cancion);
-                    
+                if(counter <= 11)
                     panelCanciones1.add(panel);
-                    
-                    counter++;
-                    }
-                    else if(counter >= LIMITE + 12 && counter <= LIMITE + 22){
-
-                    
-                    //Agregamos la canción desplegada en la lista de canciones
-                    cancionesDesplegadas.add(cancion);
-                    
+                else if(counter >= 12 && counter < 22)
                     panelCanciones2.add(panel);
-                    
-                    counter++;
-                    
-                    }
+                else 
+                    return;
+                
+                counter++;
+                        
                 }
                 
             }

@@ -4,12 +4,14 @@
  */
 package pruebas;
 
+import Colecciones.AlbumColeccion;
 import Colecciones.UsuarioColeccion;
 import Conexion.ConexionDB;
 import DAO.AlbumDAO;
 import DAO.ArtistaDAO;
 import DAO.GeneroDAO;
 import DAO.UsuarioDAO;
+import DTO.AlbumDTO;
 import DTO.ArtistaDTO;
 import DTO.UsuarioDTO;
 import InterfacesDAO.IAlbumDAO;
@@ -29,6 +31,7 @@ import Negocio.GeneroNegocio;
 import Negocio.UsuarioNegocio;
 import com.mongodb.client.MongoDatabase;
 import excepciones.NegocioException;
+import excepciones.PersistenciaException;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -41,12 +44,13 @@ public class pruebas {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws NegocioException {
+    public static void main(String[] args) throws NegocioException, PersistenciaException {
         // TODO code application logic here
         // Configurar la conexión a la base de datos
         IConexionDB conexionDB = new ConexionDB("mongodb://localhost:27017", "SoundByte");
 
         UsuarioDAO usuarioDAO = new UsuarioDAO(conexionDB);
+        AlbumDAO albumDAO = new AlbumDAO(conexionDB);
 
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio(usuarioDAO);
 
@@ -61,11 +65,13 @@ public class pruebas {
         IAlbumDAO alDAO = new AlbumDAO(conexionDB);
         IAlbumNegocio alN = new AlbumNegocio(alDAO);
         
-        ArtistaDTO a = aN.obtenerArtistasPorBusquedaGeneros("s", gN.buscarTodosGeneros()).get(0);
+        List<AlbumColeccion> a = albumDAO.obtenerCancionesPorBusquedaGeneros("", (gN.convertirListaGenerosDTO(gN.buscarTodosGeneros())));
+        List<AlbumDTO> b = alN.obtenerCancionesPorBusquedaGeneros("", (gN.buscarTodosGeneros()));
+        
+//        System.out.println(a.get(0).getCanciones().toString());
+        System.out.println(b.get(0).getCanciones().toString());
         
 //        System.out.println(a.toString());
-        
-        System.out.println(alN.obtenerAlbumesPorArtista(a));
         
         
 //        dto.setUsername("chavirez");
