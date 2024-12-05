@@ -6964,32 +6964,6 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         ));
         album282.setArtista(artista66); // Alicia Keys
 
-// Álbum 283: "Dangerously In Love"
-        AlbumColeccion album283 = new AlbumColeccion();
-        album283.setNombre("Dangerously In Love");
-        album283.setImagen("/albumes/DangerouslyInLove.jpg");
-        album283.setFechaLanzamiento(LocalDate.of(2003, 6, 24));
-        album283.setCanciones(Arrays.asList(
-                new CancionDoc("Crazy In Love"),
-                new CancionDoc("Baby Boy"),
-                new CancionDoc("Me, Myself and I"),
-                new CancionDoc("Naughty Girl")
-        ));
-        album283.setArtista(artista67); // Beyoncé
-
-// Álbum 284: "B'Day"
-        AlbumColeccion album284 = new AlbumColeccion();
-        album284.setNombre("B'Day");
-        album284.setImagen("/albumes/BDay.jpg");
-        album284.setFechaLanzamiento(LocalDate.of(2006, 9, 4));
-        album284.setCanciones(Arrays.asList(
-                new CancionDoc("Irreplaceable"),
-                new CancionDoc("Deja Vu"),
-                new CancionDoc("Get Me Bodied"),
-                new CancionDoc("Ring the Alarm")
-        ));
-        album284.setArtista(artista67); // Beyoncé
-
 // Álbum 285: "Starboy"
         AlbumColeccion album285 = new AlbumColeccion();
         album285.setNombre("Starboy");
@@ -7846,8 +7820,6 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         albumes.add(album280);
         albumes.add(album281);
         albumes.add(album282);
-        albumes.add(album283);
-        albumes.add(album284);
         albumes.add(album285);
         albumes.add(album286);
         albumes.add(album287);
