@@ -454,7 +454,6 @@ public class PanelArtistas extends javax.swing.JPanel {
                 return;
             
             artistasTotal = artistas;
-            
             for(ArtistaDTO artista : artistas)
                 cantidadArtistas++;
             

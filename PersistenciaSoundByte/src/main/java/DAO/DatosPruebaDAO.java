@@ -30,103 +30,122 @@ import org.bson.types.ObjectId;
 public class DatosPruebaDAO implements IDatosPruebaDAO {
 
     private final MongoDatabase database;
+    GeneroColeccion rock;
+    GeneroColeccion jazz;
+    GeneroColeccion pop;
+    GeneroColeccion reggae;
+    GeneroColeccion blues;
+    GeneroColeccion country;
+    GeneroColeccion metal;
+    GeneroColeccion hiphop;
+    GeneroColeccion clasica;
+    GeneroColeccion soul;
+    GeneroColeccion punk;
+    GeneroColeccion funk;
+    GeneroColeccion musicaLatina;
+    GeneroColeccion rnb;
+    GeneroColeccion trap;
+    GeneroColeccion electronica;
+    GeneroColeccion prog;
+    GeneroColeccion alternativo;
 
     public DatosPruebaDAO(IConexionDB conexionDB) {
         this.database = conexionDB.getDatabase();
-    }
-
-    public void insercionMasiva() {
-        MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
-
-        GeneroColeccion rock = new GeneroColeccion();
+        rock = new GeneroColeccion();
         rock.setNombre("Rock");
         rock.setImagenGenero("resources/generos/rock.jpg");
         rock.setDescrpicion("El Rock es un género musical que surgió en la década de 1950 y se caracteriza por el uso predominante de guitarras eléctricas, bajo y batería.");
 
-        GeneroColeccion jazz = new GeneroColeccion();
+        jazz = new GeneroColeccion();
         jazz.setNombre("Jazz");
         jazz.setImagenGenero("resources/generos/jazz.jpg");
         jazz.setDescrpicion("El Jazz es un género nacido en Nueva Orleans a finales del siglo XIX, basado en la improvisación y con influencias del blues y la música clásica.");
 
-        GeneroColeccion pop = new GeneroColeccion();
+        pop = new GeneroColeccion();
         pop.setNombre("Pop");
         pop.setImagenGenero("resources/generos/pop.jpg");
         pop.setDescrpicion("El Pop es un género musical popular que se caracteriza por su enfoque en melodías pegajosas y estructuras simples.");
 
-        GeneroColeccion reggae = new GeneroColeccion();
+        reggae = new GeneroColeccion();
         reggae.setNombre("Reggae");
         reggae.setImagenGenero("resources/generos/reggae.jpg");
         reggae.setDescrpicion("El Reggae es un género originado en Jamaica en la década de 1960, conocido por sus ritmos sincopados y letras frecuentemente sociales.");
 
-        GeneroColeccion blues = new GeneroColeccion();
+        blues = new GeneroColeccion();
         blues.setNombre("Blues");
         blues.setImagenGenero("resources/generos/blues.jpg");
         blues.setDescrpicion("El Blues es un género musical nacido en las comunidades afroamericanas del sur de los Estados Unidos, marcado por su estructura de doce compases y melodías melancólicas.");
 
-        GeneroColeccion country = new GeneroColeccion();
+        country = new GeneroColeccion();
         country.setNombre("Country");
         country.setImagenGenero("resources/generos/country.jpg");
         country.setDescrpicion("El Country es un género originado en el sur de Estados Unidos que mezcla influencias del folk, blues y gospel.");
 
-        GeneroColeccion metal = new GeneroColeccion();
+        metal = new GeneroColeccion();
         metal.setNombre("Metal");
         metal.setImagenGenero("resources/generos/metal.jpg");
         metal.setDescrpicion("El Metal es un género derivado del Rock, caracterizado por guitarras distorsionadas, baterías potentes y voces agresivas.");
 
-        GeneroColeccion hiphop = new GeneroColeccion();
+        hiphop = new GeneroColeccion();
         hiphop.setNombre("Hip-Hop");
         hiphop.setImagenGenero("resources/generos/hiphop.jpg");
         hiphop.setDescrpicion("El Hip-Hop es un género nacido en los años 70 en los barrios afroamericanos y latinos de Nueva York, caracterizado por el rap, el breakdance y el graffiti.");
 
-        GeneroColeccion clasica = new GeneroColeccion();
+        clasica = new GeneroColeccion();
         clasica.setNombre("Clásica");
         clasica.setImagenGenero("resources/generos/clasica.jpg");
         clasica.setDescrpicion("La música Clásica es un género basado en tradiciones de la música occidental, con compositores como Beethoven, Mozart y Bach.");
 
-        GeneroColeccion soul = new GeneroColeccion();
+        soul = new GeneroColeccion();
         soul.setNombre("Soul");
         soul.setImagenGenero("resources/generos/soul.jpg");
         soul.setDescrpicion("El Soul es un género que combina elementos del gospel y el rhythm and blues, conocido por sus emotivas interpretaciones vocales.");
 
-        GeneroColeccion punk = new GeneroColeccion();
+        punk = new GeneroColeccion();
         punk.setNombre("Punk");
         punk.setImagenGenero("resources/generos/punk.jpg");
         punk.setDescrpicion("El Punk es un género caracterizado por canciones cortas, rápidas y con letras que critican el sistema y promueven el individualismo.");
 
-        GeneroColeccion funk = new GeneroColeccion();
+        funk = new GeneroColeccion();
         funk.setNombre("Funk");
         funk.setImagenGenero("resources/generos/funk.jpg");
         funk.setDescrpicion("El Funk es un género que se centra en grooves rítmicos y bailables, mezclando elementos del soul, jazz y R&B.");
 
-        GeneroColeccion musicaLatina = new GeneroColeccion();
+        musicaLatina = new GeneroColeccion();
         musicaLatina.setNombre("Música Latina");
         musicaLatina.setImagenGenero("resources/generos/musicalatina.jpg");
         musicaLatina.setDescrpicion("La Música Latina abarca una amplia gama de géneros originarios de América Latina, como el reguetón, salsa, bachata, cumbia, merengue, y muchos más, caracterizados por sus ritmos vibrantes y letras apasionadas.");
 
-        GeneroColeccion rnb = new GeneroColeccion();
+        rnb = new GeneroColeccion();
         rnb.setNombre("R&B");
         rnb.setImagenGenero("resources/generos/rnb.jpg");
         rnb.setDescrpicion("El R&B es un género que combina el soul y el pop con ritmos contemporáneos, destacando por sus melodías y letras románticas.");
 
-        GeneroColeccion trap = new GeneroColeccion();
+        trap = new GeneroColeccion();
         trap.setNombre("Trap");
         trap.setImagenGenero("resources/generos/trap.jpg");
         trap.setDescrpicion("El Trap es un subgénero del Hip-Hop que se caracteriza por sus ritmos repetitivos y líricas introspectivas.");
 
-        GeneroColeccion electronica = new GeneroColeccion();
+        electronica = new GeneroColeccion();
         electronica.setNombre("Electrónica");
         electronica.setImagenGenero("resources/generos/electronica.jpg");
         electronica.setDescrpicion("La Electrónica es un género que utiliza sonidos sintéticos generados con computadoras y sintetizadores.");
 
-        GeneroColeccion prog = new GeneroColeccion();
+        prog = new GeneroColeccion();
         prog.setNombre("Rock Progresivo");
         prog.setImagenGenero("resources/generos/rockProgresivo.jpg");
         prog.setDescrpicion("El Rock progresivo es un subgénero del Rock que nació a fines de los 60 en el Reino Unido y era la expresión de músicos influenciados por la cultura del Rock.");
 
-        GeneroColeccion alternativo = new GeneroColeccion();
+        alternativo = new GeneroColeccion();
         alternativo.setNombre("Alternativo");
         alternativo.setImagenGenero("resources/generos/alternativo.jpg");
         alternativo.setDescrpicion("El Alternativo es un género musical que engloba una variedad de estilos, todos caracterizados por su enfoque experimental y diverso.");
+
+    }
+
+    @Override
+    public void insercionMasiva() {
+        MongoCollection<GeneroColeccion> generoColeccion = database.getCollection("Generos", GeneroColeccion.class);
 
         List<GeneroColeccion> generos = new ArrayList<>();
         generos.add(rock);
@@ -150,671 +169,9 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
 
         generoColeccion.insertMany(generos);
 
-        HashMap<String, ObjectId> generoMap = new HashMap<>();
-        for (GeneroColeccion genero : generos) {
-            // Obtener el ObjectId del género después de la inserción
-            if (genero.getId() != null) {
-                generoMap.put(genero.getNombre(), genero.getId());
-            }
-        }
-        MongoCollection<ArtistaColeccion> artistaColeccion = database.getCollection("artistas", ArtistaColeccion.class);
+        this.insertarDatosMasivos2();
 
-        // Rock
-        ArtistaColeccion artista = new ArtistaColeccion();
-        artista.setEsBanda(false);
-        artista.setGeneros(Arrays.asList(rock));
-        artista.setImagen("/artistas/Elvis.jpg");
-        artista.setNombre("Elvis Presley");
-
-        ArtistaColeccion artista1 = new ArtistaColeccion();
-        artista1.setEsBanda(false);
-        artista1.setGeneros(Arrays.asList(rock));
-        artista1.setImagen("/artistas/Hendrix.jpg");
-        artista1.setNombre("Jimmy Hendrix");
-
-        ArtistaColeccion artista2 = new ArtistaColeccion();
-        artista2.setEsBanda(false);
-        artista2.setGeneros(Arrays.asList(rock));
-        artista2.setImagen("/artistas/Spinetta.jpg");
-        artista2.setNombre("Luis Alberto Spinetta");
-
-        ArtistaColeccion artista3 = new ArtistaColeccion();
-        artista3.setEsBanda(false);
-        artista3.setGeneros(Arrays.asList(rock));
-        artista3.setImagen("/artistas/JohnnyCash.jpg");
-        artista3.setNombre("Johnny Cash");
-
-        ArtistaColeccion artista4 = new ArtistaColeccion();
-        artista4.setEsBanda(false);
-        artista4.setGeneros(Arrays.asList(rock));
-        artista4.setImagen("/artistas/Bowie.jpg");
-        artista4.setNombre("David Bowie");
-
-        // Jazz
-        ArtistaColeccion artista5 = new ArtistaColeccion();
-        artista5.setEsBanda(false);
-        artista5.setGeneros(Arrays.asList(jazz));
-        artista5.setImagen("/artistas/LouisArmstrong.jpg");
-        artista5.setNombre("Louis Armstrong");
-
-        ArtistaColeccion artista6 = new ArtistaColeccion();
-        artista6.setEsBanda(false);
-        artista6.setGeneros(Arrays.asList(jazz));
-        artista6.setImagen("/artistas/JohnColtrane.jpg");
-        artista6.setNombre("John Coltrane");
-
-        ArtistaColeccion artista7 = new ArtistaColeccion();
-        artista7.setEsBanda(false);
-        artista7.setGeneros(Arrays.asList(jazz));
-        artista7.setImagen("/artistas/BillieHoliday.jpg");
-        artista7.setNombre("Billie Holiday");
-
-        ArtistaColeccion artista8 = new ArtistaColeccion();
-        artista8.setEsBanda(false);
-        artista8.setGeneros(Arrays.asList(jazz));
-        artista8.setImagen("/artistas/DizzyGillespie.jpg");
-        artista8.setNombre("Dizzy Gillespie");
- 
-        ArtistaColeccion artista9 = new ArtistaColeccion();
-        artista9.setEsBanda(false);
-        artista9.setGeneros(Arrays.asList(jazz));
-        artista9.setImagen("/artistas/EllaFitzgerald.jpg");
-        artista9.setNombre("Ella Fitzgerald");
-
-        // Pop
-        ArtistaColeccion artista10 = new ArtistaColeccion();
-        artista10.setEsBanda(false);
-        artista10.setGeneros(Arrays.asList(pop));
-        artista10.setImagen("/artistas/MichaelJackson.jpg");
-        artista10.setNombre("Michael Jackson");
-
-        ArtistaColeccion artista11 = new ArtistaColeccion();
-        artista11.setEsBanda(false);
-        artista11.setGeneros(Arrays.asList(pop));
-        artista11.setImagen("/artistas/Madonna.jpg");
-        artista11.setNombre("Madonna");
-
-        
-        ArtistaColeccion artista12 = new ArtistaColeccion();
-        artista12.setEsBanda(false);
-        artista12.setGeneros(Arrays.asList(pop));
-        artista12.setImagen("/artistas/EdSheeran.jpg");
-        artista12.setNombre("Ed Sheeran");
-
-        ArtistaColeccion artista13 = new ArtistaColeccion();
-        artista13.setEsBanda(false);
-        artista13.setGeneros(Arrays.asList(pop));
-        artista13.setImagen("/artistas/Beyonce.jpg");
-        artista13.setNombre("Beyoncé");
-
-        ArtistaColeccion artista14 = new ArtistaColeccion();
-        artista14.setEsBanda(false);
-        artista14.setGeneros(Arrays.asList(pop));
-        artista14.setImagen("/artistas/Rihanna.jpg");
-        artista14.setNombre("Rihanna");
-
-        // Reggae
-        ArtistaColeccion artista15 = new ArtistaColeccion();
-        artista15.setEsBanda(false);
-        artista15.setGeneros(Arrays.asList(reggae));
-        artista15.setImagen("/artistas/BobMarley.jpg");
-        artista15.setNombre("Bob Marley");
-
-        // Reggae
-        ArtistaColeccion artista16 = new ArtistaColeccion();
-        artista16.setEsBanda(false);
-        artista16.setGeneros(Arrays.asList(reggae));
-        artista16.setImagen("/artistas/PeterTosh.jpg");
-        artista16.setNombre("Peter Tosh");
-
-        ArtistaColeccion artista17 = new ArtistaColeccion();
-        artista17.setEsBanda(false);
-        artista17.setGeneros(Arrays.asList(reggae));
-        artista17.setImagen("/artistas/JimmyCliff.jpg");
-        artista17.setNombre("Jimmy Cliff");
-
-        ArtistaColeccion artista18 = new ArtistaColeccion();
-        artista18.setEsBanda(false);
-        artista18.setGeneros(Arrays.asList(reggae));
-        artista18.setImagen("/artistas/GregoryIsaacs.jpg");
-        artista18.setNombre("Gregory Isaacs");
-
-        
-        ArtistaColeccion artista19 = new ArtistaColeccion();
-        artista19.setEsBanda(false);
-        artista19.setGeneros(Arrays.asList(reggae));
-        artista19.setImagen("/artistas/TootsHibbert.jpg");
-        artista19.setNombre("Toots Hibbert");
-
-// Blues
-        ArtistaColeccion artista20 = new ArtistaColeccion();
-        artista20.setEsBanda(false);
-        artista20.setGeneros(Arrays.asList(blues));
-        artista20.setImagen("/artistas/BBKing.jpg");
-        artista20.setNombre("B.B. King");
-
-        ArtistaColeccion artista21 = new ArtistaColeccion();
-        artista21.setEsBanda(false);
-        artista21.setGeneros(Arrays.asList(blues));
-        artista21.setImagen("/artistas/MuddyWaters.jpg");
-        artista21.setNombre("Muddy Waters");
-
-        
-        ArtistaColeccion artista22 = new ArtistaColeccion();
-        artista22.setEsBanda(false);
-        artista22.setGeneros(Arrays.asList(blues));
-        artista22.setImagen("/artistas/RobertJohnson.jpg");
-        artista22.setNombre("Robert Johnson");
-
-        ArtistaColeccion artista23 = new ArtistaColeccion();
-        artista23.setEsBanda(false);
-        artista23.setGeneros(Arrays.asList(blues));
-        artista23.setImagen("/artistas/JohnLeeHooker.jpg");
-        artista23.setNombre("John Lee Hooker");
-
-        ArtistaColeccion artista24 = new ArtistaColeccion();
-        artista24.setEsBanda(false);
-        artista24.setGeneros(Arrays.asList(blues));
-        artista24.setImagen("/artistas/EricClapton.jpg");
-        artista24.setNombre("Eric Clapton");
-
-// Country
-        ArtistaColeccion artista25 = new ArtistaColeccion();
-        artista25.setEsBanda(false);
-        artista25.setGeneros(Arrays.asList(country));
-        artista25.setImagen("/artistas/HankWilliams.jpg");
-        artista25.setNombre("Hank Williams");
-
-        ArtistaColeccion artista26 = new ArtistaColeccion();
-        artista26.setEsBanda(false);
-        artista26.setGeneros(Arrays.asList(country));
-        artista26.setImagen("/artistas/DollyParton.jpg");
-        artista26.setNombre("Dolly Parton");
-
-        ArtistaColeccion artista27 = new ArtistaColeccion();
-        artista27.setEsBanda(false);
-        artista27.setGeneros(Arrays.asList(country));
-        artista27.setImagen("/artistas/WillieNelson.jpg");
-        artista27.setNombre("Willie Nelson");
-
-        ArtistaColeccion artista28 = new ArtistaColeccion();
-        artista28.setEsBanda(false);
-        artista28.setGeneros(Arrays.asList(country));
-        artista28.setImagen("/artistas/EmmylouHarris.jpg");
-        artista28.setNombre("Emmylou Harris");
-
-        ArtistaColeccion artista29 = new ArtistaColeccion();
-        artista29.setEsBanda(false);
-        artista29.setGeneros(Arrays.asList(country));
-        artista29.setImagen("/artistas/LorettaLynn.jpg");
-        artista29.setNombre("Loretta Lynn");
-
-// Metal
-        ArtistaColeccion artista30 = new ArtistaColeccion();
-        artista30.setEsBanda(false);
-        artista30.setGeneros(Arrays.asList(metal));
-        artista30.setImagen("/artistas/OzzyOsbourne.jpg");
-        artista30.setNombre("Ozzy Osbourne");
-
-        ArtistaColeccion artista31 = new ArtistaColeccion();
-        artista31.setEsBanda(false);
-        artista31.setGeneros(Arrays.asList(metal));
-        artista31.setImagen("/artistas/RobHalford.jpg");
-        artista31.setNombre("Rob Halford");
-
-        ArtistaColeccion artista32 = new ArtistaColeccion();
-        artista32.setEsBanda(false);
-        artista32.setGeneros(Arrays.asList(metal));
-        artista32.setImagen("/artistas/KingDiamond.jpg");
-        artista32.setNombre("King Diamond");
-
-        // Metal
-        ArtistaColeccion artista33 = new ArtistaColeccion();
-        artista33.setEsBanda(false);
-        artista33.setGeneros(Arrays.asList(metal));
-        artista33.setImagen("/artistas/Dio.jpg");
-        artista33.setNombre("Ronnie James Dio");
-
-        ArtistaColeccion artista34 = new ArtistaColeccion();
-        artista34.setEsBanda(false);
-        artista34.setGeneros(Arrays.asList(metal));
-        artista34.setImagen("/artistas/LemmyKilmister.jpg");
-        artista34.setNombre("Lemmy Kilmister");
-
-// Hip-Hop
-        ArtistaColeccion artista35 = new ArtistaColeccion();
-        artista35.setEsBanda(false);
-        artista35.setGeneros(Arrays.asList(hiphop));
-        artista35.setImagen("/artistas/MosDef.jpg");
-        artista35.setNombre("Mos Def");
-
-        ArtistaColeccion artista36 = new ArtistaColeccion();
-        artista36.setEsBanda(false);
-        artista36.setGeneros(Arrays.asList(hiphop));
-        artista36.setImagen("/artistas/MFDOOM.jpg");
-        artista36.setNombre("MF DOOM");
-
-        ArtistaColeccion artista37 = new ArtistaColeccion();
-        artista37.setEsBanda(false);
-        artista37.setGeneros(Arrays.asList(hiphop));
-        artista37.setImagen("/artistas/Nas.jpg");
-        artista37.setNombre("Nas");
-
-        ArtistaColeccion artista38 = new ArtistaColeccion();
-        artista38.setEsBanda(false);
-        artista38.setGeneros(Arrays.asList(hiphop));
-        artista38.setImagen("/artistas/JCole.jpg");
-        artista38.setNombre("J. Cole");
-
-        ArtistaColeccion artista39 = new ArtistaColeccion();
-        artista39.setEsBanda(false);
-        artista39.setGeneros(Arrays.asList(hiphop));
-        artista39.setImagen("/artistas/LilWayne.jpg");
-        artista39.setNombre("Lil Wayne");
-
-// Clásica
-
-        ArtistaColeccion artista40 = new ArtistaColeccion();
-        artista40.setEsBanda(false);
-        artista40.setGeneros(Arrays.asList(clasica));
-        artista40.setImagen("/artistas/LudwigVanBeethoven.jpg");
-        artista40.setNombre("Ludwig van Beethoven");
-
-        ArtistaColeccion artista41 = new ArtistaColeccion();
-        artista41.setEsBanda(false);
-        artista41.setGeneros(Arrays.asList(clasica));
-        artista41.setImagen("/artistas/WolfgangAmadeusMozart.jpg");
-        artista41.setNombre("Wolfgang Amadeus Mozart");
-
-        ArtistaColeccion artista42 = new ArtistaColeccion();
-        artista42.setEsBanda(false);
-        artista42.setGeneros(Arrays.asList(clasica));
-        artista42.setImagen("/artistas/JohannSebastianBach.jpg");
-        artista42.setNombre("Johann Sebastian Bach");
-
-        
-        ArtistaColeccion artista43 = new ArtistaColeccion();
-        artista43.setEsBanda(false);
-        artista43.setGeneros(Arrays.asList(clasica));
-        artista43.setImagen("/artistas/FredericChopin.jpg");
-        artista43.setNombre("Frédéric Chopin");
-
-        ArtistaColeccion artista44 = new ArtistaColeccion();
-        artista44.setEsBanda(false);
-        artista44.setGeneros(Arrays.asList(clasica));
-        artista44.setImagen("/artistas/PabloCasals.jpg");
-        artista44.setNombre("Pablo Casals");
-
-// Soul
-        ArtistaColeccion artista45 = new ArtistaColeccion();
-        artista45.setEsBanda(false);
-        artista45.setGeneros(Arrays.asList(soul));
-        artista45.setImagen("/artistas/ArethaFranklin.jpg");
-        artista45.setNombre("Aretha Franklin");
-
-        ArtistaColeccion artista46 = new ArtistaColeccion();
-        artista46.setEsBanda(false);
-        artista46.setGeneros(Arrays.asList(soul));
-        artista46.setImagen("/artistas/MarvinGaye.jpg");
-        artista46.setNombre("Marvin Gaye");
-
-        ArtistaColeccion artista47 = new ArtistaColeccion();
-        artista47.setEsBanda(false);
-        artista47.setGeneros(Arrays.asList(soul));
-        artista47.setImagen("/artistas/NinaSimone.jpg");
-        artista47.setNombre("Nina Simone");
-
-        ArtistaColeccion artista48 = new ArtistaColeccion();
-        artista48.setEsBanda(false);
-        artista48.setGeneros(Arrays.asList(soul));
-        artista48.setImagen("/artistas/IsaacHayes.jpg");
-        artista48.setNombre("Isaac Hayes");
-
-        ArtistaColeccion artista49 = new ArtistaColeccion();
-        artista49.setEsBanda(false);
-        artista49.setGeneros(Arrays.asList(soul));
-        artista49.setImagen("/artistas/StevieWonder.jpg");
-        artista49.setNombre("Stevie Wonder");
-
-// Punk
-        ArtistaColeccion artista50 = new ArtistaColeccion();
-        artista50.setEsBanda(false);
-        artista50.setGeneros(Arrays.asList(punk));
-        artista50.setImagen("/artistas/IggyPop.jpg");
-        artista50.setNombre("Iggy Pop");
-
-        // Punk
-        ArtistaColeccion artista51 = new ArtistaColeccion();
-        artista51.setEsBanda(false);
-        artista51.setGeneros(Arrays.asList(punk));
-        artista51.setImagen("/artistas/JoanJett.jpg");
-        artista51.setNombre("Joan Jett");
-
-        ArtistaColeccion artista52 = new ArtistaColeccion();
-        artista52.setEsBanda(false);
-        artista52.setGeneros(Arrays.asList(punk));
-        artista52.setImagen("/artistas/SidVicious.jpg");
-        artista52.setNombre("Sid Vicious");
-
-        ArtistaColeccion artista53 = new ArtistaColeccion();
-        artista53.setEsBanda(false);
-        artista53.setGeneros(Arrays.asList(punk));
-        artista53.setImagen("/artistas/PattiSmith.jpg");
-        artista53.setNombre("Patti Smith");
-
-        ArtistaColeccion artista54 = new ArtistaColeccion();
-        artista54.setEsBanda(false);
-        artista54.setGeneros(Arrays.asList(punk));
-        artista54.setImagen("/artistas/BillyIdol.jpg");
-        artista54.setNombre("Billy Idol");
-
-// Funk
-        ArtistaColeccion artista55 = new ArtistaColeccion();
-        artista55.setEsBanda(false);
-        artista55.setGeneros(Arrays.asList(funk));
-        artista55.setImagen("/artistas/JamesBrown.jpg");
-        artista55.setNombre("James Brown");
-
-        ArtistaColeccion artista56 = new ArtistaColeccion();
-        artista56.setEsBanda(false);
-        artista56.setGeneros(Arrays.asList(funk));
-        artista56.setImagen("/artistas/GeorgeClinton.jpg");
-        artista56.setNombre("George Clinton");
-
-        ArtistaColeccion artista57 = new ArtistaColeccion();
-        artista57.setEsBanda(false);
-        artista57.setGeneros(Arrays.asList(funk));
-        artista57.setImagen("/artistas/Jamiroquai.jpg");
-        artista57.setNombre("Jamiroquai");
-
-        ArtistaColeccion artista58 = new ArtistaColeccion();
-        artista58.setEsBanda(false);
-        artista58.setGeneros(Arrays.asList(funk));
-        artista58.setImagen("/artistas/Prince.jpg");
-        artista58.setNombre("Prince");
-
-        ArtistaColeccion artista59 = new ArtistaColeccion();
-        artista59.setEsBanda(false);
-        artista59.setGeneros(Arrays.asList(funk));
-        artista59.setImagen("/artistas/RickJames.jpg");
-        artista59.setNombre("Rick James");
-
-// Música Latina
-        ArtistaColeccion artista60 = new ArtistaColeccion();
-        artista60.setEsBanda(false);
-        artista59.setGeneros(Arrays.asList(musicaLatina));
-        artista60.setImagen("/artistas/Shakira.jpg");
-        artista60.setNombre("Shakira");
-
-        ArtistaColeccion artista61 = new ArtistaColeccion();
-        artista61.setEsBanda(false);
-        artista61.setGeneros(Arrays.asList(musicaLatina));
-        artista61.setImagen("/artistas/CarlosVives.jpg");
-        artista61.setNombre("Carlos Vives");
-
-        ArtistaColeccion artista62 = new ArtistaColeccion();
-        artista62.setEsBanda(false);
-        artista62.setGeneros(Arrays.asList(musicaLatina));
-        artista62.setImagen("/artistas/Juanes.jpg");
-        artista62.setNombre("Juanes");
-
-        ArtistaColeccion artista63 = new ArtistaColeccion();
-        artista63.setEsBanda(false);
-        artista63.setGeneros(Arrays.asList(musicaLatina));
-        artista63.setImagen("/artistas/MarcAnthony.jpg");
-        artista63.setNombre("Marc Anthony");
-
-        ArtistaColeccion artista64 = new ArtistaColeccion();
-        artista64.setEsBanda(false);
-        artista64.setGeneros(Arrays.asList(musicaLatina));
-        artista64.setImagen("/artistas/GloriaEstefan.jpg");
-        artista64.setNombre("Gloria Estefan");
-
-// R&B
-        ArtistaColeccion artista65 = new ArtistaColeccion();
-        artista65.setEsBanda(false);
-        artista65.setGeneros(Arrays.asList(rnb));
-        artista65.setImagen("/artistas/Usher.jpg");
-        artista65.setNombre("Usher");
-
-        ArtistaColeccion artista66 = new ArtistaColeccion();
-        artista66.setEsBanda(false);
-        artista66.setGeneros(Arrays.asList(rnb));
-        artista66.setImagen("/artistas/AliciaKeys.jpg");
-        artista66.setNombre("Alicia Keys");
-
-    
-
-        ArtistaColeccion artista68 = new ArtistaColeccion();
-        artista68.setEsBanda(false);
-        artista68.setGeneros(Arrays.asList(rnb));
-        artista68.setImagen("/artistas/TheWeeknd.jpg");
-        artista68.setNombre("The Weeknd");
-
-        ArtistaColeccion artista69 = new ArtistaColeccion();
-        artista69.setEsBanda(false);
-        artista69.setGeneros(Arrays.asList(rnb));
-        artista69.setImagen("/artistas/BrunoMars.jpg");
-        artista69.setNombre("Bruno Mars");
-
-// Trap
-        ArtistaColeccion artista70 = new ArtistaColeccion();
-        artista70.setEsBanda(false);
-        artista70.setGeneros(Arrays.asList(trap));
-        artista70.setImagen("/artistas/Future.jpg");
-        artista70.setNombre("Future");
-
-        // Trap
-        ArtistaColeccion artista71 = new ArtistaColeccion();
-        artista71.setEsBanda(false);
-        artista71.setGeneros(Arrays.asList(trap));
-        artista71.setImagen("/artistas/TravisScott.jpg");
-        artista71.setNombre("Travis Scott");
-
-        ArtistaColeccion artista72 = new ArtistaColeccion();
-        artista72.setEsBanda(false);
-        artista72.setGeneros(Arrays.asList(trap));
-        artista72.setImagen("/artistas/PostMalone.jpg");
-        artista72.setNombre("Post Malone");
-
-        ArtistaColeccion artista73 = new ArtistaColeccion();
-        artista73.setEsBanda(false);
-        artista73.setGeneros(Arrays.asList(trap));
-        artista73.setImagen("/artistas/LilSkies.jpg");
-        artista73.setNombre("Lil Skies");
-
-        ArtistaColeccion artista74 = new ArtistaColeccion();
-        artista74.setEsBanda(false);
-        artista74.setGeneros(Arrays.asList(trap));
-        artista74.setImagen("/artistas/Dillom.jpg");
-        artista74.setNombre("Dillom");
-
-// Electrónica
-        ArtistaColeccion artista75 = new ArtistaColeccion();
-        artista75.setEsBanda(false);
-        artista75.setGeneros(Arrays.asList(electronica));
-        artista75.setImagen("/artistas/CalvinHarris.jpg");
-        artista75.setNombre("Calvin Harris");
-
-        ArtistaColeccion artista76 = new ArtistaColeccion();
-        artista76.setEsBanda(false);
-        artista76.setGeneros(Arrays.asList(electronica));
-        artista76.setImagen("/artistas/DavidGuetta.jpg");
-        artista76.setNombre("David Guetta");
-
-        ArtistaColeccion artista77 = new ArtistaColeccion();
-        artista77.setEsBanda(false);
-        artista77.setGeneros(Arrays.asList(electronica));
-        artista77.setImagen("/artistas/Deadmau5.jpg");
-        artista77.setNombre("Deadmau5");
-
-        ArtistaColeccion artista78 = new ArtistaColeccion();
-        artista78.setEsBanda(false);
-        artista78.setGeneros(Arrays.asList(electronica));
-        artista78.setImagen("/artistas/Avicii.jpg");
-        artista78.setNombre("Avicii");
-
-        ArtistaColeccion artista79 = new ArtistaColeccion();
-        artista79.setEsBanda(false);
-        artista79.setGeneros(Arrays.asList(electronica));
-        artista79.setImagen("/artistas/Skrillex.jpg");
-        artista79.setNombre("Skrillex");
-
-// Rock Progresivo
-        ArtistaColeccion artista80 = new ArtistaColeccion();
-        artista80.setEsBanda(false);
-        artista80.setGeneros(Arrays.asList(prog));
-        artista80.setImagen("/artistas/StevenWilson.jpg");
-        artista80.setNombre("Steven Wilson");
-
-        ArtistaColeccion artista81 = new ArtistaColeccion();
-        artista81.setEsBanda(false);
-        artista81.setGeneros(Arrays.asList(prog));
-        artista81.setImagen("/artistas/RickWakeman.jpg");
-        artista81.setNombre("Rick Wakeman");
-
-        ArtistaColeccion artista82 = new ArtistaColeccion();
-        artista82.setEsBanda(false);
-        artista82.setGeneros(Arrays.asList(prog));
-        artista82.setImagen("/artistas/PeterGabriel.jpg");
-        artista82.setNombre("Peter Gabriel");
-
-        ArtistaColeccion artista83 = new ArtistaColeccion();
-        artista83.setEsBanda(false);
-        artista83.setGeneros(Arrays.asList(prog));
-        artista83.setImagen("/artistas/JonAnderson.jpg");
-        artista83.setNombre("Jon Anderson");
-
-        ArtistaColeccion artista84 = new ArtistaColeccion();
-        artista84.setEsBanda(false);
-        artista84.setGeneros(Arrays.asList(prog));
-        artista84.setImagen("/artistas/KeithEmerson.jpg");
-        artista84.setNombre("Keith Emerson");
-
-// Alternativo
-
-        ArtistaColeccion artista85 = new ArtistaColeccion();
-        artista85.setEsBanda(false);
-        artista85.setGeneros(Arrays.asList(alternativo));
-        artista85.setImagen("/artistas/Beck.jpg");
-        artista85.setNombre("Beck");
-
-        ArtistaColeccion artista86 = new ArtistaColeccion();
-        artista86.setEsBanda(false);
-        artista86.setGeneros(Arrays.asList(alternativo));
-        artista86.setImagen("/artistas/PJHarvey.jpg");
-        artista86.setNombre("PJ Harvey");
-
-        ArtistaColeccion artista87 = new ArtistaColeccion();
-        artista87.setEsBanda(false);
-        artista87.setGeneros(Arrays.asList(alternativo));
-        artista87.setImagen("/artistas/ToriAmos.jpg");
-        artista87.setNombre("Tori Amos");
-
-        ArtistaColeccion artista88 = new ArtistaColeccion();
-        artista88.setEsBanda(false);
-        artista88.setGeneros(Arrays.asList(alternativo));
-        artista88.setImagen("/artistas/Bjork.jpg");
-        artista88.setNombre("Bjork");
-
-        ArtistaColeccion artista89 = new ArtistaColeccion();
-        artista89.setEsBanda(false);
-        artista89.setGeneros(Arrays.asList(alternativo));
-        artista89.setImagen("/artistas/TameImpala.jpg");
-        artista89.setNombre("Tame Impala");
-
-        List<ArtistaColeccion> artistas = new ArrayList<>();
-        artistas.add(artista);
-        artistas.add(artista1);
-        artistas.add(artista2);
-        artistas.add(artista3);
-        artistas.add(artista4);
-        artistas.add(artista5);
-        artistas.add(artista6);
-        artistas.add(artista7);
-        artistas.add(artista8);
-        artistas.add(artista9);
-        artistas.add(artista10);
-        artistas.add(artista11);
-        artistas.add(artista12);
-        artistas.add(artista13);
-        artistas.add(artista14);
-        artistas.add(artista15);
-        artistas.add(artista16);
-        artistas.add(artista17);
-        artistas.add(artista18);
-        artistas.add(artista19);
-        artistas.add(artista20);
-        artistas.add(artista21);
-        artistas.add(artista22);
-        artistas.add(artista23);
-        artistas.add(artista24);
-        artistas.add(artista25);
-        artistas.add(artista26);
-        artistas.add(artista27);
-        artistas.add(artista28);
-        artistas.add(artista29);
-        artistas.add(artista30);
-        artistas.add(artista31);
-        artistas.add(artista32);
-        artistas.add(artista33);
-        artistas.add(artista34);
-        artistas.add(artista35);
-        artistas.add(artista36);
-        artistas.add(artista37);
-        artistas.add(artista38);
-        artistas.add(artista39);
-        artistas.add(artista40);
-        artistas.add(artista41);
-        artistas.add(artista42);
-        artistas.add(artista43);
-        artistas.add(artista44);
-        artistas.add(artista45);
-        artistas.add(artista46);
-        artistas.add(artista47);
-        artistas.add(artista48);
-        artistas.add(artista49);
-        artistas.add(artista50);
-        artistas.add(artista51);
-        artistas.add(artista52);
-        artistas.add(artista53);
-        artistas.add(artista54);
-        artistas.add(artista55);
-        artistas.add(artista56);
-        artistas.add(artista57);
-        artistas.add(artista58);
-        artistas.add(artista59);
-        artistas.add(artista60);
-        artistas.add(artista61);
-        artistas.add(artista62);
-        artistas.add(artista63);
-        artistas.add(artista64);
-        artistas.add(artista65);
-        artistas.add(artista66);
-        artistas.add(artista68);
-        artistas.add(artista69);
-        artistas.add(artista70);
-        artistas.add(artista71);
-        artistas.add(artista72);
-        artistas.add(artista73);
-        artistas.add(artista74);
-        artistas.add(artista75);
-        artistas.add(artista76);
-        artistas.add(artista77);
-        artistas.add(artista78);
-        artistas.add(artista79);
-        artistas.add(artista80);
-        artistas.add(artista81);
-        artistas.add(artista82);
-        artistas.add(artista83);
-        artistas.add(artista84);
-        artistas.add(artista85);
-        artistas.add(artista86);
-        artistas.add(artista87);
-        artistas.add(artista88);
-        artistas.add(artista89);
-
-        artistaColeccion.insertMany(artistas);
+        MongoCollection<ArtistaColeccion> artistaColeccion = database.getCollection("Artistas", ArtistaColeccion.class);
 
         IntegranteDoc integrante1 = new IntegranteDoc();
         integrante1.setEsActivo(false);
@@ -4445,7 +3802,8 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         banda83.setNombre("The Killers");
 
 // Insertar bandas
-        artistas.clear();
+        List<ArtistaColeccion> artistas = new ArrayList<>();
+
         artistas.add(banda1);
         artistas.add(banda2);
         artistas.add(banda3);
@@ -5231,6 +4589,817 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
                 new CancionDoc("Sam's Town (Abbey Road version)")
         ));
         album150.setArtista(banda83); // The Killers
+
+        List<AlbumColeccion> albumes = new ArrayList<>();
+
+        albumes.add(album1);
+        albumes.add(album2);
+        albumes.add(album3);
+        albumes.add(album4);
+        albumes.add(album5);
+        albumes.add(album6);
+        albumes.add(album7);
+        albumes.add(album8);
+        albumes.add(album9);
+        albumes.add(album10);
+        albumes.add(album11);
+        albumes.add(album12);
+        albumes.add(album13);
+        albumes.add(album14);
+        albumes.add(album15);
+        albumes.add(album16);
+        albumes.add(album17);
+        albumes.add(album18);
+        albumes.add(album19);
+        albumes.add(album20);
+        albumes.add(album21);
+        albumes.add(album22);
+        albumes.add(album23);
+        albumes.add(album24);
+        albumes.add(album25);
+        albumes.add(album26);
+        albumes.add(album27);
+        albumes.add(album28);
+        albumes.add(album29);
+        albumes.add(album30);
+        albumes.add(album31);
+        albumes.add(album32);
+        albumes.add(album33);
+        albumes.add(album34);
+        albumes.add(album35);
+        albumes.add(album36);
+        albumes.add(album37);
+        albumes.add(album38);
+        albumes.add(album39);
+        albumes.add(album40);
+        albumes.add(album41);
+        albumes.add(album42);
+        albumes.add(album43);
+        albumes.add(album44);
+        albumes.add(album45);
+        albumes.add(album46);
+        albumes.add(album47);
+        albumes.add(album48);
+        albumes.add(album49);
+        albumes.add(album50);
+        albumes.add(album51);
+        albumes.add(album52);
+        albumes.add(album53);
+        albumes.add(album54);
+        albumes.add(album55);
+        albumes.add(album56);
+        albumes.add(album57);
+        albumes.add(album58);
+        albumes.add(album59);
+        albumes.add(album60);
+        albumes.add(album61);
+        albumes.add(album62);
+        albumes.add(album63);
+        albumes.add(album64);
+        albumes.add(album65);
+        albumes.add(album66);
+        albumes.add(album67);
+        albumes.add(album68);
+        albumes.add(album69);
+        albumes.add(album70);
+        albumes.add(album71);
+        albumes.add(album72);
+        albumes.add(album73);
+        albumes.add(album74);
+        albumes.add(album75);
+        albumes.add(album76);
+        albumes.add(album77);
+        albumes.add(album78);
+        albumes.add(album79);
+        albumes.add(album80);
+        albumes.add(album81);
+        albumes.add(album82);
+        albumes.add(album83);
+        albumes.add(album84);
+        albumes.add(album85);
+        albumes.add(album86);
+        albumes.add(album87);
+        albumes.add(album88);
+        albumes.add(album89);
+        albumes.add(album90);
+        albumes.add(album91);
+        albumes.add(album92);
+        albumes.add(album93);
+        albumes.add(album94);
+        albumes.add(album95);
+        albumes.add(album96);
+        albumes.add(album97);
+        albumes.add(album98);
+        albumes.add(album99);
+        albumes.add(album100);
+        albumes.add(album101);
+        albumes.add(album102);
+        albumes.add(album103);
+        albumes.add(album104);
+        albumes.add(album105);
+        albumes.add(album106);
+        albumes.add(album107);
+        albumes.add(album108);
+        albumes.add(album109);
+        albumes.add(album110);
+        albumes.add(album111);
+        albumes.add(album112);
+        albumes.add(album113);
+        albumes.add(album114);
+        albumes.add(album115);
+        albumes.add(album116);
+        albumes.add(album117);
+        albumes.add(album118);
+        albumes.add(album119);
+        albumes.add(album120);
+        albumes.add(album121);
+        albumes.add(album122);
+        albumes.add(album123);
+        albumes.add(album124);
+        albumes.add(album125);
+        albumes.add(album126);
+        albumes.add(album127);
+        albumes.add(album128);
+        albumes.add(album129);
+        albumes.add(album130);
+        albumes.add(album131);
+        albumes.add(album132);
+        albumes.add(album133);
+        albumes.add(album134);
+        albumes.add(album135);
+        albumes.add(album136);
+        albumes.add(album137);
+        albumes.add(album138);
+        albumes.add(album139);
+        albumes.add(album140);
+        albumes.add(album141);
+        albumes.add(album142);
+        albumes.add(album143);
+        albumes.add(album144);
+        albumes.add(album145);
+        albumes.add(album146);
+        albumes.add(album147);
+        albumes.add(album148);
+        albumes.add(album149);
+        albumes.add(album150);
+        albumes.add(album210);
+        albumes.add(album220);
+        albumCollection.insertMany(albumes);
+
+    }
+
+    @Override
+    public boolean verificarExixstenciaDatos() {
+        MongoCollection<AlbumColeccion> albumCollection = database.getCollection("Albumes", AlbumColeccion.class);
+        return albumCollection.find().iterator().hasNext();
+    }
+
+    private void insertarDatosMasivos2() {
+
+        MongoCollection<ArtistaColeccion> artistaColeccion2 = database.getCollection("Artistas", ArtistaColeccion.class);
+        MongoCollection<AlbumColeccion> albumCollection2 = database.getCollection("Albumes", AlbumColeccion.class);
+
+        // Rock
+        ArtistaColeccion artista = new ArtistaColeccion();
+        artista.setEsBanda(false);
+        artista.setGeneros(Arrays.asList(rock));
+        artista.setImagen("/artistas/Elvis.jpg");
+        artista.setNombre("Elvis Presley");
+
+        ArtistaColeccion artista1 = new ArtistaColeccion();
+        artista1.setEsBanda(false);
+        artista1.setGeneros(Arrays.asList(rock));
+        artista1.setImagen("/artistas/Hendrix.jpg");
+        artista1.setNombre("Jimmy Hendrix");
+
+        ArtistaColeccion artista2 = new ArtistaColeccion();
+        artista2.setEsBanda(false);
+        artista2.setGeneros(Arrays.asList(rock));
+        artista2.setImagen("/artistas/Spinetta.jpg");
+        artista2.setNombre("Luis Alberto Spinetta");
+
+        ArtistaColeccion artista3 = new ArtistaColeccion();
+        artista3.setEsBanda(false);
+        artista3.setGeneros(Arrays.asList(rock));
+        artista3.setImagen("/artistas/JohnnyCash.jpg");
+        artista3.setNombre("Johnny Cash");
+
+        ArtistaColeccion artista4 = new ArtistaColeccion();
+        artista4.setEsBanda(false);
+        artista4.setGeneros(Arrays.asList(rock));
+        artista4.setImagen("/artistas/Bowie.jpg");
+        artista4.setNombre("David Bowie");
+
+        // Jazz
+        ArtistaColeccion artista5 = new ArtistaColeccion();
+        artista5.setEsBanda(false);
+        artista5.setGeneros(Arrays.asList(jazz));
+        artista5.setImagen("/artistas/LouisArmstrong.jpg");
+        artista5.setNombre("Louis Armstrong");
+
+        ArtistaColeccion artista6 = new ArtistaColeccion();
+        artista6.setEsBanda(false);
+        artista6.setGeneros(Arrays.asList(jazz));
+        artista6.setImagen("/artistas/JohnColtrane.jpg");
+        artista6.setNombre("John Coltrane");
+
+        ArtistaColeccion artista7 = new ArtistaColeccion();
+        artista7.setEsBanda(false);
+        artista7.setGeneros(Arrays.asList(jazz));
+        artista7.setImagen("/artistas/BillieHoliday.jpg");
+        artista7.setNombre("Billie Holiday");
+
+        ArtistaColeccion artista8 = new ArtistaColeccion();
+        artista8.setEsBanda(false);
+        artista8.setGeneros(Arrays.asList(jazz));
+        artista8.setImagen("/artistas/DizzyGillespie.jpg");
+        artista8.setNombre("Dizzy Gillespie");
+
+        ArtistaColeccion artista9 = new ArtistaColeccion();
+        artista9.setEsBanda(false);
+        artista9.setGeneros(Arrays.asList(jazz));
+        artista9.setImagen("/artistas/EllaFitzgerald.jpg");
+        artista9.setNombre("Ella Fitzgerald");
+
+        // Pop
+        ArtistaColeccion artista10 = new ArtistaColeccion();
+        artista10.setEsBanda(false);
+        artista10.setGeneros(Arrays.asList(pop));
+        artista10.setImagen("/artistas/MichaelJackson.jpg");
+        artista10.setNombre("Michael Jackson");
+
+        ArtistaColeccion artista11 = new ArtistaColeccion();
+        artista11.setEsBanda(false);
+        artista11.setGeneros(Arrays.asList(pop));
+        artista11.setImagen("/artistas/Madonna.jpg");
+        artista11.setNombre("Madonna");
+
+        ArtistaColeccion artista12 = new ArtistaColeccion();
+        artista12.setEsBanda(false);
+        artista12.setGeneros(Arrays.asList(pop));
+        artista12.setImagen("/artistas/EdSheeran.jpg");
+        artista12.setNombre("Ed Sheeran");
+
+        ArtistaColeccion artista13 = new ArtistaColeccion();
+        artista13.setEsBanda(false);
+        artista13.setGeneros(Arrays.asList(pop));
+        artista13.setImagen("/artistas/Beyonce.jpg");
+        artista13.setNombre("Beyoncé");
+
+        ArtistaColeccion artista14 = new ArtistaColeccion();
+        artista14.setEsBanda(false);
+        artista14.setGeneros(Arrays.asList(pop));
+        artista14.setImagen("/artistas/Rihanna.jpg");
+        artista14.setNombre("Rihanna");
+
+        // Reggae
+        ArtistaColeccion artista15 = new ArtistaColeccion();
+        artista15.setEsBanda(false);
+        artista15.setGeneros(Arrays.asList(reggae));
+        artista15.setImagen("/artistas/BobMarley.jpg");
+        artista15.setNombre("Bob Marley");
+
+        // Reggae
+        ArtistaColeccion artista16 = new ArtistaColeccion();
+        artista16.setEsBanda(false);
+        artista16.setGeneros(Arrays.asList(reggae));
+        artista16.setImagen("/artistas/PeterTosh.jpg");
+        artista16.setNombre("Peter Tosh");
+
+        ArtistaColeccion artista17 = new ArtistaColeccion();
+        artista17.setEsBanda(false);
+        artista17.setGeneros(Arrays.asList(reggae));
+        artista17.setImagen("/artistas/JimmyCliff.jpg");
+        artista17.setNombre("Jimmy Cliff");
+
+        ArtistaColeccion artista18 = new ArtistaColeccion();
+        artista18.setEsBanda(false);
+        artista18.setGeneros(Arrays.asList(reggae));
+        artista18.setImagen("/artistas/GregoryIsaacs.jpg");
+        artista18.setNombre("Gregory Isaacs");
+
+        ArtistaColeccion artista19 = new ArtistaColeccion();
+        artista19.setEsBanda(false);
+        artista19.setGeneros(Arrays.asList(reggae));
+        artista19.setImagen("/artistas/TootsHibbert.jpg");
+        artista19.setNombre("Toots Hibbert");
+
+// Blues
+        ArtistaColeccion artista20 = new ArtistaColeccion();
+        artista20.setEsBanda(false);
+        artista20.setGeneros(Arrays.asList(blues));
+        artista20.setImagen("/artistas/BBKing.jpg");
+        artista20.setNombre("B.B. King");
+
+        ArtistaColeccion artista21 = new ArtistaColeccion();
+        artista21.setEsBanda(false);
+        artista21.setGeneros(Arrays.asList(blues));
+        artista21.setImagen("/artistas/MuddyWaters.jpg");
+        artista21.setNombre("Muddy Waters");
+
+        ArtistaColeccion artista22 = new ArtistaColeccion();
+        artista22.setEsBanda(false);
+        artista22.setGeneros(Arrays.asList(blues));
+        artista22.setImagen("/artistas/RobertJohnson.jpg");
+        artista22.setNombre("Robert Johnson");
+
+        ArtistaColeccion artista23 = new ArtistaColeccion();
+        artista23.setEsBanda(false);
+        artista23.setGeneros(Arrays.asList(blues));
+        artista23.setImagen("/artistas/JohnLeeHooker.jpg");
+        artista23.setNombre("John Lee Hooker");
+
+        ArtistaColeccion artista24 = new ArtistaColeccion();
+        artista24.setEsBanda(false);
+        artista24.setGeneros(Arrays.asList(blues));
+        artista24.setImagen("/artistas/EricClapton.jpg");
+        artista24.setNombre("Eric Clapton");
+
+// Country
+        ArtistaColeccion artista25 = new ArtistaColeccion();
+        artista25.setEsBanda(false);
+        artista25.setGeneros(Arrays.asList(country));
+        artista25.setImagen("/artistas/HankWilliams.jpg");
+        artista25.setNombre("Hank Williams");
+
+        ArtistaColeccion artista26 = new ArtistaColeccion();
+        artista26.setEsBanda(false);
+        artista26.setGeneros(Arrays.asList(country));
+        artista26.setImagen("/artistas/DollyParton.jpg");
+        artista26.setNombre("Dolly Parton");
+
+        ArtistaColeccion artista27 = new ArtistaColeccion();
+        artista27.setEsBanda(false);
+        artista27.setGeneros(Arrays.asList(country));
+        artista27.setImagen("/artistas/WillieNelson.jpg");
+        artista27.setNombre("Willie Nelson");
+
+        ArtistaColeccion artista28 = new ArtistaColeccion();
+        artista28.setEsBanda(false);
+        artista28.setGeneros(Arrays.asList(country));
+        artista28.setImagen("/artistas/EmmylouHarris.jpg");
+        artista28.setNombre("Emmylou Harris");
+
+        ArtistaColeccion artista29 = new ArtistaColeccion();
+        artista29.setEsBanda(false);
+        artista29.setGeneros(Arrays.asList(country));
+        artista29.setImagen("/artistas/LorettaLynn.jpg");
+        artista29.setNombre("Loretta Lynn");
+
+// Metal
+        ArtistaColeccion artista30 = new ArtistaColeccion();
+        artista30.setEsBanda(false);
+        artista30.setGeneros(Arrays.asList(metal));
+        artista30.setImagen("/artistas/OzzyOsbourne.jpg");
+        artista30.setNombre("Ozzy Osbourne");
+
+        ArtistaColeccion artista31 = new ArtistaColeccion();
+        artista31.setEsBanda(false);
+        artista31.setGeneros(Arrays.asList(metal));
+        artista31.setImagen("/artistas/RobHalford.jpg");
+        artista31.setNombre("Rob Halford");
+
+        ArtistaColeccion artista32 = new ArtistaColeccion();
+        artista32.setEsBanda(false);
+        artista32.setGeneros(Arrays.asList(metal));
+        artista32.setImagen("/artistas/KingDiamond.jpg");
+        artista32.setNombre("King Diamond");
+
+        // Metal
+        ArtistaColeccion artista33 = new ArtistaColeccion();
+        artista33.setEsBanda(false);
+        artista33.setGeneros(Arrays.asList(metal));
+        artista33.setImagen("/artistas/Dio.jpg");
+        artista33.setNombre("Ronnie James Dio");
+
+        ArtistaColeccion artista34 = new ArtistaColeccion();
+        artista34.setEsBanda(false);
+        artista34.setGeneros(Arrays.asList(metal));
+        artista34.setImagen("/artistas/LemmyKilmister.jpg");
+        artista34.setNombre("Lemmy Kilmister");
+
+// Hip-Hop
+        ArtistaColeccion artista35 = new ArtistaColeccion();
+        artista35.setEsBanda(false);
+        artista35.setGeneros(Arrays.asList(hiphop));
+        artista35.setImagen("/artistas/MosDef.jpg");
+        artista35.setNombre("Mos Def");
+
+        ArtistaColeccion artista36 = new ArtistaColeccion();
+        artista36.setEsBanda(false);
+        artista36.setGeneros(Arrays.asList(hiphop));
+        artista36.setImagen("/artistas/MFDOOM.jpg");
+        artista36.setNombre("MF DOOM");
+
+        ArtistaColeccion artista37 = new ArtistaColeccion();
+        artista37.setEsBanda(false);
+        artista37.setGeneros(Arrays.asList(hiphop));
+        artista37.setImagen("/artistas/Nas.jpg");
+        artista37.setNombre("Nas");
+
+        ArtistaColeccion artista38 = new ArtistaColeccion();
+        artista38.setEsBanda(false);
+        artista38.setGeneros(Arrays.asList(hiphop));
+        artista38.setImagen("/artistas/JCole.jpg");
+        artista38.setNombre("J. Cole");
+
+        ArtistaColeccion artista39 = new ArtistaColeccion();
+        artista39.setEsBanda(false);
+        artista39.setGeneros(Arrays.asList(hiphop));
+        artista39.setImagen("/artistas/LilWayne.jpg");
+        artista39.setNombre("Lil Wayne");
+
+// Clásica
+        ArtistaColeccion artista40 = new ArtistaColeccion();
+        artista40.setEsBanda(false);
+        artista40.setGeneros(Arrays.asList(clasica));
+        artista40.setImagen("/artistas/LudwigVanBeethoven.jpg");
+        artista40.setNombre("Ludwig van Beethoven");
+
+        ArtistaColeccion artista41 = new ArtistaColeccion();
+        artista41.setEsBanda(false);
+        artista41.setGeneros(Arrays.asList(clasica));
+        artista41.setImagen("/artistas/WolfgangAmadeusMozart.jpg");
+        artista41.setNombre("Wolfgang Amadeus Mozart");
+
+        ArtistaColeccion artista42 = new ArtistaColeccion();
+        artista42.setEsBanda(false);
+        artista42.setGeneros(Arrays.asList(clasica));
+        artista42.setImagen("/artistas/JohannSebastianBach.jpg");
+        artista42.setNombre("Johann Sebastian Bach");
+
+        ArtistaColeccion artista43 = new ArtistaColeccion();
+        artista43.setEsBanda(false);
+        artista43.setGeneros(Arrays.asList(clasica));
+        artista43.setImagen("/artistas/FredericChopin.jpg");
+        artista43.setNombre("Frédéric Chopin");
+
+        ArtistaColeccion artista44 = new ArtistaColeccion();
+        artista44.setEsBanda(false);
+        artista44.setGeneros(Arrays.asList(clasica));
+        artista44.setImagen("/artistas/PabloCasals.jpg");
+        artista44.setNombre("Pablo Casals");
+
+// Soul
+        ArtistaColeccion artista45 = new ArtistaColeccion();
+        artista45.setEsBanda(false);
+        artista45.setGeneros(Arrays.asList(soul));
+        artista45.setImagen("/artistas/ArethaFranklin.jpg");
+        artista45.setNombre("Aretha Franklin");
+
+        ArtistaColeccion artista46 = new ArtistaColeccion();
+        artista46.setEsBanda(false);
+        artista46.setGeneros(Arrays.asList(soul));
+        artista46.setImagen("/artistas/MarvinGaye.jpg");
+        artista46.setNombre("Marvin Gaye");
+
+        ArtistaColeccion artista47 = new ArtistaColeccion();
+        artista47.setEsBanda(false);
+        artista47.setGeneros(Arrays.asList(soul));
+        artista47.setImagen("/artistas/NinaSimone.jpg");
+        artista47.setNombre("Nina Simone");
+
+        ArtistaColeccion artista48 = new ArtistaColeccion();
+        artista48.setEsBanda(false);
+        artista48.setGeneros(Arrays.asList(soul));
+        artista48.setImagen("/artistas/IsaacHayes.jpg");
+        artista48.setNombre("Isaac Hayes");
+
+        ArtistaColeccion artista49 = new ArtistaColeccion();
+        artista49.setEsBanda(false);
+        artista49.setGeneros(Arrays.asList(soul));
+        artista49.setImagen("/artistas/StevieWonder.jpg");
+        artista49.setNombre("Stevie Wonder");
+
+// Punk
+        ArtistaColeccion artista50 = new ArtistaColeccion();
+        artista50.setEsBanda(false);
+        artista50.setGeneros(Arrays.asList(punk));
+        artista50.setImagen("/artistas/IggyPop.jpg");
+        artista50.setNombre("Iggy Pop");
+
+        // Punk
+        ArtistaColeccion artista51 = new ArtistaColeccion();
+        artista51.setEsBanda(false);
+        artista51.setGeneros(Arrays.asList(punk));
+        artista51.setImagen("/artistas/JoanJett.jpg");
+        artista51.setNombre("Joan Jett");
+
+        ArtistaColeccion artista52 = new ArtistaColeccion();
+        artista52.setEsBanda(false);
+        artista52.setGeneros(Arrays.asList(punk));
+        artista52.setImagen("/artistas/SidVicious.jpg");
+        artista52.setNombre("Sid Vicious");
+
+        ArtistaColeccion artista53 = new ArtistaColeccion();
+        artista53.setEsBanda(false);
+        artista53.setGeneros(Arrays.asList(punk));
+        artista53.setImagen("/artistas/PattiSmith.jpg");
+        artista53.setNombre("Patti Smith");
+
+        ArtistaColeccion artista54 = new ArtistaColeccion();
+        artista54.setEsBanda(false);
+        artista54.setGeneros(Arrays.asList(punk));
+        artista54.setImagen("/artistas/BillyIdol.jpg");
+        artista54.setNombre("Billy Idol");
+
+// Funk
+        ArtistaColeccion artista55 = new ArtistaColeccion();
+        artista55.setEsBanda(false);
+        artista55.setGeneros(Arrays.asList(funk));
+        artista55.setImagen("/artistas/JamesBrown.jpg");
+        artista55.setNombre("James Brown");
+
+        ArtistaColeccion artista57 = new ArtistaColeccion();
+        artista57.setEsBanda(false);
+        artista57.setGeneros(Arrays.asList(funk));
+        artista57.setImagen("/artistas/Jamiroquai.jpg");
+        artista57.setNombre("Jamiroquai");
+
+        ArtistaColeccion artista58 = new ArtistaColeccion();
+        artista58.setEsBanda(false);
+        artista58.setGeneros(Arrays.asList(funk));
+        artista58.setImagen("/artistas/Prince.jpg");
+        artista58.setNombre("Prince");
+
+        ArtistaColeccion artista59 = new ArtistaColeccion();
+        artista59.setEsBanda(false);
+        artista59.setGeneros(Arrays.asList(funk));
+        artista59.setImagen("/artistas/RickJames.jpg");
+        artista59.setNombre("Rick James");
+
+// Música Latina
+        ArtistaColeccion artista60 = new ArtistaColeccion();
+        artista60.setEsBanda(false);
+        artista59.setGeneros(Arrays.asList(musicaLatina));
+        artista60.setImagen("/artistas/Shakira.jpg");
+        artista60.setNombre("Shakira");
+
+        ArtistaColeccion artista61 = new ArtistaColeccion();
+        artista61.setEsBanda(false);
+        artista61.setGeneros(Arrays.asList(musicaLatina));
+        artista61.setImagen("/artistas/CarlosVives.jpg");
+        artista61.setNombre("Carlos Vives");
+
+        ArtistaColeccion artista62 = new ArtistaColeccion();
+        artista62.setEsBanda(false);
+        artista62.setGeneros(Arrays.asList(musicaLatina));
+        artista62.setImagen("/artistas/Juanes.jpg");
+        artista62.setNombre("Juanes");
+
+        ArtistaColeccion artista63 = new ArtistaColeccion();
+        artista63.setEsBanda(false);
+        artista63.setGeneros(Arrays.asList(musicaLatina));
+        artista63.setImagen("/artistas/MarcAnthony.jpg");
+        artista63.setNombre("Marc Anthony");
+
+        ArtistaColeccion artista64 = new ArtistaColeccion();
+        artista64.setEsBanda(false);
+        artista64.setGeneros(Arrays.asList(musicaLatina));
+        artista64.setImagen("/artistas/GloriaEstefan.jpg");
+        artista64.setNombre("Gloria Estefan");
+
+// R&B
+        ArtistaColeccion artista65 = new ArtistaColeccion();
+        artista65.setEsBanda(false);
+        artista65.setGeneros(Arrays.asList(rnb));
+        artista65.setImagen("/artistas/Usher.jpg");
+        artista65.setNombre("Usher");
+
+        ArtistaColeccion artista66 = new ArtistaColeccion();
+        artista66.setEsBanda(false);
+        artista66.setGeneros(Arrays.asList(rnb));
+        artista66.setImagen("/artistas/AliciaKeys.jpg");
+        artista66.setNombre("Alicia Keys");
+
+        ArtistaColeccion artista68 = new ArtistaColeccion();
+        artista68.setEsBanda(false);
+        artista68.setGeneros(Arrays.asList(rnb));
+        artista68.setImagen("/artistas/TheWeeknd.jpg");
+        artista68.setNombre("The Weeknd");
+
+        ArtistaColeccion artista69 = new ArtistaColeccion();
+        artista69.setEsBanda(false);
+        artista69.setGeneros(Arrays.asList(rnb));
+        artista69.setImagen("/artistas/BrunoMars.jpg");
+        artista69.setNombre("Bruno Mars");
+
+// Trap
+        ArtistaColeccion artista70 = new ArtistaColeccion();
+        artista70.setEsBanda(false);
+        artista70.setGeneros(Arrays.asList(trap));
+        artista70.setImagen("/artistas/Future.jpg");
+        artista70.setNombre("Future");
+
+        // Trap
+        ArtistaColeccion artista71 = new ArtistaColeccion();
+        artista71.setEsBanda(false);
+        artista71.setGeneros(Arrays.asList(trap));
+        artista71.setImagen("/artistas/TravisScott.jpg");
+        artista71.setNombre("Travis Scott");
+
+        ArtistaColeccion artista72 = new ArtistaColeccion();
+        artista72.setEsBanda(false);
+        artista72.setGeneros(Arrays.asList(trap));
+        artista72.setImagen("/artistas/PostMalone.jpg");
+        artista72.setNombre("Post Malone");
+
+        ArtistaColeccion artista73 = new ArtistaColeccion();
+        artista73.setEsBanda(false);
+        artista73.setGeneros(Arrays.asList(trap));
+        artista73.setImagen("/artistas/LilSkies.jpg");
+        artista73.setNombre("Lil Skies");
+
+        ArtistaColeccion artista74 = new ArtistaColeccion();
+        artista74.setEsBanda(false);
+        artista74.setGeneros(Arrays.asList(trap));
+        artista74.setImagen("/artistas/Dillom.jpg");
+        artista74.setNombre("Dillom");
+
+// Electrónica
+        ArtistaColeccion artista75 = new ArtistaColeccion();
+        artista75.setEsBanda(false);
+        artista75.setGeneros(Arrays.asList(electronica));
+        artista75.setImagen("/artistas/CalvinHarris.jpg");
+        artista75.setNombre("Calvin Harris");
+
+        ArtistaColeccion artista76 = new ArtistaColeccion();
+        artista76.setEsBanda(false);
+        artista76.setGeneros(Arrays.asList(electronica));
+        artista76.setImagen("/artistas/DavidGuetta.jpg");
+        artista76.setNombre("David Guetta");
+
+        ArtistaColeccion artista77 = new ArtistaColeccion();
+        artista77.setEsBanda(false);
+        artista77.setGeneros(Arrays.asList(electronica));
+        artista77.setImagen("/artistas/Deadmau5.jpg");
+        artista77.setNombre("Deadmau5");
+
+        ArtistaColeccion artista78 = new ArtistaColeccion();
+        artista78.setEsBanda(false);
+        artista78.setGeneros(Arrays.asList(electronica));
+        artista78.setImagen("/artistas/Avicii.jpg");
+        artista78.setNombre("Avicii");
+
+        ArtistaColeccion artista79 = new ArtistaColeccion();
+        artista79.setEsBanda(false);
+        artista79.setGeneros(Arrays.asList(electronica));
+        artista79.setImagen("/artistas/Skrillex.jpg");
+        artista79.setNombre("Skrillex");
+
+// Rock Progresivo
+        ArtistaColeccion artista80 = new ArtistaColeccion();
+        artista80.setEsBanda(false);
+        artista80.setGeneros(Arrays.asList(prog));
+        artista80.setImagen("/artistas/StevenWilson.jpg");
+        artista80.setNombre("Steven Wilson");
+
+        ArtistaColeccion artista81 = new ArtistaColeccion();
+        artista81.setEsBanda(false);
+        artista81.setGeneros(Arrays.asList(prog));
+        artista81.setImagen("/artistas/RickWakeman.jpg");
+        artista81.setNombre("Rick Wakeman");
+
+        ArtistaColeccion artista82 = new ArtistaColeccion();
+        artista82.setEsBanda(false);
+        artista82.setGeneros(Arrays.asList(prog));
+        artista82.setImagen("/artistas/PeterGabriel.jpg");
+        artista82.setNombre("Peter Gabriel");
+
+        ArtistaColeccion artista83 = new ArtistaColeccion();
+        artista83.setEsBanda(false);
+        artista83.setGeneros(Arrays.asList(prog));
+        artista83.setImagen("/artistas/JonAnderson.jpg");
+        artista83.setNombre("Jon Anderson");
+
+        ArtistaColeccion artista84 = new ArtistaColeccion();
+        artista84.setEsBanda(false);
+        artista84.setGeneros(Arrays.asList(prog));
+        artista84.setImagen("/artistas/KeithEmerson.jpg");
+        artista84.setNombre("Keith Emerson");
+
+// Alternativo
+        ArtistaColeccion artista85 = new ArtistaColeccion();
+        artista85.setEsBanda(false);
+        artista85.setGeneros(Arrays.asList(alternativo));
+        artista85.setImagen("/artistas/Beck.jpg");
+        artista85.setNombre("Beck");
+
+        ArtistaColeccion artista86 = new ArtistaColeccion();
+        artista86.setEsBanda(false);
+        artista86.setGeneros(Arrays.asList(alternativo));
+        artista86.setImagen("/artistas/PJHarvey.jpg");
+        artista86.setNombre("PJ Harvey");
+
+        ArtistaColeccion artista87 = new ArtistaColeccion();
+        artista87.setEsBanda(false);
+        artista87.setGeneros(Arrays.asList(alternativo));
+        artista87.setImagen("/artistas/ToriAmos.jpg");
+        artista87.setNombre("Tori Amos");
+
+        ArtistaColeccion artista88 = new ArtistaColeccion();
+        artista88.setEsBanda(false);
+        artista88.setGeneros(Arrays.asList(alternativo));
+        artista88.setImagen("/artistas/Bjork.jpg");
+        artista88.setNombre("Bjork");
+
+        ArtistaColeccion artista89 = new ArtistaColeccion();
+        artista89.setEsBanda(false);
+        artista89.setGeneros(Arrays.asList(alternativo));
+        artista89.setImagen("/artistas/TameImpala.jpg");
+        artista89.setNombre("Tame Impala");
+
+        List<ArtistaColeccion> artistas2 = new ArrayList<>();
+        artistas2.add(artista);
+        artistas2.add(artista1);
+        artistas2.add(artista2);
+        artistas2.add(artista3);
+        artistas2.add(artista4);
+        artistas2.add(artista5);
+        artistas2.add(artista6);
+        artistas2.add(artista7);
+        artistas2.add(artista8);
+        artistas2.add(artista9);
+        artistas2.add(artista10);
+        artistas2.add(artista11);
+        artistas2.add(artista12);
+        artistas2.add(artista13);
+        artistas2.add(artista14);
+        artistas2.add(artista15);
+        artistas2.add(artista16);
+        artistas2.add(artista17);
+        artistas2.add(artista18);
+        artistas2.add(artista19);
+        artistas2.add(artista20);
+        artistas2.add(artista21);
+        artistas2.add(artista22);
+        artistas2.add(artista23);
+        artistas2.add(artista24);
+        artistas2.add(artista25);
+        artistas2.add(artista26);
+        artistas2.add(artista27);
+        artistas2.add(artista28);
+        artistas2.add(artista29);
+        artistas2.add(artista30);
+        artistas2.add(artista31);
+        artistas2.add(artista32);
+        artistas2.add(artista33);
+        artistas2.add(artista34);
+        artistas2.add(artista35);
+        artistas2.add(artista36);
+        artistas2.add(artista37);
+        artistas2.add(artista38);
+        artistas2.add(artista39);
+        artistas2.add(artista40);
+        artistas2.add(artista41);
+        artistas2.add(artista42);
+        artistas2.add(artista43);
+        artistas2.add(artista44);
+        artistas2.add(artista45);
+        artistas2.add(artista46);
+        artistas2.add(artista47);
+        artistas2.add(artista48);
+        artistas2.add(artista49);
+        artistas2.add(artista50);
+        artistas2.add(artista51);
+        artistas2.add(artista52);
+        artistas2.add(artista53);
+        artistas2.add(artista54);
+        artistas2.add(artista55);
+        artistas2.add(artista57);
+        artistas2.add(artista58);
+        artistas2.add(artista59);
+        artistas2.add(artista60);
+        artistas2.add(artista61);
+        artistas2.add(artista62);
+        artistas2.add(artista63);
+        artistas2.add(artista64);
+        artistas2.add(artista65);
+        artistas2.add(artista66);
+        artistas2.add(artista68);
+        artistas2.add(artista69);
+        artistas2.add(artista70);
+        artistas2.add(artista71);
+        artistas2.add(artista72);
+        artistas2.add(artista73);
+        artistas2.add(artista74);
+        artistas2.add(artista75);
+        artistas2.add(artista76);
+        artistas2.add(artista77);
+        artistas2.add(artista78);
+        artistas2.add(artista79);
+        artistas2.add(artista80);
+        artistas2.add(artista81);
+        artistas2.add(artista82);
+        artistas2.add(artista83);
+        artistas2.add(artista84);
+        artistas2.add(artista85);
+        artistas2.add(artista86);
+        artistas2.add(artista87);
+        artistas2.add(artista88);
+        artistas2.add(artista89);
+
+        artistaColeccion2.insertMany(artistas2);
 
         // Álbum 151: "Elvis Presley"
         AlbumColeccion album151 = new AlbumColeccion();
@@ -6679,32 +6848,6 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         ));
         album260.setArtista(artista55); // James Brown
 
-// Álbum 175: "Mothership Connection"
-        AlbumColeccion album261 = new AlbumColeccion();
-        album261.setNombre("Mothership Connection");
-        album261.setImagen("/albumes/MothershipConnection.jpg");
-        album261.setFechaLanzamiento(LocalDate.of(1975, 12, 15));
-        album261.setCanciones(Arrays.asList(
-                new CancionDoc("Give Up the Funk (Tear the Roof off the Sucker)"),
-                new CancionDoc("Mothership Connection (Star Child)"),
-                new CancionDoc("Supergroovalisticprosifunkstication"),
-                new CancionDoc("Unfunky UFO")
-        ));
-        album175.setArtista(artista56); // George Clinton
-
-// Álbum 176: "Funkentelechy Vs. the Placebo Syndrome"
-        AlbumColeccion album262 = new AlbumColeccion();
-        album262.setNombre("Funkentelechy Vs. the Placebo Syndrome");
-        album262.setImagen("/albumes/Funkentelechy.jpg");
-        album262.setFechaLanzamiento(LocalDate.of(1977, 3, 1));
-        album262.setCanciones(Arrays.asList(
-                new CancionDoc("Funkentelechy"),
-                new CancionDoc("Placebo Syndrome"),
-                new CancionDoc("The Goose That Laid the Golden Egg"),
-                new CancionDoc("Sir Nose On the Tracks of the World")
-        ));
-        album262.setArtista(artista56); // George Clinton
-
 // Álbum 177: "Travelling Without Moving"
         AlbumColeccion album263 = new AlbumColeccion();
         album263.setNombre("Travelling Without Moving");
@@ -7537,157 +7680,6 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         album328.setArtista(artista89); // Tame Impala
 
         List<AlbumColeccion> albumes = new ArrayList<>();
-
-        albumes.add(album1);
-        albumes.add(album2);
-        albumes.add(album3);
-        albumes.add(album4);
-        albumes.add(album5);
-        albumes.add(album6);
-        albumes.add(album7);
-        albumes.add(album8);
-        albumes.add(album9);
-        albumes.add(album10);
-        albumes.add(album11);
-        albumes.add(album12);
-        albumes.add(album13);
-        albumes.add(album14);
-        albumes.add(album15);
-        albumes.add(album16);
-        albumes.add(album17);
-        albumes.add(album18);
-        albumes.add(album19);
-        albumes.add(album20);
-        albumes.add(album21);
-        albumes.add(album22);
-        albumes.add(album23);
-        albumes.add(album24);
-        albumes.add(album25);
-        albumes.add(album26);
-        albumes.add(album27);
-        albumes.add(album28);
-        albumes.add(album29);
-        albumes.add(album30);
-        albumes.add(album31);
-        albumes.add(album32);
-        albumes.add(album33);
-        albumes.add(album34);
-        albumes.add(album35);
-        albumes.add(album36);
-        albumes.add(album37);
-        albumes.add(album38);
-        albumes.add(album39);
-        albumes.add(album40);
-        albumes.add(album41);
-        albumes.add(album42);
-        albumes.add(album43);
-        albumes.add(album44);
-        albumes.add(album45);
-        albumes.add(album46);
-        albumes.add(album47);
-        albumes.add(album48);
-        albumes.add(album49);
-        albumes.add(album50);
-        albumes.add(album51);
-        albumes.add(album52);
-        albumes.add(album53);
-        albumes.add(album54);
-        albumes.add(album55);
-        albumes.add(album56);
-        albumes.add(album57);
-        albumes.add(album58);
-        albumes.add(album59);
-        albumes.add(album60);
-        albumes.add(album61);
-        albumes.add(album62);
-        albumes.add(album63);
-        albumes.add(album64);
-        albumes.add(album65);
-        albumes.add(album66);
-        albumes.add(album67);
-        albumes.add(album68);
-        albumes.add(album69);
-        albumes.add(album70);
-        albumes.add(album71);
-        albumes.add(album72);
-        albumes.add(album73);
-        albumes.add(album74);
-        albumes.add(album75);
-        albumes.add(album76);
-        albumes.add(album77);
-        albumes.add(album78);
-        albumes.add(album79);
-        albumes.add(album80);
-        albumes.add(album81);
-        albumes.add(album82);
-        albumes.add(album83);
-        albumes.add(album84);
-        albumes.add(album85);
-        albumes.add(album86);
-        albumes.add(album87);
-        albumes.add(album88);
-        albumes.add(album89);
-        albumes.add(album90);
-        albumes.add(album91);
-        albumes.add(album92);
-        albumes.add(album93);
-        albumes.add(album94);
-        albumes.add(album95);
-        albumes.add(album96);
-        albumes.add(album97);
-        albumes.add(album98);
-        albumes.add(album99);
-        albumes.add(album100);
-        albumes.add(album101);
-        albumes.add(album102);
-        albumes.add(album103);
-        albumes.add(album104);
-        albumes.add(album105);
-        albumes.add(album106);
-        albumes.add(album107);
-        albumes.add(album108);
-        albumes.add(album109);
-        albumes.add(album110);
-        albumes.add(album111);
-        albumes.add(album112);
-        albumes.add(album113);
-        albumes.add(album114);
-        albumes.add(album115);
-        albumes.add(album116);
-        albumes.add(album117);
-        albumes.add(album118);
-        albumes.add(album119);
-        albumes.add(album120);
-        albumes.add(album121);
-        albumes.add(album122);
-        albumes.add(album123);
-        albumes.add(album124);
-        albumes.add(album125);
-        albumes.add(album126);
-        albumes.add(album127);
-        albumes.add(album128);
-        albumes.add(album129);
-        albumes.add(album130);
-        albumes.add(album131);
-        albumes.add(album132);
-        albumes.add(album133);
-        albumes.add(album134);
-        albumes.add(album135);
-        albumes.add(album136);
-        albumes.add(album137);
-        albumes.add(album138);
-        albumes.add(album139);
-        albumes.add(album140);
-        albumes.add(album141);
-        albumes.add(album142);
-        albumes.add(album143);
-        albumes.add(album144);
-        albumes.add(album145);
-        albumes.add(album146);
-        albumes.add(album147);
-        albumes.add(album148);
-        albumes.add(album149);
-        albumes.add(album150);
         albumes.add(album151);
         albumes.add(album152);
         albumes.add(album153);
@@ -7798,8 +7790,6 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         albumes.add(album258);
         albumes.add(album259);
         albumes.add(album260);
-        albumes.add(album261);
-        albumes.add(album262);
         albumes.add(album263);
         albumes.add(album264);
         albumes.add(album265);
@@ -7865,14 +7855,8 @@ public class DatosPruebaDAO implements IDatosPruebaDAO {
         albumes.add(album327);
         albumes.add(album328);
 
-        albumCollection.insertMany(albumes);
+        albumCollection2.insertMany(albumes);
 
-    }
-
-    @Override
-    public boolean verificarExixstenciaDatos() {
-        MongoCollection<AlbumColeccion> albumCollection = database.getCollection("Albumes", AlbumColeccion.class);
-        return albumCollection.find().iterator().hasNext();
     }
 
 }

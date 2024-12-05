@@ -483,7 +483,6 @@ public class PanelAlbumes extends javax.swing.JPanel {
             
             for(AlbumDTO album : albumes)
                 cantidadAlbumes++;
-            
             //Iteramos por cada album que nos regresa
             for(AlbumDTO album : albumes){
 
@@ -636,7 +635,7 @@ public class PanelAlbumes extends javax.swing.JPanel {
 
     private void btnPaginaMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaginaMasActionPerformed
 
-        if(LIMITE < cantidadAlbumes){
+        if(LIMITE >= cantidadAlbumes){
             JOptionPane.showMessageDialog(this, "No hay más páginas en frente");
             return;
         }
